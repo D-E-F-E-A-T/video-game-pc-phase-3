@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Common">
+      <UniqueIdentifier>cdea87a6-d56c-4a8d-8cd9-25e845b7f1ae</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>5e8ee369-ae01-4358-a834-1e049712e963</UniqueIdentifier>
+      <Extensions>bmp;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
+    </Filter>
+    <Filter Include="Content">
+      <UniqueIdentifier>4c62ec35-6f42-4acb-88d4-952aa38bd65c</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="Common\DirectXHelper.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\StepTimer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\DeviceResources.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClCompile Include="Common\DeviceResources.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClInclude Include="Content\SampleFpsTextRenderer.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="Content\ShaderStructures.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClCompile Include="Content\SampleFpsTextRenderer.cpp">
+      <Filter>Content</Filter>
+    </ClCompile>
+    <FxCompile Include="Content\SamplePixelShader.hlsl">
+      <Filter>Content</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\SampleVertexShader.hlsl">
+      <Filter>Content</Filter>
+    </FxCompile>
+    <Image Include="Assets\LockScreenLogo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\SplashScreen.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square150x150Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Wide310x150Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Filter Include="Sprites">
+      <UniqueIdentifier>{589b1e2c-c086-42b3-9c26-a72e2f10746e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model">
+      <UniqueIdentifier>{ac0ff977-22e9-4ba0-8e1c-8f6c19a54fce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controller">
+      <UniqueIdentifier>{511fb2fb-1b46-4cb0-a6b0-3d72ea1db395}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render">
+      <UniqueIdentifier>{55aa0f64-9643-4ced-ba31-15afbd01a1bd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="App.xaml.cpp" />
+    <ClCompile Include="adventures_of_orchiMain.cpp" />
+    <ClCompile Include="DirectXPage.xaml.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Content\GameRenderer.cpp">
+      <Filter>Content</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprites\BasicSprites.cpp">
+      <Filter>Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprites\BasicLoader.cpp">
+      <Filter>Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicReaderWriter.cpp" />
+    <ClCompile Include="DDSTextureLoader.cpp" />
+    <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="ScreenUtils.cpp" />
+    <ClCompile Include="BroadCollisionStrategy.cpp" />
+    <ClCompile Include="NarrowCollisionStrategy.cpp" />
+    <ClCompile Include="MathUtils.cpp" />
+    <ClCompile Include="LeftMargin.cpp" />
+    <ClCompile Include="RightMargin.cpp" />
+    <ClCompile Include="LifePanel.cpp" />
+    <ClCompile Include="Model\Player.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\Space.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprites\SpriteUtils.cpp">
+      <Filter>Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\Stack.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp" />
+    <ClCompile Include="Model\Edge.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="EdgeCollisionStrategy.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="App.xaml.h" />
+    <ClInclude Include="adventures_of_orchiMain.h" />
+    <ClInclude Include="DirectXPage.xaml.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Content\GameRenderer.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprites\BasicSprites.h">
+      <Filter>Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprites\SimpleSprites.h">
+      <Filter>Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprites\BasicLoader.h">
+      <Filter>Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicMath.h" />
+    <ClInclude Include="BasicReaderWriter.h" />
+    <ClInclude Include="BasicShapes.h" />
+    <ClInclude Include="DDSTextureLoader.h" />
+    <ClInclude Include="DirectXSample.h" />
+    <ClInclude Include="Grid.h" />
+    <ClInclude Include="GridSpace.h" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="ScreenUtils.h" />
+    <ClInclude Include="BroadCollisionStrategy.h" />
+    <ClInclude Include="NarrowCollisionStrategy.h" />
+    <ClInclude Include="MathUtils.h" />
+    <ClInclude Include="LeftMargin.h" />
+    <ClInclude Include="RightMargin.h" />
+    <ClInclude Include="LifePanel.h" />
+    <ClInclude Include="ControllerView.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Space.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Portal.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Movable.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Tool.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Character.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Thing.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Player.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Sword.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Tree.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Sand.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Grass.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Water.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Stack.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\GridSpaceLocationStrategy.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\AbsoluteLocationStrategy.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Immovable.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h" />
+    <ClInclude Include="Render\Renderer.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\SpriteRenderer.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprites\Sprite.h">
+      <Filter>Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="IDeviceNotify.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Diagnostic.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprites\SpriteUtils.h">
+      <Filter>Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Layer.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h" />
+    <ClInclude Include="Model\StoneWall.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Rock.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Stairs.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Edge.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="EdgeCollisionStrategy.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\StoreLogo.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="grass.dds" />
+    <Image Include="heart.dds" />
+    <Image Include="link.dds" />
+    <Image Include="rock.dds" />
+    <Image Include="stonewall.dds" />
+    <Image Include="test.dds" />
+    <Image Include="tree.dds" />
+    <Image Include="water.dds" />
+    <Image Include="Assets\splash.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\splash.scale-100.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="stairs.dds" />
+    <Image Include="sword-left.dds" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="adventures-of-orchi_TemporaryKey.pfx" />
+    <None Include="Assets\splash-sdk.xcf">
+      <Filter>Assets</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="DirectXPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="BasicSprites.GeometryShader.gs.hlsl" />
+    <FxCompile Include="BasicSprites.GeometryShader.vs.hlsl" />
+    <FxCompile Include="BasicSprites.Instancing.vs.hlsl" />
+    <FxCompile Include="BasicSprites.ps.hlsl" />
+    <FxCompile Include="BasicSprites.Replication.vs.hlsl" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,8 @@
+*.opensdf
+*.sdf
+adventures-of-orchi/ARM/
+adventures-of-orchi/Generated Files/
+Debug/
+ipch/
+x64/
+ServiceProxy/project.lock.json
