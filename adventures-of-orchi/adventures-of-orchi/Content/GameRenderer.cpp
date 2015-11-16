@@ -6,8 +6,11 @@
 #include "LeftMargin.h"
 #include "RightMargin.h"
 #include "LifePanel.h"
+#include "..\Model\VectorGraphic.h"
 #include "..\Model\Edge.h"
 #include "Utils.h"
+#include "..\Model\Texture.h"
+#include "..\Model\Tree.h"
 
 using namespace adventures_of_orchi;
 using namespace DirectX;
@@ -30,10 +33,6 @@ GameRenderer::GameRenderer(const shared_ptr<DeviceResources>& deviceResources, C
 	CreateDeviceDependentResources();
 	CreateWindowSizeDependentResources();
 
-
-
-
-	//m_pSpaces = new vector<Space *>;
 
 	m_fWindowWidth = m_window->Bounds.Width;
 	m_fWindowHeight = m_window->Bounds.Height;
@@ -135,22 +134,19 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		// Idea: Precedence order of collided objects.
 		//	For example, if colliding with a tree
 		//	and a portal, then the Portal takes precedence.
-		vector<Space *> collidedEdges;
-		vector<float> collidedEdgesDistances;
 
-		m_pEdgeCollisionDetectionStrategy->Detect(
+
+		// Portals need to be touched.
+		Space * pCollidedPortal = m_pPortalCollisionDetectionStrategy->Detect(
 			m_pPlayer,
-			m_pCollided,
-			&collidedEdges,
-			&collidedEdgesDistances);
+			m_pCollided);
 
-		if (collidedEdges.size() > 0)
+
+		if (pCollidedPortal)
 		{
 			int minIndex = 0;
 
-			::GetMinValue(collidedEdgesDistances, &minIndex);
-
-			int nDirection = ((Edge *)(collidedEdges.at(minIndex)))->GetDirection();
+			int nDirection = static_cast<Edge *>(pCollidedPortal)->GetDirection();
 
 			if (nDirection == NORTH)
 			{
@@ -185,14 +181,16 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 			m_pCollided->clear();
 
-#ifdef RENDER_DIAGNOSTICS
-			m_collidedRects.clear();
-			m_collidedRectStatuses.clear();
-#endif // RENDER_DIAGNOSTICS
+
 
 			return 0;
 		}
 #endif // USE_PORTALS
+
+#ifdef RENDER_DIAGNOSTICS
+		m_collidedRects.clear();
+		m_collidedRectStatuses.clear();
+#endif // RENDER_DIAGNOSTICS
 
 		m_broadCollisionDetectionStrategy->Detect(
 			LAYER_COLLIDABLES,
@@ -218,7 +216,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 					float2(m_fWindowWidth, m_fWindowHeight));
 
 #ifdef RENDER_DIAGNOSTICS
-				if (nCollisionState != NO_INTERSECTION)
+				if (m_nCollisionState != NO_INTERSECTION)
 				{
 					D2D1_RECT_F rect
 					{
@@ -540,7 +538,7 @@ void GameRenderer::RenderSpaces3D()
 
 	int numLayers = m_pCurrentStack->GetNumLayers();
 
-	for (int i = 0; i < numLayers; i++)
+	for (int i = LAYER_BACKGROUND; i >= LAYER_PLAYERS; i--)
 	{
 		Layer * currentLayer = m_pCurrentStack->Get(i);
 
@@ -556,7 +554,7 @@ void GameRenderer::RenderSpaces3D()
 
 			float dpi = m_deviceResources->GetDpi();
 
-			(*iterator)->Render3D(
+			(*iterator)->Render(
 				renderTargetView,
 				float2(m_fWindowWidth, m_fWindowHeight),
 				float2(fColumnWidth, fRowHeight),
@@ -1076,29 +1074,26 @@ void GameRenderer::CreatePackText()
 	m_textLayoutPack->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
 }
 
-// Only Spaces on Layer #3 should be 2D.
 void GameRenderer::RenderSpaces2D()
 {
-	int numLayers = m_pCurrentStack->GetNumLayers();
+	Layer * currentLayer = m_pCurrentStack->Get(LAYER_2D);
 
-	for (int i = 0; i < numLayers; i++)
+	vector<Space *>::const_iterator iterator;
+
+	// This is a sprite run.
+	for (iterator = currentLayer->GetSpaces()->begin();
+	iterator != currentLayer->GetSpaces()->end();
+		iterator++)
 	{
-		Layer * currentLayer = m_pCurrentStack->Get(i);
+		float fColumnWidth = grid.GetColumnWidth();
+		float fRowHeight = grid.GetRowHeight();
+		float dpi = m_deviceResources->GetDpi();
 
-		vector<Space *>::const_iterator iterator;
-
-		// This is a sprite run.
-		for (iterator = currentLayer->GetSpaces()->begin();
-		iterator != currentLayer->GetSpaces()->end();
-			iterator++)
-		{
-			float fColumnWidth = grid.GetColumnWidth();
-			float fRowHeight = grid.GetRowHeight();
-
-			float dpi = m_deviceResources->GetDpi();
-
-			(*iterator)->Render2D(float2{ m_fWindowWidth, m_fWindowHeight });
-		}
+		(*iterator)->Render(
+			nullptr,
+			float2(m_fWindowWidth, m_fWindowHeight),
+			float2(fColumnWidth, fRowHeight),
+			m_deviceResources->GetDpi());
 	}
 }
 

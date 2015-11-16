@@ -1,5 +1,6 @@
 #pragma once
 #include "Thing.h"
+#include "Texture.h"
 
 class Water : public Thing
 {
@@ -10,7 +11,6 @@ public:
 		bool bIsVisible,
 		const shared_ptr<DeviceResources>& deviceResources) :
 		Thing(
-			"water.dds",
 			pfLocationRatio,
 			pfDimensions,
 			true,
@@ -18,7 +18,7 @@ public:
 			true,
 			deviceResources)
 	{
-
+		m_pRenderable = new Texture("water.dds", deviceResources);
 	}
 
 protected:

@@ -144,11 +144,13 @@ void World::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& d
 				&x,
 				&y);
 
+
 			(m_lpStacks + m_nCurrentStackIndex)->Add(LAYER_COLLIDABLES, new Stairs(
 				float2(x, y),
 				float2(1.0f, 1.0f),
 				((ServiceProxy::AddStairsCommand ^)command)->Destination,
 				deviceResources));
+
 		}
 		else if (command->Type == ADD_GRASS_COMMAND)
 		{

@@ -24,7 +24,7 @@ namespace ServiceProxy
             BuildScreen6(commands);
             BuildScreen7(commands);
             BuildScreen8(commands);
-            BuildScreen9(commands);
+            BuildScreen9(commands); 
             BuildScreen10(commands);
             BuildScreen11(commands);
             BuildScreen12(commands);

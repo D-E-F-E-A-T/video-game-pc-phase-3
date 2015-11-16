@@ -8,7 +8,7 @@
 #include "BroadCollisionStrategy.h"
 #include "NarrowCollisionStrategy.h"
 #include "Model\Stack.h"
-#include "..\EdgeCollisionStrategy.h"
+#include "..\PortalCollisionStrategy.h"
 #include "..\World.h"
 #include "Model\Sword.h"
 
@@ -119,7 +119,7 @@ namespace adventures_of_orchi
 
 		BroadCollisionStrategy * m_broadCollisionDetectionStrategy;
 		NarrowCollisionStrategy * m_pNarrowCollisionDetectionStrategy;
-		EdgeCollisionStrategy * m_pEdgeCollisionDetectionStrategy;
+		PortalCollisionStrategy * m_pPortalCollisionDetectionStrategy;
 
 		list<Space *> * m_pCollided;
 		void HighlightRegion(int column, int row, ComPtr<ID2D1SolidColorBrush> brush);

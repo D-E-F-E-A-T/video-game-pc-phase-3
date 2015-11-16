@@ -10,7 +10,6 @@ public:
 		bool bIsVisible,
 		const shared_ptr<DeviceResources>& deviceResources) :
 		Thing(
-			"grass.dds",
 			pfLocationRatio,
 			pfDimensions,
 			true,
@@ -18,7 +17,7 @@ public:
 			true,
 			deviceResources)
 	{
-
+		m_pRenderable = new Texture("grass.dds", deviceResources);
 	}
 
 protected:

@@ -211,6 +211,10 @@
     <Image Include="water.dds" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Model\VectorGraphic.h" />
+    <ClInclude Include="Renderable2D.h" />
+    <ClInclude Include="Renderable3D.h" />
+    <ClInclude Include="Figure.h" />
     <ClInclude Include="App.xaml.h">
       <DependentUpon>App.xaml</DependentUpon>
     </ClInclude>
@@ -232,6 +236,7 @@
     <ClInclude Include="Content\SampleFpsTextRenderer.h" />
     <ClInclude Include="Content\ShaderStructures.h" />
     <ClInclude Include="DirectXSample.h" />
+    <ClInclude Include="Globals.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="GridSpace.h" />
     <ClInclude Include="IDeviceNotify.h" />
@@ -253,13 +258,15 @@
     <ClInclude Include="Model\Stairs.h" />
     <ClInclude Include="Model\StoneWall.h" />
     <ClInclude Include="Model\Sword.h" />
+    <ClInclude Include="Model\Texture.h" />
     <ClInclude Include="Model\Thing.h" />
     <ClInclude Include="Model\Tree.h" />
     <ClInclude Include="Model\Water.h" />
     <ClInclude Include="NarrowCollisionStrategy.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Model\Portal.h" />
-    <ClInclude Include="EdgeCollisionStrategy.h" />
+    <ClInclude Include="PortalCollisionStrategy.h" />
+    <ClInclude Include="Renderable.h" />
     <ClInclude Include="Render\Renderer.h" />
     <ClInclude Include="Render\SpriteRenderer.h" />
     <ClInclude Include="RightMargin.h" />
@@ -294,9 +301,11 @@
     <ClCompile Include="LifePanel.cpp" />
     <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="Model\Edge.cpp" />
+    <ClCompile Include="Model\Texture.cpp" />
     <ClCompile Include="Model\Player.cpp" />
     <ClCompile Include="Model\Space.cpp" />
     <ClCompile Include="Model\Stack.cpp" />
+    <ClCompile Include="Model\Stairs.cpp" />
     <ClCompile Include="NarrowCollisionStrategy.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -306,7 +315,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="EdgeCollisionStrategy.cpp" />
+    <ClCompile Include="PortalCollisionStrategy.cpp" />
     <ClCompile Include="RightMargin.cpp" />
     <ClCompile Include="ScreenUtils.cpp" />
     <ClCompile Include="Sprites\BasicLoader.cpp" />

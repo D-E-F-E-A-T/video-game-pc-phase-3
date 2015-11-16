@@ -1,5 +1,6 @@
 #pragma once
 #include "Tool.h"
+#include "Texture.h"
 
 class Sword : public Tool
 {
@@ -8,13 +9,12 @@ public:
 		float2 pfLocationRatio,
 		const shared_ptr<DeviceResources>& deviceResources) :
 		Tool(
-			"sword-left.dds",	// Make this an array.
 			pfLocationRatio,
 			float2{ 1.f, 1.f },
 			true,
 			deviceResources)
 	{
-
+		m_pRenderable = new Texture("sword-left.dds", deviceResources);
 	}
 
 	float2 GetLocationRatio()

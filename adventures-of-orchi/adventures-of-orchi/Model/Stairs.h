@@ -2,6 +2,9 @@
 #include "pch.h"
 #include "Portal.h"
 #include "Constants.h"
+#include "Player.h"
+#include "Space.h"
+#include "Texture.h"
 
 class Stairs : public Portal
 {
@@ -12,13 +15,17 @@ public:
 		int nDestination,
 		const shared_ptr<DeviceResources>& deviceResources) :
 		Portal(
-			"stairs.dds",
 			pfLocationRatio,
 			pfDimensionRatio,
 			nDestination,
 			deviceResources)
 	{
+		m_pRenderable = new Texture("stairs.dds", deviceResources);
 	}
+
+	bool IsOverlapping(Player * pPlayer, Space * pSpace);
+
+	void Act();
 
 protected:
 

@@ -7,7 +7,6 @@ class Thing : public Immovable
 {
 public:
 	Thing(
-		String ^ strTextureName,
 		float2 pfLocationRatio,
 		float2 pfDimensions,
 		bool bIsVisible,
@@ -15,7 +14,6 @@ public:
 		bool bIsCollidable,
 		const shared_ptr<DeviceResources>& deviceResources)
 		: Immovable(
-			strTextureName,
 			pfLocationRatio,
 			pfDimensions,
 			bIsVisible,
