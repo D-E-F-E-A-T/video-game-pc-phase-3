@@ -10,12 +10,14 @@ class Edge : public Portal
 public:
 	Edge(
 		float2 pfLocationRatio,
+		float fRotationInRadians,
 		float2 pfDimensionRatio,
 		int nDirection,
 		int nDestination,
 		const shared_ptr<DeviceResources>& deviceResources) :
 		Portal(
 			pfLocationRatio,
+			fRotationInRadians,
 			pfDimensionRatio,
 			nDestination,
 			deviceResources)
@@ -26,7 +28,7 @@ public:
 
 	int GetDirection() { return m_nDirection; }
 
-	void Act();
+	//Action * Act(World *);
 
 	bool IsOverlapping(Player * pPlayer, Space * pSpace);
 

@@ -1,10 +1,11 @@
 #pragma once
 
-class ControllerView
+class Area
 {
 public:
 
 protected:
 
 private:
+
 };

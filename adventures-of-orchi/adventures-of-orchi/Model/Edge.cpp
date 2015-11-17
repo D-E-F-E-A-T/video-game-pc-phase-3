@@ -2,10 +2,10 @@
 #include "Edge.h"
 #include "Player.h"
 
-void Edge::Act()
-{
-
-}
+//Action * Edge::Act(World * pWorld)
+//{
+//	return nullptr;
+//}
 
 bool Edge::IsOverlapping(Player * pPlayer, Space * pSpace)
 {

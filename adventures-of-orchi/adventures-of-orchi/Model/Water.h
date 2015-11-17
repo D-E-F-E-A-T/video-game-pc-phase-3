@@ -7,11 +7,13 @@ class Water : public Thing
 public:
 	Water(
 		float2 pfLocationRatio,
+		float fRotationInRadians,
 		float2 pfDimensions,
 		bool bIsVisible,
 		const shared_ptr<DeviceResources>& deviceResources) :
 		Thing(
 			pfLocationRatio,
+			fRotationInRadians,
 			pfDimensions,
 			true,
 			false,

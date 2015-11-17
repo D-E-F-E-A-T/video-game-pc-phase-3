@@ -7,11 +7,13 @@ class Portal : public Immovable
 public:
 	Portal(
 		float2 pfLocationRatio, 
+		float fRotationInRadians,
 		float2 pfDimensionRatio, 
 		int nDestination,
 		const shared_ptr<DeviceResources>& deviceResources) :
 		Immovable(
 			pfLocationRatio, 
+			fRotationInRadians,
 			pfDimensionRatio, 
 			false, 
 			true, 
@@ -24,8 +26,6 @@ public:
 	bool IsOverlapping(Player * pPlayer, Space * pSpace) {}
 
 	int GetDestination() { return m_nDestination; }
-
-	virtual void Act() = 0;
 
 protected:
 	int m_nDestination;

@@ -10,11 +10,13 @@ class Player : public Character
 public:
 	Player(
 		float2 pfLocationRatio,
+		float fRotationInRadians,
 		float2 pfDimensions,
 		bool bIsVisible,
 		const shared_ptr<DeviceResources>& deviceResources)
 		: Character(
 			pfLocationRatio,
+			fRotationInRadians,
 			pfDimensions,
 			true,
 			deviceResources)

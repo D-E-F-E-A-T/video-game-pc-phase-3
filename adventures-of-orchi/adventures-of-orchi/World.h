@@ -15,7 +15,9 @@ public:
 
 	void SetScreen(int x, int y);
 	Stack * LoadScreen(int x, int y);
+	Stack * LoadScreen(int nDirection);
 	Stack * Move(int nDirection);
+	Stack * Move(Space * currentSpace, int nDirection);
 
 protected:
 	int m_lpnWorldDimensions[2];

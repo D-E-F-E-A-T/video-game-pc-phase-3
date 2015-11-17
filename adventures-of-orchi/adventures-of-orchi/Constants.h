@@ -87,6 +87,14 @@
 #define SOUTH_EAST 8
 #endif // SOUTH_EAST
 
+#ifndef DOWNSTAIRS
+#define DOWNSTAIRS 9
+#endif // DOWNSTAIRS
+
+#ifndef UPSTAIRS
+#define UPSTAIRS 10
+#endif // UPSTAIRS
+
 // 5 percent of the screen / second.
 #ifndef SCROLLING_VELOCITY
 #define SCROLLING_VELOCITY 5
@@ -285,6 +293,14 @@
 #ifndef ADD_GRASS_COMMAND
 #define ADD_GRASS_COMMAND 9
 #endif // ADD_GRASS_COMMAND
+
+#ifndef DECLARE_CAVE_COMMAND
+#define DECLARE_CAVE_COMMAND 10
+#endif // DECLARE_CAVE_COMMAND
+
+#ifndef DECLARE_AREA_COMMAND
+#define DECLARE_AREA_COMMAND 11
+#endif // DECLARE_AREA_COMMAND
 
 #ifndef USE_PORTALS
 #define USE_PORTALS

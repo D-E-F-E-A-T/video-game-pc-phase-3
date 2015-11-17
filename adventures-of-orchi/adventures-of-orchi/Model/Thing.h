@@ -8,6 +8,7 @@ class Thing : public Immovable
 public:
 	Thing(
 		float2 pfLocationRatio,
+		float fRotationInRadians,
 		float2 pfDimensions,
 		bool bIsVisible,
 		bool bIsActionable,
@@ -15,6 +16,7 @@ public:
 		const shared_ptr<DeviceResources>& deviceResources)
 		: Immovable(
 			pfLocationRatio,
+			fRotationInRadians,
 			pfDimensions,
 			bIsVisible,
 			bIsActionable,

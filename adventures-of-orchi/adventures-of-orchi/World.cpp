@@ -65,6 +65,7 @@ void World::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& d
 
 			(m_lpStacks + m_nCurrentStackIndex)->Add(LAYER_COLLIDABLES, new Tree(
 				float2(x, y),
+				0.f,
 				float2(1.f, 1.f),
 				true,
 				deviceResources));
@@ -81,6 +82,7 @@ void World::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& d
 
 			(m_lpStacks + m_nCurrentStackIndex)->Add(LAYER_2D, new Edge(
 				float2(x, y),
+				0.f,
 				float2(0.2f, 0.2f),
 				((ServiceProxy::AddEdgeCommand ^)command)->Direction,
 				((ServiceProxy::AddEdgeCommand ^)command)->Destination,
@@ -98,6 +100,7 @@ void World::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& d
 
 			(m_lpStacks + m_nCurrentStackIndex)->Add(LAYER_COLLIDABLES, new Water(
 				float2(x, y),
+				0.f,
 				float2(1.f, 1.f),
 				true,
 				deviceResources));
@@ -114,6 +117,7 @@ void World::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& d
 
 			(m_lpStacks + m_nCurrentStackIndex)->Add(LAYER_COLLIDABLES, new StoneWall(
 				float2(x, y),
+				0.f,
 				float2(1.f, 1.f),
 				true,
 				deviceResources));
@@ -130,6 +134,7 @@ void World::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& d
 
 			(m_lpStacks + m_nCurrentStackIndex)->Add(LAYER_COLLIDABLES, new Rock(
 				float2(x, y),
+				0.f,
 				float2(1.f, 1.f),
 				true,
 				deviceResources));
@@ -147,7 +152,8 @@ void World::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& d
 
 			(m_lpStacks + m_nCurrentStackIndex)->Add(LAYER_COLLIDABLES, new Stairs(
 				float2(x, y),
-				float2(1.0f, 1.0f),
+				0.f,
+				float2(0.75f, 0.75f),
 				((ServiceProxy::AddStairsCommand ^)command)->Destination,
 				deviceResources));
 
@@ -164,6 +170,7 @@ void World::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& d
 
 			(m_lpStacks + m_nCurrentStackIndex)->Add(LAYER_BACKGROUND, new Grass(
 				float2(x, y),
+				0.f,
 				float2(1.f, 1.f),
 				true,
 				deviceResources));
@@ -179,6 +186,24 @@ void World::SetScreen(int x, int y)
 Stack * World::LoadScreen(int x, int y)
 {
 	return m_lpStacks + (y * m_lpnDimensions[WIDTH_INDEX] + x);
+}
+
+Stack * World::Move(Space * currentSpace, int nDirection)
+{
+	if (nDirection == DOWNSTAIRS)
+	{
+		LoadScreen(static_cast<Portal *>(currentSpace)->GetDestination());
+	}
+
+	return nullptr;
+}
+
+// Idea: Each dungeon is a World.
+// Or each upperworld, dungeon, cave, island 
+//	is a separate Area
+Stack * World::LoadScreen(int nDestination)
+{
+	return nullptr;
 }
 
 Stack * World::Move(int nDirection)
@@ -205,9 +230,11 @@ Stack * World::Move(int nDirection)
 
 	m_nCurrentStackIndex = nRow * m_lpnDimensions[WIDTH_INDEX] + nColumn;
 
+#ifdef _DEBUG
 	char buffer[32];
 	sprintf_s(buffer, "Moving to screen %d %d\n", nColumn, nRow);
 	OutputDebugStringA(buffer);
+#endif // _DEBUG
 
 	return LoadScreen(nColumn, nRow);
 }

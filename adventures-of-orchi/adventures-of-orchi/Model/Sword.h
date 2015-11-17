@@ -7,10 +7,12 @@ class Sword : public Tool
 public:
 	Sword(
 		float2 pfLocationRatio,
+		float fRotationInRadians,
 		const shared_ptr<DeviceResources>& deviceResources) :
 		Tool(
 			pfLocationRatio,
-			float2{ 1.f, 1.f },
+			fRotationInRadians,
+			float2{ 2.5f, 1.f },
 			true,
 			deviceResources)
 	{
@@ -19,7 +21,7 @@ public:
 
 	float2 GetLocationRatio()
 	{
-		m_fLocationRatio = m_fLocationRatio - float2{ 0.03f, 0.f };
+		m_fLocationRatio = m_fLocationRatio - float2{ 0.005f, 0.f };
 		return m_fLocationRatio;
 	}
 

@@ -53,6 +53,7 @@ GameRenderer::GameRenderer(const shared_ptr<DeviceResources>& deviceResources, C
 
 	m_pPlayer = new Player(
 		float2(0.5f, 0.5f),
+		0.f,
 		float2(1.f, 1.f),
 		true,
 		deviceResources);
@@ -181,10 +182,10 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 			m_pCollided->clear();
 
-
-
 			return 0;
 		}
+
+
 #endif // USE_PORTALS
 
 #ifdef RENDER_DIAGNOSTICS
@@ -218,6 +219,16 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 #ifdef RENDER_DIAGNOSTICS
 				if (m_nCollisionState != NO_INTERSECTION)
 				{
+//					if (m_nCollisionState == COLLISION)
+//					{
+////						m_pCurrentStack = m_pWorld->Move((*iterator), DOWNSTAIRS);
+//
+//						// TODO: Use Actions
+//						// (*iterator)->Act(m_pCurrentStack);
+//
+//						return 0;
+//					}
+
 					D2D1_RECT_F rect
 					{
 						(float)intersectRect[0],
@@ -1101,7 +1112,8 @@ void GameRenderer::ThrowSword()
 {
 	m_pSword = new Sword(
 		m_pPlayer->GetLocationRatio(),
+		0.f,
 		m_deviceResources);
 
-	m_pCurrentStack->Add(LAYER_COLLIDABLES, m_pSword);
+	m_pCurrentStack->Add(LAYER_PLAYERS, m_pSword);
 }

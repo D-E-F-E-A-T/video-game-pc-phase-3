@@ -115,6 +115,7 @@
     <Compile Include="AddStoneWallCommand.cs" />
     <Compile Include="AddWaterCommand.cs" />
     <Compile Include="AddTreeCommand.cs" />
+    <Compile Include="DeclareAreaCommand.cs" />
     <Compile Include="DeclareCaveCommand.cs" />
     <Compile Include="DeclareDungeonCommand.cs" />
     <Compile Include="DeclareScreenCommand.cs" />

@@ -152,9 +152,6 @@
     <ClInclude Include="LeftMargin.h" />
     <ClInclude Include="RightMargin.h" />
     <ClInclude Include="LifePanel.h" />
-    <ClInclude Include="ControllerView.h">
-      <Filter>Controller</Filter>
-    </ClInclude>
     <ClInclude Include="Model\Space.h">
       <Filter>Model</Filter>
     </ClInclude>
@@ -240,22 +237,37 @@
     </ClInclude>
     <ClInclude Include="PortalCollisionStrategy.h" />
     <ClInclude Include="Globals.h" />
-    <ClInclude Include="Renderable.h">
-      <Filter>Model</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderable2D.h">
-      <Filter>Model</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderable3D.h">
-      <Filter>Model</Filter>
-    </ClInclude>
-    <ClInclude Include="Figure.h">
-      <Filter>Model</Filter>
-    </ClInclude>
     <ClInclude Include="Model\Texture.h">
       <Filter>Model</Filter>
     </ClInclude>
     <ClInclude Include="Model\VectorGraphic.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Action.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Area.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\TouchScreenControllerView.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\XBox360ControllerView.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\KeyboardControllerView.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Renderable.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Renderable2D.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Renderable3D.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Figure.h">
       <Filter>Model</Filter>
     </ClInclude>
   </ItemGroup>

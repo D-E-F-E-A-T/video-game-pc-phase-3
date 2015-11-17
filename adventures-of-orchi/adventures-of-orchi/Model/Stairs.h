@@ -5,17 +5,21 @@
 #include "Player.h"
 #include "Space.h"
 #include "Texture.h"
+#include "..\World.h"
+
 
 class Stairs : public Portal
 {
 public:
 	Stairs(
 		float2 pfLocationRatio,
+		float fRotationInRadians,
 		float2 pfDimensionRatio,
 		int nDestination,
 		const shared_ptr<DeviceResources>& deviceResources) :
 		Portal(
 			pfLocationRatio,
+			fRotationInRadians,
 			pfDimensionRatio,
 			nDestination,
 			deviceResources)
@@ -25,7 +29,7 @@ public:
 
 	bool IsOverlapping(Player * pPlayer, Space * pSpace);
 
-	void Act();
+	//Action * Act(World *);
 
 protected:
 

@@ -4,6 +4,8 @@
 #include "..\Common\DeviceResources.h"
 #include "Renderable.h"
 
+
+
 using namespace BasicSprites;
 using namespace std;
 using namespace Platform;
@@ -15,6 +17,7 @@ public:
 
 	Space(
 		float2 fLocationRatio,
+		float fRotationInRadians,
 		bool bIsVisible,
 		bool bIsActionable,
 		bool bIsCollidable,
@@ -34,6 +37,11 @@ public:
 		float2 fScaleDimensions,
 		float dpi);
 
+	//virtual Action * Act(World * pWorld)
+	//{
+	//	return nullptr;
+	//}
+
 	uint8_t * GetPixels()
 	{
 		return m_pRenderable->GetPixels();
@@ -47,6 +55,7 @@ public:
 protected:
 	Renderable * m_pRenderable;
 	float2 m_fLocationRatio;
+	float m_fRotationInRadians;
 	bool m_bIsVisible;
 	bool m_bIsActionable;
 	bool m_bIsCollidable;

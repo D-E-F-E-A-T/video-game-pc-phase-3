@@ -9,19 +9,19 @@ using namespace std;
 
 Space::Space(
 	float2 fLocationRatio,
+	float fRotationInRadians,
 	bool bIsVisible,
 	bool bIsActionable,
 	bool bIsCollidable,
 	const shared_ptr<DeviceResources>& deviceResources)
 {
 	m_deviceResources = deviceResources;
-
 	m_fLocationRatio = fLocationRatio;
-
 
 	m_bIsVisible = bIsVisible;
 	m_bIsActionable = bIsActionable;
 	m_bIsCollidable = bIsCollidable;
+	m_fRotationInRadians = fRotationInRadians;
 }
 
 Space::~Space()
@@ -50,7 +50,7 @@ void Space::Render(
 {
 	m_pRenderable->Render(
 		renderTargetView, 
-		m_fLocationRatio,
+		GetLocationRatio(),
 		fWindowDimensions, 
 		fScaleDimensions, 
 		dpi);
