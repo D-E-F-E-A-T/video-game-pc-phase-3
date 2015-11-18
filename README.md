@@ -8,5 +8,5 @@ As in the first two phases of this project, the code is developed with pure Dire
 
 Compilation
 ----------------------
-Visual Studio 2015 and Windows 10 are required for compilation. The use of an XBox 360 wireless game controller and wireless dongle is recommended.
+Visual Studio 2015 and Windows 10 are required for compilation. The use of an XBox One wireless game controller and wireless dongle is recommended.
 
