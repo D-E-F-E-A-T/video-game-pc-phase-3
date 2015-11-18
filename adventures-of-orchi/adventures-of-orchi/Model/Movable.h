@@ -20,11 +20,16 @@ public:
 			true,
 			deviceResources)
 	{
-		m_lpFunctions = new (void (Movable::*[4])(int, float));
-		m_lpFunctions[NORTH] = &Movable::MoveNorth;
-		m_lpFunctions[EAST] = &Movable::MoveEast;
-		m_lpFunctions[SOUTH] = &Movable::MoveSouth;
-		m_lpFunctions[WEST] = &Movable::MoveWest;
+		m_lpMoveFunctions = new (void (Movable::*[4])(int, float));
+		m_lpMoveFunctions[NORTH] = &Movable::MoveNorth;
+		m_lpMoveFunctions[EAST] = &Movable::MoveEast;
+		m_lpMoveFunctions[SOUTH] = &Movable::MoveSouth;
+		m_lpMoveFunctions[WEST] = &Movable::MoveWest;
+	}
+
+	~Movable()
+	{
+		delete [] m_lpMoveFunctions;
 	}
 
 	void MoveNorth(int nCollisionState, float fVelocity);
@@ -37,7 +42,7 @@ public:
 
 	void Move(int nDirection, int nCollisionState, float fVelocity)
 	{
-		(*this.*m_lpFunctions[nDirection])(nCollisionState, fVelocity);
+		(*this.*m_lpMoveFunctions[nDirection])(nCollisionState, fVelocity);
 	}
 
 protected:
@@ -46,7 +51,7 @@ protected:
 	
 	// "m_lpFunctions is a pointer to a pointer of functions
 	//	which take in an int and a float and return void."
-	void (Movable::**m_lpFunctions)(int, float);
+	void (Movable::**m_lpMoveFunctions)(int, float);
 
 private:
 

@@ -22,6 +22,7 @@ public:
 			fRotationInRadians,
 			pfDimensionRatio,
 			nDestination,
+			true,
 			deviceResources)
 	{
 		m_pRenderable = new Texture("stairs.dds", deviceResources);

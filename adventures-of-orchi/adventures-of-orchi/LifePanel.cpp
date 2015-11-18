@@ -2,17 +2,25 @@
 #include "LifePanel.h"
 //#include "HeartData.h"
 #include "Constants.h"
+#include "Common\DeviceResources.h"
+#include "Common\DirectXHelper.h"
 
-LifePanel::LifePanel(
-	float fHorizontalOffset, 
-	float fVerticalOffset, 
-	float fPanelWidth, 
-	float fPanelHeight)
+using namespace DirectX;
+using namespace Microsoft::WRL;
+using namespace DX;
+
+void LifePanel::DrawText(const shared_ptr<DeviceResources>& deviceResources)
 {
-	m_fHorizontalOffset = fHorizontalOffset;
-	m_fVerticalOffset = fVerticalOffset;
-	m_fPanelWidth = fPanelWidth;
-	m_fPanelHeight = fPanelHeight;
+	D2D1_SIZE_F size = deviceResources->GetD2DDeviceContext()->GetSize();
+
+	float fTop = size.height * 0.01f;
+	float fLeft = size.width - (size.width * RIGHT_MARGIN_RATIO);
+
+	deviceResources->GetD2DDeviceContext()->DrawTextLayout(
+		D2D1::Point2F(fLeft, fTop),
+		m_textLayout.Get(),
+		deviceResources->m_whiteBrush.Get()
+		);
 }
 
 //void LifePanel::BuildPanel(std::vector<BaseSpriteData> * m_heartData)

@@ -11,6 +11,12 @@
 #include "..\PortalCollisionStrategy.h"
 #include "..\World.h"
 #include "Model\Sword.h"
+#include "..\LifePanel.h"
+#include "..\MapPanel.h"
+#include "..\ButtonsPanel.h"
+#include "..\PackPanel.h"
+#include "..\InventoryPanel.h"
+#include "..\InfoPanel.h"
 
 using namespace Windows::UI::Core;
 using namespace std;
@@ -39,15 +45,9 @@ namespace adventures_of_orchi
 
 		Grid grid;
 
-		void CreateLifeText();
-		void CreateMapText();
-		void CreateButtonsText();
 		void CreateInventoryText();
 		void CreatePackText();
 
-		void DrawLifeText();
-		void DrawMapText();
-		void DrawButtonsText();
 		void DrawInventoryText();
 		void DrawPackText();
 
@@ -84,17 +84,13 @@ namespace adventures_of_orchi
 		bool	m_tracking;
 
 		Stack * m_pCurrentStack;
-		//Stack m_stack;
 
-		ComPtr<IDWriteTextLayout1> m_textLayoutLife;
 		ComPtr<IDWriteTextLayout1> m_textLayoutButtons;
-		ComPtr<IDWriteTextLayout1> m_textLayoutMap;
 		ComPtr<IDWriteTextLayout1> m_textLayoutInventory;
 		ComPtr<IDWriteTextLayout1> m_textLayoutPack;
 
 		void RenderSpaces2D();
 		void RenderSpaces3D();
-		//void BuildScreen();
 
 		Player * m_pPlayer;
 		Sword * m_pSword;
@@ -138,6 +134,13 @@ namespace adventures_of_orchi
 #endif // RENDER_DIAGNOSTICS
 
 		int m_nSwordDirection;
+		LifePanel m_lifePanel;
+		MapPanel m_mapPanel;
+		ButtonsPanel m_buttonsPanel;
+		PackPanel m_packPanel;
+		InventoryPanel m_inventoryPanel;
+
+		vector<InfoPanel *> * m_infoPanels;
 	};
 }
 

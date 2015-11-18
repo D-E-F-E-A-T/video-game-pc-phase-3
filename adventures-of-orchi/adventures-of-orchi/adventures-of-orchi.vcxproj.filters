@@ -122,6 +122,10 @@
       <Filter>Model</Filter>
     </ClCompile>
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="MapPanel.cpp" />
+    <ClCompile Include="ButtonsPanel.cpp" />
+    <ClCompile Include="PackPanel.cpp" />
+    <ClCompile Include="InventoryPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -272,6 +276,11 @@
     <ClInclude Include="Model\Figure.h">
       <Filter>Model</Filter>
     </ClInclude>
+    <ClInclude Include="MapPanel.h" />
+    <ClInclude Include="ButtonsPanel.h" />
+    <ClInclude Include="PackPanel.h" />
+    <ClInclude Include="InventoryPanel.h" />
+    <ClInclude Include="InfoPanel.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\StoreLogo.png">

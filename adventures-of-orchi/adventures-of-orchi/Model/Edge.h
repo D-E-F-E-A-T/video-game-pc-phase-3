@@ -20,6 +20,11 @@ public:
 			fRotationInRadians,
 			pfDimensionRatio,
 			nDestination,
+#ifdef RENDER_DIAGNOSTICS
+			true,
+#elif // RENDER_DIAGNOSTICS
+			false,
+#endif // RENDER_DIAGNOSTICS
 			deviceResources)
 	{
 		m_nDirection = nDirection;

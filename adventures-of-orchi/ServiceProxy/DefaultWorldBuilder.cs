@@ -245,14 +245,14 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(2, 16, 14));
 
 
-            commands.AddLast(new AddEdgeCommand(4, 16, 6, 5, 1));
-            commands.AddLast(new AddEdgeCommand(4, 16, 7, 5, 1));
-            commands.AddLast(new AddEdgeCommand(4, 16, 8, 5, 1));
+            commands.AddLast(new AddEdgeCommand(4, 16, 6, 1, 1));
+            commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 1));
+            commands.AddLast(new AddEdgeCommand(4, 16, 8, 1, 1));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 14, 7, 5));
-            commands.AddLast(new AddEdgeCommand(4, 8, 14, 7, 5));
-            commands.AddLast(new AddEdgeCommand(4, 9, 14, 7, 5));
-            commands.AddLast(new AddEdgeCommand(4, 10, 14, 7, 5));
+            commands.AddLast(new AddEdgeCommand(4, 7, 14, 2, 5));
+            commands.AddLast(new AddEdgeCommand(4, 8, 14, 2, 5));
+            commands.AddLast(new AddEdgeCommand(4, 9, 14, 2, 5));
+            commands.AddLast(new AddEdgeCommand(4, 10, 14, 2, 5));
         }
 
         private void BuildScreen1(LinkedList<WorldBuilderCommand> commands)
@@ -405,13 +405,13 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 7, 3, 0));
             commands.AddLast(new AddEdgeCommand(4, 0, 8, 3, 0));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 14, 7, 6));
-            commands.AddLast(new AddEdgeCommand(4, 8, 14, 7, 6));
-            commands.AddLast(new AddEdgeCommand(4, 9, 14, 7, 6));
+            commands.AddLast(new AddEdgeCommand(4, 7, 14, 2, 6));
+            commands.AddLast(new AddEdgeCommand(4, 8, 14, 2, 6));
+            commands.AddLast(new AddEdgeCommand(4, 9, 14, 2, 6));
 
-            commands.AddLast(new AddEdgeCommand(4, 16, 6, 5, 2));
-            commands.AddLast(new AddEdgeCommand(4, 16, 7, 5, 2));
-            commands.AddLast(new AddEdgeCommand(4, 16, 8, 5, 2));
+            commands.AddLast(new AddEdgeCommand(4, 16, 6, 1, 2));
+            commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 2));
+            commands.AddLast(new AddEdgeCommand(4, 16, 8, 1, 2));
         }
 
         private void BuildScreen2(LinkedList<WorldBuilderCommand> commands)
@@ -879,10 +879,10 @@ namespace ServiceProxy
             commands.AddLast(new AddStoneWallCommand(2, 15, 14));
             commands.AddLast(new AddStoneWallCommand(2, 16, 14));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 14, 7, 8));
-            commands.AddLast(new AddEdgeCommand(4, 8, 14, 7, 8));
-            commands.AddLast(new AddEdgeCommand(4, 9, 14, 7, 8));
-            commands.AddLast(new AddEdgeCommand(4, 10, 14, 7, 8));
+            commands.AddLast(new AddEdgeCommand(4, 7, 14, 2, 8));
+            commands.AddLast(new AddEdgeCommand(4, 8, 14, 2, 8));
+            commands.AddLast(new AddEdgeCommand(4, 9, 14, 2, 8));
+            commands.AddLast(new AddEdgeCommand(4, 10, 14, 2, 8));
 
         }
 
@@ -1102,10 +1102,10 @@ namespace ServiceProxy
             commands.AddLast(new AddStoneWallCommand(2, 15, 14));
             commands.AddLast(new AddStoneWallCommand(2, 16, 14));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 14, 7, 9));
-            commands.AddLast(new AddEdgeCommand(4, 8, 14, 7, 9));
-            commands.AddLast(new AddEdgeCommand(4, 9, 14, 7, 9));
-            commands.AddLast(new AddEdgeCommand(4, 10, 14, 7, 9));
+            commands.AddLast(new AddEdgeCommand(4, 7, 14, 2, 9));
+            commands.AddLast(new AddEdgeCommand(4, 8, 14, 2, 9));
+            commands.AddLast(new AddEdgeCommand(4, 9, 14, 2, 9));
+            commands.AddLast(new AddEdgeCommand(4, 10, 14, 2, 9));
 
         }
 
@@ -1301,17 +1301,17 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(2, 16, 14));
 
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 0, 1, 0));
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 1, 0));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 1, 0));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 1, 0));
+            commands.AddLast(new AddEdgeCommand(4, 7, 0, 0, 0));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 0));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 0));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 0));
 
-            commands.AddLast(new AddEdgeCommand(4, 16, 7, 5, 6));
-            commands.AddLast(new AddEdgeCommand(4, 16, 8, 5, 6));
+            commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 6));
+            commands.AddLast(new AddEdgeCommand(4, 16, 8, 1, 6));
 
-            commands.AddLast(new AddEdgeCommand(4, 8, 14, 7, 10));
-            commands.AddLast(new AddEdgeCommand(4, 9, 14, 7, 10));
-            commands.AddLast(new AddEdgeCommand(4, 10, 14, 7, 10));
+            commands.AddLast(new AddEdgeCommand(4, 8, 14, 2, 10));
+            commands.AddLast(new AddEdgeCommand(4, 9, 14, 2, 10));
+            commands.AddLast(new AddEdgeCommand(4, 10, 14, 2, 10));
         }
 
         private void BuildScreen6(LinkedList<WorldBuilderCommand> commands)
@@ -1503,17 +1503,17 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 8, 3, 11));
 
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 0, 1, 7));
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 1, 7));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 1, 7));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 1, 7));
+            commands.AddLast(new AddEdgeCommand(4, 7, 0, 0, 7));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 7));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 7));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 7));
 
-            commands.AddLast(new AddEdgeCommand(4, 16, 7, 5, 13));
-            commands.AddLast(new AddEdgeCommand(4, 16, 8, 5, 13));
+            commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 13));
+            commands.AddLast(new AddEdgeCommand(4, 16, 8, 1, 13));
 
-            commands.AddLast(new AddEdgeCommand(4, 8, 14, 7, 17));
-            commands.AddLast(new AddEdgeCommand(4, 9, 14, 7, 17));
-            commands.AddLast(new AddEdgeCommand(4, 10, 14, 7, 17));
+            commands.AddLast(new AddEdgeCommand(4, 8, 14, 2, 17));
+            commands.AddLast(new AddEdgeCommand(4, 9, 14, 2, 17));
+            commands.AddLast(new AddEdgeCommand(4, 10, 14, 2, 17));
         }
 
         private void BuildScreen7(LinkedList<WorldBuilderCommand> commands)
@@ -1733,15 +1733,15 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 7, 3, 6));
             commands.AddLast(new AddEdgeCommand(4, 0, 8, 3, 6));
 
-            commands.AddLast(new AddEdgeCommand(4, 16, 5, 5, 8));
-            commands.AddLast(new AddEdgeCommand(4, 16, 6, 5, 8));
-            commands.AddLast(new AddEdgeCommand(4, 16, 7, 5, 8));
-            commands.AddLast(new AddEdgeCommand(4, 16, 8, 5, 8));
+            commands.AddLast(new AddEdgeCommand(4, 16, 5, 1, 8));
+            commands.AddLast(new AddEdgeCommand(4, 16, 6, 1, 8));
+            commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 8));
+            commands.AddLast(new AddEdgeCommand(4, 16, 8, 1, 8));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 14, 7, 12));
-            commands.AddLast(new AddEdgeCommand(4, 8, 14, 7, 12));
-            commands.AddLast(new AddEdgeCommand(4, 9, 14, 7, 12));
-            commands.AddLast(new AddEdgeCommand(4, 10, 14, 7, 12));
+            commands.AddLast(new AddEdgeCommand(4, 7, 14, 2, 12));
+            commands.AddLast(new AddEdgeCommand(4, 8, 14, 2, 12));
+            commands.AddLast(new AddEdgeCommand(4, 9, 14, 2, 12));
+            commands.AddLast(new AddEdgeCommand(4, 10, 14, 2, 12));
         }
 
         private void BuildScreen8(LinkedList<WorldBuilderCommand> commands)
@@ -1909,18 +1909,18 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 7, 3, 7));
             commands.AddLast(new AddEdgeCommand(4, 0, 8, 3, 7));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 0, 1, 3));
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 1, 3));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 1, 3));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 1, 3));
+            commands.AddLast(new AddEdgeCommand(4, 7, 0, 2, 3));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 2, 3));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 2, 3));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 2, 3));
 
-            commands.AddLast(new AddEdgeCommand(4, 16, 7, 5, 9));
-            commands.AddLast(new AddEdgeCommand(4, 16, 8, 5, 9));
+            commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 9));
+            commands.AddLast(new AddEdgeCommand(4, 16, 8, 1, 9));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 14, 7, 13));
-            commands.AddLast(new AddEdgeCommand(4, 8, 14, 7, 13));
-            commands.AddLast(new AddEdgeCommand(4, 9, 14, 7, 13));
-            commands.AddLast(new AddEdgeCommand(4, 10, 14, 7, 13));
+            commands.AddLast(new AddEdgeCommand(4, 7, 14, 2, 13));
+            commands.AddLast(new AddEdgeCommand(4, 8, 14, 2, 13));
+            commands.AddLast(new AddEdgeCommand(4, 9, 14, 2, 13));
+            commands.AddLast(new AddEdgeCommand(4, 10, 14, 2, 13));
         }
 
         private void BuildScreen9(LinkedList<WorldBuilderCommand> commands)
@@ -2121,15 +2121,15 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 7, 3, 8));
             commands.AddLast(new AddEdgeCommand(4, 0, 8, 3, 8));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 0, 1, 4));
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 1, 4));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 1, 4));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 1, 4));
+            commands.AddLast(new AddEdgeCommand(4, 7, 0, 0, 4));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 4));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 4));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 4));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 14, 7, 14));
-            commands.AddLast(new AddEdgeCommand(4, 8, 14, 7, 14));
-            commands.AddLast(new AddEdgeCommand(4, 9, 14, 7, 14));
-            commands.AddLast(new AddEdgeCommand(4, 10, 14, 7, 14));
+            commands.AddLast(new AddEdgeCommand(4, 7, 14, 2, 14));
+            commands.AddLast(new AddEdgeCommand(4, 8, 14, 2, 14));
+            commands.AddLast(new AddEdgeCommand(4, 9, 14, 2, 14));
+            commands.AddLast(new AddEdgeCommand(4, 10, 14, 2, 14));
         }
 
         private void BuildScreen10(LinkedList<WorldBuilderCommand> commands)
@@ -2285,26 +2285,26 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(2, 15, 14));
             commands.AddLast(new AddTreeCommand(2, 16, 14));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 0, 1, 5));
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 1, 5));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 1, 5));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 1, 5));
+            commands.AddLast(new AddEdgeCommand(4, 7, 0, 0, 5));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 5));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 5));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 5));
 
-            commands.AddLast(new AddEdgeCommand(4, 16, 5, 5, 12));
-            commands.AddLast(new AddEdgeCommand(4, 16, 6, 5, 12));
-            commands.AddLast(new AddEdgeCommand(4, 16, 7, 5, 12));
-            commands.AddLast(new AddEdgeCommand(4, 16, 8, 5, 12));
+            commands.AddLast(new AddEdgeCommand(4, 16, 5, 1, 12));
+            commands.AddLast(new AddEdgeCommand(4, 16, 6, 1, 12));
+            commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 12));
+            commands.AddLast(new AddEdgeCommand(4, 16, 8, 1, 12));
 
 
 
-            commands.AddLast(new AddEdgeCommand(4, 3, 14, 7, 15));
-            commands.AddLast(new AddEdgeCommand(4, 4, 14, 7, 15));
-            commands.AddLast(new AddEdgeCommand(4, 5, 14, 7, 15));
-            commands.AddLast(new AddEdgeCommand(4, 6, 14, 7, 15));
-            commands.AddLast(new AddEdgeCommand(4, 7, 14, 7, 15));
-            commands.AddLast(new AddEdgeCommand(4, 8, 14, 7, 15));
-            commands.AddLast(new AddEdgeCommand(4, 9, 14, 7, 15));
-            commands.AddLast(new AddEdgeCommand(4, 10, 14, 7, 15));
+            commands.AddLast(new AddEdgeCommand(4, 3, 14, 2, 15));
+            commands.AddLast(new AddEdgeCommand(4, 4, 14, 2, 15));
+            commands.AddLast(new AddEdgeCommand(4, 5, 14, 2, 15));
+            commands.AddLast(new AddEdgeCommand(4, 6, 14, 2, 15));
+            commands.AddLast(new AddEdgeCommand(4, 7, 14, 2, 15));
+            commands.AddLast(new AddEdgeCommand(4, 8, 14, 2, 15));
+            commands.AddLast(new AddEdgeCommand(4, 9, 14, 2, 15));
+            commands.AddLast(new AddEdgeCommand(4, 10, 14, 2, 15));
 
 
         }
@@ -2438,17 +2438,17 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 7, 3, 10));
             commands.AddLast(new AddEdgeCommand(4, 0, 8, 3, 10));
 
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 1, 6));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 1, 6));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 1, 6));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 6));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 6));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 6));
 
-            commands.AddLast(new AddEdgeCommand(4, 16, 7, 5, 12));
-            commands.AddLast(new AddEdgeCommand(4, 16, 8, 5, 12));
+            commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 12));
+            commands.AddLast(new AddEdgeCommand(4, 16, 8, 1, 12));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 14, 7, 16));
-            commands.AddLast(new AddEdgeCommand(4, 8, 14, 7, 16));
-            commands.AddLast(new AddEdgeCommand(4, 9, 14, 7, 16));
-            commands.AddLast(new AddEdgeCommand(4, 10, 14, 7, 16));
+            commands.AddLast(new AddEdgeCommand(4, 7, 14, 2, 16));
+            commands.AddLast(new AddEdgeCommand(4, 8, 14, 2, 16));
+            commands.AddLast(new AddEdgeCommand(4, 9, 14, 2, 16));
+            commands.AddLast(new AddEdgeCommand(4, 10, 14, 2, 16));
         }
 
         private void BuildScreen12(LinkedList<WorldBuilderCommand> commands)
@@ -2639,18 +2639,18 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 8, 3, 11));
 
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 0, 1, 7));
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 1, 7));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 1, 7));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 1, 7));
+            commands.AddLast(new AddEdgeCommand(4, 7, 0, 0, 7));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 7));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 7));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 7));
 
-            commands.AddLast(new AddEdgeCommand(4, 16, 7, 5, 13));
-            commands.AddLast(new AddEdgeCommand(4, 16, 8, 5, 13));
+            commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 13));
+            commands.AddLast(new AddEdgeCommand(4, 16, 8, 1, 13));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 14, 7, 17));
-            commands.AddLast(new AddEdgeCommand(4, 8, 14, 7, 17));
-            commands.AddLast(new AddEdgeCommand(4, 9, 14, 7, 17));
-            commands.AddLast(new AddEdgeCommand(4, 10, 14, 7, 17));
+            commands.AddLast(new AddEdgeCommand(4, 7, 14, 2, 17));
+            commands.AddLast(new AddEdgeCommand(4, 8, 14, 2, 17));
+            commands.AddLast(new AddEdgeCommand(4, 9, 14, 2, 17));
+            commands.AddLast(new AddEdgeCommand(4, 10, 14, 2, 17));
         }
 
         private void BuildScreen13(LinkedList<WorldBuilderCommand> commands)
@@ -2835,20 +2835,20 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 7, 3, 16));
             commands.AddLast(new AddEdgeCommand(4, 0, 8, 3, 16));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 0, 1, 11));
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 1, 11));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 1, 11));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 1, 11));
+            commands.AddLast(new AddEdgeCommand(4, 7, 0, 0, 11));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 11));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 11));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 11));
 
-            commands.AddLast(new AddEdgeCommand(4, 16, 5, 5, 14));
-            commands.AddLast(new AddEdgeCommand(4, 16, 6, 5, 14));
-            commands.AddLast(new AddEdgeCommand(4, 16, 7, 5, 14));
-            commands.AddLast(new AddEdgeCommand(4, 16, 8, 5, 14));
+            commands.AddLast(new AddEdgeCommand(4, 16, 5, 1, 14));
+            commands.AddLast(new AddEdgeCommand(4, 16, 6, 1, 14));
+            commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 14));
+            commands.AddLast(new AddEdgeCommand(4, 16, 8, 1, 14));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 14, 7, 18));
-            commands.AddLast(new AddEdgeCommand(4, 8, 14, 7, 18));
-            commands.AddLast(new AddEdgeCommand(4, 9, 14, 7, 18));
-            commands.AddLast(new AddEdgeCommand(4, 10, 14, 7, 18));
+            commands.AddLast(new AddEdgeCommand(4, 7, 14, 2, 18));
+            commands.AddLast(new AddEdgeCommand(4, 8, 14, 2, 18));
+            commands.AddLast(new AddEdgeCommand(4, 9, 14, 2, 18));
+            commands.AddLast(new AddEdgeCommand(4, 10, 14, 2, 18));
         }
 
         private void BuildScreen14(LinkedList<WorldBuilderCommand> commands)
@@ -2933,15 +2933,15 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 7, 3, 13));
             commands.AddLast(new AddEdgeCommand(4, 0, 8, 3, 13));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 0, 1, 9));
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 1, 9));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 1, 9));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 1, 9));
+            commands.AddLast(new AddEdgeCommand(4, 7, 0, 0, 9));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 9));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 9));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 9));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 14, 7, 19));
-            commands.AddLast(new AddEdgeCommand(4, 8, 14, 7, 19));
-            commands.AddLast(new AddEdgeCommand(4, 9, 14, 7, 19));
-            commands.AddLast(new AddEdgeCommand(4, 10, 14, 7, 19));
+            commands.AddLast(new AddEdgeCommand(4, 7, 14, 2, 19));
+            commands.AddLast(new AddEdgeCommand(4, 8, 14, 2, 19));
+            commands.AddLast(new AddEdgeCommand(4, 9, 14, 2, 19));
+            commands.AddLast(new AddEdgeCommand(4, 10, 14, 2, 19));
         }
 
         private void BuildScreen15(LinkedList<WorldBuilderCommand> commands)
@@ -3190,22 +3190,22 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(2, 15, 14));
             commands.AddLast(new AddTreeCommand(2, 16, 14));
 
-            commands.AddLast(new AddEdgeCommand(4, 3, 0, 1, 10));
-            commands.AddLast(new AddEdgeCommand(4, 4, 0, 1, 10));
-            commands.AddLast(new AddEdgeCommand(4, 5, 0, 1, 10));
-            commands.AddLast(new AddEdgeCommand(4, 6, 0, 1, 10));
-            commands.AddLast(new AddEdgeCommand(4, 7, 0, 1, 10));
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 1, 10));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 1, 10));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 1, 10));
+            commands.AddLast(new AddEdgeCommand(4, 3, 0, 0, 10));
+            commands.AddLast(new AddEdgeCommand(4, 4, 0, 0, 10));
+            commands.AddLast(new AddEdgeCommand(4, 5, 0, 0, 10));
+            commands.AddLast(new AddEdgeCommand(4, 6, 0, 0, 10));
+            commands.AddLast(new AddEdgeCommand(4, 7, 0, 0, 10));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 10));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 10));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 10));
 
 
-            commands.AddLast(new AddEdgeCommand(4, 16, 7, 5, 16));
-            commands.AddLast(new AddEdgeCommand(4, 16, 8, 5, 16));
+            commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 16));
+            commands.AddLast(new AddEdgeCommand(4, 16, 8, 1, 16));
 
-            commands.AddLast(new AddEdgeCommand(4, 8, 14, 7, 20));
-            commands.AddLast(new AddEdgeCommand(4, 9, 14, 7, 20));
-            commands.AddLast(new AddEdgeCommand(4, 10, 14, 7, 20));
+            commands.AddLast(new AddEdgeCommand(4, 8, 14, 2, 20));
+            commands.AddLast(new AddEdgeCommand(4, 9, 14, 2, 20));
+            commands.AddLast(new AddEdgeCommand(4, 10, 14, 2, 20));
 
 
         }
@@ -3395,20 +3395,20 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 7, 3, 15));
             commands.AddLast(new AddEdgeCommand(4, 0, 8, 3, 15));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 0, 1, 11));
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 1, 11));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 1, 11));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 1, 11));
+            commands.AddLast(new AddEdgeCommand(4, 7, 0, 0, 11));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 11));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 11));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 11));
 
-            commands.AddLast(new AddEdgeCommand(4, 16, 5, 5, 17));
-            commands.AddLast(new AddEdgeCommand(4, 16, 6, 5, 17));
-            commands.AddLast(new AddEdgeCommand(4, 16, 7, 5, 17));
-            commands.AddLast(new AddEdgeCommand(4, 16, 8, 5, 17));
+            commands.AddLast(new AddEdgeCommand(4, 16, 5, 1, 17));
+            commands.AddLast(new AddEdgeCommand(4, 16, 6, 1, 17));
+            commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 17));
+            commands.AddLast(new AddEdgeCommand(4, 16, 8, 1, 17));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 14, 7, 21));
-            commands.AddLast(new AddEdgeCommand(4, 8, 14, 7, 21));
-            commands.AddLast(new AddEdgeCommand(4, 9, 14, 7, 21));
-            commands.AddLast(new AddEdgeCommand(4, 10, 14, 7, 21));
+            commands.AddLast(new AddEdgeCommand(4, 7, 14, 2, 21));
+            commands.AddLast(new AddEdgeCommand(4, 8, 14, 2, 21));
+            commands.AddLast(new AddEdgeCommand(4, 9, 14, 2, 21));
+            commands.AddLast(new AddEdgeCommand(4, 10, 14, 2, 21));
         }
 
         private void BuildScreen17(LinkedList<WorldBuilderCommand> commands)
@@ -3591,20 +3591,20 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 7, 3, 16));
             commands.AddLast(new AddEdgeCommand(4, 0, 8, 3, 16));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 0, 1, 12));
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 1, 12));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 1, 12));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 1, 12));
+            commands.AddLast(new AddEdgeCommand(4, 7, 0, 0, 12));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 12));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 12));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 12));
 
-            commands.AddLast(new AddEdgeCommand(4, 16, 5, 5, 18));
-            commands.AddLast(new AddEdgeCommand(4, 16, 6, 5, 18));
-            commands.AddLast(new AddEdgeCommand(4, 16, 7, 5, 18));
-            commands.AddLast(new AddEdgeCommand(4, 16, 8, 5, 18));
+            commands.AddLast(new AddEdgeCommand(4, 16, 5, 1, 18));
+            commands.AddLast(new AddEdgeCommand(4, 16, 6, 1, 18));
+            commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 18));
+            commands.AddLast(new AddEdgeCommand(4, 16, 8, 1, 18));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 14, 7, 22));
-            commands.AddLast(new AddEdgeCommand(4, 8, 14, 7, 22));
-            commands.AddLast(new AddEdgeCommand(4, 9, 14, 7, 22));
-            commands.AddLast(new AddEdgeCommand(4, 10, 14, 7, 22));
+            commands.AddLast(new AddEdgeCommand(4, 7, 14, 2, 22));
+            commands.AddLast(new AddEdgeCommand(4, 8, 14, 2, 22));
+            commands.AddLast(new AddEdgeCommand(4, 9, 14, 2, 22));
+            commands.AddLast(new AddEdgeCommand(4, 10, 14, 2, 22));
         }
 
         private void BuildScreen18(LinkedList<WorldBuilderCommand> commands)
@@ -3771,21 +3771,21 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 7, 3, 17));
             commands.AddLast(new AddEdgeCommand(4, 0, 8, 3, 17));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 0, 1, 13));
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 1, 13));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 1, 13));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 1, 13));
+            commands.AddLast(new AddEdgeCommand(4, 7, 0, 0, 13));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 13));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 13));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 13));
 
-            commands.AddLast(new AddEdgeCommand(4, 16, 4, 5, 19));
-            commands.AddLast(new AddEdgeCommand(4, 16, 5, 5, 19));
-            commands.AddLast(new AddEdgeCommand(4, 16, 6, 5, 19));
-            commands.AddLast(new AddEdgeCommand(4, 16, 7, 5, 19));
-            commands.AddLast(new AddEdgeCommand(4, 16, 8, 5, 19));
+            commands.AddLast(new AddEdgeCommand(4, 16, 4, 1, 19));
+            commands.AddLast(new AddEdgeCommand(4, 16, 5, 1, 19));
+            commands.AddLast(new AddEdgeCommand(4, 16, 6, 1, 19));
+            commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 19));
+            commands.AddLast(new AddEdgeCommand(4, 16, 8, 1, 19));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 14, 7, 23));
-            commands.AddLast(new AddEdgeCommand(4, 8, 14, 7, 23));
-            commands.AddLast(new AddEdgeCommand(4, 9, 14, 7, 23));
-            commands.AddLast(new AddEdgeCommand(4, 10, 14, 7, 23));
+            commands.AddLast(new AddEdgeCommand(4, 7, 14, 2, 23));
+            commands.AddLast(new AddEdgeCommand(4, 8, 14, 2, 23));
+            commands.AddLast(new AddEdgeCommand(4, 9, 14, 2, 23));
+            commands.AddLast(new AddEdgeCommand(4, 10, 14, 2, 23));
         }
 
         private void BuildScreen19(LinkedList<WorldBuilderCommand> commands)
@@ -3956,18 +3956,18 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 7, 3, 18));
             commands.AddLast(new AddEdgeCommand(4, 0, 8, 3, 18));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 0, 1, 14));
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 1, 14));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 1, 14));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 1, 14));
+            commands.AddLast(new AddEdgeCommand(4, 7, 0, 0, 14));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 14));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 14));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 14));
 
-            commands.AddLast(new AddEdgeCommand(4, 5, 14, 7, 24));
-            commands.AddLast(new AddEdgeCommand(4, 6, 14, 7, 24));
-            commands.AddLast(new AddEdgeCommand(4, 7, 14, 7, 24));
-            commands.AddLast(new AddEdgeCommand(4, 8, 14, 7, 24));
-            commands.AddLast(new AddEdgeCommand(4, 9, 14, 7, 24));
-            commands.AddLast(new AddEdgeCommand(4, 10, 14, 7, 24));
-            commands.AddLast(new AddEdgeCommand(4, 11, 14, 7, 24));
+            commands.AddLast(new AddEdgeCommand(4, 5, 14, 2, 24));
+            commands.AddLast(new AddEdgeCommand(4, 6, 14, 2, 24));
+            commands.AddLast(new AddEdgeCommand(4, 7, 14, 2, 24));
+            commands.AddLast(new AddEdgeCommand(4, 8, 14, 2, 24));
+            commands.AddLast(new AddEdgeCommand(4, 9, 14, 2, 24));
+            commands.AddLast(new AddEdgeCommand(4, 10, 14, 2, 24));
+            commands.AddLast(new AddEdgeCommand(4, 11, 14, 2, 24));
         }
 
         private void BuildScreen20(LinkedList<WorldBuilderCommand> commands)
@@ -4207,14 +4207,14 @@ namespace ServiceProxy
 
 
 
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 1, 15));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 1, 15));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 1, 15));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 15));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 15));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 15));
 
-            commands.AddLast(new AddEdgeCommand(4, 16, 5, 5, 21));
-            commands.AddLast(new AddEdgeCommand(4, 16, 6, 5, 21));
-            commands.AddLast(new AddEdgeCommand(4, 16, 7, 5, 21));
-            commands.AddLast(new AddEdgeCommand(4, 16, 8, 5, 21));
+            commands.AddLast(new AddEdgeCommand(4, 16, 5, 1, 21));
+            commands.AddLast(new AddEdgeCommand(4, 16, 6, 1, 21));
+            commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 21));
+            commands.AddLast(new AddEdgeCommand(4, 16, 8, 1, 21));
 
         }
 
@@ -4419,15 +4419,15 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 7, 3, 20));
             commands.AddLast(new AddEdgeCommand(4, 0, 8, 3, 20));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 0, 1, 16));
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 1, 16));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 1, 16));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 1, 16));
+            commands.AddLast(new AddEdgeCommand(4, 7, 0, 0, 16));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 16));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 16));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 16));
 
-            commands.AddLast(new AddEdgeCommand(4, 16, 5, 5, 22));
-            commands.AddLast(new AddEdgeCommand(4, 16, 6, 5, 22));
-            commands.AddLast(new AddEdgeCommand(4, 16, 7, 5, 22));
-            commands.AddLast(new AddEdgeCommand(4, 16, 8, 5, 22));
+            commands.AddLast(new AddEdgeCommand(4, 16, 5, 1, 22));
+            commands.AddLast(new AddEdgeCommand(4, 16, 6, 1, 22));
+            commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 22));
+            commands.AddLast(new AddEdgeCommand(4, 16, 8, 1, 22));
 
         }
 
@@ -4605,15 +4605,15 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 7, 3, 21));
             commands.AddLast(new AddEdgeCommand(4, 0, 8, 3, 21));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 0, 1, 17));
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 1, 17));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 1, 17));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 1, 17));
+            commands.AddLast(new AddEdgeCommand(4, 7, 0, 0, 17));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 17));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 17));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 17));
 
-            commands.AddLast(new AddEdgeCommand(4, 16, 5, 5, 23));
-            commands.AddLast(new AddEdgeCommand(4, 16, 6, 5, 23));
-            commands.AddLast(new AddEdgeCommand(4, 16, 7, 5, 23));
-            commands.AddLast(new AddEdgeCommand(4, 16, 8, 5, 23));
+            commands.AddLast(new AddEdgeCommand(4, 16, 5, 1, 23));
+            commands.AddLast(new AddEdgeCommand(4, 16, 6, 1, 23));
+            commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 23));
+            commands.AddLast(new AddEdgeCommand(4, 16, 8, 1, 23));
 
         }
 
@@ -4742,19 +4742,19 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 7, 3, 22));
             commands.AddLast(new AddEdgeCommand(4, 0, 8, 3, 22));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 0, 1, 18));
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 1, 18));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 1, 18));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 1, 18));
+            commands.AddLast(new AddEdgeCommand(4, 7, 0, 0, 18));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 18));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 18));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 18));
 
-            commands.AddLast(new AddEdgeCommand(4, 16, 5, 5, 24));
-            commands.AddLast(new AddEdgeCommand(4, 16, 6, 5, 24));
-            commands.AddLast(new AddEdgeCommand(4, 16, 7, 5, 24));
-            commands.AddLast(new AddEdgeCommand(4, 16, 8, 5, 24));
-            commands.AddLast(new AddEdgeCommand(4, 16, 9, 5, 24));
-            commands.AddLast(new AddEdgeCommand(4, 16, 10, 5, 24));
-            commands.AddLast(new AddEdgeCommand(4, 16, 11, 5, 24));
-            commands.AddLast(new AddEdgeCommand(4, 16, 12, 5, 24));
+            commands.AddLast(new AddEdgeCommand(4, 16, 5, 1, 24));
+            commands.AddLast(new AddEdgeCommand(4, 16, 6, 1, 24));
+            commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 24));
+            commands.AddLast(new AddEdgeCommand(4, 16, 8, 1, 24));
+            commands.AddLast(new AddEdgeCommand(4, 16, 9, 1, 24));
+            commands.AddLast(new AddEdgeCommand(4, 16, 10, 1, 24));
+            commands.AddLast(new AddEdgeCommand(4, 16, 11, 1, 24));
+            commands.AddLast(new AddEdgeCommand(4, 16, 12, 1, 24));
         }
 
         private void BuildScreen24(LinkedList<WorldBuilderCommand> commands)
@@ -4874,13 +4874,13 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 11, 3, 23));
             commands.AddLast(new AddEdgeCommand(4, 0, 12, 3, 23));
 
-            commands.AddLast(new AddEdgeCommand(4, 5, 0, 1, 19));
-            commands.AddLast(new AddEdgeCommand(4, 6, 0, 1, 19));
-            commands.AddLast(new AddEdgeCommand(4, 7, 0, 1, 19));
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 1, 19));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 1, 19));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 1, 19));
-            commands.AddLast(new AddEdgeCommand(4, 11, 0, 1, 19));
+            commands.AddLast(new AddEdgeCommand(4, 5, 0, 0, 19));
+            commands.AddLast(new AddEdgeCommand(4, 6, 0, 0, 19));
+            commands.AddLast(new AddEdgeCommand(4, 7, 0, 0, 19));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 19));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 19));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 19));
+            commands.AddLast(new AddEdgeCommand(4, 11, 0, 0, 19));
         }
 
         private void BuildScreen25(LinkedList<WorldBuilderCommand> commands)

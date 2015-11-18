@@ -114,14 +114,43 @@ void GameRenderer::CreateWindowSizeDependentResources()
 
 	DirectX::XMStoreFloat4x4(&m_constantBufferData.view, XMMatrixTranspose(XMMatrixLookAtRH(eye, at, up)));
 
-	// TODO: Create panels for each of these.
-	CreateLifeText();
-	CreateButtonsText();
+	m_infoPanels = new vector<InfoPanel *>;
 
-	CreateMapText();
-	CreateInventoryText();
-	CreatePackText();
+	m_infoPanels->push_back(&m_lifePanel);
+	m_infoPanels->push_back(&m_buttonsPanel);
+	m_infoPanels->push_back(&m_mapPanel);
+	m_infoPanels->push_back(&m_inventoryPanel);
+	m_infoPanels->push_back(&m_packPanel);
+
+	m_infoPanels->at(0)->CreateText(
+		"Life",
+		float2{ m_window->Bounds.Width, m_window->Bounds.Height },
+		m_deviceResources);
+
+	m_infoPanels->at(1)->CreateText(
+		"Buttons",
+		float2{ m_window->Bounds.Width, m_window->Bounds.Height },
+		m_deviceResources);
+
+	m_infoPanels->at(2)->CreateText(
+		"Map",
+		float2{ m_window->Bounds.Width, m_window->Bounds.Height },
+		m_deviceResources);
+
+	m_infoPanels->at(3)->CreateText(
+		"Inventory",
+		float2{ m_window->Bounds.Width, m_window->Bounds.Height },
+		m_deviceResources);
+
+	m_infoPanels->at(4)->CreateText(
+		"Pack",
+		float2{ m_window->Bounds.Width, m_window->Bounds.Height },
+		m_deviceResources);
 }
+
+
+
+
 
 // Called once per frame, rotates the cube and calculates the model and view matrices.
 int GameRenderer::Update(DX::StepTimer const& timer)
@@ -158,24 +187,22 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 			int nDirection = static_cast<Edge *>(pCollidedPortal)->GetDirection();
 
+			m_pPlayer->Skip(nDirection);
+
 			if (nDirection == NORTH)
 			{
-				m_pPlayer->SkipNorth();
 				m_pCurrentStack = m_pWorld->Move(NORTH);
 			}
 			else if (nDirection == EAST)
 			{
-				m_pPlayer->SkipEast();
 				m_pCurrentStack = m_pWorld->Move(EAST);
 			}
 			else if (nDirection == SOUTH)
 			{
-				m_pPlayer->SkipSouth();
 				m_pCurrentStack = m_pWorld->Move(SOUTH);
 			}
 			else if (nDirection == WEST)
 			{
-				m_pPlayer->SkipWest();
 				m_pCurrentStack = m_pWorld->Move(WEST);
 			}
 			else
@@ -323,11 +350,13 @@ void GameRenderer::Render()
 	DrawLeftMargin();
 	DrawRightMargin();
 
-	DrawLifeText();
-	DrawButtonsText();
-	DrawMapText();
-	DrawInventoryText();
-	DrawPackText();
+	std::vector<InfoPanel *>::const_iterator iterInfoPanels;
+
+	for (iterInfoPanels = m_infoPanels->begin(); iterInfoPanels != m_infoPanels->end(); iterInfoPanels++)
+	{
+		(*iterInfoPanels)->DrawText(m_deviceResources);
+	}
+
 
 #ifdef RENDER_DIAGNOSTICS
 	grid.SetVisibility(true);
@@ -513,12 +542,12 @@ void GameRenderer::CreateDeviceDependentResources()
 void GameRenderer::ReleaseDeviceDependentResources()
 {
 	m_loadingComplete = false;
-	m_vertexShader.Reset();
-	m_inputLayout.Reset();
-	m_pixelShader.Reset();
-	m_constantBuffer.Reset();
-	m_vertexBuffer.Reset();
-	m_indexBuffer.Reset();
+	//m_vertexShader.Reset();
+	//m_inputLayout.Reset();
+	//m_pixelShader.Reset();
+	//m_constantBuffer.Reset();
+	//m_vertexBuffer.Reset();
+	//m_indexBuffer.Reset();
 }
 
 //void GameRenderer::BuildScreen()
@@ -910,225 +939,7 @@ void GameRenderer::DrawRightMargin()
 		rect);
 }
 
-void GameRenderer::DrawLifeText()
-{
-	D2D1_SIZE_F size = DEVICE_CONTEXT_2D->GetSize();
 
-	float fTop = size.height * 0.01f;
-	float fLeft = size.width - (size.width * RIGHT_MARGIN_RATIO);
-
-	DEVICE_CONTEXT_2D->DrawTextLayout(
-		D2D1::Point2F(fLeft, fTop),
-		m_textLayoutLife.Get(),
-		m_deviceResources->m_whiteBrush.Get()
-		);
-}
-
-void GameRenderer::DrawButtonsText()
-{
-	D2D1_SIZE_F size = DEVICE_CONTEXT_2D->GetSize();
-
-	float fTop = size.height / 3.0f;
-	float fLeft = size.width - (size.width * RIGHT_MARGIN_RATIO);
-
-	DEVICE_CONTEXT_2D->DrawTextLayout(
-		D2D1::Point2F(fLeft, fTop),
-		m_textLayoutButtons.Get(),
-		m_deviceResources->m_whiteBrush.Get()
-		);
-}
-
-void GameRenderer::DrawMapText()
-{
-	D2D1_SIZE_F size = DEVICE_CONTEXT_2D->GetSize();
-
-	float fTop = size.height * 0.01f;
-	float fLeft = 0.0f;// size.width - (size.width * LEFT_MARGIN_RATIO);
-
-	DEVICE_CONTEXT_2D->DrawTextLayout(
-		D2D1::Point2F(fLeft, fTop),
-		m_textLayoutMap.Get(),
-		m_deviceResources->m_whiteBrush.Get()
-		);
-}
-void GameRenderer::DrawInventoryText()
-{
-	D2D1_SIZE_F size = DEVICE_CONTEXT_2D->GetSize();
-
-	float fTop = size.height / 3.0f;
-	float fLeft = 0.0f;
-
-	DEVICE_CONTEXT_2D->DrawTextLayout(
-		D2D1::Point2F(fLeft, fTop),
-		m_textLayoutInventory.Get(),
-		m_deviceResources->m_whiteBrush.Get()
-		);
-}
-
-void GameRenderer::DrawPackText()
-{
-	D2D1_SIZE_F size = DEVICE_CONTEXT_2D->GetSize();
-
-	float fTop = size.height / 3.0f * 2.0f;
-	float fLeft = 0.0f; // size.width - (size.width * LEFT_MARGIN_RATIO);
-
-	DEVICE_CONTEXT_2D->DrawTextLayout(
-		D2D1::Point2F(fLeft, fTop),
-		m_textLayoutPack.Get(),
-		m_deviceResources->m_whiteBrush.Get()
-		);
-}
-
-void GameRenderer::CreateLifeText()
-{
-	Platform::String ^ text = "Life";
-
-	D2D1_SIZE_F size = DEVICE_CONTEXT_2D->GetSize();
-	size.height = m_window->Bounds.Height / 3.0f;
-	size.width = m_window->Bounds.Width * RIGHT_MARGIN_RATIO;
-
-	ComPtr<IDWriteTextLayout> textLayout;
-
-	DX::ThrowIfFailed(
-		m_deviceResources->m_dwriteFactory->CreateTextLayout(
-			text->Data(),
-			text->Length(),
-			m_deviceResources->m_textFormat.Get(),
-			size.width,
-			size.height,
-			&textLayout
-			)
-		);
-
-	textLayout.As(&m_textLayoutLife);
-
-	m_textRange.startPosition = 0;
-	m_textRange.length = text->Length();
-	m_textLayoutLife->SetFontSize(SECTION_HEADER_FONT_SIZE, m_textRange);
-	m_textLayoutLife->SetCharacterSpacing(0.5f, 0.5f, 0, m_textRange);
-	m_textLayoutLife->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
-}
-
-
-void GameRenderer::CreateMapText()
-{
-	Platform::String ^ text = "Map";
-
-	D2D1_SIZE_F size = DEVICE_CONTEXT_2D->GetSize();
-	size.height = m_window->Bounds.Height / 3.0f;
-	size.width = m_window->Bounds.Width * LEFT_MARGIN_RATIO;
-
-	ComPtr<IDWriteTextLayout> textLayout;
-
-	DX::ThrowIfFailed(
-		m_deviceResources->m_dwriteFactory->CreateTextLayout(
-			text->Data(),
-			text->Length(),
-			m_deviceResources->m_textFormat.Get(),
-			size.width,
-			size.height,
-			&textLayout
-			)
-		);
-
-	textLayout.As(&m_textLayoutMap);
-
-	m_textRange.startPosition = 0;
-	m_textRange.length = text->Length();
-	m_textLayoutMap->SetFontSize(SECTION_HEADER_FONT_SIZE, m_textRange);
-	m_textLayoutMap->SetCharacterSpacing(0.5f, 0.5f, 0, m_textRange);
-	m_textLayoutMap->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
-}
-
-void GameRenderer::CreateButtonsText()
-{
-	Platform::String ^ text = "Buttons";
-
-	D2D1_SIZE_F size = DEVICE_CONTEXT_2D->GetSize();
-	size.height = m_window->Bounds.Height / 3.0f;
-	size.width = m_window->Bounds.Width * RIGHT_MARGIN_RATIO;
-
-	ComPtr<IDWriteTextLayout> textLayout;
-
-	DX::ThrowIfFailed(
-		m_deviceResources->m_dwriteFactory->CreateTextLayout(
-			text->Data(),
-			text->Length(),
-			m_deviceResources->m_textFormat.Get(),
-			size.width,
-			size.height,
-			&textLayout
-			)
-		);
-
-	textLayout.As(&m_textLayoutButtons);
-
-	m_textRange.startPosition = 0;
-	m_textRange.length = text->Length();
-	m_textLayoutButtons->SetFontSize(SECTION_HEADER_FONT_SIZE, m_textRange);
-	m_textLayoutButtons->SetCharacterSpacing(0.5f, 0.5f, 0, m_textRange);
-	m_textLayoutButtons->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
-}
-
-void GameRenderer::CreateInventoryText()
-{
-	Platform::String ^ text = "Inventory";
-
-	D2D1_SIZE_F size = DEVICE_CONTEXT_2D->GetSize();
-	size.height = m_window->Bounds.Height / 3.0f;
-	size.width = m_window->Bounds.Width * LEFT_MARGIN_RATIO;
-
-	ComPtr<IDWriteTextLayout> textLayout;
-
-	DX::ThrowIfFailed(
-		m_deviceResources->m_dwriteFactory->CreateTextLayout(
-			text->Data(),
-			text->Length(),
-			m_deviceResources->m_textFormat.Get(),
-			size.width,
-			size.height,
-			&textLayout
-			)
-		);
-
-	textLayout.As(&m_textLayoutInventory);
-
-	m_textRange.startPosition = 0;
-	m_textRange.length = text->Length();
-	m_textLayoutInventory->SetFontSize(SECTION_HEADER_FONT_SIZE, m_textRange);
-	m_textLayoutInventory->SetCharacterSpacing(0.5f, 0.5f, 0, m_textRange);
-	m_textLayoutInventory->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
-}
-
-void GameRenderer::CreatePackText()
-{
-	Platform::String ^ text = "Pack";
-
-	D2D1_SIZE_F size = DEVICE_CONTEXT_2D->GetSize();
-	size.height = m_window->Bounds.Height / 3.0f;
-	size.width = m_window->Bounds.Width * RIGHT_MARGIN_RATIO;
-
-	ComPtr<IDWriteTextLayout> textLayout;
-
-	DX::ThrowIfFailed(
-		m_deviceResources->m_dwriteFactory->CreateTextLayout(
-			text->Data(),
-			text->Length(),
-			m_deviceResources->m_textFormat.Get(),
-			size.width,
-			size.height,
-			&textLayout
-			)
-		);
-
-	textLayout.As(&m_textLayoutPack);
-
-	m_textRange.startPosition = 0;
-	m_textRange.length = text->Length();
-	m_textLayoutPack->SetFontSize(SECTION_HEADER_FONT_SIZE, m_textRange);
-	m_textLayoutPack->SetCharacterSpacing(0.5f, 0.5f, 0, m_textRange);
-	m_textLayoutPack->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
-}
 
 void GameRenderer::RenderSpaces2D()
 {

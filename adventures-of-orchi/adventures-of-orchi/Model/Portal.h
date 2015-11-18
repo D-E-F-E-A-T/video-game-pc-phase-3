@@ -10,12 +10,13 @@ public:
 		float fRotationInRadians,
 		float2 pfDimensionRatio, 
 		int nDestination,
+		bool bIsVisible,
 		const shared_ptr<DeviceResources>& deviceResources) :
 		Immovable(
 			pfLocationRatio, 
 			fRotationInRadians,
 			pfDimensionRatio, 
-			false, 
+			bIsVisible,
 			true, 
 			true, 
 			deviceResources)
