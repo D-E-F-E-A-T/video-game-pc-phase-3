@@ -1,4 +1,4 @@
-# game-project-phase-3
+# The Game project, Phase 3
 This is phase 3 of the Game project which implements a 2D/3D adventure game of the ilk of Nintendo's original "The Legend of Zelda."
 
 
