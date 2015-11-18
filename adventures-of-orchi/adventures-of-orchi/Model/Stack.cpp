@@ -4,12 +4,15 @@
 
 Stack::Stack()
 {
+	// Layer[0] will always be the Player layer.
+
 	for (int i = 0; i < NUM_LAYERS; i++)
 	{
 		m_layers[i] = new Layer();
 	}
 }
 
+// Idea: Keep only one player layer.
 void Stack::Add(int depth, Space * space)
 {
 	//if (depth == LAYER_PLAYERS)

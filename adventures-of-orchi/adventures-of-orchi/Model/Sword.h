@@ -1,6 +1,7 @@
 #pragma once
 #include "Tool.h"
 #include "Texture.h"
+#include "..\Utils.h"
 
 class Sword : public Tool
 {
@@ -16,27 +17,32 @@ public:
 			false,
 			deviceResources)
 	{
-		m_pRenderable = new Texture("sword-left.dds", deviceResources);
+		m_pRenderable = new Texture("sword.dds", deviceResources);
 	}
 
-	float2 GetLocationRatio()
-	{
-		m_fLocationRatio = m_fLocationRatio - float2{ 0.005f, 0.f };
+	void Inertia(float fVelocity)
+	{		
+		Movable::Inertia(fVelocity);
 
-		if (m_fLocationRatio.x > 1.f ||
-			m_fLocationRatio.x < 0.f ||
-			m_fLocationRatio.y > 1.f ||
-			m_fLocationRatio.y < 0.f)
+		if (m_fLocationRatio.x > 1.0f - RIGHT_MARGIN_RATIO - 0.005f ||
+			m_fLocationRatio.x < LEFT_MARGIN_RATIO + 0.005f ||
+			m_fLocationRatio.y > 1.f - 0.005f ||
+			m_fLocationRatio.y < 0.f + 0.005f)
 		{
+			// Will need to change this logic when 
+			//	checking for collisions.
 			m_bIsVisible = false;
+			m_bIsFlying = false;
 		}
-
-		return m_fLocationRatio;
 	}
 
 	void SetDirection(int nDirection) { m_nDirection = nDirection; }
 
+	void Throw() { m_bIsFlying = true; }
+	bool IsFlying() { return m_bIsFlying; }
+
 protected:
+	bool m_bIsFlying;
 
 private:
 };

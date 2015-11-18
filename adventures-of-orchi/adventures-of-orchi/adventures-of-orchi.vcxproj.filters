@@ -89,7 +89,6 @@
     <ClCompile Include="BasicReaderWriter.cpp" />
     <ClCompile Include="DDSTextureLoader.cpp" />
     <ClCompile Include="Grid.cpp" />
-    <ClCompile Include="ScreenUtils.cpp" />
     <ClCompile Include="BroadCollisionStrategy.cpp" />
     <ClCompile Include="NarrowCollisionStrategy.cpp" />
     <ClCompile Include="MathUtils.cpp" />
@@ -122,6 +121,7 @@
     <ClCompile Include="Model\Movable.cpp">
       <Filter>Model</Filter>
     </ClCompile>
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -148,7 +148,6 @@
     <ClInclude Include="Grid.h" />
     <ClInclude Include="GridSpace.h" />
     <ClInclude Include="Constants.h" />
-    <ClInclude Include="ScreenUtils.h" />
     <ClInclude Include="BroadCollisionStrategy.h" />
     <ClInclude Include="NarrowCollisionStrategy.h" />
     <ClInclude Include="MathUtils.h" />
@@ -293,7 +292,7 @@
       <Filter>Assets</Filter>
     </Image>
     <Image Include="stairs.dds" />
-    <Image Include="sword-left.dds" />
+    <Image Include="sword.dds" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />

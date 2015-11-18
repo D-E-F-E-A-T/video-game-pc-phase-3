@@ -216,7 +216,6 @@ void DeviceResources::CreateDeviceResources()
 		);
 
 	CreateBrushes();
-	LoadSprites();
 }
 
 // These resources need to be recreated every time the window size is changed.
@@ -774,90 +773,3 @@ void DeviceResources::CreateBrushes()
 			&m_purpleBrush)
 		);
 }
-
-void DeviceResources::LoadSprites()
-{
-	//m_spriteBatch = ref new BasicSprites::SpriteBatch();
-	//unsigned int capacity = SampleSettings::Performance::ParticleCountMax +
-	//	SampleSettings::NumTrees + 1;
-
-	//m_spriteBatch->Initialize(
-	//	m_d3dDevice.Get(),
-	//	capacity);
-
-	//BasicLoader ^ loader = ref new BasicLoader(m_d3dDevice.Get(), m_wicFactory.Get());
-
-	//loader->LoadTexture(
-	//	"tree.dds",
-	//	&m_tree,
-	//	nullptr);
-
-	//m_spriteBatch->AddTexture(m_tree.Get());
-
-	//loader->LoadTexture(
-	//	"rock.dds",
-	//	&m_rock,
-	//	nullptr);
-
-	//m_spriteBatch->AddTexture(m_rock.Get());
-
-	//loader->LoadTexture(
-	//	"water.dds",
-	//	&m_water,
-	//	nullptr);
-
-	//m_spriteBatch->AddTexture(m_water.Get());
-
-	//loader->LoadTexture(
-	//	"grass.dds",
-	//	&m_grass,
-	//	nullptr);
-
-	//m_spriteBatch->AddTexture(m_grass.Get());
-
-	//loader->LoadTexture(
-	//	"stonewall.dds",
-	//	&m_stoneWall,
-	//	nullptr);
-
-	//m_spriteBatch->AddTexture(m_stoneWall.Get());
-
-	//loader->LoadTexture(
-	//	"link.dds",
-	//	//		"test.dds",
-	//	&m_orchi,
-	//	nullptr);
-
-	//m_spriteBatch->AddTexture(m_orchi.Get());
-
-	//loader->LoadTexture(
-	//	"heart.dds",
-	//	&m_heart,
-	//	nullptr);
-
-	//m_spriteBatch->AddTexture(m_heart.Get());
-}
-
-/*
-void DeviceResources::UpdateForWindowSizeChange()
-{
-	// Only handle window size changed if there is no pending DPI change.
-	if (m_dpi != DisplayInformation::GetForCurrentView()->LogicalDpi)
-	{
-		return;
-	}
-
-	if (m_window->Bounds.Width != m_windowBounds.Width ||
-		m_window->Bounds.Height != m_windowBounds.Height)
-	{
-		m_d2dContext->SetTarget(nullptr);
-		m_d2dTargetBitmap = nullptr;
-
-		m_d3dRenderTargetView = nullptr;
-
-		m_d3dDepthStencilView = nullptr;
-		m_windowSizeChangeInProgress = true;
-		CreateWindowSizeDependentResources();
-	}
-}
-*/

@@ -2,7 +2,6 @@
 #include "GameRenderer.h"
 
 #include "..\Common\DirectXHelper.h"
-#include "ScreenUtils.h"
 #include "LeftMargin.h"
 #include "RightMargin.h"
 #include "LifePanel.h"
@@ -58,18 +57,17 @@ GameRenderer::GameRenderer(const shared_ptr<DeviceResources>& deviceResources, C
 		true,
 		deviceResources);
 
-	m_pCurrentStack->Add(LAYER_PLAYERS, m_pPlayer);
-
 	m_pSword = new Sword(
 		m_pPlayer->GetLocationRatio(),
 		0.f,
 		m_deviceResources);
 
+	m_pCurrentStack->Add(LAYER_PLAYERS, m_pPlayer);
 	m_pCurrentStack->Add(LAYER_PLAYERS, m_pSword);
 
-	m_pCollided = new list<Space *>;
 
-	m_nSwordDirection = CENTER;
+
+	m_pCollided = new list<Space *>;
 }
 
 // Initializes view parameters when the window size changes.
@@ -351,9 +349,9 @@ void GameRenderer::Render()
 		float fX = 0.f;
 		float fY = 0.f;
 
-		ScreenUtils::ConvertGlobalToGridLocation((*iterator)->GetLocationRatio(), &fX, &fY);
+		Utils::ConvertGlobalToGridLocation((*iterator)->GetLocationRatio(), &fX, &fY);
 
-		::ConvertRatioToGridLocations(
+		Utils::ConvertRatioToGridLocations(
 			grid,
 			float2{ fX, fY },
 			&column,
@@ -811,7 +809,7 @@ void GameRenderer::HighlightRegion(int column, int row, ComPtr<ID2D1SolidColorBr
 	float x = 0.0f;
 	float y = 0.0f;
 
-	ScreenUtils::CalculateSquareCenter(
+	Utils::CalculateSquareCenter(
 		m_fWindowWidth,
 		m_fWindowHeight,
 		column,
@@ -1159,10 +1157,13 @@ void GameRenderer::RenderSpaces2D()
 
 void GameRenderer::ThrowSword(int nDirection)
 {
-//	if (m_pSword->GetVisibility() == false)
+	if (m_pSword->IsFlying() == false)
 	{
-		m_nSwordDirection = nDirection;
+//		m_nSwordDirection = nDirection;
 
+		m_nSwordDirection = CENTER;
+
+		m_pSword->Throw();
 		m_pSword->SetVisibility(true);
 		m_pSword->SetLocationRatio(m_pPlayer->GetLocationRatio());
 
@@ -1179,6 +1180,11 @@ void GameRenderer::ThrowSword(int nDirection)
 
 void GameRenderer::UpdateSword()
 {
-	if (m_pSword->GetVisibility() == true)
-		m_pSword->Inertia(0.01f);
+	if (m_pSword->IsFlying() == true)
+	{
+		if (m_pSword->GetVisibility() == true)
+		{
+			m_pSword->Inertia(0.01f);
+		}
+	}
 }

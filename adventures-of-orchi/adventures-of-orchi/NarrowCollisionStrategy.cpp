@@ -237,8 +237,8 @@ bool NarrowCollisionStrategy::IntersectRect(
 
 	if (verticalOverlap == true && horizontalOverlap == true)
 	{
-		::InsertionSortI(horizontalCoords, 4);
-		::InsertionSortI(verticalCoords, 4);
+		Utils::InsertionSortI(horizontalCoords, 4);
+		Utils::InsertionSortI(verticalCoords, 4);
 
 		retVal[0] = horizontalCoords[1];	// left
 		retVal[1] = horizontalCoords[2];	// right

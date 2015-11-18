@@ -205,7 +205,7 @@
     <Image Include="rock.dds" />
     <Image Include="stairs.dds" />
     <Image Include="stonewall.dds" />
-    <Image Include="sword-left.dds" />
+    <Image Include="sword.dds" />
     <Image Include="test.dds" />
     <Image Include="tree.dds" />
     <Image Include="water.dds" />
@@ -274,7 +274,6 @@
     <ClInclude Include="Render\Renderer.h" />
     <ClInclude Include="Render\SpriteRenderer.h" />
     <ClInclude Include="RightMargin.h" />
-    <ClInclude Include="ScreenUtils.h" />
     <ClInclude Include="Model\Space.h" />
     <ClInclude Include="Sprites\BasicLoader.h" />
     <ClInclude Include="Sprites\BasicSprites.h" />
@@ -322,10 +321,10 @@
     </ClCompile>
     <ClCompile Include="PortalCollisionStrategy.cpp" />
     <ClCompile Include="RightMargin.cpp" />
-    <ClCompile Include="ScreenUtils.cpp" />
     <ClCompile Include="Sprites\BasicLoader.cpp" />
     <ClCompile Include="Sprites\BasicSprites.cpp" />
     <ClCompile Include="Sprites\SpriteUtils.cpp" />
+    <ClCompile Include="Utils.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>

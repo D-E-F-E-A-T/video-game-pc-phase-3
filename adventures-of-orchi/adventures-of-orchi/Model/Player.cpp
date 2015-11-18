@@ -1,13 +1,6 @@
 #include "pch.h"
 #include "Player.h"
 #include "..\Constants.h"
-#include "..\ScreenUtils.h"
-
-using namespace DirectX;
-
-
-
-
 
 void Player::SkipNorth()
 {

@@ -5,6 +5,7 @@
 #include "Sprites\BasicLoader.h"
 #include "IDeviceNotify.h"
 
+using namespace Microsoft::WRL;
 
 // Controls all the DirectX device resources.
 class DeviceResources
@@ -51,30 +52,29 @@ public:
 	void CreateDeviceIndependentResources();
 	void CreateDeviceResources();
 	void CreateBrushes();
-	void LoadSprites();
 
 	void CreateWindowSizeDependentResources();
 	DXGI_MODE_ROTATION ComputeDisplayRotation();
 
 	// Direct3D objects.
-	Microsoft::WRL::ComPtr<ID3D11Device2>			m_d3dDevice;
-	Microsoft::WRL::ComPtr<ID3D11DeviceContext2>	m_d3dContext;
-	Microsoft::WRL::ComPtr<IDXGISwapChain1>			m_swapChain;
+	ComPtr<ID3D11Device2>			m_d3dDevice;
+	ComPtr<ID3D11DeviceContext2>	m_d3dContext;
+	ComPtr<IDXGISwapChain1>			m_swapChain;
 
 	// Direct3D rendering objects. Required for 3D.
-	Microsoft::WRL::ComPtr<ID3D11RenderTargetView>	m_d3dRenderTargetView;
-	Microsoft::WRL::ComPtr<ID3D11DepthStencilView>	m_d3dDepthStencilView;
+	ComPtr<ID3D11RenderTargetView>	m_d3dRenderTargetView;
+	ComPtr<ID3D11DepthStencilView>	m_d3dDepthStencilView;
 	D3D11_VIEWPORT									m_screenViewport;
 
 	// Direct2D drawing components.
-	Microsoft::WRL::ComPtr<ID2D1Factory2>		m_d2dFactory;
-	Microsoft::WRL::ComPtr<ID2D1Device1>		m_d2dDevice;
-	Microsoft::WRL::ComPtr<ID2D1DeviceContext1>	m_d2dContext;
-	Microsoft::WRL::ComPtr<ID2D1Bitmap1>		m_d2dTargetBitmap;
+	ComPtr<ID2D1Factory2>		m_d2dFactory;
+	ComPtr<ID2D1Device1>		m_d2dDevice;
+	ComPtr<ID2D1DeviceContext1>	m_d2dContext;
+	ComPtr<ID2D1Bitmap1>		m_d2dTargetBitmap;
 
 	// DirectWrite drawing components.
-	Microsoft::WRL::ComPtr<IDWriteFactory2>		m_dwriteFactory;
-	Microsoft::WRL::ComPtr<IWICImagingFactory2>	m_wicFactory;
+	ComPtr<IDWriteFactory2>		m_dwriteFactory;
+	ComPtr<IWICImagingFactory2>	m_wicFactory;
 
 	// Cached reference to the XAML panel.
 	Windows::UI::Xaml::Controls::SwapChainPanel^    m_swapChainPanel;
@@ -109,15 +109,4 @@ public:
 	ComPtr<ID2D1SolidColorBrush>					m_blueBrush;
 	ComPtr<ID2D1SolidColorBrush>					m_redBrush;
 	ComPtr<ID2D1SolidColorBrush>					m_purpleBrush;
-
-	//ComPtr<ID3D11Texture2D> m_tree;
-	//ComPtr<ID3D11Texture2D> m_rock;
-	//ComPtr<ID3D11Texture2D> m_water;
-	//ComPtr<ID3D11Texture2D> m_stoneWall;
-	//ComPtr<ID3D11Texture2D> m_grass;
-	//ComPtr<ID3D11Texture2D> m_orchi;
-	//ComPtr<ID3D11Texture2D> m_heart;
-
-	//BasicSprites::SpriteBatch ^ m_spriteBatch;
-
 };

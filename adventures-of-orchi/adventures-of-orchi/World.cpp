@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "World.h"
-#include "ScreenUtils.h"
+#include "Utils.h"
 #include "Model\Tree.h"
 #include "Model\Edge.h"
 #include "Model\Water.h"
@@ -55,7 +55,7 @@ void World::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& d
 		}
 		if (command->Type == ADD_TREE_COMMAND)
 		{
-			ScreenUtils::CalculateSquareCenter(
+			Utils::CalculateSquareCenter(
 				fScreenDimensions.x,
 				fScreenDimensions.y,
 				((ServiceProxy::AddTreeCommand ^)command)->X,
@@ -72,7 +72,7 @@ void World::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& d
 		}
 		else if (command->Type == ADD_EDGE_COMMAND)
 		{
-			ScreenUtils::CalculateSquareCenter(
+			Utils::CalculateSquareCenter(
 				fScreenDimensions.x,
 				fScreenDimensions.y,
 				((ServiceProxy::AddEdgeCommand ^)command)->X,
@@ -90,7 +90,7 @@ void World::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& d
 		}
 		else if (command->Type == ADD_WATER_COMMAND)
 		{
-			ScreenUtils::CalculateSquareCenter(
+			Utils::CalculateSquareCenter(
 				fScreenDimensions.x,
 				fScreenDimensions.y,
 				((ServiceProxy::AddWaterCommand ^)command)->X,
@@ -107,7 +107,7 @@ void World::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& d
 		}
 		else if (command->Type == ADD_STONEWALL_COMMAND)
 		{
-			ScreenUtils::CalculateSquareCenter(
+			Utils::CalculateSquareCenter(
 				fScreenDimensions.x,
 				fScreenDimensions.y,
 				((ServiceProxy::AddStoneWallCommand ^)command)->X,
@@ -124,7 +124,7 @@ void World::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& d
 		}
 		else if (command->Type == ADD_ROCK_COMMAND)
 		{
-			ScreenUtils::CalculateSquareCenter(
+			Utils::CalculateSquareCenter(
 				fScreenDimensions.x,
 				fScreenDimensions.y,
 				((ServiceProxy::AddRockCommand ^)command)->X,
@@ -141,7 +141,7 @@ void World::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& d
 		}
 		else if (command->Type == ADD_STAIRS_COMMAND)
 		{
-			ScreenUtils::CalculateSquareCenter(
+			Utils::CalculateSquareCenter(
 				fScreenDimensions.x,
 				fScreenDimensions.y,
 				((ServiceProxy::AddStairsCommand ^)command)->X,
@@ -160,7 +160,7 @@ void World::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& d
 		}
 		else if (command->Type == ADD_GRASS_COMMAND)
 		{
-			ScreenUtils::CalculateSquareCenter(
+			Utils::CalculateSquareCenter(
 				fScreenDimensions.x,
 				fScreenDimensions.y,
 				((ServiceProxy::AddGrassCommand ^)command)->X,

@@ -28,7 +28,7 @@ public:
 	void MoveSouth(int nCollisionState, float fVelocity);
 	void MoveWest(int nCollisionState, float fVelocity);
 
-	void Inertia(float fVelocity);
+	virtual void Inertia(float fVelocity);
 	void Stop();
 
 protected:
