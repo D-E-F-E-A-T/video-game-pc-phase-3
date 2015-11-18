@@ -119,6 +119,9 @@
     <ClCompile Include="Model\Texture.cpp">
       <Filter>Model</Filter>
     </ClCompile>
+    <ClCompile Include="Model\Movable.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />

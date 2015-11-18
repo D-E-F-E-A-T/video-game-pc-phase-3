@@ -13,7 +13,7 @@ public:
 			pfLocationRatio,
 			fRotationInRadians,
 			float2{ 2.5f, 1.f },
-			true,
+			false,
 			deviceResources)
 	{
 		m_pRenderable = new Texture("sword-left.dds", deviceResources);
@@ -22,8 +22,19 @@ public:
 	float2 GetLocationRatio()
 	{
 		m_fLocationRatio = m_fLocationRatio - float2{ 0.005f, 0.f };
+
+		if (m_fLocationRatio.x > 1.f ||
+			m_fLocationRatio.x < 0.f ||
+			m_fLocationRatio.y > 1.f ||
+			m_fLocationRatio.y < 0.f)
+		{
+			m_bIsVisible = false;
+		}
+
 		return m_fLocationRatio;
 	}
+
+	void SetDirection(int nDirection) { m_nDirection = nDirection; }
 
 protected:
 

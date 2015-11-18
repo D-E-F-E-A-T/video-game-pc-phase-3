@@ -55,7 +55,10 @@ namespace adventures_of_orchi
 		void DrawRightMargin();
 
 	private:
-		void ThrowSword();
+		// TODO: Move these to Sword.
+		void ThrowSword(int nDirection);
+		void UpdateSword();
+
 		void Rotate(float radians);
 
 		Platform::Agile<CoreWindow> m_window;
@@ -107,7 +110,7 @@ namespace adventures_of_orchi
 
 		void FetchControllerInput();
 		void MovePlayer(uint16 buttons, short horizontal, short vertical);
-		void HandleLeftThumbStick(short horizontal, short vertical);
+		int HandleLeftThumbStick(short horizontal, short vertical);
 
 		void DrawSpriteIntersection();
 		int m_nCollisionState;
@@ -133,6 +136,8 @@ namespace adventures_of_orchi
 		vector<D2D1_RECT_F> m_collidedRects;
 		vector<int> m_collidedRectStatuses;
 #endif // RENDER_DIAGNOSTICS
+
+		int m_nSwordDirection;
 	};
 }
 

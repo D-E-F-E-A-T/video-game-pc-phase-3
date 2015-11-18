@@ -3,9 +3,8 @@
 #include "..\MathUtils.h"
 #include "..\Sprites\SpriteUtils.h"
 
-
 using namespace std;
-
+using namespace DirectX;
 
 Space::Space(
 	float2 fLocationRatio,
@@ -48,10 +47,14 @@ void Space::Render(
 	float2 fScaleDimensions,
 	float dpi)
 {
-	m_pRenderable->Render(
-		renderTargetView, 
-		GetLocationRatio(),
-		fWindowDimensions, 
-		fScaleDimensions, 
-		dpi);
+	if (m_bIsVisible)
+	{
+		m_pRenderable->Render(
+			renderTargetView,
+			m_fLocationRatio,
+			m_fRotationInRadians,
+			fWindowDimensions,
+			fScaleDimensions,
+			dpi);
+	}
 }

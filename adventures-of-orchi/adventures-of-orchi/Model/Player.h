@@ -25,10 +25,7 @@ public:
 		m_pRenderable = new Texture("link.dds", m_deviceResources);
 	}
 
-	void MoveNorth(int nCollisionState, float fVelocity);
-	void MoveEast(int nCollisionState, float fVelocity);
-	void MoveSouth(int nCollisionState, float fVelocity);
-	void MoveWest(int nCollisionState, float fVelocity);
+
 
 	void SkipNorth();
 	void SkipEast();
@@ -39,18 +36,6 @@ public:
 	// The case would be different if there were other Players.
 	virtual float CalculateDistance(Space * space) { return 10000000.f; }
 
-/*
-	uint8_t * GetPixels()
-	{
-		((Texture *)m_pRenderable)->GetPixels();
-
-	}
-
-	int * GetTextureDimensions()
-	{
-		((Texture *)m_pRenderable)->GetTextureDimensions();
-	}
-*/
 
 protected:
 

@@ -305,6 +305,7 @@
     <ClCompile Include="LifePanel.cpp" />
     <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="Model\Edge.cpp" />
+    <ClCompile Include="Model\Movable.cpp" />
     <ClCompile Include="Model\Texture.cpp" />
     <ClCompile Include="Model\Player.cpp" />
     <ClCompile Include="Model\Space.cpp" />

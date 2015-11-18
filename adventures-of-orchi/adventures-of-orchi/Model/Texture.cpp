@@ -43,6 +43,7 @@ Texture::Texture(
 void Texture::Render(
 	ComPtr<ID3D11RenderTargetView> renderTargetView,
 	float2 fLocationRatio,
+	float fRotationInRadians,
 	float2 fWindowDimensions,
 	float2 fScaleDimensions,
 	float dpi)
@@ -59,7 +60,7 @@ void Texture::Render(
 		fScaleDimensions,
 		BasicSprites::SizeUnits::DIPs,
 		float4(0.8f, 0.8f, 1.0f, 1.0f),
-		0.0f);
+		fRotationInRadians);
 
 	m_spriteBatch->End();
 }

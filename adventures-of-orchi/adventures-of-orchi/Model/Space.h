@@ -26,6 +26,7 @@ public:
 	~Space();
 
 	virtual float2 GetLocationRatio(); // virtual because of Sword.
+	void SetLocationRatio(float2 fLocationRatio) { m_fLocationRatio = fLocationRatio; }
 
 	virtual float CalculateDistance(Space * space);
 
@@ -41,6 +42,12 @@ public:
 	//{
 	//	return nullptr;
 	//}
+	// "Rotate" connotes turning away from the 
+	//	current angle. 
+	void TurnTowards(float fRadians) 
+	{ 
+		m_fRotationInRadians = fRadians; 
+	}
 
 	uint8_t * GetPixels()
 	{
@@ -51,6 +58,9 @@ public:
 	{
 		return m_pRenderable->GetTextureDimensions();
 	}
+
+	void SetVisibility(bool bIsVisible) { m_bIsVisible = bIsVisible; }
+	bool GetVisibility() { return m_bIsVisible; }
 
 protected:
 	Renderable * m_pRenderable;

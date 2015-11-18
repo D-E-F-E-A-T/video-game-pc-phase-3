@@ -15,7 +15,7 @@ public:
 		: Space(
 			pfLocationRatio,
 			fRotationInRadians,
-			true,
+			bIsVisible,
 			false,
 			true,
 			deviceResources)
@@ -23,7 +23,17 @@ public:
 
 	}
 
+	void MoveNorth(int nCollisionState, float fVelocity);
+	void MoveEast(int nCollisionState, float fVelocity);
+	void MoveSouth(int nCollisionState, float fVelocity);
+	void MoveWest(int nCollisionState, float fVelocity);
+
+	void Inertia(float fVelocity);
+	void Stop();
+
 protected:
+	int m_nDirection;
+	int m_fVelocity;
 
 private:
 

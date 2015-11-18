@@ -60,7 +60,16 @@ GameRenderer::GameRenderer(const shared_ptr<DeviceResources>& deviceResources, C
 
 	m_pCurrentStack->Add(LAYER_PLAYERS, m_pPlayer);
 
+	m_pSword = new Sword(
+		m_pPlayer->GetLocationRatio(),
+		0.f,
+		m_deviceResources);
+
+	m_pCurrentStack->Add(LAYER_PLAYERS, m_pSword);
+
 	m_pCollided = new list<Space *>;
+
+	m_nSwordDirection = CENTER;
 }
 
 // Initializes view parameters when the window size changes.
@@ -124,6 +133,8 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 	if (!m_tracking)
 	{
 		FetchControllerInput();
+
+		UpdateSword();
 
 #ifdef USE_PORTALS
 		m_broadCollisionDetectionStrategy->Detect(
@@ -620,39 +631,47 @@ void GameRenderer::FetchControllerInput()
 
 void GameRenderer::MovePlayer(uint16 buttons, short horizontal, short vertical)
 {
+	int nDirection;
+
 	if (buttons & XINPUT_GAMEPAD_DPAD_UP)
 	{
 		m_pPlayer->MoveNorth(m_nCollisionState, PLAYER_MOVE_VELOCITY);
+		nDirection = NORTH;
 	}
 	else if (buttons & XINPUT_GAMEPAD_DPAD_DOWN)
 	{
 		m_pPlayer->MoveSouth(m_nCollisionState, PLAYER_MOVE_VELOCITY);
+		nDirection = SOUTH;
 	}
 	else if (buttons & XINPUT_GAMEPAD_DPAD_LEFT)
 	{
 		m_pPlayer->MoveWest(m_nCollisionState, PLAYER_MOVE_VELOCITY);
+		nDirection = WEST;
 	}
 	else if (buttons & XINPUT_GAMEPAD_DPAD_RIGHT)
 	{
 		m_pPlayer->MoveEast(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-	}
-	else if (buttons & XINPUT_GAMEPAD_A)
-	{
-		ThrowSword();
+		nDirection = EAST;
 	}
 	else
 	{
-		HandleLeftThumbStick(horizontal, vertical);
+		nDirection = HandleLeftThumbStick(horizontal, vertical);
+	}
+
+	if (buttons & XINPUT_GAMEPAD_A)
+	{
+		ThrowSword(nDirection);
 	}
 }
 
-void GameRenderer::HandleLeftThumbStick(short horizontal, short vertical)
+int GameRenderer::HandleLeftThumbStick(short horizontal, short vertical)
 {
 	float radius = (float)(sqrt((double)horizontal * (double)horizontal + (double)vertical * (double)vertical));
 	float velocity = 0.f;
+	int retVal = NORTH;
 
 	if (radius < WALKING_THRESHOLD)
-		return;
+		return CENTER;
 	if (radius >= WALKING_THRESHOLD && radius < RUNNING_THRESHOLD)
 		velocity = PLAYER_MOVE_VELOCITY;
 	else if (radius >= RUNNING_THRESHOLD)
@@ -663,10 +682,12 @@ void GameRenderer::HandleLeftThumbStick(short horizontal, short vertical)
 		if (vertical > 0)
 		{
 			m_pPlayer->MoveNorth(m_nCollisionState, velocity);
+			retVal = NORTH;
 		}
 		else if (vertical < 0)
 		{
 			m_pPlayer->MoveSouth(m_nCollisionState, velocity);
+			retVal = SOUTH;
 		}
 	}
 	else if (vertical == 0)
@@ -674,10 +695,12 @@ void GameRenderer::HandleLeftThumbStick(short horizontal, short vertical)
 		if (horizontal > 0)
 		{
 			m_pPlayer->MoveEast(m_nCollisionState, velocity);
+			retVal = EAST;
 		}
 		else if (horizontal < 0)
 		{
 			m_pPlayer->MoveWest(m_nCollisionState, velocity);
+			retVal = WEST;
 		}
 	}
 	else
@@ -689,35 +712,61 @@ void GameRenderer::HandleLeftThumbStick(short horizontal, short vertical)
 		{
 			// Upper-right quadrant.
 			if (theta <= 45.f)
+			{
 				m_pPlayer->MoveEast(m_nCollisionState, velocity);
+				retVal = EAST;
+			}
 			else
+			{
 				m_pPlayer->MoveNorth(m_nCollisionState, velocity);
+				retVal = NORTH;
+			}
 		}
 		else if (horizontal > 0 && vertical < 0)
 		{
 			// Lower-right quadrant.
 			if (theta >= -45.f)
+			{
 				m_pPlayer->MoveEast(m_nCollisionState, velocity);
+				retVal = EAST;
+			}
 			else
+			{
 				m_pPlayer->MoveSouth(m_nCollisionState, velocity);
+				retVal = SOUTH;
+			}
 		}
 		else if (horizontal < 0 && vertical > 0)
 		{
 			// Upper-left quadrant.
 			if (theta >= -45.f)
+			{
 				m_pPlayer->MoveWest(m_nCollisionState, velocity);
+				retVal = WEST;
+			}
 			else
+			{
 				m_pPlayer->MoveNorth(m_nCollisionState, velocity);
+				retVal = NORTH;
+			}
 		}
 		else // (horizontal < 0 && vertical < 0)
 		{
 			// Lower-left quadrant.
 			if (theta <= 45.f)
+			{
 				m_pPlayer->MoveWest(m_nCollisionState, velocity);
+				retVal = WEST;
+			}
 			else
+			{
 				m_pPlayer->MoveSouth(m_nCollisionState, velocity);
+				retVal = SOUTH;
+			}
 		}
 	}
+
+	return retVal;
 }
 
 #ifdef RENDER_DIAGNOSTICS
@@ -1108,12 +1157,28 @@ void GameRenderer::RenderSpaces2D()
 	}
 }
 
-void GameRenderer::ThrowSword()
+void GameRenderer::ThrowSword(int nDirection)
 {
-	m_pSword = new Sword(
-		m_pPlayer->GetLocationRatio(),
-		0.f,
-		m_deviceResources);
+//	if (m_pSword->GetVisibility() == false)
+	{
+		m_nSwordDirection = nDirection;
 
-	m_pCurrentStack->Add(LAYER_PLAYERS, m_pSword);
+		m_pSword->SetVisibility(true);
+		m_pSword->SetLocationRatio(m_pPlayer->GetLocationRatio());
+
+		if (nDirection == NORTH)
+			m_pSword->SetDirection(NORTH);
+		else if (nDirection == EAST)
+			m_pSword->SetDirection(EAST);
+		else if (nDirection == SOUTH || nDirection == CENTER)
+			m_pSword->SetDirection(SOUTH);
+		else if (nDirection == WEST)
+			m_pSword->SetDirection(WEST);
+	}
+}
+
+void GameRenderer::UpdateSword()
+{
+	if (m_pSword->GetVisibility() == true)
+		m_pSword->Inertia(0.01f);
 }
