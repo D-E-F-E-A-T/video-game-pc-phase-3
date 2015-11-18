@@ -65,7 +65,7 @@ GameRenderer::GameRenderer(const shared_ptr<DeviceResources>& deviceResources, C
 	m_pCurrentStack->Add(LAYER_PLAYERS, m_pPlayer);
 	m_pCurrentStack->Add(LAYER_PLAYERS, m_pSword);
 
-
+	m_nSwordDirection = SOUTH;
 
 	m_pCollided = new list<Space *>;
 }
@@ -629,36 +629,34 @@ void GameRenderer::FetchControllerInput()
 
 void GameRenderer::MovePlayer(uint16 buttons, short horizontal, short vertical)
 {
-	int nDirection;
-
 	if (buttons & XINPUT_GAMEPAD_DPAD_UP)
 	{
 		m_pPlayer->MoveNorth(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-		nDirection = NORTH;
+		m_nSwordDirection = NORTH;
 	}
 	else if (buttons & XINPUT_GAMEPAD_DPAD_DOWN)
 	{
 		m_pPlayer->MoveSouth(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-		nDirection = SOUTH;
+		m_nSwordDirection = SOUTH;
 	}
 	else if (buttons & XINPUT_GAMEPAD_DPAD_LEFT)
 	{
 		m_pPlayer->MoveWest(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-		nDirection = WEST;
+		m_nSwordDirection = WEST;
 	}
 	else if (buttons & XINPUT_GAMEPAD_DPAD_RIGHT)
 	{
 		m_pPlayer->MoveEast(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-		nDirection = EAST;
+		m_nSwordDirection = EAST;
 	}
 	else
 	{
-		nDirection = HandleLeftThumbStick(horizontal, vertical);
+		m_nSwordDirection = HandleLeftThumbStick(horizontal, vertical);
 	}
 
 	if (buttons & XINPUT_GAMEPAD_A)
 	{
-		ThrowSword(nDirection);
+		ThrowSword(m_nSwordDirection);
 	}
 }
 
@@ -669,7 +667,7 @@ int GameRenderer::HandleLeftThumbStick(short horizontal, short vertical)
 	int retVal = NORTH;
 
 	if (radius < WALKING_THRESHOLD)
-		return CENTER;
+		return m_nSwordDirection;
 	if (radius >= WALKING_THRESHOLD && radius < RUNNING_THRESHOLD)
 		velocity = PLAYER_MOVE_VELOCITY;
 	else if (radius >= RUNNING_THRESHOLD)
@@ -1159,22 +1157,10 @@ void GameRenderer::ThrowSword(int nDirection)
 {
 	if (m_pSword->IsFlying() == false)
 	{
-//		m_nSwordDirection = nDirection;
-
-		m_nSwordDirection = CENTER;
-
-		m_pSword->Throw();
 		m_pSword->SetVisibility(true);
 		m_pSword->SetLocationRatio(m_pPlayer->GetLocationRatio());
 
-		if (nDirection == NORTH)
-			m_pSword->SetDirection(NORTH);
-		else if (nDirection == EAST)
-			m_pSword->SetDirection(EAST);
-		else if (nDirection == SOUTH || nDirection == CENTER)
-			m_pSword->SetDirection(SOUTH);
-		else if (nDirection == WEST)
-			m_pSword->SetDirection(WEST);
+		m_pSword->Aim(nDirection);
 	}
 }
 

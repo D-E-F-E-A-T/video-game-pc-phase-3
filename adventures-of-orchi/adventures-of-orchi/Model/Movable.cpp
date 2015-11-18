@@ -105,15 +105,7 @@ void Movable::MoveWest(int nCollisionState, float fVelocity)
 
 void Movable::Inertia(float fVelocity)
 {
-	// TODO: Use function pointers.
-	if (m_nDirection == NORTH)
-		MoveNorth(NO_INTERSECTION, fVelocity);
-	else if (m_nDirection == EAST)
-		MoveEast(NO_INTERSECTION, fVelocity);
-	else if (m_nDirection == SOUTH)
-		MoveSouth(NO_INTERSECTION, fVelocity);
-	else if (m_nDirection == WEST)
-		MoveWest(NO_INTERSECTION, fVelocity);
+	Move(m_nDirection, NO_INTERSECTION, fVelocity);
 }
 
 void Movable::Stop()

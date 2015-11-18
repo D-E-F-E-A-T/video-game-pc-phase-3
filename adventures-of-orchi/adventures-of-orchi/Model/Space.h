@@ -25,7 +25,7 @@ public:
 
 	~Space();
 
-	virtual float2 GetLocationRatio(); // virtual because of Sword.
+	float2 GetLocationRatio();
 	void SetLocationRatio(float2 fLocationRatio) { m_fLocationRatio = fLocationRatio; }
 
 	virtual float CalculateDistance(Space * space);

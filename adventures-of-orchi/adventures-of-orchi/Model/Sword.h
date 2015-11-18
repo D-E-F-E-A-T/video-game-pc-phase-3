@@ -26,8 +26,8 @@ public:
 
 		if (m_fLocationRatio.x > 1.0f - RIGHT_MARGIN_RATIO - 0.005f ||
 			m_fLocationRatio.x < LEFT_MARGIN_RATIO + 0.005f ||
-			m_fLocationRatio.y > 1.f - 0.005f ||
-			m_fLocationRatio.y < 0.f + 0.005f)
+			m_fLocationRatio.y > 1.0f - 0.005f ||
+			m_fLocationRatio.y < 0.0f + 0.005f)
 		{
 			// Will need to change this logic when 
 			//	checking for collisions.
@@ -36,9 +36,12 @@ public:
 		}
 	}
 
-	void SetDirection(int nDirection) { m_nDirection = nDirection; }
+	void Aim(int nDirection) 
+	{ 
+		m_nDirection = nDirection;
+		m_bIsFlying = true; 
+	}
 
-	void Throw() { m_bIsFlying = true; }
 	bool IsFlying() { return m_bIsFlying; }
 
 protected:

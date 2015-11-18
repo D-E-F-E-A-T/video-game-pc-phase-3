@@ -51,41 +51,25 @@
 #define PLAYER_MOVE_VELOCITY 0.0025f	
 #endif // PLAYER_MOVE_VELOCITY
 
-#ifndef NORTH_WEST
-#define NORTH_WEST 0
-#endif // NORTH_WEST
-
-#ifndef NORTH
-#define NORTH 1
-#endif // NORTH
-
-#ifndef NORTH_EAST 
-#define NORTH_EAST 2
-#endif // NORTH_EAST
-
-#ifndef WEST 
-#define WEST 3
-#endif // WEST
-
 #ifndef CENTER
 #define CENTER 4
 #endif // CENTER
 
+#ifndef NORTH
+#define NORTH 0
+#endif // NORTH
+
 #ifndef EAST
-#define EAST 5
+#define EAST 1
 #endif // EAST 
 
-#ifndef SOUTH_WEST
-#define SOUTH_WEST 6
-#endif // SOUTH_WEST
-
 #ifndef SOUTH
-#define SOUTH 7
+#define SOUTH 2
 #endif // SOUTH
 
-#ifndef SOUTH_EAST
-#define SOUTH_EAST 8
-#endif // SOUTH_EAST
+#ifndef WEST 
+#define WEST 3
+#endif // WEST
 
 #ifndef DOWNSTAIRS
 #define DOWNSTAIRS 9
