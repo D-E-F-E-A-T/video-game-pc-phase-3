@@ -24,8 +24,7 @@ GameRenderer::GameRenderer(const shared_ptr<DeviceResources>& deviceResources, C
 	m_degreesPerSecond(45),
 	m_indexCount(0),
 	m_tracking(false),
-	m_deviceResources(deviceResources),
-	m_isControllerConnected(false)
+	m_deviceResources(deviceResources)
 {
 	m_window = window;
 
@@ -159,7 +158,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 	if (!m_tracking)
 	{
-		FetchControllerInput();
+		xboxController.FetchControllerInput();
 
 		UpdateSword();
 
@@ -281,7 +280,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		}
 
 		// if the gamepad is not connected, check the keyboard.
-		if (m_isControllerConnected)
+		if (xboxController.GetIsControllerConnected())
 		{
 			// This would actually, detect a collision one interation
 			//	too late.  Consider detection earlier since
@@ -292,10 +291,15 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			//	have deeply intersected each other.
 			//  For slow moving sprites, this would not be 
 			//	much of a problem.
-			MovePlayer(
-				m_xinputState.Gamepad.wButtons,
-				m_xinputState.Gamepad.sThumbLX,
-				m_xinputState.Gamepad.sThumbLY);
+			xboxController.MovePlayer(
+				m_pPlayer,
+				m_nCollisionState,
+				&m_nSwordDirection);
+
+			if (xboxController.CheckAButton())
+			{
+				ThrowSword(m_nSwordDirection);
+			}
 		}
 
 
@@ -616,183 +620,7 @@ void GameRenderer::RenderSpaces3D()
 }
 
 
-void GameRenderer::FetchControllerInput()
-{
-	if (!m_isControllerConnected)
-	{
-		//
-		// Enumerating for XInput devices takes 'time' on the order of milliseconds.
-		// Any time a device is not currently known as connected (not yet called XInput, or calling
-		// an XInput function after a failure) ennumeration happens.
-		// An app should avoid repeatedly calling XInput functions if there are no known devices connected
-		// as this can slow down application performance.
-		// This sample takes the simple approach of not calling XInput functions after failure
-		// until a specified timeout has passed.
-		//
-		uint64 currentTime = ::GetTickCount64();
-		if (currentTime - m_lastEnumTime < XINPUT_ENUM_TIMEOUT_MS)
-		{
-			return;
-		}
-		m_lastEnumTime = currentTime;
 
-		// Check for controller connection by trying to get the capabilties
-		uint32 capsResult = XInputGetCapabilities(0, XINPUT_FLAG_GAMEPAD, &m_xinputCaps);
-		if (capsResult != ERROR_SUCCESS)
-		{
-			return;
-		}
-
-		// Device is connected
-		m_isControllerConnected = true;
-	}
-
-	uint32 stateResult = XInputGetState(0, &m_xinputState);
-	if (stateResult != ERROR_SUCCESS)
-	{
-		// Device is no longer connected
-		m_isControllerConnected = false;
-		m_lastEnumTime = ::GetTickCount64();
-	}
-}
-
-void GameRenderer::MovePlayer(uint16 buttons, short horizontal, short vertical)
-{
-	if (buttons & XINPUT_GAMEPAD_DPAD_UP)
-	{
-		m_pPlayer->MoveNorth(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-		m_nSwordDirection = NORTH;
-	}
-	else if (buttons & XINPUT_GAMEPAD_DPAD_DOWN)
-	{
-		m_pPlayer->MoveSouth(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-		m_nSwordDirection = SOUTH;
-	}
-	else if (buttons & XINPUT_GAMEPAD_DPAD_LEFT)
-	{
-		m_pPlayer->MoveWest(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-		m_nSwordDirection = WEST;
-	}
-	else if (buttons & XINPUT_GAMEPAD_DPAD_RIGHT)
-	{
-		m_pPlayer->MoveEast(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-		m_nSwordDirection = EAST;
-	}
-	else
-	{
-		m_nSwordDirection = HandleLeftThumbStick(horizontal, vertical);
-	}
-
-	if (buttons & XINPUT_GAMEPAD_A)
-	{
-		ThrowSword(m_nSwordDirection);
-	}
-}
-
-int GameRenderer::HandleLeftThumbStick(short horizontal, short vertical)
-{
-	float radius = (float)(sqrt((double)horizontal * (double)horizontal + (double)vertical * (double)vertical));
-	float velocity = 0.f;
-	int retVal = NORTH;
-
-	if (radius < WALKING_THRESHOLD)
-		return m_nSwordDirection;
-	if (radius >= WALKING_THRESHOLD && radius < RUNNING_THRESHOLD)
-		velocity = PLAYER_MOVE_VELOCITY;
-	else if (radius >= RUNNING_THRESHOLD)
-		velocity = PLAYER_MOVE_VELOCITY * 2.0f;
-
-	if (horizontal == 0)
-	{
-		if (vertical > 0)
-		{
-			m_pPlayer->MoveNorth(m_nCollisionState, velocity);
-			retVal = NORTH;
-		}
-		else if (vertical < 0)
-		{
-			m_pPlayer->MoveSouth(m_nCollisionState, velocity);
-			retVal = SOUTH;
-		}
-	}
-	else if (vertical == 0)
-	{
-		if (horizontal > 0)
-		{
-			m_pPlayer->MoveEast(m_nCollisionState, velocity);
-			retVal = EAST;
-		}
-		else if (horizontal < 0)
-		{
-			m_pPlayer->MoveWest(m_nCollisionState, velocity);
-			retVal = WEST;
-		}
-	}
-	else
-	{
-		float param = (float)vertical / (float)horizontal;
-		float theta = (float)(atan(param) * 180.0f / PI);
-
-		if (horizontal > 0 && vertical > 0)
-		{
-			// Upper-right quadrant.
-			if (theta <= 45.f)
-			{
-				m_pPlayer->MoveEast(m_nCollisionState, velocity);
-				retVal = EAST;
-			}
-			else
-			{
-				m_pPlayer->MoveNorth(m_nCollisionState, velocity);
-				retVal = NORTH;
-			}
-		}
-		else if (horizontal > 0 && vertical < 0)
-		{
-			// Lower-right quadrant.
-			if (theta >= -45.f)
-			{
-				m_pPlayer->MoveEast(m_nCollisionState, velocity);
-				retVal = EAST;
-			}
-			else
-			{
-				m_pPlayer->MoveSouth(m_nCollisionState, velocity);
-				retVal = SOUTH;
-			}
-		}
-		else if (horizontal < 0 && vertical > 0)
-		{
-			// Upper-left quadrant.
-			if (theta >= -45.f)
-			{
-				m_pPlayer->MoveWest(m_nCollisionState, velocity);
-				retVal = WEST;
-			}
-			else
-			{
-				m_pPlayer->MoveNorth(m_nCollisionState, velocity);
-				retVal = NORTH;
-			}
-		}
-		else // (horizontal < 0 && vertical < 0)
-		{
-			// Lower-left quadrant.
-			if (theta <= 45.f)
-			{
-				m_pPlayer->MoveWest(m_nCollisionState, velocity);
-				retVal = WEST;
-			}
-			else
-			{
-				m_pPlayer->MoveSouth(m_nCollisionState, velocity);
-				retVal = SOUTH;
-			}
-		}
-	}
-
-	return retVal;
-}
 
 #ifdef RENDER_DIAGNOSTICS
 void GameRenderer::DrawSpriteIntersection()

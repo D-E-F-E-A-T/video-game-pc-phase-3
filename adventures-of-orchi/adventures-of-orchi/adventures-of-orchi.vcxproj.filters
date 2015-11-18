@@ -126,6 +126,9 @@
     <ClCompile Include="ButtonsPanel.cpp" />
     <ClCompile Include="PackPanel.cpp" />
     <ClCompile Include="InventoryPanel.cpp" />
+    <ClCompile Include="Controller\XBoxOneControllerView.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -258,9 +261,6 @@
     <ClInclude Include="Controller\TouchScreenControllerView.h">
       <Filter>Controller</Filter>
     </ClInclude>
-    <ClInclude Include="Controller\XBox360ControllerView.h">
-      <Filter>Controller</Filter>
-    </ClInclude>
     <ClInclude Include="Controller\KeyboardControllerView.h">
       <Filter>Controller</Filter>
     </ClInclude>
@@ -281,6 +281,9 @@
     <ClInclude Include="PackPanel.h" />
     <ClInclude Include="InventoryPanel.h" />
     <ClInclude Include="InfoPanel.h" />
+    <ClInclude Include="Controller\XBoxOneControllerView.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\StoreLogo.png">

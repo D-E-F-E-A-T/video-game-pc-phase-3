@@ -213,7 +213,7 @@
   <ItemGroup>
     <ClInclude Include="ButtonsPanel.h" />
     <ClInclude Include="Controller\KeyboardControllerView.h" />
-    <ClInclude Include="Controller\XBox360ControllerView.h" />
+    <ClInclude Include="Controller\XBoxOneControllerView.h" />
     <ClInclude Include="Controller\TouchScreenControllerView.h" />
     <ClInclude Include="InfoPanel.h" />
     <ClInclude Include="InventoryPanel.h" />
@@ -300,6 +300,7 @@
     <ClCompile Include="Common\DeviceResources.cpp" />
     <ClCompile Include="adventures_of_orchiMain.cpp" />
     <ClCompile Include="Content\GameRenderer.cpp" />
+    <ClCompile Include="Controller\XBoxOneControllerView.cpp" />
     <ClCompile Include="DDSTextureLoader.cpp" />
     <ClCompile Include="DirectXPage.xaml.cpp">
       <DependentUpon>DirectXPage.xaml</DependentUpon>

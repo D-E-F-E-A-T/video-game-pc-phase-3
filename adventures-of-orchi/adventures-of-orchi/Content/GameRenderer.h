@@ -17,6 +17,7 @@
 #include "..\PackPanel.h"
 #include "..\InventoryPanel.h"
 #include "..\InfoPanel.h"
+#include "..\Controller\XBoxOneControllerView.h"
 
 using namespace Windows::UI::Core;
 using namespace std;
@@ -44,12 +45,6 @@ namespace adventures_of_orchi
 		void OnSizeChanged(WindowSizeChangedEventArgs ^ args);
 
 		Grid grid;
-
-		void CreateInventoryText();
-		void CreatePackText();
-
-		void DrawInventoryText();
-		void DrawPackText();
 
 		void DrawLeftMargin();
 		void DrawRightMargin();
@@ -85,10 +80,6 @@ namespace adventures_of_orchi
 
 		Stack * m_pCurrentStack;
 
-		ComPtr<IDWriteTextLayout1> m_textLayoutButtons;
-		ComPtr<IDWriteTextLayout1> m_textLayoutInventory;
-		ComPtr<IDWriteTextLayout1> m_textLayoutPack;
-
 		void RenderSpaces2D();
 		void RenderSpaces3D();
 
@@ -98,16 +89,6 @@ namespace adventures_of_orchi
 		float m_fWindowWidth;
 		float m_fWindowHeight;
 		
-		// Input related members
-		bool                    m_isControllerConnected;  // Do we have a controller connected
-		XINPUT_CAPABILITIES     m_xinputCaps;             // Capabilites of the controller
-		XINPUT_STATE            m_xinputState;            // The current state of the controller
-		uint64                  m_lastEnumTime;           // Last time a new controller connection was checked
-
-		void FetchControllerInput();
-		void MovePlayer(uint16 buttons, short horizontal, short vertical);
-		int HandleLeftThumbStick(short horizontal, short vertical);
-
 		void DrawSpriteIntersection();
 		int m_nCollisionState;
 
@@ -141,6 +122,8 @@ namespace adventures_of_orchi
 		InventoryPanel m_inventoryPanel;
 
 		vector<InfoPanel *> * m_infoPanels;
+
+		XBoxOneControllerView xboxController;
 	};
 }
 
