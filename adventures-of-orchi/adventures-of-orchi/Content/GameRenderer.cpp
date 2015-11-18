@@ -214,6 +214,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			}
 
 			m_pCurrentStack->Add(LAYER_PLAYERS, m_pPlayer);
+			m_pCurrentStack->Add(LAYER_PLAYERS, m_pSword);
 
 			m_pCollided->clear();
 
@@ -256,12 +257,13 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 				{
 //					if (m_nCollisionState == COLLISION)
 //					{
-////						m_pCurrentStack = m_pWorld->Move((*iterator), DOWNSTAIRS);
+//						m_pCurrentStack = m_pWorld->Move((*iterator), DOWNSTAIRS);
 //
-//						// TODO: Use Actions
-//						// (*iterator)->Act(m_pCurrentStack);
+////						// TODO: Use Actions
+//						int actionCode = (*iterator)->Act(m_pCurrentStack);
 //
-//						return 0;
+//						if (actionCode == 1)
+//							return 0;
 //					}
 
 					D2D1_RECT_F rect

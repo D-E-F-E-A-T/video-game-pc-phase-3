@@ -43,6 +43,7 @@ void XBoxOneControllerView::FetchControllerInput()
 	}
 }
 
+// Maybe this should just return direction and not do any actions.
 void XBoxOneControllerView::MovePlayer(
 	Player * pPlayer, 
 	int nCollisionState, 
