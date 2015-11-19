@@ -399,7 +399,7 @@ void GameRenderer::Render()
 	DrawSpriteIntersection();
 #endif // RENDER_DIAGNOSTICS
 
-//	if (m_uiMode == UserInteractionMode::Touch)
+	if (m_uiMode == UserInteractionMode::Touch)
 	{
 		RenderTouchControls();
 	}
@@ -871,11 +871,11 @@ void GameRenderer::RenderTouchControls()
 	{
 		D2D1_POINT_2F
 		{
-			fX - m_fWindowWidth * 0.03f,
+			fX - m_fWindowWidth * BUTTON_OFFSET_RATIO,
 			fY
 		},
-		m_fWindowWidth * 0.0125f,
-		m_fWindowWidth * 0.0125f
+		m_fWindowWidth * BUTTON_SIZE_RATIO,
+		m_fWindowWidth * BUTTON_SIZE_RATIO
 	};
 
 	m_deviceResources->GetD2DDeviceContext()->FillEllipse(
@@ -887,11 +887,11 @@ void GameRenderer::RenderTouchControls()
 	{
 		D2D1_POINT_2F
 		{
-			fX + m_fWindowWidth * 0.03f,
+			fX + m_fWindowWidth * BUTTON_OFFSET_RATIO,
 			fY
 		},
-		m_fWindowWidth * 0.0125f,
-		m_fWindowWidth * 0.0125f
+		m_fWindowWidth * BUTTON_SIZE_RATIO,
+		m_fWindowWidth * BUTTON_SIZE_RATIO
 	};
 
 	m_deviceResources->GetD2DDeviceContext()->FillEllipse(
@@ -903,10 +903,10 @@ void GameRenderer::RenderTouchControls()
 		D2D1_POINT_2F
 	{
 		fX,
-		fY + m_fWindowWidth * 0.03f,
+		fY + m_fWindowWidth * BUTTON_OFFSET_RATIO,
 	},
-		m_fWindowWidth * 0.0125f,
-		m_fWindowWidth * 0.0125f
+		m_fWindowWidth * BUTTON_SIZE_RATIO,
+		m_fWindowWidth * BUTTON_SIZE_RATIO
 	};
 
 	m_deviceResources->GetD2DDeviceContext()->FillEllipse(
@@ -918,10 +918,10 @@ void GameRenderer::RenderTouchControls()
 		D2D1_POINT_2F
 	{
 		fX,
-		fY - m_fWindowWidth * 0.03f,
+		fY - m_fWindowWidth * BUTTON_OFFSET_RATIO,
 	},
-		m_fWindowWidth * 0.0125f,
-		m_fWindowWidth * 0.0125f
+		m_fWindowWidth * BUTTON_SIZE_RATIO,
+		m_fWindowWidth * BUTTON_SIZE_RATIO
 	};
 
 	m_deviceResources->GetD2DDeviceContext()->FillEllipse(
