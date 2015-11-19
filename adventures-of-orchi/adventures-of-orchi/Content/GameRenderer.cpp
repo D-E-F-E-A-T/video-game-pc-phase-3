@@ -399,7 +399,7 @@ void GameRenderer::Render()
 	DrawSpriteIntersection();
 #endif // RENDER_DIAGNOSTICS
 
-	if (m_uiMode == UserInteractionMode::Touch)
+//	if (m_uiMode == UserInteractionMode::Touch)
 	{
 		RenderTouchControls();
 	}
@@ -827,7 +827,7 @@ void GameRenderer::UpdateSword()
 
 void GameRenderer::RenderTouchControls()
 {
-	D2D1_RECT_F rect
+	D2D1_RECT_F rectLeft
 	{
 		m_fWindowWidth * 0.01f,
 		m_fWindowHeight * 0.75f,
@@ -836,6 +836,96 @@ void GameRenderer::RenderTouchControls()
 	};
 	
 	m_deviceResources->GetD2DDeviceContext()->DrawRectangle(
-		rect,
+		rectLeft,
 		m_deviceResources->m_whiteBrush.Get());
+
+	D2D1_RECT_F rectRight
+	{
+		m_fWindowWidth * (1.f - RIGHT_MARGIN_RATIO + 0.01f),
+		m_fWindowHeight * 0.75f,
+		m_fWindowWidth * 0.99f,
+		m_fWindowHeight * 0.95f
+	};
+
+	m_deviceResources->GetD2DDeviceContext()->DrawRectangle(
+		rectRight,
+		m_deviceResources->m_whiteBrush.Get());
+
+
+	float fX =
+		(
+			(m_fWindowWidth * 0.99f) -
+			(m_fWindowWidth * (1.f - RIGHT_MARGIN_RATIO + 0.01f))			
+			) / 2.0f;
+
+	fX += m_fWindowWidth * (1.f - RIGHT_MARGIN_RATIO + 0.01f);
+
+	float fY =
+		(m_fWindowHeight * 0.95f -
+			m_fWindowHeight * 0.75f) / 2.0f;
+
+	fY += m_fWindowHeight * 0.75f;
+		
+
+	D2D1_ELLIPSE ellipseX
+	{
+		D2D1_POINT_2F
+		{
+			fX - m_fWindowWidth * 0.03f,
+			fY
+		},
+		m_fWindowWidth * 0.0125f,
+		m_fWindowWidth * 0.0125f
+	};
+
+	m_deviceResources->GetD2DDeviceContext()->FillEllipse(
+		ellipseX,
+		m_deviceResources->m_blueBrush.Get());
+
+
+	D2D1_ELLIPSE ellipseB
+	{
+		D2D1_POINT_2F
+		{
+			fX + m_fWindowWidth * 0.03f,
+			fY
+		},
+		m_fWindowWidth * 0.0125f,
+		m_fWindowWidth * 0.0125f
+	};
+
+	m_deviceResources->GetD2DDeviceContext()->FillEllipse(
+		ellipseB,
+		m_deviceResources->m_redBrush.Get());
+
+	D2D1_ELLIPSE ellipseA
+	{
+		D2D1_POINT_2F
+	{
+		fX,
+		fY + m_fWindowWidth * 0.03f,
+	},
+		m_fWindowWidth * 0.0125f,
+		m_fWindowWidth * 0.0125f
+	};
+
+	m_deviceResources->GetD2DDeviceContext()->FillEllipse(
+		ellipseA,
+		m_deviceResources->m_greenBrush.Get());
+
+	D2D1_ELLIPSE ellipseY
+	{
+		D2D1_POINT_2F
+	{
+		fX,
+		fY - m_fWindowWidth * 0.03f,
+	},
+		m_fWindowWidth * 0.0125f,
+		m_fWindowWidth * 0.0125f
+	};
+
+	m_deviceResources->GetD2DDeviceContext()->FillEllipse(
+		ellipseY,
+		m_deviceResources->m_yellowBrush.Get());
+
 }

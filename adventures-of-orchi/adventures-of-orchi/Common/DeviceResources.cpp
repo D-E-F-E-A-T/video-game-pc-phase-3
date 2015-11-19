@@ -745,7 +745,7 @@ void DeviceResources::CreateBrushes()
 
 	ThrowIfFailed(
 		m_d2dContext->CreateSolidColorBrush(
-			D2D1::ColorF(D2D1::ColorF::Green),
+			D2D1::ColorF(D2D1::ColorF::LimeGreen),
 			&m_greenBrush)
 		);
 
@@ -757,7 +757,7 @@ void DeviceResources::CreateBrushes()
 
 	ThrowIfFailed(
 		m_d2dContext->CreateSolidColorBrush(
-			D2D1::ColorF(D2D1::ColorF::SkyBlue),
+			D2D1::ColorF(D2D1::ColorF::DodgerBlue),
 			&m_blueBrush)
 		);
 
