@@ -142,9 +142,11 @@ void adventures_of_orchiMain::OnKeyDown(Windows::UI::Core::KeyEventArgs ^ args)
 	m_gameRenderer->OnKeyDown(args);
 }
 
-void adventures_of_orchiMain::OnSizeChanged(Windows::UI::Core::WindowSizeChangedEventArgs ^ args)
+void adventures_of_orchiMain::OnSizeChanged(
+	Windows::UI::Core::WindowSizeChangedEventArgs ^ args,
+	UserInteractionMode uiMode)
 {
-	m_gameRenderer->OnSizeChanged(args);
+	m_gameRenderer->OnSizeChanged(args, uiMode);
 }
 
 // Notifies renderers that device resources need to be released.

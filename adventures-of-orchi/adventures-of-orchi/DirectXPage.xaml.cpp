@@ -23,11 +23,13 @@ using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
 using namespace concurrency;
+using namespace Windows::UI::ViewManagement;
 
 DirectXPage::DirectXPage():
 	m_windowVisible(true),
 	m_coreInput(nullptr)
 {
+
 	InitializeComponent();
 
 	// Register event handlers for page lifecycle.
@@ -58,6 +60,7 @@ DirectXPage::DirectXPage():
 
 	swapChainPanel->SizeChanged +=
 		ref new SizeChangedEventHandler(this, &DirectXPage::OnSwapChainPanelSizeChanged);
+
 
 	// At this point we have access to the device. 
 	// We can create the device-dependent resources.
@@ -204,7 +207,9 @@ void DirectXPage::OnSizeChanged(CoreWindow^ sender, WindowSizeChangedEventArgs^ 
 	// Prevent two threads from accessing the same resources.
 	critical_section::scoped_lock lock(m_main->GetCriticalSection());
 	m_deviceResources->CreateWindowSizeDependentResources();
-	m_main->OnSizeChanged(args);
+	m_main->OnSizeChanged(
+		args,
+		UIViewSettings::GetForCurrentView()->UserInteractionMode);
 }
 
 void DirectXPage::OnKeyDown(CoreWindow^ sender, KeyEventArgs^ args)

@@ -116,7 +116,7 @@
     <Compile Include="AddWaterCommand.cs" />
     <Compile Include="AddTreeCommand.cs" />
     <Compile Include="DefaultWorldBuilder.cs" />
-    <Compile Include="DeclareAreaCommand.cs" />
+    <Compile Include="DeclareRegionCommand.cs" />
     <Compile Include="DeclareCaveCommand.cs" />
     <Compile Include="DeclareDungeonCommand.cs" />
     <Compile Include="DeclareScreenCommand.cs" />

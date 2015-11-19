@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ServiceProxy
 {
-    public sealed class DeclareAreaCommand : WorldBuilderCommand
+    public sealed class DeclareRegionCommand : WorldBuilderCommand
     {
         private int type;
 
@@ -16,7 +16,7 @@ namespace ServiceProxy
             set { type = value; }
         }
 
-        public DeclareAreaCommand(int x, int y)
+        public DeclareRegionCommand(int x, int y)
         {
             this.type = 11;
         }

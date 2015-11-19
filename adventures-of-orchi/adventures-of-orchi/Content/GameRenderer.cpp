@@ -16,6 +16,7 @@ using namespace DirectX;
 using namespace Windows::Foundation;
 using namespace std;
 using namespace DX;
+using namespace Windows::UI::ViewManagement;
 
 
 // Loads vertex and pixel shaders from files and instantiates the cube geometry.
@@ -398,6 +399,11 @@ void GameRenderer::Render()
 	DrawSpriteIntersection();
 #endif // RENDER_DIAGNOSTICS
 
+	//	if (m_uiMode == UserInteractionMode::Touch)
+	{
+		RenderTouchControls();
+	}
+
 	HRESULT hr = DEVICE_CONTEXT_2D->EndDraw();
 	
 	RenderSpaces3D();
@@ -408,6 +414,8 @@ void GameRenderer::Render()
 	m_collidedRects.clear();
 	m_collidedRectStatuses.clear();
 #endif // RENDER_DIAGNOSTICS
+
+
 }
 
 void GameRenderer::CreateDeviceDependentResources()
@@ -720,13 +728,17 @@ void GameRenderer::OnKeyDown(Windows::UI::Core::KeyEventArgs^ args)
 }
 
 
-void GameRenderer::OnSizeChanged(WindowSizeChangedEventArgs^ args)
+void GameRenderer::OnSizeChanged(
+	WindowSizeChangedEventArgs^ args,
+	UserInteractionMode uiMode)
 {
 	grid.SetWindowWidth(m_window->Bounds.Width);
 	grid.SetWindowHeight(m_window->Bounds.Height);
 
 	m_fWindowWidth = m_window->Bounds.Width;
 	m_fWindowHeight = m_window->Bounds.Height;
+
+	m_uiMode = uiMode;
 }
 
 
@@ -811,4 +823,19 @@ void GameRenderer::UpdateSword()
 			m_pSword->Inertia(0.01f);
 		}
 	}
+}
+
+void GameRenderer::RenderTouchControls()
+{
+	D2D1_RECT_F rect
+	{
+		m_fWindowWidth * 0.01f,
+		m_fWindowHeight * 0.75f,
+		m_fWindowWidth * (LEFT_MARGIN_RATIO - 0.01f),
+		m_fWindowHeight * 0.95f
+	};
+	
+	m_deviceResources->GetD2DDeviceContext()->DrawRectangle(
+		rect,
+		m_deviceResources->m_whiteBrush.Get());
 }

@@ -23,6 +23,7 @@ using namespace Windows::UI::Core;
 using namespace std;
 using namespace Microsoft::WRL;
 using namespace DX;
+using namespace Windows::UI::ViewManagement;
 
 	// This sample renderer instantiates a basic rendering pipeline.
 	class GameRenderer
@@ -40,9 +41,11 @@ using namespace DX;
 		bool IsTracking() { return m_tracking; }
 
 		void OnKeyDown(KeyEventArgs ^ args);
-		void OnSizeChanged(WindowSizeChangedEventArgs ^ args);
+		void OnSizeChanged(
+			WindowSizeChangedEventArgs ^ args,
+			UserInteractionMode uiMode);
 
-
+		void RenderTouchControls();
 
 		Grid grid;
 
@@ -127,5 +130,6 @@ using namespace DX;
 		vector<InfoPanel *> * m_infoPanels;
 
 		XBoxOneControllerView xboxController;
+		UserInteractionMode m_uiMode;
 	};
 

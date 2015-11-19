@@ -5,6 +5,8 @@
 #include "Content\SampleFpsTextRenderer.h"
 #include "Content\GameRenderer.h"
 
+using namespace Windows::UI::ViewManagement;
+
 // Renders Direct2D and 3D content on the screen.
 namespace adventures_of_orchi
 {
@@ -38,7 +40,9 @@ namespace adventures_of_orchi
 		virtual void OnDeviceLost();
 		virtual void OnDeviceRestored();
 		void OnKeyDown(Windows::UI::Core::KeyEventArgs ^ args);
-		void OnSizeChanged(Windows::UI::Core::WindowSizeChangedEventArgs ^ args);
+		void OnSizeChanged(
+			Windows::UI::Core::WindowSizeChangedEventArgs ^ args,
+			UserInteractionMode uiMode);
 
 	private:
 		void ProcessInput();
