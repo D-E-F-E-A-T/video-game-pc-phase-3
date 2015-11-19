@@ -18,6 +18,7 @@ public:
 	Stack * LoadScreen(int nDirection);
 	Stack * Move(int nDirection);
 	Stack * Move(Space * currentSpace, int nDirection);
+	void Move(Stack *);
 
 protected:
 	int m_lpnWorldDimensions[2];

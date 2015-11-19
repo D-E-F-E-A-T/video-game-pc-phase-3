@@ -238,3 +238,8 @@ Stack * World::Move(int nDirection)
 
 	return LoadScreen(nColumn, nRow);
 }
+
+void World::Move(Stack * pStack)
+{
+//	m_nCurrentStackIndex = pStack->
+}

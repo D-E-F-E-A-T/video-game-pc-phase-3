@@ -24,8 +24,6 @@ using namespace std;
 using namespace Microsoft::WRL;
 using namespace DX;
 
-namespace adventures_of_orchi
-{
 	// This sample renderer instantiates a basic rendering pipeline.
 	class GameRenderer
 	{
@@ -44,10 +42,15 @@ namespace adventures_of_orchi
 		void OnKeyDown(KeyEventArgs ^ args);
 		void OnSizeChanged(WindowSizeChangedEventArgs ^ args);
 
+
+
 		Grid grid;
 
 		void DrawLeftMargin();
 		void DrawRightMargin();
+
+		Stack * GetCurrentStack() { return m_pCurrentStack; }
+		void SetCurrentStack(Stack * pStack) { m_pCurrentStack = pStack; }
 
 	private:
 		// TODO: Move these to Sword.
@@ -125,5 +128,4 @@ namespace adventures_of_orchi
 
 		XBoxOneControllerView xboxController;
 	};
-}
 

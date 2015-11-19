@@ -284,6 +284,21 @@
     <ClInclude Include="Controller\XBoxOneControllerView.h">
       <Filter>Controller</Filter>
     </ClInclude>
+    <ClInclude Include="Model\Region.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Dungeon.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Cave.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Underground.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Onground.h">
+      <Filter>Model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\StoreLogo.png">

@@ -3,6 +3,8 @@
 #include "..\Constants.h"
 #include "..\Common\DeviceResources.h"
 #include "Renderable.h"
+#include "Action.h"
+//#include "..\Content\GameRenderer.h"
 
 
 
@@ -38,10 +40,11 @@ public:
 		float2 fScaleDimensions,
 		float dpi);
 
-	//virtual Action * Act(World * pWorld)
+	//virtual int Act(GameRenderer *, World *)
 	//{
-	//	return nullptr;
+	//	return 0;
 	//}
+
 	// "Rotate" connotes turning away from the 
 	//	current angle. 
 	void TurnTowards(float fRadians) 

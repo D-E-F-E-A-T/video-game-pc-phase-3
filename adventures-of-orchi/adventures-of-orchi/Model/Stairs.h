@@ -6,7 +6,7 @@
 #include "Space.h"
 #include "Texture.h"
 #include "..\World.h"
-
+//#include "..\Content\GameRenderer.h"
 
 class Stairs : public Portal
 {
@@ -30,7 +30,7 @@ public:
 
 	bool IsOverlapping(Player * pPlayer, Space * pSpace);
 
-	//Action * Act(World *);
+	//int Act(GameRenderer *, World *);
 
 protected:
 

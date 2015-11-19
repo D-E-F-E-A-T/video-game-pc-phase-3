@@ -255,16 +255,13 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 #ifdef RENDER_DIAGNOSTICS
 				if (m_nCollisionState != NO_INTERSECTION)
 				{
-//					if (m_nCollisionState == COLLISION)
-//					{
-//						m_pCurrentStack = m_pWorld->Move((*iterator), DOWNSTAIRS);
-//
-////						// TODO: Use Actions
-//						int actionCode = (*iterator)->Act(m_pCurrentStack);
-//
-//						if (actionCode == 1)
-//							return 0;
-//					}
+					//if (m_nCollisionState == COLLISION)
+					//{
+					//	int actionCode = (*iterator)->Act(this, m_pWorld);
+
+					//	if (actionCode == 1)
+					//		return 0;
+					//}
 
 					D2D1_RECT_F rect
 					{
