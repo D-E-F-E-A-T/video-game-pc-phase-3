@@ -393,6 +393,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LocalData\LocalData.csproj">
+      <Project>{bfd2f085-f025-481a-b93f-9f9757085e41}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\ServiceProxy\ServiceProxy.csproj">
       <Project>{3c3d9c5d-eaa4-42e0-a3c3-5a204037c1f9}</Project>
     </ProjectReference>

@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Stack.h"
 class Region
 {
 public:
