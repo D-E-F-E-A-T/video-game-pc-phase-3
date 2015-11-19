@@ -399,7 +399,7 @@ void GameRenderer::Render()
 	DrawSpriteIntersection();
 #endif // RENDER_DIAGNOSTICS
 
-	//	if (m_uiMode == UserInteractionMode::Touch)
+	if (m_uiMode == UserInteractionMode::Touch)
 	{
 		RenderTouchControls();
 	}
