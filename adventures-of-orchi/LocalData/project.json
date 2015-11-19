@@ -1,6 +1,7 @@
 ﻿{
   "dependencies": {
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
+    "Siaqodb": "5.0.0.7",
     "SQLite.Net-PCL": "3.1.1"
   },
   "frameworks": {
