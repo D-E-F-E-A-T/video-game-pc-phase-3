@@ -55,6 +55,7 @@ using namespace Windows::UI::ViewManagement;
 		Stack * GetCurrentStack() { return m_pCurrentStack; }
 		void SetCurrentStack(Stack * pStack) { m_pCurrentStack = pStack; }
 
+		void SetUserInteractionMode(UserInteractionMode uiMode);
 	private:
 		// TODO: Move these to Sword.
 		void ThrowSword(int nDirection);

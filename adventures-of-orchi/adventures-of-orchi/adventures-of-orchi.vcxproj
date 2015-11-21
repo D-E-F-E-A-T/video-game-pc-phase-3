@@ -212,6 +212,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonsPanel.h" />
+    <ClInclude Include="Content\Landscape.h" />
+    <ClInclude Include="Content\OrientationRenderer.h" />
+    <ClInclude Include="Content\Portrait.h" />
+    <ClInclude Include="Content\ScreenOrientation.h" />
     <ClInclude Include="Controller\KeyboardControllerView.h" />
     <ClInclude Include="Controller\XBoxOneControllerView.h" />
     <ClInclude Include="Controller\TouchScreenControllerView.h" />
@@ -305,6 +309,8 @@
     <ClCompile Include="Common\DeviceResources.cpp" />
     <ClCompile Include="adventures_of_orchiMain.cpp" />
     <ClCompile Include="Content\GameRenderer.cpp" />
+    <ClCompile Include="Content\Landscape.cpp" />
+    <ClCompile Include="Content\Portrait.cpp" />
     <ClCompile Include="Controller\XBoxOneControllerView.cpp" />
     <ClCompile Include="DDSTextureLoader.cpp" />
     <ClCompile Include="DirectXPage.xaml.cpp">

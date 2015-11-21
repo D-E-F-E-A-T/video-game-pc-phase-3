@@ -741,6 +741,11 @@ void GameRenderer::OnSizeChanged(
 	m_uiMode = uiMode;
 }
 
+void GameRenderer::SetUserInteractionMode(UserInteractionMode uiMode)
+{
+	m_uiMode = uiMode;
+}
+
 
 void GameRenderer::DrawLeftMargin()
 {

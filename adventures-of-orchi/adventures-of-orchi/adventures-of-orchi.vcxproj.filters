@@ -129,6 +129,12 @@
     <ClCompile Include="Controller\XBoxOneControllerView.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
+    <ClCompile Include="Content\Landscape.cpp">
+      <Filter>Content</Filter>
+    </ClCompile>
+    <ClCompile Include="Content\Portrait.cpp">
+      <Filter>Content</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -298,6 +304,18 @@
     </ClInclude>
     <ClInclude Include="Model\Onground.h">
       <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Content\Landscape.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="Content\Portrait.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="Content\ScreenOrientation.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="Content\OrientationRenderer.h">
+      <Filter>Content</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

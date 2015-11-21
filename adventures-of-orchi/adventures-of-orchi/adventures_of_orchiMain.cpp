@@ -149,6 +149,11 @@ void adventures_of_orchiMain::OnSizeChanged(
 	m_gameRenderer->OnSizeChanged(args, uiMode);
 }
 
+void adventures_of_orchiMain::SetUserInteractionMode(UserInteractionMode uiMode)
+{
+	m_gameRenderer->SetUserInteractionMode(uiMode);
+}
+
 // Notifies renderers that device resources need to be released.
 void adventures_of_orchiMain::OnDeviceLost()
 {

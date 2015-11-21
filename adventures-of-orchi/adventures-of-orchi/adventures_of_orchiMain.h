@@ -44,6 +44,8 @@ namespace adventures_of_orchi
 			Windows::UI::Core::WindowSizeChangedEventArgs ^ args,
 			UserInteractionMode uiMode);
 
+		void SetUserInteractionMode(UserInteractionMode uiMode);
+
 	private:
 		void ProcessInput();
 		int Update();

@@ -90,7 +90,14 @@ DirectXPage::DirectXPage():
 	m_inputLoopWorker = ThreadPool::RunAsync(workItemHandler, WorkItemPriority::High, WorkItemOptions::TimeSliced);
 
 	m_main = std::unique_ptr<adventures_of_orchiMain>(new adventures_of_orchiMain(m_deviceResources, window));
+
+	// If device is in tablet mode, display touch screen controls if no 
+	//	keyboard is attached when started.
+	m_main->SetUserInteractionMode(
+		UIViewSettings::GetForCurrentView()->UserInteractionMode);
+
 	m_main->StartRenderLoop();
+
 }
 
 DirectXPage::~DirectXPage()
