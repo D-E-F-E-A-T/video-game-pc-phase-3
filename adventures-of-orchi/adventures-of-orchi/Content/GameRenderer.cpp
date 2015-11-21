@@ -23,7 +23,7 @@ GameRenderer::GameRenderer(const shared_ptr<DeviceResources>& deviceResources, C
 	m_loadingComplete(false),
 	m_degreesPerSecond(45),
 	m_indexCount(0),
-	m_tracking(false),
+//	m_tracking(false),
 	m_deviceResources(deviceResources)
 {
 	m_window = window;
@@ -156,7 +156,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 {
 	// DO NOT USE m_window HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-	if (!m_tracking)
+//	if (!m_tracking)
 	{
 		xboxController.FetchControllerInput();
 
@@ -300,6 +300,21 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 				ThrowSword(m_nSwordDirection);
 			}
 		}
+		else
+		{
+			if (m_bNorthButtonPressed)
+				m_pPlayer->MoveNorth(m_nCollisionState, PLAYER_MOVE_VELOCITY);
+			else if (m_bEastButtonPressed)
+				m_pPlayer->MoveEast(m_nCollisionState, PLAYER_MOVE_VELOCITY);
+			else if (m_bSouthButtonPressed)
+				m_pPlayer->MoveSouth(m_nCollisionState, PLAYER_MOVE_VELOCITY);
+			else if (m_bWestButtonPressed)
+				m_pPlayer->MoveWest(m_nCollisionState, PLAYER_MOVE_VELOCITY);
+		
+
+			if (m_bAButtonPressed)
+				ThrowSword(m_nSwordDirection);
+		}
 
 
 	}
@@ -316,17 +331,17 @@ void GameRenderer::Rotate(float radians)
 
 void GameRenderer::StartTracking()
 {
-	m_tracking = true;
+//	m_tracking = true;
 }
 
 // When tracking, the 3D cube can be rotated around its Y axis by tracking pointer position relative to the output screen width.
 void GameRenderer::TrackingUpdate(float positionX)
 {
-	if (m_tracking)
-	{
-		float radians = XM_2PI * 2.0f * positionX / m_deviceResources->GetOutputSize().Width;
-		Rotate(radians);
-	}
+	//if (m_tracking)
+	//{
+	//	float radians = XM_2PI * 2.0f * positionX / m_deviceResources->GetOutputSize().Width;
+	//	Rotate(radians);
+	//}
 }
 
 void GameRenderer::StopTracking()
@@ -398,7 +413,7 @@ void GameRenderer::Render()
 	DrawSpriteIntersection();
 #endif // RENDER_DIAGNOSTICS
 
-//	if (m_uiMode == UserInteractionMode::Touch)
+	if (m_uiMode == UserInteractionMode::Touch)
 	{
 		RenderButtonTouchControls();
 		RenderDirectionalTouchControls();
@@ -873,9 +888,18 @@ void GameRenderer::RenderButtonTouchControls()
 		m_fWindowWidth * BUTTON_SIZE_RATIO
 	};
 
-	m_deviceResources->GetD2DDeviceContext()->FillEllipse(
-		ellipseX,
-		m_deviceResources->m_blueBrush.Get());
+	if (m_bXButtonPressed == false)
+	{
+		m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
+			ellipseX,
+			m_deviceResources->m_blueBrush.Get());
+	}
+	else
+	{
+		m_deviceResources->GetD2DDeviceContext()->FillEllipse(
+			ellipseX,
+			m_deviceResources->m_blueBrush.Get());
+	}
 
 
 	D2D1_ELLIPSE ellipseB
@@ -889,9 +913,18 @@ void GameRenderer::RenderButtonTouchControls()
 		m_fWindowWidth * BUTTON_SIZE_RATIO
 	};
 
-	m_deviceResources->GetD2DDeviceContext()->FillEllipse(
-		ellipseB,
-		m_deviceResources->m_redBrush.Get());
+	if (m_bBButtonPressed == false)
+	{
+		m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
+			ellipseB,
+			m_deviceResources->m_redBrush.Get());
+	}
+	else
+	{
+		m_deviceResources->GetD2DDeviceContext()->FillEllipse(
+			ellipseB,
+			m_deviceResources->m_redBrush.Get());
+	}
 
 	D2D1_ELLIPSE ellipseA
 	{
@@ -904,9 +937,18 @@ void GameRenderer::RenderButtonTouchControls()
 		m_fWindowWidth * BUTTON_SIZE_RATIO
 	};
 
-	m_deviceResources->GetD2DDeviceContext()->FillEllipse(
-		ellipseA,
-		m_deviceResources->m_greenBrush.Get());
+	if (m_bAButtonPressed == false)
+	{
+		m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
+			ellipseA,
+			m_deviceResources->m_greenBrush.Get());
+	}
+	else
+	{
+		m_deviceResources->GetD2DDeviceContext()->FillEllipse(
+			ellipseA,
+			m_deviceResources->m_greenBrush.Get());
+	}
 
 	D2D1_ELLIPSE ellipseY
 	{
@@ -919,10 +961,18 @@ void GameRenderer::RenderButtonTouchControls()
 		m_fWindowWidth * BUTTON_SIZE_RATIO
 	};
 
-	m_deviceResources->GetD2DDeviceContext()->FillEllipse(
-		ellipseY,
-		m_deviceResources->m_yellowBrush.Get());
-
+	if (m_bYButtonPressed == false)
+	{
+		m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
+			ellipseY,
+			m_deviceResources->m_yellowBrush.Get());
+	}
+	else
+	{
+		m_deviceResources->GetD2DDeviceContext()->FillEllipse(
+			ellipseY,
+			m_deviceResources->m_yellowBrush.Get());
+	}
 }
 
 void GameRenderer::RenderDirectionalTouchControls()
@@ -932,19 +982,19 @@ void GameRenderer::RenderDirectionalTouchControls()
 	float boundsRight = m_fWindowWidth * (LEFT_MARGIN_RATIO - 0.01f);
 	float boundsBottom = m_fWindowHeight * 0.95f;
 
-/*
-	D2D1_RECT_F rectLeft
-	{
-		boundsLeft,
-		boundsTop,
-		boundsRight,
-		boundsBottom
-	};
+	/*
+		D2D1_RECT_F rectLeft
+		{
+			boundsLeft,
+			boundsTop,
+			boundsRight,
+			boundsBottom
+		};
 
-	m_deviceResources->GetD2DDeviceContext()->DrawRectangle(
-		rectLeft,
-		m_deviceResources->m_whiteBrush.Get());
-*/
+		m_deviceResources->GetD2DDeviceContext()->DrawRectangle(
+			rectLeft,
+			m_deviceResources->m_whiteBrush.Get());
+	*/
 
 
 	float fMidpoint = (boundsRight - boundsLeft) / 2.0f;
@@ -968,9 +1018,18 @@ void GameRenderer::RenderDirectionalTouchControls()
 		m_fWindowWidth * BUTTON_SIZE_RATIO
 	};
 
-	m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
-		ellipseWest,
-		m_deviceResources->m_whiteBrush.Get());
+	if (m_bWestButtonPressed == false)
+	{
+		m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
+			ellipseWest,
+			m_deviceResources->m_whiteBrush.Get());
+	}
+	else
+	{
+		m_deviceResources->GetD2DDeviceContext()->FillEllipse(
+			ellipseWest,
+			m_deviceResources->m_whiteBrush.Get());
+	}
 
 
 	D2D1_ELLIPSE ellipseEast
@@ -984,9 +1043,18 @@ void GameRenderer::RenderDirectionalTouchControls()
 		m_fWindowWidth * BUTTON_SIZE_RATIO
 	};
 
-	m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
-		ellipseEast,
-		m_deviceResources->m_whiteBrush.Get());
+	if (m_bEastButtonPressed == false)
+	{
+		m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
+			ellipseEast,
+			m_deviceResources->m_whiteBrush.Get());
+	}
+	else
+	{
+		m_deviceResources->GetD2DDeviceContext()->FillEllipse(
+			ellipseEast,
+			m_deviceResources->m_whiteBrush.Get());
+	}
 
 	D2D1_ELLIPSE ellipseSouth
 	{
@@ -999,9 +1067,18 @@ void GameRenderer::RenderDirectionalTouchControls()
 		m_fWindowWidth * BUTTON_SIZE_RATIO
 	};
 
-	m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
-		ellipseSouth,
-		m_deviceResources->m_whiteBrush.Get());
+	if (m_bSouthButtonPressed == false)
+	{
+		m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
+			ellipseSouth,
+			m_deviceResources->m_whiteBrush.Get());
+	}
+	else
+	{
+		m_deviceResources->GetD2DDeviceContext()->FillEllipse(
+			ellipseSouth,
+			m_deviceResources->m_whiteBrush.Get());
+	}
 
 	D2D1_ELLIPSE ellipseNorth
 	{
@@ -1014,13 +1091,318 @@ void GameRenderer::RenderDirectionalTouchControls()
 		m_fWindowWidth * BUTTON_SIZE_RATIO
 	};
 
-	m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
-		ellipseNorth,
-		m_deviceResources->m_whiteBrush.Get());
+	if (m_bNorthButtonPressed == false)
+	{
+		m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
+			ellipseNorth,
+			m_deviceResources->m_whiteBrush.Get());
+	}
+	else
+	{
+		m_deviceResources->GetD2DDeviceContext()->FillEllipse(
+			ellipseNorth,
+			m_deviceResources->m_whiteBrush.Get());
+	}
 }
 
-void GameRenderer::OnPointerPressed(float fX, float fY)
+void GameRenderer::OnPointerReleased()
 {
-	float fWidth = m_deviceResources->GetOutputSize().Width;
-	float fHeight = m_deviceResources->GetOutputSize().Height;
+	if (m_bNorthButtonPressed ||
+		m_bEastButtonPressed ||
+		m_bSouthButtonPressed ||
+		m_bWestButtonPressed)
+	{
+		m_bNorthButtonPressed = false;
+		m_bEastButtonPressed = false;
+		m_bSouthButtonPressed = false;
+		m_bWestButtonPressed = false;
+	}
+
+	if (m_bYButtonPressed ||
+		m_bBButtonPressed ||
+		m_bAButtonPressed ||
+		m_bXButtonPressed)
+	{
+		m_bYButtonPressed = false;
+		m_bBButtonPressed = false;
+		m_bAButtonPressed = false;
+		m_bXButtonPressed = false;
+	}
 }
+
+void GameRenderer::OnPointerPressed(ResolutionScale resolutionScale, float fX, float fY)
+{
+	float fScaleFactor = 1.0f; // Recommended value.
+
+	if (CheckNorthButton(float2{ fX * fScaleFactor, fY * fScaleFactor }))
+		m_bNorthButtonPressed = true;
+
+	if (CheckEastButton(float2{ fX * fScaleFactor, fY * fScaleFactor }))
+		m_bEastButtonPressed = true;
+
+	if (CheckSouthButton(float2{ fX * fScaleFactor, fY * fScaleFactor }))
+		m_bSouthButtonPressed = true;
+
+	if (CheckWestButton(float2{ fX * fScaleFactor, fY * fScaleFactor }))
+		m_bWestButtonPressed = true;
+
+	if (CheckYButton(float2{ fX * fScaleFactor, fY * fScaleFactor }))
+		m_bYButtonPressed = true;
+
+	if (CheckBButton(float2{ fX * fScaleFactor, fY * fScaleFactor }))
+		m_bBButtonPressed = true;
+
+	if (CheckAButton(float2{ fX * fScaleFactor, fY * fScaleFactor }))
+		m_bAButtonPressed = true;
+
+	if (CheckXButton(float2{ fX * fScaleFactor, fY * fScaleFactor }))
+		m_bXButtonPressed = true;
+}
+
+bool GameRenderer::CheckNorthButton(float2 fHitPoint)
+{
+	bool retVal = false;
+
+	float boundsLeft = m_fWindowWidth * 0.01f;
+	float boundsTop = m_fWindowHeight * 0.75f;
+	float boundsRight = m_fWindowWidth * (LEFT_MARGIN_RATIO - 0.01f);
+	float boundsBottom = m_fWindowHeight * 0.95f;
+
+	float fMidpoint = (boundsRight - boundsLeft) / 2.0f;
+
+	float fX = boundsLeft + fMidpoint;
+
+	float fY =
+		(m_fWindowHeight * 0.95f -
+			m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT) / 2.0f;
+
+	fY += m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT;
+
+
+	float fButtonRadius = m_fWindowWidth * BUTTON_SIZE_RATIO;
+	float2 fButtonCenter = float2{ fX, fY - m_fWindowWidth * BUTTON_OFFSET_RATIO };
+
+	float fOffset = Utils::CalculateDistance(fButtonCenter, fHitPoint);
+
+	if (fOffset <= fButtonRadius)
+		retVal = true;
+
+	return retVal;
+}
+
+bool GameRenderer::CheckEastButton(float2 fHitPoint)
+{
+	bool retVal = false;
+
+	float boundsLeft = m_fWindowWidth * 0.01f;
+	float boundsTop = m_fWindowHeight * 0.75f;
+	float boundsRight = m_fWindowWidth * (LEFT_MARGIN_RATIO - 0.01f);
+	float boundsBottom = m_fWindowHeight * 0.95f;
+
+	float fMidpoint = (boundsRight - boundsLeft) / 2.0f;
+
+	float fX = boundsLeft + fMidpoint;
+
+	float fY =
+		(m_fWindowHeight * 0.95f -
+			m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT) / 2.0f;
+
+	fY += m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT;
+
+
+	float fButtonRadius = m_fWindowWidth * BUTTON_SIZE_RATIO;
+	float2 fButtonCenter = float2{ fX + m_fWindowWidth * BUTTON_OFFSET_RATIO, fY };
+
+	float fOffset = Utils::CalculateDistance(fButtonCenter, fHitPoint);
+
+	if (fOffset <= fButtonRadius)
+		retVal = true;
+
+	return retVal;
+}
+
+
+bool GameRenderer::CheckSouthButton(float2 fHitPoint)
+{
+	bool retVal = false;
+
+	float boundsLeft = m_fWindowWidth * 0.01f;
+	float boundsTop = m_fWindowHeight * 0.75f;
+	float boundsRight = m_fWindowWidth * (LEFT_MARGIN_RATIO - 0.01f);
+	float boundsBottom = m_fWindowHeight * 0.95f;
+
+	float fMidpoint = (boundsRight - boundsLeft) / 2.0f;
+
+	float fX = boundsLeft + fMidpoint;
+
+	float fY =
+		(m_fWindowHeight * 0.95f -
+			m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT) / 2.0f;
+
+	fY += m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT;
+
+
+	float fButtonRadius = m_fWindowWidth * BUTTON_SIZE_RATIO;
+	float2 fButtonCenter = float2{ fX, fY + m_fWindowWidth * BUTTON_OFFSET_RATIO };
+
+	float fOffset = Utils::CalculateDistance(fButtonCenter, fHitPoint);
+
+	if (fOffset <= fButtonRadius)
+		retVal = true;
+
+	return retVal;
+}
+
+bool GameRenderer::CheckWestButton(float2 fHitPoint)
+{
+	bool retVal = false;
+
+	float boundsLeft = m_fWindowWidth * 0.01f;
+	float boundsTop = m_fWindowHeight * 0.75f;
+	float boundsRight = m_fWindowWidth * (LEFT_MARGIN_RATIO - 0.01f);
+	float boundsBottom = m_fWindowHeight * 0.95f;
+
+	float fMidpoint = (boundsRight - boundsLeft) / 2.0f;
+
+	float fX = boundsLeft + fMidpoint;
+
+	float fY =
+		(m_fWindowHeight * 0.95f -
+			m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT) / 2.0f;
+
+	fY += m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT;
+
+
+	float fButtonRadius = m_fWindowWidth * BUTTON_SIZE_RATIO;
+	float2 fButtonCenter = float2{ fX - (m_fWindowWidth * BUTTON_OFFSET_RATIO), fY };
+
+	float fOffset = Utils::CalculateDistance(fButtonCenter, fHitPoint);
+
+	if (fOffset <= fButtonRadius)
+		retVal = true;
+
+	return retVal;
+}
+
+bool GameRenderer::CheckYButton(float2 fHitPoint)
+{
+	bool retVal = false;
+
+	float fX =
+		(
+			(m_fWindowWidth * 0.99f) -
+			(m_fWindowWidth * (1.f - RIGHT_MARGIN_RATIO + 0.01f))
+			) / 2.0f;
+
+	fX += m_fWindowWidth * (1.f - RIGHT_MARGIN_RATIO + 0.01f);
+
+	float fY =
+		(m_fWindowHeight * 0.95f -
+			m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT) / 2.0f;
+
+	fY += m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT;
+
+
+	float fButtonRadius = m_fWindowWidth * BUTTON_SIZE_RATIO;
+	float2 fButtonCenter = float2{ fX, fY - m_fWindowWidth * BUTTON_OFFSET_RATIO};
+
+	float fOffset = Utils::CalculateDistance(fButtonCenter, fHitPoint);
+
+	if (fOffset <= fButtonRadius)
+		retVal = true;
+
+	return retVal;
+}
+
+bool GameRenderer::CheckBButton(float2 fHitPoint)
+{
+	bool retVal = false;
+
+	float fX =
+		(
+			(m_fWindowWidth * 0.99f) -
+			(m_fWindowWidth * (1.f - RIGHT_MARGIN_RATIO + 0.01f))
+			) / 2.0f;
+
+	fX += m_fWindowWidth * (1.f - RIGHT_MARGIN_RATIO + 0.01f);
+
+	float fY =
+		(m_fWindowHeight * 0.95f -
+			m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT) / 2.0f;
+
+	fY += m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT;
+
+
+	float fButtonRadius = m_fWindowWidth * BUTTON_SIZE_RATIO;
+	float2 fButtonCenter = float2{ fX + m_fWindowWidth * BUTTON_OFFSET_RATIO, fY };
+
+	float fOffset = Utils::CalculateDistance(fButtonCenter, fHitPoint);
+
+	if (fOffset <= fButtonRadius)
+		retVal = true;
+
+	return retVal;
+}
+
+
+
+bool GameRenderer::CheckAButton(float2 fHitPoint)
+{
+	bool retVal = false;
+
+	float fX =
+		(
+			(m_fWindowWidth * 0.99f) -
+			(m_fWindowWidth * (1.f - RIGHT_MARGIN_RATIO + 0.01f))
+			) / 2.0f;
+
+	fX += m_fWindowWidth * (1.f - RIGHT_MARGIN_RATIO + 0.01f);
+
+	float fY =
+		(m_fWindowHeight * 0.95f -
+			m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT) / 2.0f;
+
+	fY += m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT;
+
+
+	float fButtonRadius = m_fWindowWidth * BUTTON_SIZE_RATIO;
+	float2 fButtonCenter = float2{ fX, fY + m_fWindowWidth * BUTTON_OFFSET_RATIO };
+
+	float fOffset = Utils::CalculateDistance(fButtonCenter, fHitPoint);
+
+	if (fOffset <= fButtonRadius)
+		retVal = true;
+
+	return retVal;
+}
+
+bool GameRenderer::CheckXButton(float2 fHitPoint)
+{
+	bool retVal = false;
+
+	float fX =
+		(
+			(m_fWindowWidth * 0.99f) -
+			(m_fWindowWidth * (1.f - RIGHT_MARGIN_RATIO + 0.01f))
+			) / 2.0f;
+
+	fX += m_fWindowWidth * (1.f - RIGHT_MARGIN_RATIO + 0.01f);
+
+	float fY =
+		(m_fWindowHeight * 0.95f -
+			m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT) / 2.0f;
+
+	fY += m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT;
+
+
+	float fButtonRadius = m_fWindowWidth * BUTTON_SIZE_RATIO;
+	float2 fButtonCenter = float2{ fX - m_fWindowWidth * BUTTON_OFFSET_RATIO, fY };
+
+	float fOffset = Utils::CalculateDistance(fButtonCenter, fHitPoint);
+
+	if (fOffset <= fButtonRadius)
+		retVal = true;
+
+	return retVal;
+}
+

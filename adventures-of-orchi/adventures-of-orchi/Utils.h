@@ -27,4 +27,6 @@ public:
 	static void ConvertGlobalToGridLocation(float2 globalPt, float * x, float * y);
 	static void InsertionSortF(float values[], int length);
 	static float GetMinValue(vector<float> values, int * index);
+
+	static float CalculateDistance(float2 pt, float2 p2);
 };

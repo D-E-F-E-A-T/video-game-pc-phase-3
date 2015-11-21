@@ -183,10 +183,12 @@ void DirectXPage::OnPointerPressed(Object^ sender, PointerEventArgs^ e)
 	float fX = e->CurrentPoint->Position.X;
 	float fY = e->CurrentPoint->Position.Y;
 
-	float bounds = Window::Current->CoreWindow->Bounds.Height;
+	// http://stackoverflow.com/questions/15120862/why-are-the-maximum-x-and-y-touch-coordinates-on-the-surface-pro-is-different-fr
+	// Use this to calculate XAML coordinates which are different from DX coordinates.
+	ResolutionScale resolutionScale =
+		DisplayProperties::ResolutionScale;
 
-	m_main->OnPointerPressed(fX, fY);
-	
+	m_main->OnPointerPressed(resolutionScale, fX, fY);
 }
 
 void DirectXPage::OnPointerMoved(Object^ sender, PointerEventArgs^ e)
@@ -202,6 +204,8 @@ void DirectXPage::OnPointerReleased(Object^ sender, PointerEventArgs^ e)
 {
 	// Stop tracking pointer movement when the pointer is released.
 	m_main->StopTracking();
+
+	m_main->OnPointerReleased();
 }
 
 void DirectXPage::OnCompositionScaleChanged(SwapChainPanel^ sender, Object^ args)

@@ -23,9 +23,14 @@ namespace adventures_of_orchi
 
 		}
 
-		void OnPointerPressed(float fX, float fY)
+		void OnPointerPressed(ResolutionScale resolutionScale, float fX, float fY)
 		{
-			m_gameRenderer->OnPointerPressed(fX, fY);
+			m_gameRenderer->OnPointerPressed(resolutionScale, fX, fY);
+		}
+
+		void OnPointerReleased()
+		{
+			m_gameRenderer->OnPointerReleased();
 		}
 
 		void TrackingUpdate(float positionX) { m_pointerLocationX = positionX; }

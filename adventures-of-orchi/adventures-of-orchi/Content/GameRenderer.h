@@ -24,14 +24,15 @@ using namespace std;
 using namespace Microsoft::WRL;
 using namespace DX;
 using namespace Windows::UI::ViewManagement;
+using namespace Windows::Graphics::Display;
 
 	// This sample renderer instantiates a basic rendering pipeline.
 	class GameRenderer
 	{
 	public:
 		GameRenderer(const std::shared_ptr<DeviceResources>& deviceResources, CoreWindow ^ window);
-		void OnPointerPressed(float fX, float fY);
-
+		void OnPointerPressed(ResolutionScale fResolutionScale, float fX, float fY);
+		void OnPointerReleased();
 		void CreateDeviceDependentResources();
 		void CreateWindowSizeDependentResources();
 		void ReleaseDeviceDependentResources();
@@ -135,5 +136,28 @@ using namespace Windows::UI::ViewManagement;
 
 		XBoxOneControllerView xboxController;
 		UserInteractionMode m_uiMode;
+
+		// TODO: Use function pointers:
+		bool CheckNorthButton(float2 fHitPoint);
+		bool CheckEastButton(float2 fHitPoint);
+		bool CheckSouthButton(float2 fHitPoint);
+		bool CheckWestButton(float2 fHitPoint);
+
+		bool m_bNorthButtonPressed;
+		bool m_bEastButtonPressed;
+		bool m_bSouthButtonPressed;
+		bool m_bWestButtonPressed;
+
+		bool CheckYButton(float2 fHitPoint);
+		bool CheckBButton(float2 fHitPoint);
+		bool CheckAButton(float2 fHitPoint);
+		bool CheckXButton(float2 fHitPoint);
+
+		bool m_bYButtonPressed;
+		bool m_bBButtonPressed;
+		bool m_bAButtonPressed;
+		bool m_bXButtonPressed;
+
+
 	};
 

@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "NarrowCollisionStrategy.h"
 #include "Model\Player.h"
-#include "MathUtils.h"
+#include "Utils.h"
 #include <iostream>
 #include <Windows.h>
 #include "..\Sprites\SpriteUtils.h"

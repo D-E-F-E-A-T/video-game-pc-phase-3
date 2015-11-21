@@ -94,7 +94,6 @@
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="BroadCollisionStrategy.cpp" />
     <ClCompile Include="NarrowCollisionStrategy.cpp" />
-    <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="LeftMargin.cpp" />
     <ClCompile Include="RightMargin.cpp" />
     <ClCompile Include="Model\Player.cpp">
@@ -179,7 +178,6 @@
     <ClInclude Include="Constants.h" />
     <ClInclude Include="BroadCollisionStrategy.h" />
     <ClInclude Include="NarrowCollisionStrategy.h" />
-    <ClInclude Include="MathUtils.h" />
     <ClInclude Include="LeftMargin.h" />
     <ClInclude Include="RightMargin.h" />
     <ClInclude Include="Model\Space.h">

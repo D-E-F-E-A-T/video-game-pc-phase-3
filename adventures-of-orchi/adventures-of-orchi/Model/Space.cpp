@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Space.h"
-#include "..\MathUtils.h"
+#include "..\Utils.h"
 #include "..\Sprites\SpriteUtils.h"
 
 using namespace std;
@@ -36,7 +36,7 @@ float2 Space::GetLocationRatio()
 
 float Space::CalculateDistance(Space * space)
 {
-	return MathUtils::CalculateDistance(
+	return Utils::CalculateDistance(
 		m_fLocationRatio, 
 		space->GetLocationRatio());
 }

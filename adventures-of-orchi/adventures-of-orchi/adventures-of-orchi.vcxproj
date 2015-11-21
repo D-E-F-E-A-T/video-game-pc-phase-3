@@ -261,7 +261,6 @@
     <ClInclude Include="GridSpace.h" />
     <ClInclude Include="IDeviceNotify.h" />
     <ClInclude Include="LeftMargin.h" />
-    <ClInclude Include="MathUtils.h" />
     <ClInclude Include="Model\AbsoluteLocationStrategy.h" />
     <ClInclude Include="Model\Character.h" />
     <ClInclude Include="Model\Diagnostic.h" />
@@ -324,7 +323,6 @@
     <ClCompile Include="InfoPanel\MapPanel.cpp" />
     <ClCompile Include="InfoPanel\PackPanel.cpp" />
     <ClCompile Include="LeftMargin.cpp" />
-    <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="Model\Edge.cpp" />
     <ClCompile Include="Model\Movable.cpp" />
     <ClCompile Include="Model\Texture.cpp" />
