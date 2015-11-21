@@ -11,12 +11,12 @@
 #include "..\PortalCollisionStrategy.h"
 #include "..\World.h"
 #include "Model\Sword.h"
-#include "..\LifePanel.h"
-#include "..\MapPanel.h"
-#include "..\ButtonsPanel.h"
-#include "..\PackPanel.h"
-#include "..\InventoryPanel.h"
-#include "..\InfoPanel.h"
+#include "..\InfoPanel\LifePanel.h"
+#include "..\InfoPanel\MapPanel.h"
+#include "..\InfoPanel\ButtonsPanel.h"
+#include "..\InfoPanel\PackPanel.h"
+#include "..\InfoPanel\InventoryPanel.h"
+#include "..\InfoPanel\InfoPanel.h"
 #include "..\Controller\XBoxOneControllerView.h"
 
 using namespace Windows::UI::Core;
@@ -30,6 +30,8 @@ using namespace Windows::UI::ViewManagement;
 	{
 	public:
 		GameRenderer(const std::shared_ptr<DeviceResources>& deviceResources, CoreWindow ^ window);
+		void OnPointerPressed(float fX, float fY);
+
 		void CreateDeviceDependentResources();
 		void CreateWindowSizeDependentResources();
 		void ReleaseDeviceDependentResources();
@@ -45,7 +47,8 @@ using namespace Windows::UI::ViewManagement;
 			WindowSizeChangedEventArgs ^ args,
 			UserInteractionMode uiMode);
 
-		void RenderTouchControls();
+		void RenderButtonTouchControls();
+		void RenderDirectionalTouchControls();
 
 		Grid grid;
 

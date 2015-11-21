@@ -9,17 +9,15 @@ using namespace DirectX;
 using namespace Microsoft::WRL;
 using namespace DX;
 
-
-void MapPanel::DrawText(const shared_ptr<DeviceResources>& deviceResources)
+void MapPanel::Render(const shared_ptr<DeviceResources>& deviceResources)
 {
 	D2D1_SIZE_F size = deviceResources->GetD2DDeviceContext()->GetSize();
 
+	float fLeft = size.width * 0.01f;
 	float fTop = size.height * 0.01f;
-	float fLeft = 0.0f;// size.width - (size.width * LEFT_MARGIN_RATIO);
+	float fRight = size.width * (LEFT_MARGIN_RATIO - 0.01f);
+	float fBottom = size.height / INFO_PANEL_HEIGHT_CONSTANT;
 
-	deviceResources->GetD2DDeviceContext()->DrawTextLayout(
-		D2D1::Point2F(fLeft, fTop),
-		m_textLayout.Get(),
-		deviceResources->m_whiteBrush.Get()
-		);
+	DrawText(fLeft, fTop, deviceResources);
+	DrawBox(fLeft, fTop, fRight, fBottom, deviceResources);
 }

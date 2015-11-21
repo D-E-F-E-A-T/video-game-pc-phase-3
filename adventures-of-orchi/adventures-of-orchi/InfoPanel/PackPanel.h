@@ -11,14 +11,12 @@ using namespace DX;
 using namespace std;
 
 
-class InventoryPanel : public InfoPanel
+class PackPanel : public InfoPanel
 {
 public:
-
-	void DrawText(const shared_ptr<DeviceResources>& deviceResources);
+	void Render(const shared_ptr<DeviceResources>& deviceResources);
 
 protected:
 
 private:
-
 };

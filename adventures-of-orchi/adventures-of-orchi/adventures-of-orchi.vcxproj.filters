@@ -68,6 +68,9 @@
     <Filter Include="Render">
       <UniqueIdentifier>{55aa0f64-9643-4ced-ba31-15afbd01a1bd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="InfoPanel">
+      <UniqueIdentifier>{78acb2bb-dc4a-4e3a-abab-6f0070f65eff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -94,7 +97,6 @@
     <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="LeftMargin.cpp" />
     <ClCompile Include="RightMargin.cpp" />
-    <ClCompile Include="LifePanel.cpp" />
     <ClCompile Include="Model\Player.cpp">
       <Filter>Model</Filter>
     </ClCompile>
@@ -122,10 +124,6 @@
       <Filter>Model</Filter>
     </ClCompile>
     <ClCompile Include="Utils.cpp" />
-    <ClCompile Include="MapPanel.cpp" />
-    <ClCompile Include="ButtonsPanel.cpp" />
-    <ClCompile Include="PackPanel.cpp" />
-    <ClCompile Include="InventoryPanel.cpp" />
     <ClCompile Include="Controller\XBoxOneControllerView.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
@@ -134,6 +132,24 @@
     </ClCompile>
     <ClCompile Include="Content\Portrait.cpp">
       <Filter>Content</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoPanel\ButtonsPanel.cpp">
+      <Filter>InfoPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoPanel\InventoryPanel.cpp">
+      <Filter>InfoPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoPanel\LifePanel.cpp">
+      <Filter>InfoPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoPanel\MapPanel.cpp">
+      <Filter>InfoPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoPanel\PackPanel.cpp">
+      <Filter>InfoPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoPanel\InfoPanel.cpp">
+      <Filter>InfoPanel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -166,7 +182,6 @@
     <ClInclude Include="MathUtils.h" />
     <ClInclude Include="LeftMargin.h" />
     <ClInclude Include="RightMargin.h" />
-    <ClInclude Include="LifePanel.h" />
     <ClInclude Include="Model\Space.h">
       <Filter>Model</Filter>
     </ClInclude>
@@ -282,11 +297,6 @@
     <ClInclude Include="Model\Figure.h">
       <Filter>Model</Filter>
     </ClInclude>
-    <ClInclude Include="MapPanel.h" />
-    <ClInclude Include="ButtonsPanel.h" />
-    <ClInclude Include="PackPanel.h" />
-    <ClInclude Include="InventoryPanel.h" />
-    <ClInclude Include="InfoPanel.h" />
     <ClInclude Include="Controller\XBoxOneControllerView.h">
       <Filter>Controller</Filter>
     </ClInclude>
@@ -316,6 +326,24 @@
     </ClInclude>
     <ClInclude Include="Content\OrientationRenderer.h">
       <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoPanel\ButtonsPanel.h">
+      <Filter>InfoPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoPanel\InfoPanel.h">
+      <Filter>InfoPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoPanel\InventoryPanel.h">
+      <Filter>InfoPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoPanel\LifePanel.h">
+      <Filter>InfoPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoPanel\MapPanel.h">
+      <Filter>InfoPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoPanel\PackPanel.h">
+      <Filter>InfoPanel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

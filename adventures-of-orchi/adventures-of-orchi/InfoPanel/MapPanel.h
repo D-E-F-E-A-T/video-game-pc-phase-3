@@ -10,13 +10,13 @@ using namespace Microsoft::WRL;
 using namespace DX;
 using namespace std;
 
-
-class ButtonsPanel : public InfoPanel
+class MapPanel : public InfoPanel
 {
 public:
-	void DrawText(const shared_ptr<DeviceResources>& deviceResources);
+	void Render(const shared_ptr<DeviceResources>& deviceResources);
 
 protected:
+
 
 private:
 };

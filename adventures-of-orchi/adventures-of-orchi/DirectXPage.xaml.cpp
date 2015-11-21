@@ -35,6 +35,8 @@ DirectXPage::DirectXPage():
 	// Register event handlers for page lifecycle.
 	CoreWindow^ window = Window::Current->CoreWindow;
 
+	// https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.window.sizechanged.aspx
+	// Used to detect orientation change.
 	window->SizeChanged +=
 		ref new TypedEventHandler<CoreWindow^, WindowSizeChangedEventArgs^>(this, &DirectXPage::OnSizeChanged);
 
@@ -177,6 +179,14 @@ void DirectXPage::OnPointerPressed(Object^ sender, PointerEventArgs^ e)
 {
 	// When the pointer is pressed begin tracking the pointer movement.
 	m_main->StartTracking();
+
+	float fX = e->CurrentPoint->Position.X;
+	float fY = e->CurrentPoint->Position.Y;
+
+	float bounds = Window::Current->CoreWindow->Bounds.Height;
+
+	m_main->OnPointerPressed(fX, fY);
+	
 }
 
 void DirectXPage::OnPointerMoved(Object^ sender, PointerEventArgs^ e)

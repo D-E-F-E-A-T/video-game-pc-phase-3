@@ -4,7 +4,6 @@
 #include "..\Common\DirectXHelper.h"
 #include "LeftMargin.h"
 #include "RightMargin.h"
-#include "LifePanel.h"
 #include "..\Model\VectorGraphic.h"
 #include "..\Model\Edge.h"
 #include "Utils.h"
@@ -358,7 +357,7 @@ void GameRenderer::Render()
 
 	for (iterInfoPanels = m_infoPanels->begin(); iterInfoPanels != m_infoPanels->end(); iterInfoPanels++)
 	{
-		(*iterInfoPanels)->DrawText(m_deviceResources);
+		(*iterInfoPanels)->Render(m_deviceResources);
 	}
 
 
@@ -399,9 +398,10 @@ void GameRenderer::Render()
 	DrawSpriteIntersection();
 #endif // RENDER_DIAGNOSTICS
 
-	if (m_uiMode == UserInteractionMode::Touch)
+//	if (m_uiMode == UserInteractionMode::Touch)
 	{
-		RenderTouchControls();
+		RenderButtonTouchControls();
+		RenderDirectionalTouchControls();
 	}
 
 	HRESULT hr = DEVICE_CONTEXT_2D->EndDraw();
@@ -830,20 +830,9 @@ void GameRenderer::UpdateSword()
 	}
 }
 
-void GameRenderer::RenderTouchControls()
+void GameRenderer::RenderButtonTouchControls()
 {
-	D2D1_RECT_F rectLeft
-	{
-		m_fWindowWidth * 0.01f,
-		m_fWindowHeight * 0.75f,
-		m_fWindowWidth * (LEFT_MARGIN_RATIO - 0.01f),
-		m_fWindowHeight * 0.95f
-	};
-	
-	m_deviceResources->GetD2DDeviceContext()->DrawRectangle(
-		rectLeft,
-		m_deviceResources->m_whiteBrush.Get());
-
+/*
 	D2D1_RECT_F rectRight
 	{
 		m_fWindowWidth * (1.f - RIGHT_MARGIN_RATIO + 0.01f),
@@ -855,6 +844,7 @@ void GameRenderer::RenderTouchControls()
 	m_deviceResources->GetD2DDeviceContext()->DrawRectangle(
 		rectRight,
 		m_deviceResources->m_whiteBrush.Get());
+*/
 
 
 	float fX =
@@ -867,9 +857,9 @@ void GameRenderer::RenderTouchControls()
 
 	float fY =
 		(m_fWindowHeight * 0.95f -
-			m_fWindowHeight * 0.75f) / 2.0f;
+			m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT) / 2.0f;
 
-	fY += m_fWindowHeight * 0.75f;
+	fY += m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT;
 		
 
 	D2D1_ELLIPSE ellipseX
@@ -933,4 +923,104 @@ void GameRenderer::RenderTouchControls()
 		ellipseY,
 		m_deviceResources->m_yellowBrush.Get());
 
+}
+
+void GameRenderer::RenderDirectionalTouchControls()
+{
+	float boundsLeft = m_fWindowWidth * 0.01f;
+	float boundsTop = m_fWindowHeight * 0.75f;
+	float boundsRight = m_fWindowWidth * (LEFT_MARGIN_RATIO - 0.01f);
+	float boundsBottom = m_fWindowHeight * 0.95f;
+
+/*
+	D2D1_RECT_F rectLeft
+	{
+		boundsLeft,
+		boundsTop,
+		boundsRight,
+		boundsBottom
+	};
+
+	m_deviceResources->GetD2DDeviceContext()->DrawRectangle(
+		rectLeft,
+		m_deviceResources->m_whiteBrush.Get());
+*/
+
+
+	float fMidpoint = (boundsRight - boundsLeft) / 2.0f;
+
+	float fX = boundsLeft + fMidpoint;
+
+	float fY =
+		(m_fWindowHeight * 0.95f -
+			m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT) / 2.0f;
+
+	fY += m_fWindowHeight * TOUCH_CONTROLS_MIDPOINT_HEIGHT;
+
+	D2D1_ELLIPSE ellipseWest
+	{
+		D2D1_POINT_2F
+	{
+		fX - (m_fWindowWidth * BUTTON_OFFSET_RATIO),
+		fY
+	},
+		m_fWindowWidth * BUTTON_SIZE_RATIO,
+		m_fWindowWidth * BUTTON_SIZE_RATIO
+	};
+
+	m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
+		ellipseWest,
+		m_deviceResources->m_whiteBrush.Get());
+
+
+	D2D1_ELLIPSE ellipseEast
+	{
+		D2D1_POINT_2F
+	{
+		fX + m_fWindowWidth * BUTTON_OFFSET_RATIO,
+		fY
+	},
+		m_fWindowWidth * BUTTON_SIZE_RATIO,
+		m_fWindowWidth * BUTTON_SIZE_RATIO
+	};
+
+	m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
+		ellipseEast,
+		m_deviceResources->m_whiteBrush.Get());
+
+	D2D1_ELLIPSE ellipseSouth
+	{
+		D2D1_POINT_2F
+	{
+		fX,
+		fY + m_fWindowWidth * BUTTON_OFFSET_RATIO,
+	},
+		m_fWindowWidth * BUTTON_SIZE_RATIO,
+		m_fWindowWidth * BUTTON_SIZE_RATIO
+	};
+
+	m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
+		ellipseSouth,
+		m_deviceResources->m_whiteBrush.Get());
+
+	D2D1_ELLIPSE ellipseNorth
+	{
+		D2D1_POINT_2F
+	{
+		fX,
+		fY - m_fWindowWidth * BUTTON_OFFSET_RATIO,
+	},
+		m_fWindowWidth * BUTTON_SIZE_RATIO,
+		m_fWindowWidth * BUTTON_SIZE_RATIO
+	};
+
+	m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
+		ellipseNorth,
+		m_deviceResources->m_whiteBrush.Get());
+}
+
+void GameRenderer::OnPointerPressed(float fX, float fY)
+{
+	float fWidth = m_deviceResources->GetOutputSize().Width;
+	float fHeight = m_deviceResources->GetOutputSize().Height;
 }

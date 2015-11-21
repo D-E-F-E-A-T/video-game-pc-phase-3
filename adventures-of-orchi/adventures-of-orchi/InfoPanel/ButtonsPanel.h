@@ -11,10 +11,10 @@ using namespace DX;
 using namespace std;
 
 
-class PackPanel : public InfoPanel
+class ButtonsPanel : public InfoPanel
 {
 public:
-	void DrawText(const shared_ptr<DeviceResources>& deviceResources);
+	void Render(const shared_ptr<DeviceResources>& deviceResources);
 
 protected:
 
