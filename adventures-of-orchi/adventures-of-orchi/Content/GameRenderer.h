@@ -85,7 +85,7 @@ using namespace Windows::Graphics::Display;
 		uint32	m_indexCount;
 
 		// Variables used with the rendering loop.
-		bool	m_loadingComplete;
+//		bool	m_loadingComplete;
 		float	m_degreesPerSecond;
 		bool	m_tracking;
 
@@ -159,5 +159,7 @@ using namespace Windows::Graphics::Display;
 		bool m_bXButtonPressed;
 
 
+		// TODO: 
+		int m_nOrientation;
 	};
 

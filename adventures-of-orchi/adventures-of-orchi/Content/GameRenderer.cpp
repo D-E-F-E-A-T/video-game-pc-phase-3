@@ -20,7 +20,7 @@ using namespace Windows::UI::ViewManagement;
 
 // Loads vertex and pixel shaders from files and instantiates the cube geometry.
 GameRenderer::GameRenderer(const shared_ptr<DeviceResources>& deviceResources, CoreWindow ^ window) :
-	m_loadingComplete(false),
+	//m_loadingComplete(false),
 	m_degreesPerSecond(45),
 	m_indexCount(0),
 //	m_tracking(false),
@@ -154,6 +154,10 @@ void GameRenderer::CreateWindowSizeDependentResources()
 // Called once per frame, rotates the cube and calculates the model and view matrices.
 int GameRenderer::Update(DX::StepTimer const& timer)
 {
+	// Not handling portrait mode for this release.
+	if (m_nOrientation == PORTRAIT)
+		return 1;
+
 	// DO NOT USE m_window HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //	if (!m_tracking)
@@ -303,13 +307,25 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		else
 		{
 			if (m_bNorthButtonPressed)
+			{
 				m_pPlayer->MoveNorth(m_nCollisionState, PLAYER_MOVE_VELOCITY);
+				m_nSwordDirection = NORTH;
+			}
 			else if (m_bEastButtonPressed)
+			{
 				m_pPlayer->MoveEast(m_nCollisionState, PLAYER_MOVE_VELOCITY);
+				m_nSwordDirection = EAST;
+			}
 			else if (m_bSouthButtonPressed)
+			{
 				m_pPlayer->MoveSouth(m_nCollisionState, PLAYER_MOVE_VELOCITY);
+				m_nSwordDirection = SOUTH;
+			}
 			else if (m_bWestButtonPressed)
+			{
 				m_pPlayer->MoveWest(m_nCollisionState, PLAYER_MOVE_VELOCITY);
+				m_nSwordDirection = WEST;
+			}
 		
 
 			if (m_bAButtonPressed)
@@ -352,9 +368,13 @@ void GameRenderer::StopTracking()
 // Renders one frame using the vertex and pixel shaders.
 void GameRenderer::Render()
 {
-	// Loading is asynchronous. Only draw geometry after it's loaded.
-	if (!m_loadingComplete)
+	if (m_nOrientation == PORTRAIT)
 	{
+		DEVICE_CONTEXT_2D->BeginDraw();
+
+		DEVICE_CONTEXT_2D->Clear(D2D1::ColorF(D2D1::ColorF::BlanchedAlmond));
+		HRESULT hr = DEVICE_CONTEXT_2D->EndDraw();
+
 		return;
 	}
 
@@ -560,14 +580,14 @@ void GameRenderer::CreateDeviceDependentResources()
 	});
 
 	// Once the cube is loaded, the object is ready to be rendered.
-	createCubeTask.then([this] () {
-		m_loadingComplete = true;
-	});
+	//createCubeTask.then([this] () {
+	//	m_loadingComplete = true;
+	//});
 }
 
 void GameRenderer::ReleaseDeviceDependentResources()
 {
-	m_loadingComplete = false;
+	//m_loadingComplete = false;
 	//m_vertexShader.Reset();
 	//m_inputLayout.Reset();
 	//m_pixelShader.Reset();
@@ -752,6 +772,11 @@ void GameRenderer::OnSizeChanged(
 
 	m_fWindowWidth = m_window->Bounds.Width;
 	m_fWindowHeight = m_window->Bounds.Height;
+
+	if (m_fWindowWidth > m_fWindowHeight)
+		m_nOrientation = LANDSCAPE;
+	else
+		m_nOrientation = PORTRAIT;
 
 	m_uiMode = uiMode;
 }
