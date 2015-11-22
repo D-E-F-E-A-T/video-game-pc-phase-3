@@ -22,6 +22,7 @@ public:
 	void DrawText(
 		float fLeft, 
 		float fTop, 
+		float fRight,
 		const shared_ptr<DeviceResources>& deviceResources);
 
 	void DrawBox(

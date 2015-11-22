@@ -14,8 +14,14 @@ class MapPanel : public InfoPanel
 {
 public:
 	void Render(const shared_ptr<DeviceResources>& deviceResources);
+	void SetDimensions(int rows, int columns);
+	void SetLocation(int row, int column);
 
 protected:
+	void DrawGrid(float fLeft, float fTop, float fRight, float fBottom, const shared_ptr<DeviceResources>& deviceResources);
+
+	int m_nDimensions[2];
+	int m_nLocation[2];
 
 
 private:

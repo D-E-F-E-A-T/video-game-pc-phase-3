@@ -17,7 +17,8 @@ void ButtonsPanel::Render(const shared_ptr<DeviceResources>& deviceResources)
 	float fTop = size.height / INFO_PANEL_HEIGHT_CONSTANT;
 	float fRight = size.width - (size.width * 0.01f);
 	float fBottom = (size.height / INFO_PANEL_HEIGHT_CONSTANT) * 2.0f;
+	fBottom -= (size.height * INFO_PANEL_BOTTOM_SPACING_CONSTANT);
 
-	DrawText(fLeft, fTop, deviceResources);
-	DrawBox(fLeft, fTop, fRight, fBottom, deviceResources);
+	DrawText(fLeft, fTop, fRight, deviceResources);
+	DrawBox(fLeft, fTop + (size.height * INFO_PANEL_TOP_SPACING_CONSTANT), fRight, fBottom, deviceResources);
 }

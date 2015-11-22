@@ -19,14 +19,27 @@ public:
 	Stack * Move(int nDirection);
 	Stack * Move(Space * currentSpace, int nDirection);
 	void Move(Stack *);
+	void GetDimensions(int * columns, int * rows)
+	{
+		*columns = m_lpnDimensions[0];
+		*rows = m_lpnDimensions[1];
+	}
+
+	void GetLocation(int * column, int * row)
+	{
+		*column = m_nLocation[0];
+		*row = m_nLocation[1];
+	}
 
 protected:
-	int m_lpnWorldDimensions[2];
 
 private:
 	Stack * m_lpStacks;
 	int m_lpnDimensions[2];
 	int m_nCurrentStackIndex;
+
+	// For now...
+	int m_nLocation[2];
 
 
 };

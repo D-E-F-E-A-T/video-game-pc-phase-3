@@ -1909,10 +1909,10 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 7, 3, 7));
             commands.AddLast(new AddEdgeCommand(4, 0, 8, 3, 7));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 0, 2, 3));
-            commands.AddLast(new AddEdgeCommand(4, 8, 0, 2, 3));
-            commands.AddLast(new AddEdgeCommand(4, 9, 0, 2, 3));
-            commands.AddLast(new AddEdgeCommand(4, 10, 0, 2, 3));
+            commands.AddLast(new AddEdgeCommand(4, 7, 0, 0, 3));
+            commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 3));
+            commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 3));
+            commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 3));
 
             commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 9));
             commands.AddLast(new AddEdgeCommand(4, 16, 8, 1, 9));

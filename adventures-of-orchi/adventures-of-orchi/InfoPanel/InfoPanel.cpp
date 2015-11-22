@@ -29,7 +29,7 @@ void InfoPanel::CreateText(String ^ text, float2 fWindowSize, const shared_ptr<D
 	m_textLayout->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
 }
 
-void InfoPanel::DrawText(float fLeft, float fTop, const shared_ptr<DeviceResources>& deviceResources)
+void InfoPanel::DrawText(float fLeft, float fTop, float fRight, const shared_ptr<DeviceResources>& deviceResources)
 {
 	deviceResources->GetD2DDeviceContext()->DrawTextLayout(
 		D2D1::Point2F(fLeft, fTop),

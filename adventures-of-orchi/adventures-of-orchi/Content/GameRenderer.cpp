@@ -158,13 +158,23 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 	if (m_nOrientation == PORTRAIT)
 		return 1;
 
+	int columns = 0;
+	int rows = 0;
+
+	m_pWorld->GetDimensions(&columns, &rows);
+	((MapPanel *)m_infoPanels->at(2))->SetDimensions(columns, rows);
+
+	int nCurrentColumn = 0;
+	int nCurrentRow = 0;
+	m_pWorld->GetLocation(&nCurrentColumn, &nCurrentRow);
+	((MapPanel *)m_infoPanels->at(2))->SetLocation(nCurrentColumn, nCurrentRow);
+
 	// DO NOT USE m_window HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-//	if (!m_tracking)
-	{
 		xboxController.FetchControllerInput();
 
 		UpdateSword();
+
 
 #ifdef USE_PORTALS
 		m_broadCollisionDetectionStrategy->Detect(
@@ -331,9 +341,6 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			if (m_bAButtonPressed)
 				ThrowSword(m_nSwordDirection);
 		}
-
-
-	}
 
 	return 1;
 }
@@ -872,21 +879,6 @@ void GameRenderer::UpdateSword()
 
 void GameRenderer::RenderButtonTouchControls()
 {
-/*
-	D2D1_RECT_F rectRight
-	{
-		m_fWindowWidth * (1.f - RIGHT_MARGIN_RATIO + 0.01f),
-		m_fWindowHeight * 0.75f,
-		m_fWindowWidth * 0.99f,
-		m_fWindowHeight * 0.95f
-	};
-
-	m_deviceResources->GetD2DDeviceContext()->DrawRectangle(
-		rectRight,
-		m_deviceResources->m_whiteBrush.Get());
-*/
-
-
 	float fX =
 		(
 			(m_fWindowWidth * 0.99f) -

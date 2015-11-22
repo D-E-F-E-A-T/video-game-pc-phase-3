@@ -181,6 +181,9 @@ void World::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& d
 void World::SetScreen(int x, int y)
 {
 	m_nCurrentStackIndex = y * m_lpnDimensions[WIDTH_INDEX] + x;
+
+	m_nLocation[0] = x;
+	m_nLocation[1] = y;
 }
 
 Stack * World::LoadScreen(int x, int y)
@@ -227,6 +230,9 @@ Stack * World::Move(int nDirection)
 	{
 		nColumn -= 1;
 	}
+
+	m_nLocation[0] = nColumn;
+	m_nLocation[1] = nRow;
 
 	m_nCurrentStackIndex = nRow * m_lpnDimensions[WIDTH_INDEX] + nColumn;
 
