@@ -23,6 +23,7 @@ Region::~Region()
 
 }
 
+/*
 void Region::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& deviceResources)
 {
 	ServiceProxy::ServiceProxy ^ proxy = ref new ServiceProxy::ServiceProxy();
@@ -177,6 +178,7 @@ void Region::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& 
 		}
 	}
 }
+*/
 
 void Region::SetScreen(int x, int y)
 {

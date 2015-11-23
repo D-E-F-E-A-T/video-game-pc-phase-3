@@ -5,7 +5,7 @@ class Land : public Onground
 {
 public:
 	Land(String ^ strName, int x, int y) :
-		OnGround(strName, x, y) {};
+		Onground(strName, x, y) {};
 
 protected:
 

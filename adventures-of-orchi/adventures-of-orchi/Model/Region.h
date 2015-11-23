@@ -1,5 +1,5 @@
 #pragma once
-#include "Stack.h"
+#include "Subdivision.h"
 
 using namespace std;
 
@@ -11,13 +11,20 @@ public:
 		m_strName = strName;
 		m_lpnDimensions[WIDTH_INDEX] = nWidth;
 		m_lpnDimensions[HEIGHT_INDEX] = nHeight;
+
+		*m_lpSubdivisions = new Subdivision[nWidth * nHeight];
 	}
 
 	~Region();
 
-	void SetScreen(int x, int y);
-	Stack * LoadScreen(int x, int y);
-	Stack * LoadScreen(int nDirection);
+	Subdivision * GetSubdivision(int x, int y)
+	{
+		return m_lpSubdivisions[y * m_lpnDimensions[WIDTH_INDEX] + x];
+	}
+
+	void SetSubdivision(int x, int y);
+	Stack * LoadSubdivision(int x, int y);
+	Stack * LoadSubdivision(int nDirection);
 	Stack * Slide(int nDirection);
 	Stack * Move(Space * currentSpace, int nDirection);
 	void Move(Stack *);
@@ -39,6 +46,9 @@ public:
 
 
 protected:
+	Subdivision ** m_lpSubdivisions;
+
+
 	Stack * m_lpStacks;
 	int m_lpnDimensions[2];
 	int m_nCurrentStackIndex;

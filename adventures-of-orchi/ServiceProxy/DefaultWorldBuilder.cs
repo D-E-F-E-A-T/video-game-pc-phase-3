@@ -40,7 +40,7 @@ namespace ServiceProxy
             commands.AddLast(new DeclareDungeonCommand("Dungeon6", 5, 5));
             commands.AddLast(new DeclareDungeonCommand("Dungeon7", 5, 5));
 
-            commands.AddLast(new DeclareCaveCommand("CaveGetFirstSword", 5, 5));
+            commands.AddLast(new DeclareCaveCommand("CaveGetFirstSword", 1, 1));
             commands.AddLast(new DeclareCaveCommand("Cave1", 5, 5));
             commands.AddLast(new DeclareCaveCommand("Cave2", 5, 5));
             commands.AddLast(new DeclareCaveCommand("Cave3", 5, 5));

@@ -1,7 +1,7 @@
 #pragma once
-#include "Onground.h"
+#include "Subdivision.h"
 
-class Lot : public Onground
+class Lot : public Subdivision
 {
 public:
 
