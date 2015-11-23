@@ -211,6 +211,9 @@
     <Image Include="water.dds" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Collision\BroadCollisionStrategy.h" />
+    <ClInclude Include="Collision\NarrowCollisionStrategy.h" />
+    <ClInclude Include="Collision\PortalCollisionStrategy.h" />
     <ClInclude Include="Content\Landscape.h" />
     <ClInclude Include="Content\OrientationRenderer.h" />
     <ClInclude Include="Content\Portrait.h" />
@@ -242,7 +245,6 @@
     <ClInclude Include="BasicMath.h" />
     <ClInclude Include="BasicReaderWriter.h" />
     <ClInclude Include="BasicShapes.h" />
-    <ClInclude Include="BroadCollisionStrategy.h" />
     <ClInclude Include="Common\DeviceResources.h" />
     <ClInclude Include="adventures_of_orchiMain.h" />
     <ClInclude Include="Constants.h" />
@@ -280,10 +282,10 @@
     <ClInclude Include="Model\Thing.h" />
     <ClInclude Include="Model\Tree.h" />
     <ClInclude Include="Model\Water.h" />
-    <ClInclude Include="NarrowCollisionStrategy.h" />
+    <ClInclude Include="Model\World.h" />
+    <ClInclude Include="Model\WorldFactory.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Model\Portal.h" />
-    <ClInclude Include="PortalCollisionStrategy.h" />
     <ClInclude Include="Render\Renderer.h" />
     <ClInclude Include="Render\SpriteRenderer.h" />
     <ClInclude Include="RightMargin.h" />
@@ -296,14 +298,15 @@
     <ClInclude Include="Sprites\Sprite.h" />
     <ClInclude Include="Sprites\SpriteUtils.h" />
     <ClInclude Include="Utils.h" />
-    <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.xaml.cpp">
       <DependentUpon>App.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="BasicReaderWriter.cpp" />
-    <ClCompile Include="BroadCollisionStrategy.cpp" />
+    <ClCompile Include="Collision\BroadCollisionStrategy.cpp" />
+    <ClCompile Include="Collision\NarrowCollisionStrategy.cpp" />
+    <ClCompile Include="Collision\PortalCollisionStrategy.cpp" />
     <ClCompile Include="Common\DeviceResources.cpp" />
     <ClCompile Include="adventures_of_orchiMain.cpp" />
     <ClCompile Include="Content\GameRenderer.cpp" />
@@ -325,12 +328,14 @@
     <ClCompile Include="LeftMargin.cpp" />
     <ClCompile Include="Model\Edge.cpp" />
     <ClCompile Include="Model\Movable.cpp" />
+    <ClCompile Include="Model\Region.cpp" />
     <ClCompile Include="Model\Texture.cpp" />
     <ClCompile Include="Model\Player.cpp" />
     <ClCompile Include="Model\Space.cpp" />
     <ClCompile Include="Model\Stack.cpp" />
     <ClCompile Include="Model\Stairs.cpp" />
-    <ClCompile Include="NarrowCollisionStrategy.cpp" />
+    <ClCompile Include="Model\World.cpp" />
+    <ClCompile Include="Model\WorldFactory.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -339,13 +344,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="PortalCollisionStrategy.cpp" />
     <ClCompile Include="RightMargin.cpp" />
     <ClCompile Include="Sprites\BasicLoader.cpp" />
     <ClCompile Include="Sprites\BasicSprites.cpp" />
     <ClCompile Include="Sprites\SpriteUtils.cpp" />
     <ClCompile Include="Utils.cpp" />
-    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

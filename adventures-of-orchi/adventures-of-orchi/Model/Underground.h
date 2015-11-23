@@ -1,6 +1,7 @@
 #pragma once
+#include "Region.h"
 
-class Underground
+class Underground : public Region
 {
 public:
 

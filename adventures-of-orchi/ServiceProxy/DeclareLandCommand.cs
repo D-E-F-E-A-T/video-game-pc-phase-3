@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace ServiceProxy
 {
-    public sealed class DeclareScreenCommand : WorldBuilderCommand
+    public sealed class DeclareLandCommand : BuildCommand
     {
         private int type;
         private int x;
         private int y;
+        private string name;
 
         public int Type
         {
@@ -30,9 +31,16 @@ namespace ServiceProxy
             set { y = value; }
         }
 
-        public DeclareScreenCommand(int x, int y)
+        public string Name
         {
-            this.type = 2;
+            get { return name; }
+            set { name = value; }
+        }
+
+        public DeclareLandCommand(String name, int x, int y)
+        {
+            this.type = 10;
+            this.name = name;
             this.x = x;
             this.y = y;
         }

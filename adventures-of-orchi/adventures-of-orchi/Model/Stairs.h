@@ -5,7 +5,7 @@
 #include "Player.h"
 #include "Space.h"
 #include "Texture.h"
-#include "..\World.h"
+#include "World.h"
 //#include "..\Content\GameRenderer.h"
 
 class Stairs : public Portal

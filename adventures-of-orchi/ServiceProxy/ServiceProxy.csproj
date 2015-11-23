@@ -115,17 +115,17 @@
     <Compile Include="AddStoneWallCommand.cs" />
     <Compile Include="AddWaterCommand.cs" />
     <Compile Include="AddTreeCommand.cs" />
+    <Compile Include="DeclareLandCommand.cs" />
     <Compile Include="DefaultWorldBuilder.cs" />
-    <Compile Include="DeclareRegionCommand.cs" />
     <Compile Include="DeclareCaveCommand.cs" />
     <Compile Include="DeclareDungeonCommand.cs" />
-    <Compile Include="DeclareScreenCommand.cs" />
+    <Compile Include="DeclareLotCommand.cs" />
     <Compile Include="DeclareWorldCommand.cs" />
     <Compile Include="AddRockCommand.cs" />
     <Compile Include="NetworkWorldBuilder.cs" />
     <Compile Include="ServiceProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WorldBuilderCommand.cs" />
+    <Compile Include="BuildCommand.cs" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

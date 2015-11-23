@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace ServiceProxy
 {
-    public sealed class DeclareCaveCommand : BuildCommand
+    public sealed class DeclareLotCommand : BuildCommand
     {
         private int type;
         private int x;
         private int y;
-        private string name;
 
         public int Type
         {
@@ -31,16 +30,9 @@ namespace ServiceProxy
             set { y = value; }
         }
 
-        public string Name
+        public DeclareLotCommand(int x, int y)
         {
-            get { return name; }
-            set { name = value; }
-        }
-
-        public DeclareCaveCommand(String name, int x, int y)
-        {
-            this.type = 8;
-            this.name = name;
+            this.type = 11;
             this.x = x;
             this.y = y;
         }

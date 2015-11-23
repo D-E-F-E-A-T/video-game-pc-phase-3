@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ServiceProxy
 {
-    public sealed class AddStairsCommand : WorldBuilderCommand
+    public sealed class AddStairsCommand : BuildCommand
     {
         private int type;
         private int layerId;
@@ -46,7 +46,7 @@ namespace ServiceProxy
 
         public AddStairsCommand(int layerId, int x, int y, int destination)
         {
-            this.type = 8;
+            this.type = 4;
             this.layerId = layerId;
             this.x = x;
             this.y = y;

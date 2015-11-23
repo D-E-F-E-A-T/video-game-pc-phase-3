@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ServiceProxy
 {
-    public interface WorldBuilderCommand
+    public interface BuildCommand
     {
         int Type { get; set; }
     }

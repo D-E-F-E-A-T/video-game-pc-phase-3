@@ -1,6 +1,7 @@
 #pragma once
+#include "Underground.h"
 
-class Dungeon
+class Dungeon : public Underground
 {
 public:
 

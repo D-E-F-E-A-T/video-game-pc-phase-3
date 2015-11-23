@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ServiceProxy
 {
-    public sealed class AddWaterCommand : WorldBuilderCommand
+    public sealed class AddWaterCommand : BuildCommand
     {
         private int type;
         private int layerId;
@@ -39,7 +39,7 @@ namespace ServiceProxy
 
         public AddWaterCommand(int layerId, int x, int y)
         {
-            this.type = 5;
+            this.type = 7;
             this.layerId = layerId;
             this.x = x;
             this.y = y;

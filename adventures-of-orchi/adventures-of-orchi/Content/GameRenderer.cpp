@@ -204,19 +204,19 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 			if (nDirection == NORTH)
 			{
-				m_pCurrentStack = m_pWorld->Move(NORTH);
+				m_pCurrentStack = m_pWorld->Slide(NORTH);
 			}
 			else if (nDirection == EAST)
 			{
-				m_pCurrentStack = m_pWorld->Move(EAST);
+				m_pCurrentStack = m_pWorld->Slide(EAST);
 			}
 			else if (nDirection == SOUTH)
 			{
-				m_pCurrentStack = m_pWorld->Move(SOUTH);
+				m_pCurrentStack = m_pWorld->Slide(SOUTH);
 			}
 			else if (nDirection == WEST)
 			{
-				m_pCurrentStack = m_pWorld->Move(WEST);
+				m_pCurrentStack = m_pWorld->Slide(WEST);
 			}
 			else
 			{
@@ -249,6 +249,21 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			m_pCurrentStack,
 			m_pCollided);
 
+		// First, look for any collided stairs.
+		Space * pCollidedStairs = m_pPortalCollisionDetectionStrategy->Detect(
+			m_pPlayer,
+			m_pCollided);
+
+		if (pCollidedStairs)
+		{
+			int nDestination = static_cast<Portal *>(pCollidedStairs)->GetDestination();
+
+			m_pCurrentStack = m_pWorld->Go(nDestination);
+
+			return 0;
+		}
+
+		// Second, look for any collided trees, etc.
 		if (m_pCollided->size() > 0)
 		{
 			std::list<Space *>::const_iterator iterator;

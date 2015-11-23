@@ -11,7 +11,7 @@ namespace ServiceProxy
 {
     public sealed class NetworkWorldBuilder
     {
-        private async Task<IEnumerable<WorldBuilderCommand>> BuildAsync()
+        private async Task<IEnumerable<BuildCommand>> BuildAsync()
         {
             using (var client = new HttpClient())
             {
@@ -32,7 +32,7 @@ namespace ServiceProxy
             return null;
         }
 
-        public IAsyncOperation<IEnumerable<WorldBuilderCommand>> GetWorldAsync()
+        public IAsyncOperation<IEnumerable<BuildCommand>> GetWorldAsync()
         {
             return BuildAsync().AsAsyncOperation();
         }

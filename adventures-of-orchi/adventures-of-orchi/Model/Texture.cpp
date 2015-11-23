@@ -57,7 +57,7 @@ void Texture::Render(
 		m_pTexture.Get(),
 		fPosition,
 		BasicSprites::PositionUnits::DIPs,
-		fScaleDimensions,
+		fScaleDimensions * TEXTURE_SCALE_FACTOR,
 		BasicSprites::SizeUnits::DIPs,
 		float4(0.8f, 0.8f, 1.0f, 1.0f),
 		fRotationInRadians);

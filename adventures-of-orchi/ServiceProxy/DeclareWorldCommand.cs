@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace ServiceProxy
 {
-    public sealed class DeclareWorldCommand : WorldBuilderCommand
+    public sealed class DeclareWorldCommand : BuildCommand
     {
         private int type;
-        private int width;
-        private int height;
+        private String name;
 
         public int Type
         {
@@ -18,23 +17,16 @@ namespace ServiceProxy
             set { type = value; }
         }
 
-        public int Width
+        public String Name
         {
-            get { return width; }
-            set { width = value; }
+            get { return name; }
+            set { name = value; }
         }
 
-        public int Height
+        public DeclareWorldCommand(String name)
         {
-            get { return height; }
-            set { height = value; }
-        }
-
-        public DeclareWorldCommand(int width, int height)
-        {
-            this.type = 4;
-            this.width = width;
-            this.height = height;
+            this.type = 12;
+            this.name = name;
         }
     }
 }

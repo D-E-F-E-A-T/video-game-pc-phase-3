@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "World.h"
+#include "Region.h"
 #include "Utils.h"
 #include "Model\Tree.h"
 #include "Model\Edge.h"
@@ -12,33 +12,33 @@
 using namespace Windows::Foundation::Collections;
 using namespace std;
 
-World::World()
+//Region::Region()
+//{
+//	m_lpStacks = nullptr;
+//	m_nCurrentStackIndex = 0;
+//}
+
+Region::~Region()
 {
-	m_lpStacks = nullptr;
-	m_nCurrentStackIndex = 0;
+
 }
 
-World::~World()
-{
-
-}
-
-void World::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& deviceResources)
+void Region::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& deviceResources)
 {
 	ServiceProxy::ServiceProxy ^ proxy = ref new ServiceProxy::ServiceProxy();
 
-	IIterable<ServiceProxy::WorldBuilderCommand ^> ^ commands = proxy->Build();
+	IIterable<ServiceProxy::RegionBuilderCommand ^> ^ commands = proxy->Build();
 
-	for each (ServiceProxy::WorldBuilderCommand ^ command in commands)
+	for each (ServiceProxy::RegionBuilderCommand ^ command in commands)
 	{
 		float x;
 		float y;
 
 
-		if (command->Type == DECLARE_WORLD_COMMAND)
+		if (command->Type == DECLARE_Region_COMMAND)
 		{
-			int nWidth = ((ServiceProxy::DeclareWorldCommand ^)command)->Width;
-			int nHeight = ((ServiceProxy::DeclareWorldCommand ^)command)->Height;
+			int nWidth = ((ServiceProxy::DeclareRegionCommand ^)command)->Width;
+			int nHeight = ((ServiceProxy::DeclareRegionCommand ^)command)->Height;
 
 			m_lpStacks = new Stack[nWidth * nHeight];
 
@@ -178,7 +178,7 @@ void World::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& d
 	}
 }
 
-void World::SetScreen(int x, int y)
+void Region::SetScreen(int x, int y)
 {
 	m_nCurrentStackIndex = y * m_lpnDimensions[WIDTH_INDEX] + x;
 
@@ -186,12 +186,12 @@ void World::SetScreen(int x, int y)
 	m_nLocation[1] = y;
 }
 
-Stack * World::LoadScreen(int x, int y)
+Stack * Region::LoadScreen(int x, int y)
 {
 	return m_lpStacks + (y * m_lpnDimensions[WIDTH_INDEX] + x);
 }
 
-Stack * World::Move(Space * currentSpace, int nDirection)
+Stack * Region::Move(Space * currentSpace, int nDirection)
 {
 	if (nDirection == DOWNSTAIRS)
 	{
@@ -201,15 +201,15 @@ Stack * World::Move(Space * currentSpace, int nDirection)
 	return nullptr;
 }
 
-// Idea: Each dungeon is a World.
-// Or each upperworld, dungeon, cave, island 
+// Idea: Each dungeon is a Region.
+// Or each upperRegion, dungeon, cave, island 
 //	is a separate Area
-Stack * World::LoadScreen(int nDestination)
+Stack * Region::LoadScreen(int nDestination)
 {
 	return nullptr;
 }
 
-Stack * World::Move(int nDirection)
+Stack * Region::Slide(int nDirection)
 {
 	int nColumn = m_nCurrentStackIndex % m_lpnDimensions[WIDTH_INDEX];
 	int nRow = m_nCurrentStackIndex / m_lpnDimensions[WIDTH_INDEX];
@@ -245,7 +245,7 @@ Stack * World::Move(int nDirection)
 	return LoadScreen(nColumn, nRow);
 }
 
-void World::Move(Stack * pStack)
+void Region::Move(Stack * pStack)
 {
-//	m_nCurrentStackIndex = pStack->
+	//	m_nCurrentStackIndex = pStack->
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ServiceProxy
 {
-    public sealed class AddEdgeCommand : WorldBuilderCommand
+    public sealed class AddEdgeCommand : BuildCommand
     {
         private int type;
         private int layerId;

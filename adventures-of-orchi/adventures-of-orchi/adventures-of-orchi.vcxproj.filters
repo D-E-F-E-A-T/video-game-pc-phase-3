@@ -71,6 +71,9 @@
     <Filter Include="InfoPanel">
       <UniqueIdentifier>{78acb2bb-dc4a-4e3a-abab-6f0070f65eff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Collision">
+      <UniqueIdentifier>{ae2c146f-eee5-41a0-86d3-c75258135805}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -92,8 +95,6 @@
     <ClCompile Include="BasicReaderWriter.cpp" />
     <ClCompile Include="DDSTextureLoader.cpp" />
     <ClCompile Include="Grid.cpp" />
-    <ClCompile Include="BroadCollisionStrategy.cpp" />
-    <ClCompile Include="NarrowCollisionStrategy.cpp" />
     <ClCompile Include="LeftMargin.cpp" />
     <ClCompile Include="RightMargin.cpp" />
     <ClCompile Include="Model\Player.cpp">
@@ -108,11 +109,9 @@
     <ClCompile Include="Model\Stack.cpp">
       <Filter>Model</Filter>
     </ClCompile>
-    <ClCompile Include="World.cpp" />
     <ClCompile Include="Model\Edge.cpp">
       <Filter>Model</Filter>
     </ClCompile>
-    <ClCompile Include="PortalCollisionStrategy.cpp" />
     <ClCompile Include="Model\Stairs.cpp">
       <Filter>Model</Filter>
     </ClCompile>
@@ -150,6 +149,24 @@
     <ClCompile Include="InfoPanel\InfoPanel.cpp">
       <Filter>InfoPanel</Filter>
     </ClCompile>
+    <ClCompile Include="Model\World.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision\BroadCollisionStrategy.cpp">
+      <Filter>Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision\NarrowCollisionStrategy.cpp">
+      <Filter>Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision\PortalCollisionStrategy.cpp">
+      <Filter>Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\Region.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\WorldFactory.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -176,8 +193,6 @@
     <ClInclude Include="Grid.h" />
     <ClInclude Include="GridSpace.h" />
     <ClInclude Include="Constants.h" />
-    <ClInclude Include="BroadCollisionStrategy.h" />
-    <ClInclude Include="NarrowCollisionStrategy.h" />
     <ClInclude Include="LeftMargin.h" />
     <ClInclude Include="RightMargin.h" />
     <ClInclude Include="Model\Space.h">
@@ -250,7 +265,6 @@
     <ClInclude Include="Model\Layer.h">
       <Filter>Model</Filter>
     </ClInclude>
-    <ClInclude Include="World.h" />
     <ClInclude Include="Model\StoneWall.h">
       <Filter>Model</Filter>
     </ClInclude>
@@ -263,7 +277,6 @@
     <ClInclude Include="Model\Edge.h">
       <Filter>Model</Filter>
     </ClInclude>
-    <ClInclude Include="PortalCollisionStrategy.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Model\Texture.h">
       <Filter>Model</Filter>
@@ -342,6 +355,21 @@
     </ClInclude>
     <ClInclude Include="InfoPanel\PackPanel.h">
       <Filter>InfoPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\World.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision\BroadCollisionStrategy.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision\NarrowCollisionStrategy.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision\PortalCollisionStrategy.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\WorldFactory.h">
+      <Filter>Model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

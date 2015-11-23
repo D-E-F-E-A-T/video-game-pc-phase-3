@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ServiceProxy
 {
-    public sealed class AddStoneWallCommand : WorldBuilderCommand
+    public sealed class AddStoneWallCommand : BuildCommand
     {
         private int type;
         private int layerId;
@@ -39,7 +39,7 @@ namespace ServiceProxy
 
         public AddStoneWallCommand(int layerId, int x, int y)
         {
-            this.type = 6;
+            this.type = 5;
             this.layerId = layerId;
             this.x = x;
             this.y = y;

@@ -18,9 +18,9 @@ namespace ServiceProxy
 
         }
 
-        public IEnumerable<WorldBuilderCommand> Build()
+        public IEnumerable<BuildCommand> Build()
         {
-            IEnumerable<WorldBuilderCommand> retVal = null;
+            IEnumerable<BuildCommand> retVal = null;
 
             bool isConnected = CheckWebServicesConnection();
 
