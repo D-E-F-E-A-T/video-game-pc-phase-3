@@ -18,7 +18,7 @@
 #include "..\InfoPanel\InventoryPanel.h"
 #include "..\InfoPanel\InfoPanel.h"
 #include "..\Controller\XBoxOneControllerView.h"
-#include "..\Model\WorldFactory.h"
+#include "..\Factory\WorldFactory.h"
 
 using namespace Windows::UI::Core;
 using namespace std;

@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddEdgeCommand.cs" />
+    <Compile Include="AddForestCommand.cs" />
     <Compile Include="AddGrassCommand.cs" />
     <Compile Include="AddStairsCommand.cs" />
     <Compile Include="AddStoneWallCommand.cs" />

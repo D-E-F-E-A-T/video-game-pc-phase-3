@@ -221,6 +221,21 @@
     <ClInclude Include="Controller\KeyboardControllerView.h" />
     <ClInclude Include="Controller\XBoxOneControllerView.h" />
     <ClInclude Include="Controller\TouchScreenControllerView.h" />
+    <ClInclude Include="Factory\AddEdgeCommand.h" />
+    <ClInclude Include="Factory\AddForestCommand.h" />
+    <ClInclude Include="Factory\AddGrassCommand.h" />
+    <ClInclude Include="Factory\AddRockCommand.h" />
+    <ClInclude Include="Factory\AddStairsCommand.h" />
+    <ClInclude Include="Factory\AddStoneWallCommand.h" />
+    <ClInclude Include="Factory\AddTreeCommand.h" />
+    <ClInclude Include="Factory\AddWaterCommand.h" />
+    <ClInclude Include="Factory\BuildCommand.h" />
+    <ClInclude Include="Factory\DeclareCaveCommand.h" />
+    <ClInclude Include="Factory\DeclareDungeonCommand.h" />
+    <ClInclude Include="Factory\DeclareLandCommand.h" />
+    <ClInclude Include="Factory\DeclareLotCommand.h" />
+    <ClInclude Include="Factory\DeclareWorldCommand.h" />
+    <ClInclude Include="Factory\WorldFactory.h" />
     <ClInclude Include="InfoPanel\ButtonsPanel.h" />
     <ClInclude Include="InfoPanel\InfoPanel.h" />
     <ClInclude Include="InfoPanel\InventoryPanel.h" />
@@ -286,7 +301,6 @@
     <ClInclude Include="Model\Tree.h" />
     <ClInclude Include="Model\Water.h" />
     <ClInclude Include="Model\World.h" />
-    <ClInclude Include="Model\WorldFactory.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Model\Portal.h" />
     <ClInclude Include="Render\Renderer.h" />
@@ -321,6 +335,7 @@
       <DependentUpon>DirectXPage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="Content\SampleFpsTextRenderer.cpp" />
+    <ClCompile Include="Factory\WorldFactory.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="InfoPanel\ButtonsPanel.cpp" />
     <ClCompile Include="InfoPanel\InfoPanel.cpp" />
@@ -338,7 +353,6 @@
     <ClCompile Include="Model\Stack.cpp" />
     <ClCompile Include="Model\Stairs.cpp" />
     <ClCompile Include="Model\World.cpp" />
-    <ClCompile Include="Model\WorldFactory.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

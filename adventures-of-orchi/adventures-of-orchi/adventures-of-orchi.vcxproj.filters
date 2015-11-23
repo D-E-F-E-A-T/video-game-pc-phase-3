@@ -167,8 +167,8 @@
     <ClCompile Include="Model\Region.cpp">
       <Filter>Model</Filter>
     </ClCompile>
-    <ClCompile Include="Model\WorldFactory.cpp">
-      <Filter>Model</Filter>
+    <ClCompile Include="Factory\WorldFactory.cpp">
+      <Filter>Factory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -371,9 +371,6 @@
     <ClInclude Include="Collision\PortalCollisionStrategy.h">
       <Filter>Collision</Filter>
     </ClInclude>
-    <ClInclude Include="Model\WorldFactory.h">
-      <Filter>Model</Filter>
-    </ClInclude>
     <ClInclude Include="Model\Land.h">
       <Filter>Model</Filter>
     </ClInclude>
@@ -382,6 +379,51 @@
     </ClInclude>
     <ClInclude Include="Model\Subdivision.h">
       <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\WorldFactory.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\BuildCommand.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\AddEdgeCommand.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\AddGrassCommand.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\AddForestCommand.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\AddStairsCommand.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\AddRockCommand.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\AddStoneWallCommand.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\AddTreeCommand.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\AddWaterCommand.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\DeclareCaveCommand.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\DeclareDungeonCommand.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\DeclareLandCommand.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\DeclareLotCommand.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\DeclareWorldCommand.h">
+      <Filter>Factory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -51,8 +51,7 @@ protected:
 
 	int m_lpnDimensions[2];
 
-	// For now...
-	int m_nLocation[2];
+	int m_nLocation[2];	// Player's location within the region.
 	String ^ m_strName;
 
 private:
