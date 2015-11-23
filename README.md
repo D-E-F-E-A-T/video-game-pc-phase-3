@@ -14,6 +14,6 @@ Play
 --------------------------------
 The game can be played in the following ways:
 1. Using and XBox One game controller (wired or wireless with wireless adapter)
-2. On a tablet device in table mode (using on-screen touch controls)
+2. On a tablet device in tablet mode (using on-screen touch controls)
 3. Using the keyboard.
 
