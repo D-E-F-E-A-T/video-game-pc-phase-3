@@ -47,6 +47,7 @@ GameRenderer::GameRenderer(const shared_ptr<DeviceResources>& deviceResources, C
 	m_pWorld->LoadRegion("Outside");
 	m_pRegion = m_pWorld->GetRegion("Outside");
 
+	
 	m_pCurrentStack = m_pWorld->LoadSubdivision(2, 2);
 
 	m_pPlayer = new Player(
@@ -243,12 +244,14 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		m_collidedRectStatuses.clear();
 #endif // RENDER_DIAGNOSTICS
 
+
 		m_broadCollisionDetectionStrategy->Detect(
 			LAYER_COLLIDABLES,
 			m_pPlayer,
 			m_pCurrentStack,
 			m_pCollided);
 
+/*
 		// First, look for any collided stairs.
 		Space * pCollidedStairs = m_pPortalCollisionDetectionStrategy->Detect(
 			m_pPlayer,
@@ -262,6 +265,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 			return 0;
 		}
+*/
 
 		// Second, look for any collided trees, etc.
 		if (m_pCollided->size() > 0)

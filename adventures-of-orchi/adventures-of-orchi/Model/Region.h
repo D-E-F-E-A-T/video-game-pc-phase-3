@@ -12,17 +12,16 @@ public:
 		m_lpnDimensions[WIDTH_INDEX] = nWidth;
 		m_lpnDimensions[HEIGHT_INDEX] = nHeight;
 
-		*m_lpSubdivisions = new Subdivision[nWidth * nHeight];
+		m_lpSubdivisions = new Subdivision[nWidth * nHeight];
 	}
 
 	~Region();
 
 	Subdivision * GetSubdivision(int x, int y)
 	{
-		return m_lpSubdivisions[y * m_lpnDimensions[WIDTH_INDEX] + x];
+		return m_lpSubdivisions + (y * m_lpnDimensions[WIDTH_INDEX] + x);
 	}
 
-	void SetSubdivision(int x, int y);
 	Stack * LoadSubdivision(int x, int y);
 	Stack * LoadSubdivision(int nDirection);
 	Stack * Slide(int nDirection);
@@ -47,7 +46,7 @@ public:
 	String ^ GetName() { return m_strName; }
 
 protected:
-	Subdivision ** m_lpSubdivisions;
+	Subdivision * m_lpSubdivisions;
 	int m_nCurrentStackIndex;
 
 	int m_lpnDimensions[2];

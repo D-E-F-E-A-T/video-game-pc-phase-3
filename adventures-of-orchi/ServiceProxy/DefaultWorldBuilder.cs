@@ -32,18 +32,18 @@ namespace ServiceProxy
 
             commands.AddLast(new DeclareLandCommand("Outside", 5, 5));
 
-            commands.AddLast(new DeclareDungeonCommand("Dungeon1", 5, 5));
-            commands.AddLast(new DeclareDungeonCommand("Dungeon2", 5, 5));
-            commands.AddLast(new DeclareDungeonCommand("Dungeon3", 5, 5));
-            commands.AddLast(new DeclareDungeonCommand("Dungeon4", 5, 5));
-            commands.AddLast(new DeclareDungeonCommand("Dungeon5", 5, 5));
-            commands.AddLast(new DeclareDungeonCommand("Dungeon6", 5, 5));
-            commands.AddLast(new DeclareDungeonCommand("Dungeon7", 5, 5));
+            //commands.AddLast(new DeclareDungeonCommand("Dungeon1", 5, 5));
+            //commands.AddLast(new DeclareDungeonCommand("Dungeon2", 5, 5));
+            //commands.AddLast(new DeclareDungeonCommand("Dungeon3", 5, 5));
+            //commands.AddLast(new DeclareDungeonCommand("Dungeon4", 5, 5));
+            //commands.AddLast(new DeclareDungeonCommand("Dungeon5", 5, 5));
+            //commands.AddLast(new DeclareDungeonCommand("Dungeon6", 5, 5));
+            //commands.AddLast(new DeclareDungeonCommand("Dungeon7", 5, 5));
 
-            commands.AddLast(new DeclareCaveCommand("CaveGetFirstSword", 1, 1));
-            commands.AddLast(new DeclareCaveCommand("Cave1", 5, 5));
-            commands.AddLast(new DeclareCaveCommand("Cave2", 5, 5));
-            commands.AddLast(new DeclareCaveCommand("Cave3", 5, 5));
+            //commands.AddLast(new DeclareCaveCommand("CaveGetFirstSword", 1, 1));
+            //commands.AddLast(new DeclareCaveCommand("Cave1", 5, 5));
+            //commands.AddLast(new DeclareCaveCommand("Cave2", 5, 5));
+            //commands.AddLast(new DeclareCaveCommand("Cave3", 5, 5));
 
 
 
@@ -73,7 +73,7 @@ namespace ServiceProxy
             BuildScreen23(commands);
             BuildScreen24(commands);
 
-            BuildScreen25(commands);
+            //BuildScreen25(commands);
 
             //SemanticCheckCommands(commands);
             return commands;
@@ -4914,10 +4914,6 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 19));
             commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 19));
             commands.AddLast(new AddEdgeCommand(4, 11, 0, 0, 19));
-        }
-
-        private void BuildScreen25(LinkedList<BuildCommand> commands)
-        {
         }
     }
 }

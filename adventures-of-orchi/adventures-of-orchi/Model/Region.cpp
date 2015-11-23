@@ -180,17 +180,15 @@ void Region::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& 
 }
 */
 
-void Region::SetSubdivision(int x, int y)
+
+Stack * Region::LoadSubdivision(int x, int y)
 {
 	m_nCurrentStackIndex = y * m_lpnDimensions[WIDTH_INDEX] + x;
 
 	m_nLocation[0] = x;
 	m_nLocation[1] = y;
-}
 
-Stack * Region::LoadSubdivision(int x, int y)
-{
-	return m_lpSubdivisions[y * m_lpnDimensions[WIDTH_INDEX] + x]->GetStack();
+	return (m_lpSubdivisions + (y * m_lpnDimensions[WIDTH_INDEX] + x))->GetStack();
 }
 
 Stack * Region::Move(Space * currentSpace, int nDirection)
