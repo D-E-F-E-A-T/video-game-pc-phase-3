@@ -21,7 +21,7 @@ World::~World()
 
 }
 
-void World::AddRegion(String ^ id, int x, int y)
+void World::AddRegion(Region * pRegion)
 {
-	m_pRegions[id] = new Region(x, y);
+	m_pRegions[pRegion->GetName()] = pRegion;
 }

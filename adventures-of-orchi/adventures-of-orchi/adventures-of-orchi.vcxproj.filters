@@ -74,6 +74,9 @@
     <Filter Include="Collision">
       <UniqueIdentifier>{ae2c146f-eee5-41a0-86d3-c75258135805}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Factory">
+      <UniqueIdentifier>{cc7d2622-227d-40c0-9ad3-6820e0aa9d9a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -369,6 +372,15 @@
       <Filter>Collision</Filter>
     </ClInclude>
     <ClInclude Include="Model\WorldFactory.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Land.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Lot.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Subdivision.h">
       <Filter>Model</Filter>
     </ClInclude>
   </ItemGroup>

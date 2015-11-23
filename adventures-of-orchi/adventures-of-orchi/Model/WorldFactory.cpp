@@ -15,7 +15,7 @@
 using namespace Windows::Foundation::Collections;
 using namespace std;
 
-void WorldFactory::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& deviceResources)
+World * WorldFactory::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& deviceResources)
 {
 	World * retVal = nullptr;
 
@@ -57,7 +57,7 @@ void WorldFactory::Build(float2 fScreenDimensions, const shared_ptr<DeviceResour
 				&x,
 				&y);
 
-			pCurrentSubdivision->Set(LAYER_2D, x, y,
+			pCurrentSubdivision->Set(LAYER_2D,
 				new Edge(
 					float2(x, y),
 					0.f,
@@ -76,7 +76,7 @@ void WorldFactory::Build(float2 fScreenDimensions, const shared_ptr<DeviceResour
 				&x,
 				&y);
 
-			pCurrentSubdivision->Set(LAYER_BACKGROUND, x, y, 
+			pCurrentSubdivision->Set(LAYER_BACKGROUND,
 				new Grass(
 					float2(x, y),
 					0.f,
@@ -94,7 +94,7 @@ void WorldFactory::Build(float2 fScreenDimensions, const shared_ptr<DeviceResour
 				&x,
 				&y);
 
-			pCurrentSubdivision->Set->Add(LAYER_COLLIDABLES, x, y,
+			pCurrentSubdivision->Set(LAYER_COLLIDABLES,
 				new Rock(
 					float2(x, y),
 					0.f,
@@ -113,7 +113,7 @@ void WorldFactory::Build(float2 fScreenDimensions, const shared_ptr<DeviceResour
 				&y);
 
 
-			pCurrentSubdivision->Set(LAYER_COLLIDABLES, x, y,
+			pCurrentSubdivision->Set(LAYER_COLLIDABLES,
 				new Stairs(
 					float2(x, y),
 					0.f,
@@ -131,7 +131,7 @@ void WorldFactory::Build(float2 fScreenDimensions, const shared_ptr<DeviceResour
 				&x,
 				&y);
 
-			pCurrentSubdivision->Set(LAYER_COLLIDABLES, x, y, 
+			pCurrentSubdivision->Set(LAYER_COLLIDABLES,
 				new StoneWall(
 					float2(x, y),
 					0.f,
@@ -149,7 +149,7 @@ void WorldFactory::Build(float2 fScreenDimensions, const shared_ptr<DeviceResour
 				&x,
 				&y);
 
-			pCurrentSubdivision->Set(LAYER_COLLIDABLES, x, y, 
+			pCurrentSubdivision->Set(LAYER_COLLIDABLES,
 				new Tree(
 					float2(x, y),
 					0.f,
@@ -167,7 +167,7 @@ void WorldFactory::Build(float2 fScreenDimensions, const shared_ptr<DeviceResour
 				&x,
 				&y);
 
-			pCurrentSubdivision->Set(LAYER_COLLIDABLES, x, y,
+			pCurrentSubdivision->Set(LAYER_COLLIDABLES,
 				new Water(
 					float2(x, y),
 					0.f,
@@ -205,8 +205,8 @@ void WorldFactory::Build(float2 fScreenDimensions, const shared_ptr<DeviceResour
 		else if (command->Type == DECLARE_LOT_COMMAND)
 		{
 			String ^ strName = ((ServiceProxy::DeclareLotCommand ^)command)->RegionName;
-			int x = ((ServiceProxy::DeclareScreenCommand ^)command)->X;
-			int y = ((ServiceProxy::DeclareScreenCommand ^)command)->Y;
+			int x = ((ServiceProxy::DeclareLotCommand ^)command)->X;
+			int y = ((ServiceProxy::DeclareLotCommand ^)command)->Y;
 
 			Region * region = retVal->GetRegion(strName);
 			pCurrentSubdivision = region->GetSubdivision(x, y);
@@ -218,4 +218,6 @@ void WorldFactory::Build(float2 fScreenDimensions, const shared_ptr<DeviceResour
 			retVal = new World(strName);
 		}
 	}
+
+	return retVal;
 }

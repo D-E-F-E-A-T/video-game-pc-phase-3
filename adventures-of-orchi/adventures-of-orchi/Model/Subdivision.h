@@ -4,10 +4,20 @@
 class Subdivision
 {
 public:
-	void Set(int layerId, int x, int y, Space * pSpace);
+	Subdivision()
+	{
+		m_lpStack = new Stack();
+	}
+
+	void Set(int layerId, Space * pSpace)
+	{
+		m_lpStack->Add(layerId, pSpace);
+	}
+
+	Stack * GetStack() { return m_lpStack; }
 
 protected:
-	Stack * m_lpStacks;
+	Stack * m_lpStack;
 	int m_lpnDimensions[2];
 	int m_nCurrentStackIndex;
 

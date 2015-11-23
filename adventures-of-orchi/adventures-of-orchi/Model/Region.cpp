@@ -180,7 +180,7 @@ void Region::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& 
 }
 */
 
-void Region::SetScreen(int x, int y)
+void Region::SetSubdivision(int x, int y)
 {
 	m_nCurrentStackIndex = y * m_lpnDimensions[WIDTH_INDEX] + x;
 
@@ -188,17 +188,17 @@ void Region::SetScreen(int x, int y)
 	m_nLocation[1] = y;
 }
 
-Stack * Region::LoadScreen(int x, int y)
+Stack * Region::LoadSubdivision(int x, int y)
 {
-	return m_lpStacks + (y * m_lpnDimensions[WIDTH_INDEX] + x);
+	return m_lpSubdivisions[y * m_lpnDimensions[WIDTH_INDEX] + x]->GetStack();
 }
 
 Stack * Region::Move(Space * currentSpace, int nDirection)
 {
-	if (nDirection == DOWNSTAIRS)
-	{
-		LoadScreen(static_cast<Portal *>(currentSpace)->GetDestination());
-	}
+	//if (nDirection == DOWNSTAIRS)
+	//{
+	//	LoadScreen(static_cast<Portal *>(currentSpace)->GetDestination());
+	//}
 
 	return nullptr;
 }
@@ -206,7 +206,7 @@ Stack * Region::Move(Space * currentSpace, int nDirection)
 // Idea: Each dungeon is a Region.
 // Or each upperRegion, dungeon, cave, island 
 //	is a separate Area
-Stack * Region::LoadScreen(int nDestination)
+Stack * Region::LoadSubdivision(int nDestination)
 {
 	return nullptr;
 }
@@ -244,7 +244,7 @@ Stack * Region::Slide(int nDirection)
 	OutputDebugStringA(buffer);
 #endif // _DEBUG
 
-	return LoadScreen(nColumn, nRow);
+	return LoadSubdivision(nColumn, nRow);
 }
 
 void Region::Move(Stack * pStack)

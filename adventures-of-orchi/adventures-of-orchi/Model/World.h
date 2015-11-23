@@ -7,6 +7,8 @@ using namespace std;
 class World
 {
 public:
+	World();
+
 	World(String ^ strName)
 	{
 		m_strName = strName;
@@ -19,6 +21,16 @@ public:
 	Region * GetRegion(String ^ name)
 	{
 		return m_pRegions[name];
+	}
+
+	void LoadRegion(String ^ name)
+	{
+		m_currentRegion = m_pRegions[name];
+	}
+
+	Stack * LoadSubdivision(int x, int y)
+	{
+		return m_currentRegion->LoadSubdivision(x, y);
 	}
 
 	/*void SetScreen(int x, int y);
@@ -48,6 +60,7 @@ protected:
 
 private:
 	map<String ^, Region *> m_pRegions;
+	Region * m_currentRegion;
 //	Stack * m_lpStacks;
 	//int m_lpnDimensions[2];
 	//int m_nCurrentStackIndex;

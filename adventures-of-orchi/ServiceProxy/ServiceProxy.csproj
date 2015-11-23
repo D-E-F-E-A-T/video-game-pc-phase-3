@@ -108,7 +108,6 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddForestCommand.cs" />
     <Compile Include="AddEdgeCommand.cs" />
     <Compile Include="AddGrassCommand.cs" />
     <Compile Include="AddStairsCommand.cs" />

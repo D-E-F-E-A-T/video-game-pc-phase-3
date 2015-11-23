@@ -18,6 +18,7 @@
 #include "..\InfoPanel\InventoryPanel.h"
 #include "..\InfoPanel\InfoPanel.h"
 #include "..\Controller\XBoxOneControllerView.h"
+#include "..\Model\WorldFactory.h"
 
 using namespace Windows::UI::Core;
 using namespace std;
@@ -118,6 +119,8 @@ private:
 	DWRITE_TEXT_RANGE m_textRange;
 
 	World * m_pWorld;
+	Region * m_pRegion;
+	WorldFactory m_worldFactory;
 
 #ifdef RENDER_DIAGNOSTICS
 	vector<D2D1_RECT_F> m_collidedRects;

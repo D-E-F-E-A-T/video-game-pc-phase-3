@@ -40,14 +40,14 @@ GameRenderer::GameRenderer(const shared_ptr<DeviceResources>& deviceResources, C
 	grid.SetNumColumns(NUM_GRID_COLUMNS);
 	grid.SetNumRows(NUM_GRID_ROWS);
 
-	m_pWorld = new World();
-	m_pWorld->Build(
+	m_pWorld = m_worldFactory.Build(
 		float2{ m_fWindowWidth, m_fWindowHeight },
 		m_deviceResources);
 
-	m_pWorld->SetScreen(2, 2);
+	m_pWorld->LoadRegion("Outside");
+	m_pRegion = m_pWorld->GetRegion("Outside");
 
-	m_pCurrentStack = m_pWorld->LoadScreen(2, 2);
+	m_pCurrentStack = m_pWorld->LoadSubdivision(2, 2);
 
 	m_pPlayer = new Player(
 		float2(0.5f, 0.5f),
@@ -161,12 +161,12 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 	int columns = 0;
 	int rows = 0;
 
-	m_pWorld->GetDimensions(&columns, &rows);
+	m_pRegion->GetDimensions(&columns, &rows);
 	((MapPanel *)m_infoPanels->at(2))->SetDimensions(columns, rows);
 
 	int nCurrentColumn = 0;
 	int nCurrentRow = 0;
-	m_pWorld->GetLocation(&nCurrentColumn, &nCurrentRow);
+	m_pRegion->GetLocation(&nCurrentColumn, &nCurrentRow);
 	((MapPanel *)m_infoPanels->at(2))->SetLocation(nCurrentColumn, nCurrentRow);
 
 	// DO NOT USE m_window HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -204,19 +204,19 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 			if (nDirection == NORTH)
 			{
-				m_pCurrentStack = m_pWorld->Slide(NORTH);
+				m_pCurrentStack = m_pRegion->Slide(NORTH);
 			}
 			else if (nDirection == EAST)
 			{
-				m_pCurrentStack = m_pWorld->Slide(EAST);
+				m_pCurrentStack = m_pRegion->Slide(EAST);
 			}
 			else if (nDirection == SOUTH)
 			{
-				m_pCurrentStack = m_pWorld->Slide(SOUTH);
+				m_pCurrentStack = m_pRegion->Slide(SOUTH);
 			}
 			else if (nDirection == WEST)
 			{
-				m_pCurrentStack = m_pWorld->Slide(WEST);
+				m_pCurrentStack = m_pRegion->Slide(WEST);
 			}
 			else
 			{
@@ -258,7 +258,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		{
 			int nDestination = static_cast<Portal *>(pCollidedStairs)->GetDestination();
 
-			m_pCurrentStack = m_pWorld->Go(nDestination);
+//			m_pCurrentStack = m_pRegion->Go(nDestination);
 
 			return 0;
 		}

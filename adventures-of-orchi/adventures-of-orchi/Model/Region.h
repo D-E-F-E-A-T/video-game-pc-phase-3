@@ -44,14 +44,13 @@ public:
 		*row = m_nLocation[1];
 	}
 
+	String ^ GetName() { return m_strName; }
 
 protected:
 	Subdivision ** m_lpSubdivisions;
-
-
-	Stack * m_lpStacks;
-	int m_lpnDimensions[2];
 	int m_nCurrentStackIndex;
+
+	int m_lpnDimensions[2];
 
 	// For now...
 	int m_nLocation[2];

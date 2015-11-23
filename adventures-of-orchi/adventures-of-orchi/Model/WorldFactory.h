@@ -1,5 +1,5 @@
 #pragma once
-#include "World.h";
+#include "World.h"
 
 class WorldFactory
 {

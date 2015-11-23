@@ -232,10 +232,13 @@
     <ClInclude Include="Model\Cave.h" />
     <ClInclude Include="Model\Dungeon.h" />
     <ClInclude Include="Model\Figure.h" />
+    <ClInclude Include="Model\Land.h" />
+    <ClInclude Include="Model\Lot.h" />
     <ClInclude Include="Model\Region.h" />
     <ClInclude Include="Model\Renderable.h" />
     <ClInclude Include="Model\Renderable2D.h" />
     <ClInclude Include="Model\Renderable3D.h" />
+    <ClInclude Include="Model\Subdivision.h" />
     <ClInclude Include="Model\Underground.h" />
     <ClInclude Include="Model\Onground.h" />
     <ClInclude Include="Model\VectorGraphic.h" />
