@@ -42,11 +42,8 @@ GameRenderer::GameRenderer(const shared_ptr<DeviceResources>& deviceResources, C
 		float2{ m_fWindowWidth, m_fWindowHeight },
 		m_deviceResources);
 
-	m_pWorld->LoadRegion(0);
-	m_pRegion = m_pWorld->GetRegion(0);
-
-	
-	m_pCurrentStack = m_pWorld->LoadSubdivision(2, 2);
+	m_pRegion = m_pWorld->LoadRegion(0);
+	m_pCurrentSubdivision = m_pRegion->LoadSubdivision(2, 2);
 
 	m_pPlayer = new Player(
 		float2(0.5f, 0.5f),
@@ -60,8 +57,8 @@ GameRenderer::GameRenderer(const shared_ptr<DeviceResources>& deviceResources, C
 		0.f,
 		m_deviceResources);
 
-	m_pCurrentStack->Add(LAYER_PLAYERS, m_pPlayer);
-	m_pCurrentStack->Add(LAYER_PLAYERS, m_pSword);
+	m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pPlayer);
+	m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pSword);
 
 	m_nSwordDirection = SOUTH;
 
@@ -170,203 +167,179 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 	// DO NOT USE m_window HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-		xboxController.FetchControllerInput();
+	xboxController.FetchControllerInput();
 
-		UpdateSword();
+	UpdateSword();
 
 
 #ifdef USE_PORTALS
-		m_broadCollisionDetectionStrategy->Detect(
-			LAYER_2D,
-			m_pPlayer,
-			m_pCurrentStack,
-			m_pCollided);
+	m_broadCollisionDetectionStrategy->Detect(
+		LAYER_2D,
+		m_pPlayer,
+		m_pCurrentSubdivision->GetStack(),
+		m_pCollided);
 
-		// Idea: Precedence order of collided objects.
-		//	For example, if colliding with a tree
-		//	and a portal, then the Portal takes precedence.
+	// Idea: Precedence order of collided objects.
+	//	For example, if colliding with a tree
+	//	and a portal, then the Portal takes precedence.
 
-		// Edges need to be touched.
-		Space * pCollidedEdge = m_pPortalCollisionDetectionStrategy->Detect(
-			m_pPlayer,
-			m_pCollided);
+	// Edges need to be touched.
+	Space * pCollidedEdge = m_pPortalCollisionDetectionStrategy->Detect(
+		m_pPlayer,
+		m_pCollided);
 
-		if (pCollidedEdge)
-		{
-			int minIndex = 0;
+	if (pCollidedEdge)
+	{
+		int minIndex = 0;
 
-			int nDirection = static_cast<Edge *>(pCollidedEdge)->GetDirection();
+		int nDirection = static_cast<Edge *>(pCollidedEdge)->GetDirection();
 
-			m_pPlayer->Skip(nDirection);
+		m_pPlayer->Skip(nDirection);
+		m_pCurrentSubdivision = m_pRegion->Slide(nDirection);
 
-			if (nDirection == NORTH)
-			{
-				m_pCurrentStack = m_pRegion->Slide(NORTH);
-			}
-			else if (nDirection == EAST)
-			{
-				m_pCurrentStack = m_pRegion->Slide(EAST);
-			}
-			else if (nDirection == SOUTH)
-			{
-				m_pCurrentStack = m_pRegion->Slide(SOUTH);
-			}
-			else if (nDirection == WEST)
-			{
-				m_pCurrentStack = m_pRegion->Slide(WEST);
-			}
-			else
-			{
-#ifdef _DEBUG
-				char buffer[32];
-				sprintf_s(buffer, "Invalid move direction %d\n", nDirection);
-				OutputDebugStringA(buffer);
-#endif // _DEBUG
-			}
+		m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pPlayer);
+		m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pSword);
 
-			m_pCurrentStack->Add(LAYER_PLAYERS, m_pPlayer);
-			m_pCurrentStack->Add(LAYER_PLAYERS, m_pSword);
+		m_pCollided->clear();
 
-			m_pCollided->clear();
-
-			return 0;
-		}
+		return 0;
+	}
 
 
 #endif // USE_PORTALS
 
 #ifdef RENDER_DIAGNOSTICS
-		m_collidedRects.clear();
-		m_collidedRectStatuses.clear();
+	m_collidedRects.clear();
+	m_collidedRectStatuses.clear();
 #endif // RENDER_DIAGNOSTICS
 
-		m_pCollided->clear();
+	m_pCollided->clear();
 
-		m_broadCollisionDetectionStrategy->Detect(
-			LAYER_PORTALS,
-			m_pPlayer,
-			m_pCurrentStack,
-			m_pCollided);
+	m_broadCollisionDetectionStrategy->Detect(
+		LAYER_PORTALS,
+		m_pPlayer,
+		m_pCurrentSubdivision->GetStack(),
+		m_pCollided);
 
 
-		// First, look for any collided stairs.
-		Space * pCollidedStairs = m_pPortalCollisionDetectionStrategy->Detect(
-			m_pPlayer,
-			m_pCollided);
+	// First, look for any collided stairs.
+	Space * pCollidedStairs = m_pPortalCollisionDetectionStrategy->Detect(
+		m_pPlayer,
+		m_pCollided);
 
-		if (pCollidedStairs)
-		{
-			int nDestination = static_cast<Portal *>(pCollidedStairs)->GetDestination();
+	if (pCollidedStairs)
+	{
+		int nDestination = static_cast<Portal *>(pCollidedStairs)->GetDestination();
 
-			m_pRegion = m_pWorld->Go(nDestination);
-			m_pCurrentStack = m_pRegion->LoadSubdivision(0, 0);
-
-			m_pCollided->clear();
-
-			return 0;
-		}
+		m_pRegion = m_pWorld->Go(nDestination);
+		m_pCurrentSubdivision = m_pRegion->LoadSubdivision(0, 0);
 
 		m_pCollided->clear();
 
-		m_broadCollisionDetectionStrategy->Detect(
-			LAYER_COLLIDABLES,
-			m_pPlayer,
-			m_pCurrentStack,
-			m_pCollided);
+		return 0;
+	}
 
-		// Second, look for any collided trees, etc.
-		if (m_pCollided->size() > 0)
+	m_pCollided->clear();
+
+	m_broadCollisionDetectionStrategy->Detect(
+		LAYER_COLLIDABLES,
+		m_pPlayer,
+		m_pCurrentSubdivision->GetStack(),
+		m_pCollided);
+
+	// Second, look for any collided trees, etc.
+	if (m_pCollided->size() > 0)
+	{
+		std::list<Space *>::const_iterator iterator;
+
+		for (iterator = m_pCollided->begin(); iterator != m_pCollided->end(); iterator++)
 		{
-			std::list<Space *>::const_iterator iterator;
+			int intersectRect[4];
 
-			for (iterator = m_pCollided->begin(); iterator != m_pCollided->end(); iterator++)
-			{
-				int intersectRect[4];
-
-				m_nCollisionState = m_pNarrowCollisionDetectionStrategy->Detect(
-					DEVICE_CONTEXT_3D,
-					DEVICE_3D,
-					m_pPlayer,
-					*iterator,
-					&grid,
-					intersectRect,
-					float2(m_fWindowWidth, m_fWindowHeight));
+			m_nCollisionState = m_pNarrowCollisionDetectionStrategy->Detect(
+				DEVICE_CONTEXT_3D,
+				DEVICE_3D,
+				m_pPlayer,
+				*iterator,
+				&grid,
+				intersectRect,
+				float2(m_fWindowWidth, m_fWindowHeight));
 
 #ifdef RENDER_DIAGNOSTICS
-				if (m_nCollisionState != NO_INTERSECTION)
+			if (m_nCollisionState != NO_INTERSECTION)
+			{
+				//if (m_nCollisionState == COLLISION)
+				//{
+				//	int actionCode = (*iterator)->Act(this, m_pWorld);
+
+				//	if (actionCode == 1)
+				//		return 0;
+				//}
+
+				D2D1_RECT_F rect
 				{
-					//if (m_nCollisionState == COLLISION)
-					//{
-					//	int actionCode = (*iterator)->Act(this, m_pWorld);
+					(float)intersectRect[0],
+					(float)intersectRect[2],
+					(float)intersectRect[1],
+					(float)intersectRect[3]
+				};
 
-					//	if (actionCode == 1)
-					//		return 0;
-					//}
-
-					D2D1_RECT_F rect
-					{
-						(float)intersectRect[0],
-						(float)intersectRect[2],
-						(float)intersectRect[1],
-						(float)intersectRect[3]
-					};
-
-					m_collidedRects.push_back(rect);
-					m_collidedRectStatuses.push_back(m_nCollisionState);
-				}
+				m_collidedRects.push_back(rect);
+				m_collidedRectStatuses.push_back(m_nCollisionState);
+			}
 #endif // RENDER_DIAGNOSTICS
-			}
 		}
+	}
 
-		// if the gamepad is not connected, check the keyboard.
-		if (xboxController.GetIsControllerConnected())
+	// if the gamepad is not connected, check the keyboard.
+	if (xboxController.GetIsControllerConnected())
+	{
+		// This would actually, detect a collision one interation
+		//	too late.  Consider detection earlier since
+		//	this could lead to weird behavior, depending
+		//	on how fast the sprites are moving.
+		//	For example, if sprites are moving very quickly,
+		//	collision would occur when the sprites 
+		//	have deeply intersected each other.
+		//  For slow moving sprites, this would not be 
+		//	much of a problem.
+		xboxController.MovePlayer(
+			m_pPlayer,
+			m_nCollisionState,
+			&m_nSwordDirection);
+
+		if (xboxController.CheckAButton())
 		{
-			// This would actually, detect a collision one interation
-			//	too late.  Consider detection earlier since
-			//	this could lead to weird behavior, depending
-			//	on how fast the sprites are moving.
-			//	For example, if sprites are moving very quickly,
-			//	collision would occur when the sprites 
-			//	have deeply intersected each other.
-			//  For slow moving sprites, this would not be 
-			//	much of a problem.
-			xboxController.MovePlayer(
-				m_pPlayer,
-				m_nCollisionState,
-				&m_nSwordDirection);
-
-			if (xboxController.CheckAButton())
-			{
-				ThrowSword(m_nSwordDirection);
-			}
+			ThrowSword(m_nSwordDirection);
 		}
-		else
+	}
+	else
+	{
+		if (m_bNorthButtonPressed)
 		{
-			if (m_bNorthButtonPressed)
-			{
-				m_pPlayer->MoveNorth(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-				m_nSwordDirection = NORTH;
-			}
-			else if (m_bEastButtonPressed)
-			{
-				m_pPlayer->MoveEast(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-				m_nSwordDirection = EAST;
-			}
-			else if (m_bSouthButtonPressed)
-			{
-				m_pPlayer->MoveSouth(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-				m_nSwordDirection = SOUTH;
-			}
-			else if (m_bWestButtonPressed)
-			{
-				m_pPlayer->MoveWest(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-				m_nSwordDirection = WEST;
-			}
-		
-
-			if (m_bAButtonPressed)
-				ThrowSword(m_nSwordDirection);
+			m_pPlayer->MoveNorth(m_nCollisionState, PLAYER_MOVE_VELOCITY);
+			m_nSwordDirection = NORTH;
 		}
+		else if (m_bEastButtonPressed)
+		{
+			m_pPlayer->MoveEast(m_nCollisionState, PLAYER_MOVE_VELOCITY);
+			m_nSwordDirection = EAST;
+		}
+		else if (m_bSouthButtonPressed)
+		{
+			m_pPlayer->MoveSouth(m_nCollisionState, PLAYER_MOVE_VELOCITY);
+			m_nSwordDirection = SOUTH;
+		}
+		else if (m_bWestButtonPressed)
+		{
+			m_pPlayer->MoveWest(m_nCollisionState, PLAYER_MOVE_VELOCITY);
+			m_nSwordDirection = WEST;
+		}
+
+
+		if (m_bAButtonPressed)
+			ThrowSword(m_nSwordDirection);
+	}
 
 	return 1;
 }
@@ -388,7 +361,7 @@ void GameRenderer::Render()
 
 	DEVICE_CONTEXT_2D->BeginDraw();
 
-	DEVICE_CONTEXT_2D->Clear(D2D1::ColorF(D2D1::ColorF::Tan));
+	m_pCurrentSubdivision->Render(m_deviceResources);
 	DEVICE_CONTEXT_2D->SetTransform(D2D1::Matrix3x2F::Identity());
 
 	DrawLeftMargin();
@@ -609,11 +582,11 @@ void GameRenderer::RenderSpaces3D()
 		nullptr
 		);
 
-	int numLayers = m_pCurrentStack->GetNumLayers();
+	int numLayers = m_pCurrentSubdivision->GetStack()->GetNumLayers();
 
 	for (int i = LAYER_BACKGROUND; i >= LAYER_PLAYERS; i--)
 	{
-		Layer * currentLayer = m_pCurrentStack->Get(i);
+		Layer * currentLayer = m_pCurrentSubdivision->GetStack()->Get(i);
 
 		vector<Space *>::const_iterator iterator;
 
@@ -805,7 +778,7 @@ void GameRenderer::DrawRightMargin()
 
 void GameRenderer::RenderSpaces2D()
 {
-	Layer * currentLayer = m_pCurrentStack->Get(LAYER_2D);
+	Layer * currentLayer = m_pCurrentSubdivision->GetStack()->Get(LAYER_2D);
 
 	vector<Space *>::const_iterator iterator;
 

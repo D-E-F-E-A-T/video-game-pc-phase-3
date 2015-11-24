@@ -6,5 +6,5 @@ bool Edge::IsOverlapping(Space * pOther)
 {
 	float fDistance = this->CalculateDistance(pOther);
 
-	return (fDistance < 0.035f);
+	return (fDistance < 0.05f);
 }

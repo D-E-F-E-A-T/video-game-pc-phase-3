@@ -9,29 +9,17 @@ class World
 public:
 	World();
 
-	World(String ^ strName)
-	{
-		m_strName = strName;
-	}
+	World(String ^ strName);
 
 	~World();
 
 	void AddRegion(Region * pRegion);
 
-	Region * GetRegion(int id)
-	{
-		return m_pRegions[id];
-	}
+	Region * GetRegion(int id);
 
-	void LoadRegion(int id)
-	{
-		m_currentRegion = m_pRegions[id];
-	}
+	Region * LoadRegion(int id);
 
-	Stack * LoadSubdivision(int x, int y)
-	{
-		return m_currentRegion->LoadSubdivision(x, y);
-	}
+	Subdivision * LoadSubdivision(int x, int y);
 
 	// Stairs go to another region.  Think of caves as their own
 	//	one room region.

@@ -79,7 +79,7 @@ private:
 	// Variables used with the rendering loop.
 	float	m_degreesPerSecond;
 
-	Stack * m_pCurrentStack;
+	Subdivision * m_pCurrentSubdivision;
 
 	void RenderSpaces2D();
 	void RenderSpaces3D();

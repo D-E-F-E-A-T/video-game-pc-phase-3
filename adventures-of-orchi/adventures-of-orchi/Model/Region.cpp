@@ -12,44 +12,33 @@
 using namespace Windows::Foundation::Collections;
 using namespace std;
 
+Region::Region(int id, int nWidth, int nHeight)
+{
+	m_nId = id;
+	m_lpnDimensions[WIDTH_INDEX] = nWidth;
+	m_lpnDimensions[HEIGHT_INDEX] = nHeight;
+}
+
 Region::~Region()
 {
 
 }
 
 
-Stack * Region::LoadSubdivision(int x, int y)
+Subdivision * Region::LoadSubdivision(int x, int y)
 {
-	m_nCurrentStackIndex = y * m_lpnDimensions[WIDTH_INDEX] + x;
+	m_nCurrentSubdivisionIndex = y * m_lpnDimensions[WIDTH_INDEX] + x;
 
 	m_nLocation[0] = x;
 	m_nLocation[1] = y;
 
-	return (m_lpSubdivisions + (y * m_lpnDimensions[WIDTH_INDEX] + x))->GetStack();
+	return (m_lpSubdivisions + (y * m_lpnDimensions[WIDTH_INDEX] + x));
 }
 
-Stack * Region::Move(Space * currentSpace, int nDirection)
+Subdivision * Region::Slide(int nDirection)
 {
-	//if (nDirection == DOWNSTAIRS)
-	//{
-	//	LoadScreen(static_cast<Portal *>(currentSpace)->GetDestination());
-	//}
-
-	return nullptr;
-}
-
-// Idea: Each dungeon is a Region.
-// Or each upperRegion, dungeon, cave, island 
-//	is a separate Area
-Stack * Region::LoadSubdivision(int nDestination)
-{
-	return nullptr;
-}
-
-Stack * Region::Slide(int nDirection)
-{
-	int nColumn = m_nCurrentStackIndex % m_lpnDimensions[WIDTH_INDEX];
-	int nRow = m_nCurrentStackIndex / m_lpnDimensions[WIDTH_INDEX];
+	int nColumn = m_nCurrentSubdivisionIndex % m_lpnDimensions[WIDTH_INDEX];
+	int nRow = m_nCurrentSubdivisionIndex / m_lpnDimensions[WIDTH_INDEX];
 
 	if (nDirection == NORTH)
 	{
@@ -71,7 +60,7 @@ Stack * Region::Slide(int nDirection)
 	m_nLocation[0] = nColumn;
 	m_nLocation[1] = nRow;
 
-	m_nCurrentStackIndex = nRow * m_lpnDimensions[WIDTH_INDEX] + nColumn;
+	m_nCurrentSubdivisionIndex = nRow * m_lpnDimensions[WIDTH_INDEX] + nColumn;
 
 #ifdef _DEBUG
 	char buffer[32];
@@ -82,7 +71,24 @@ Stack * Region::Slide(int nDirection)
 	return LoadSubdivision(nColumn, nRow);
 }
 
-void Region::Move(Stack * pStack)
+void Region::GetLocation(int * column, int * row)
 {
-	//	m_nCurrentStackIndex = pStack->
+	*column = m_nLocation[0];
+	*row = m_nLocation[1];
+}
+
+int Region::GetId() 
+{ 
+	return m_nId; 
+}
+
+void Region::GetDimensions(int * columns, int * rows)
+{
+	*columns = m_lpnDimensions[0];
+	*rows = m_lpnDimensions[1];
+}
+
+Subdivision * Region::GetSubdivision(int x, int y)
+{
+	return m_lpSubdivisions + (y * m_lpnDimensions[WIDTH_INDEX] + x);
 }
