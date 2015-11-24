@@ -170,6 +170,12 @@
     <ClCompile Include="Factory\WorldFactory.cpp">
       <Filter>Factory</Filter>
     </ClCompile>
+    <ClCompile Include="Model\Cave.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\Lot.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />

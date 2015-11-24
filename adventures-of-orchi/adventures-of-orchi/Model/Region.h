@@ -11,8 +11,6 @@ public:
 		m_nId = id;
 		m_lpnDimensions[WIDTH_INDEX] = nWidth;
 		m_lpnDimensions[HEIGHT_INDEX] = nHeight;
-
-		m_lpSubdivisions = new Subdivision[nWidth * nHeight];
 	}
 
 	~Region();

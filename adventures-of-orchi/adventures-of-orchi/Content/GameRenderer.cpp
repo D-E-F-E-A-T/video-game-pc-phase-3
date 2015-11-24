@@ -18,12 +18,10 @@ using namespace DX;
 using namespace Windows::UI::ViewManagement;
 
 
-// Loads vertex and pixel shaders from files and instantiates the cube geometry.
+
 GameRenderer::GameRenderer(const shared_ptr<DeviceResources>& deviceResources, CoreWindow ^ window) :
-	//m_loadingComplete(false),
 	m_degreesPerSecond(45),
 	m_indexCount(0),
-//	m_tracking(false),
 	m_deviceResources(deviceResources)
 {
 	m_window = window;
@@ -372,33 +370,6 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 	return 1;
 }
-
-// Rotate the 3D cube model a set amount of radians.
-//void GameRenderer::Rotate(float radians)
-//{
-//	// Prepare to pass the updated model matrix to the shader
-//	XMStoreFloat4x4(&m_constantBufferData.model, XMMatrixTranspose(XMMatrixRotationY(radians)));
-//}
-
-//void GameRenderer::StartTracking()
-//{
-////	m_tracking = true;
-//}
-
-// When tracking, the 3D cube can be rotated around its Y axis by tracking pointer position relative to the output screen width.
-//void GameRenderer::TrackingUpdate(float positionX)
-//{
-//	//if (m_tracking)
-//	//{
-//	//	float radians = XM_2PI * 2.0f * positionX / m_deviceResources->GetOutputSize().Width;
-//	//	Rotate(radians);
-//	//}
-//}
-
-//void GameRenderer::StopTracking()
-//{
-//	//m_tracking = false;
-//}
 
 // Renders one frame using the vertex and pixel shaders.
 void GameRenderer::Render()

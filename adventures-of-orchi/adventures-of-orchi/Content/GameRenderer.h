@@ -53,16 +53,11 @@ public:
 	void DrawLeftMargin();
 	void DrawRightMargin();
 
-	Stack * GetCurrentStack() { return m_pCurrentStack; }
-	void SetCurrentStack(Stack * pStack) { m_pCurrentStack = pStack; }
-
 	void SetUserInteractionMode(UserInteractionMode uiMode);
 private:
 	// TODO: Move these to Sword.
 	void ThrowSword(int nDirection);
 	void UpdateSword();
-
-	//void Rotate(float radians);
 
 	Platform::Agile<CoreWindow> m_window;
 

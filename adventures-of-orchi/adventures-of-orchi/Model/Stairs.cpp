@@ -11,6 +11,5 @@ bool Stairs::IsOverlapping(Space * pOther)
 
 //int Stairs::Act(GameRenderer * pRenderer, World * pWorld)
 //{
-////	pRenderer->SetCurrentStack(pWorld->Move((*iterator), DOWNSTAIRS));
 //	return 1;
 //}

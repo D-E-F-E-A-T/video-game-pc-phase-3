@@ -16,6 +16,8 @@ public:
 
 	Stack * GetStack() { return m_lpStack; }
 
+	virtual void Render(const shared_ptr<DeviceResources>& deviceResources) = 0;
+
 protected:
 	Stack * m_lpStack;
 	int m_lpnDimensions[2];
