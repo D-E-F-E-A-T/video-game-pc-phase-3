@@ -17,11 +17,11 @@ namespace adventures_of_orchi
 			const std::shared_ptr<DeviceResources>& deviceResources, CoreWindow ^ window);
 		~adventures_of_orchiMain();
 		void CreateWindowSizeDependentResources();
-		void StartTracking() 
-		{ 
-			m_gameRenderer->StartTracking();
+		//void StartTracking() 
+		//{ 
+		//	m_gameRenderer->StartTracking();
 
-		}
+		//}
 
 		void OnPointerPressed(ResolutionScale resolutionScale, float fX, float fY)
 		{
@@ -33,15 +33,15 @@ namespace adventures_of_orchi
 			m_gameRenderer->OnPointerReleased();
 		}
 
-		void TrackingUpdate(float positionX) { m_pointerLocationX = positionX; }
-		void StopTracking() 
-		{ 
-			m_gameRenderer->StopTracking();
-		}
-		bool IsTracking() 
-		{ 
-			return m_gameRenderer->IsTracking(); 
-		}
+		//void TrackingUpdate(float positionX) { m_pointerLocationX = positionX; }
+		//void StopTracking() 
+		//{ 
+		//	m_gameRenderer->StopTracking();
+		//}
+		//bool IsTracking() 
+		//{ 
+		//	return m_gameRenderer->IsTracking(); 
+		//}
 		void StartRenderLoop();
 		void StopRenderLoop();
 		Concurrency::critical_section& GetCriticalSection() { return m_criticalSection; }

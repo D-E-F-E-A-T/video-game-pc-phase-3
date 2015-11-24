@@ -101,7 +101,7 @@ void adventures_of_orchiMain::ProcessInput()
 {
 	// TODO: Add per frame input handling here.
 	//m_sceneRenderer->TrackingUpdate(m_pointerLocationX);
-	m_gameRenderer->TrackingUpdate(m_pointerLocationX);
+	//m_gameRenderer->TrackingUpdate(m_pointerLocationX);
 }
 
 // Renders the current frame according to the current application state.

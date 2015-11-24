@@ -39,10 +39,6 @@ public:
 	void ReleaseDeviceDependentResources();
 	int Update(DX::StepTimer const& timer);
 	void Render();
-	void StartTracking();
-	void TrackingUpdate(float positionX);
-	void StopTracking();
-	bool IsTracking() { return m_tracking; }
 
 	void OnKeyDown(KeyEventArgs ^ args);
 	void OnSizeChanged(
@@ -66,7 +62,7 @@ private:
 	void ThrowSword(int nDirection);
 	void UpdateSword();
 
-	void Rotate(float radians);
+	//void Rotate(float radians);
 
 	Platform::Agile<CoreWindow> m_window;
 
@@ -87,7 +83,6 @@ private:
 
 	// Variables used with the rendering loop.
 	float	m_degreesPerSecond;
-	bool	m_tracking;
 
 	Stack * m_pCurrentStack;
 
