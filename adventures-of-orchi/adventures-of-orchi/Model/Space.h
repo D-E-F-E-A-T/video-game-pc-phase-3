@@ -65,6 +65,19 @@ public:
 	void SetVisibility(bool bIsVisible) { m_bIsVisible = bIsVisible; }
 	bool GetVisibility() { return m_bIsVisible; }
 
+	virtual bool IsOverlapping(Space * pOther)
+	{
+		float fDistance = this->CalculateDistance(pOther);
+
+#ifdef _DEBUG
+		char buffer[64];
+		sprintf_s(buffer, "Distance = %f\n", fDistance);
+		OutputDebugStringA(buffer);
+#endif // _DEBUG
+
+		return (fDistance < DEFAULT_OVERLAPPING_DISTANCE);
+	}
+
 protected:
 	Renderable * m_pRenderable;
 	float2 m_fLocationRatio;

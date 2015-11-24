@@ -11,7 +11,7 @@ namespace ServiceProxy
         private int type;
         private int x;
         private int y;
-        private string regionName;
+        private int id;
 
         public int Type
         {
@@ -31,16 +31,16 @@ namespace ServiceProxy
             set { y = value; }
         }
 
-        public string RegionName
+        public int Id
         {
-            get { return regionName; }
-            set { regionName = value; }
+            get { return id; }
+            set { id = value; }
         }
 
-        public DeclareLotCommand(string regionName, int x, int y)
+        public DeclareLotCommand(int id, int x, int y)
         {
             this.type = 11;
-            this.regionName = regionName;
+            this.id = id;
             this.x = x;
             this.y = y;
         }

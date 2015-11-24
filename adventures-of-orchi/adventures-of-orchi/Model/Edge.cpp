@@ -2,12 +2,9 @@
 #include "Edge.h"
 #include "Player.h"
 
-//Action * Edge::Act(World * pWorld)
-//{
-//	return nullptr;
-//}
-
-bool Edge::IsOverlapping(Player * pPlayer, Space * pSpace)
+bool Edge::IsOverlapping(Space * pOther)
 {
-	return false;
+	float fDistance = this->CalculateDistance(pOther);
+
+	return (fDistance < 0.035f);
 }

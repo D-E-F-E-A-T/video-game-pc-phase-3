@@ -2,9 +2,11 @@
 #include "Stairs.h"
 
 
-bool Stairs::IsOverlapping(Player * pPlayer, Space * pSpace)
+bool Stairs::IsOverlapping(Space * pOther)
 {
-	return false;
+	float fDistance = this->CalculateDistance(pOther);
+
+	return (fDistance < 0.01f);
 }
 
 //int Stairs::Act(GameRenderer * pRenderer, World * pWorld)

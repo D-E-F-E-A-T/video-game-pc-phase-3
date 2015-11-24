@@ -4,8 +4,8 @@
 class Onground : public Region
 {
 public:
-	Onground(String ^ strName, int x, int y) :
-		Region(strName, x, y) {}
+	Onground(int id, int x, int y) :
+		Region(id, x, y) {}
 
 protected:
 

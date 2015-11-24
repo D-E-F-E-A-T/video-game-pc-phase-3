@@ -11,7 +11,7 @@ namespace ServiceProxy
         private int type;
         private int x;
         private int y;
-        private string name;
+        private int regionId;
 
         public int Type
         {
@@ -31,16 +31,16 @@ namespace ServiceProxy
             set { y = value; }
         }
 
-        public string Name
+        public int RegionId
         {
-            get { return name; }
-            set { name = value; }
+            get { return regionId; }
+            set { regionId = value; }
         }
 
-        public DeclareCaveCommand(String name, int x, int y)
+        public DeclareCaveCommand(int regionId, int x, int y)
         {
             this.type = 8;
-            this.name = name;
+            this.regionId = regionId;
             this.x = x;
             this.y = y;
         }

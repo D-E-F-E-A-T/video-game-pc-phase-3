@@ -24,7 +24,6 @@ public:
 		m_nDestination = nDestination;
 	}
 
-	bool IsOverlapping(Player * pPlayer, Space * pSpace) {}
 
 	int GetDestination() { return m_nDestination; }
 

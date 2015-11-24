@@ -4,8 +4,8 @@
 class Underground : public Region
 {
 public:
-	Underground(String ^ strName, int x, int y) :
-		Region(strName, x, y) {}
+	Underground(int id, int x, int y) :
+		Region(id, x, y) {}
 
 protected:
 

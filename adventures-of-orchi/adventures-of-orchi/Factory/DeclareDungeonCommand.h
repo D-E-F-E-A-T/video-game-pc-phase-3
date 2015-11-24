@@ -15,11 +15,11 @@ public:
 		Subdivision ** pSubdivision,
 		const shared_ptr<DeviceResources>& deviceResources)
 	{
-		String ^ strName = ((ServiceProxy::DeclareDungeonCommand ^)command)->Name;
+		int id = ((ServiceProxy::DeclareDungeonCommand ^)command)->Id;
 		int x = ((ServiceProxy::DeclareDungeonCommand ^)command)->X;
 		int y = ((ServiceProxy::DeclareDungeonCommand ^)command)->Y;
 
-		(*pWorld)->AddRegion(new Dungeon(strName, x, y));
+		(*pWorld)->AddRegion(new Dungeon(id, x, y));
 	}
 
 protected:

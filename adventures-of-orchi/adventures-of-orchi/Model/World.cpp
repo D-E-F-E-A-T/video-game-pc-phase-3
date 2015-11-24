@@ -23,5 +23,10 @@ World::~World()
 
 void World::AddRegion(Region * pRegion)
 {
-	m_pRegions[pRegion->GetName()] = pRegion;
+	m_pRegions[pRegion->GetId()] = pRegion;
+}
+
+Region * World::Go(int regionId)
+{
+	return m_pRegions[regionId];
 }

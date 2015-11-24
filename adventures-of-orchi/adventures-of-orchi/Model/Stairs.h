@@ -28,8 +28,7 @@ public:
 		m_pRenderable = new Texture("stairs.dds", deviceResources);
 	}
 
-	bool IsOverlapping(Player * pPlayer, Space * pSpace);
-
+	virtual bool IsOverlapping(Space * pOther);
 	//int Act(GameRenderer *, World *);
 
 protected:

@@ -6,9 +6,9 @@ using namespace std;
 class Region
 {
 public:
-	Region(String ^ strName, int nWidth, int nHeight) 
+	Region(int id, int nWidth, int nHeight) 
 	{ 
-		m_strName = strName;
+		m_nId = id;
 		m_lpnDimensions[WIDTH_INDEX] = nWidth;
 		m_lpnDimensions[HEIGHT_INDEX] = nHeight;
 
@@ -35,7 +35,7 @@ public:
 
 	// Stairs go to another region.  Think of caves as their own
 	//	one room region.
-	Stack * Go(int regionId, int x, int y);
+	Stack * Go(int regionId);
 
 	void GetLocation(int * column, int * row)
 	{
@@ -43,7 +43,7 @@ public:
 		*row = m_nLocation[1];
 	}
 
-	String ^ GetName() { return m_strName; }
+	int GetId() { return m_nId; }
 
 protected:
 	Subdivision * m_lpSubdivisions;
@@ -52,7 +52,7 @@ protected:
 	int m_lpnDimensions[2];
 
 	int m_nLocation[2];	// Player's location within the region.
-	String ^ m_strName;
+	int m_nId;
 
 private:
 

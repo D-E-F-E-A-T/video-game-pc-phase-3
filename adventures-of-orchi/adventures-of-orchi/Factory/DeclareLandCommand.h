@@ -16,11 +16,11 @@ public:
 		Subdivision ** pSubdivision,
 		const shared_ptr<DeviceResources>& deviceResources)
 	{
-		String ^ strName = ((ServiceProxy::DeclareLandCommand ^)command)->Name;
+		int id = ((ServiceProxy::DeclareLandCommand ^)command)->Id;
 		int x = ((ServiceProxy::DeclareLandCommand ^)command)->X;
 		int y = ((ServiceProxy::DeclareLandCommand ^)command)->Y;
 
-		(*pWorld)->AddRegion(new Land(strName, x, y));
+		(*pWorld)->AddRegion(new Land(id, x, y));
 	}
 
 protected:

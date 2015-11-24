@@ -18,14 +18,14 @@ public:
 
 	void AddRegion(Region * pRegion);
 
-	Region * GetRegion(String ^ name)
+	Region * GetRegion(int id)
 	{
-		return m_pRegions[name];
+		return m_pRegions[id];
 	}
 
-	void LoadRegion(String ^ name)
+	void LoadRegion(int id)
 	{
-		m_currentRegion = m_pRegions[name];
+		m_currentRegion = m_pRegions[id];
 	}
 
 	Stack * LoadSubdivision(int x, int y)
@@ -47,7 +47,7 @@ public:
 
 	// Stairs go to another region.  Think of caves as their own
 	//	one room region.
-	//Stack * Go(int regionId, int x, int y);
+	Region * Go(int regionId);
 
 	//void GetLocation(int * column, int * row)
 	//{
@@ -59,7 +59,7 @@ protected:
 	String ^ m_strName;
 
 private:
-	map<String ^, Region *> m_pRegions;
+	map<int, Region *> m_pRegions;
 	Region * m_currentRegion;
 //	Stack * m_lpStacks;
 	//int m_lpnDimensions[2];

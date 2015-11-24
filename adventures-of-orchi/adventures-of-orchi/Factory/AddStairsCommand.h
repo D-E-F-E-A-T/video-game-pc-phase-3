@@ -25,7 +25,7 @@ public:
 			&x,
 			&y);
 
-		(*pSubdivision)->Set(LAYER_COLLIDABLES,
+		(*pSubdivision)->Set(LAYER_PORTALS,
 			new Stairs(
 				float2(x, y),
 				0.f,

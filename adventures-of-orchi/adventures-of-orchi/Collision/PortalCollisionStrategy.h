@@ -11,7 +11,6 @@ public:
 	Space * Detect(Player * pPlayer, list<Space *> * spaces);
 
 protected:
-	bool IsOverlapping(Player * player, Space * obstacle, float * fDistance);
 
 private:
 };

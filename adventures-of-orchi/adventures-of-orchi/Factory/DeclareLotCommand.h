@@ -15,11 +15,11 @@ public:
 		Subdivision ** pSubdivision,
 		const shared_ptr<DeviceResources>& deviceResources)
 	{
-		String ^ strName = ((ServiceProxy::DeclareLotCommand ^)command)->RegionName;
+		int id = ((ServiceProxy::DeclareLotCommand ^)command)->Id;
 		int x = ((ServiceProxy::DeclareLotCommand ^)command)->X;
 		int y = ((ServiceProxy::DeclareLotCommand ^)command)->Y;
 
-		Region * region = (*pWorld)->GetRegion(strName);
+		Region * region = (*pWorld)->GetRegion(id);
 		*pSubdivision = region->GetSubdivision(x, y);
 	}
 

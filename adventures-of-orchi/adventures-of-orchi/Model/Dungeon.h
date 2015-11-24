@@ -4,8 +4,8 @@
 class Dungeon : public Underground
 {
 public:
-	Dungeon(String ^ strName, int x, int y) :
-		Underground(strName, x, y) {};
+	Dungeon(int id, int x, int y) :
+		Underground(id, x, y) {};
 
 protected:
 

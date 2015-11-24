@@ -15,6 +15,12 @@ public:
 		Subdivision ** pSubdivision,
 		const shared_ptr<DeviceResources>& deviceResources)
 	{
+		int regionId = ((ServiceProxy::DeclareCaveCommand ^)command)->RegionId;
+		int x = ((ServiceProxy::DeclareCaveCommand ^)command)->X;
+		int y = ((ServiceProxy::DeclareCaveCommand ^)command)->Y;
+
+		Region * region = (*pWorld)->GetRegion(regionId);
+		*pSubdivision = region->GetSubdivision(x, y);
 	}
 
 protected:

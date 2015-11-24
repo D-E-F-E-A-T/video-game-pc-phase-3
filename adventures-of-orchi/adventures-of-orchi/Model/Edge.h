@@ -33,9 +33,9 @@ public:
 
 	int GetDirection() { return m_nDirection; }
 
+	virtual bool IsOverlapping(Space * pOther);
 	//Action * Act(World *);
 
-	bool IsOverlapping(Player * pPlayer, Space * pSpace);
 
 protected:
 

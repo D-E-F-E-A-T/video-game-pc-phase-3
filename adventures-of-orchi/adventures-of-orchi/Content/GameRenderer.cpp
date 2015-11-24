@@ -44,8 +44,8 @@ GameRenderer::GameRenderer(const shared_ptr<DeviceResources>& deviceResources, C
 		float2{ m_fWindowWidth, m_fWindowHeight },
 		m_deviceResources);
 
-	m_pWorld->LoadRegion("Outside");
-	m_pRegion = m_pWorld->GetRegion("Outside");
+	m_pWorld->LoadRegion(0);
+	m_pRegion = m_pWorld->GetRegion(0);
 
 	
 	m_pCurrentStack = m_pWorld->LoadSubdivision(2, 2);
@@ -188,18 +188,16 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		//	For example, if colliding with a tree
 		//	and a portal, then the Portal takes precedence.
 
-
-		// Portals need to be touched.
-		Space * pCollidedPortal = m_pPortalCollisionDetectionStrategy->Detect(
+		// Edges need to be touched.
+		Space * pCollidedEdge = m_pPortalCollisionDetectionStrategy->Detect(
 			m_pPlayer,
 			m_pCollided);
 
-
-		if (pCollidedPortal)
+		if (pCollidedEdge)
 		{
 			int minIndex = 0;
 
-			int nDirection = static_cast<Edge *>(pCollidedPortal)->GetDirection();
+			int nDirection = static_cast<Edge *>(pCollidedEdge)->GetDirection();
 
 			m_pPlayer->Skip(nDirection);
 
@@ -244,14 +242,15 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		m_collidedRectStatuses.clear();
 #endif // RENDER_DIAGNOSTICS
 
+		m_pCollided->clear();
 
 		m_broadCollisionDetectionStrategy->Detect(
-			LAYER_COLLIDABLES,
+			LAYER_PORTALS,
 			m_pPlayer,
 			m_pCurrentStack,
 			m_pCollided);
 
-/*
+
 		// First, look for any collided stairs.
 		Space * pCollidedStairs = m_pPortalCollisionDetectionStrategy->Detect(
 			m_pPlayer,
@@ -261,11 +260,21 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		{
 			int nDestination = static_cast<Portal *>(pCollidedStairs)->GetDestination();
 
-//			m_pCurrentStack = m_pRegion->Go(nDestination);
+			m_pRegion = m_pWorld->Go(nDestination);
+			m_pCurrentStack = m_pRegion->LoadSubdivision(0, 0);
+
+			m_pCollided->clear();
 
 			return 0;
 		}
-*/
+
+		m_pCollided->clear();
+
+		m_broadCollisionDetectionStrategy->Detect(
+			LAYER_COLLIDABLES,
+			m_pPlayer,
+			m_pCurrentStack,
+			m_pCollided);
 
 		// Second, look for any collided trees, etc.
 		if (m_pCollided->size() > 0)

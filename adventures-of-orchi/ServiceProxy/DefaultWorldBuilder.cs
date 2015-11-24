@@ -30,9 +30,9 @@ namespace ServiceProxy
 
             commands.AddLast(new DeclareWorldCommand("Default"));
 
-            commands.AddLast(new DeclareLandCommand("Outside", 5, 5));
+            commands.AddLast(new DeclareLandCommand(0, 5, 5));
 
-            //commands.AddLast(new DeclareDungeonCommand("Dungeon1", 5, 5));
+            commands.AddLast(new DeclareDungeonCommand(1, 1, 1));
             //commands.AddLast(new DeclareDungeonCommand("Dungeon2", 5, 5));
             //commands.AddLast(new DeclareDungeonCommand("Dungeon3", 5, 5));
             //commands.AddLast(new DeclareDungeonCommand("Dungeon4", 5, 5));
@@ -73,7 +73,7 @@ namespace ServiceProxy
             BuildScreen23(commands);
             BuildScreen24(commands);
 
-            //BuildScreen25(commands);
+            BuildScreen25(commands);
 
             //SemanticCheckCommands(commands);
             return commands;
@@ -81,7 +81,7 @@ namespace ServiceProxy
 
         private void BuildScreen0(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 0, 0));
+            commands.AddLast(new DeclareLotCommand(0, 0, 0));
 
             // Upper-left forest. Think Composite!!!
             commands.AddLast(new AddTreeCommand(2, 0, 0));
@@ -290,7 +290,7 @@ namespace ServiceProxy
 
         private void BuildScreen1(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 1, 0));
+            commands.AddLast(new DeclareLotCommand(0, 1, 0));
 
             commands.AddLast(new AddStoneWallCommand(2, 0, 0));
             commands.AddLast(new AddStoneWallCommand(2, 1, 0));
@@ -449,7 +449,7 @@ namespace ServiceProxy
 
         private void BuildScreen2(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 2, 0));
+            commands.AddLast(new DeclareLotCommand(0, 2, 0));
 
             commands.AddLast(new AddStoneWallCommand(2, 0, 0));
             commands.AddLast(new AddStoneWallCommand(2, 1, 0));
@@ -755,7 +755,7 @@ namespace ServiceProxy
 
         private void BuildScreen3(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 3, 0));
+            commands.AddLast(new DeclareLotCommand(0, 3, 0));
 
             commands.AddLast(new AddStoneWallCommand(2, 0, 0));
             commands.AddLast(new AddStoneWallCommand(2, 1, 0));
@@ -921,7 +921,7 @@ namespace ServiceProxy
 
         private void BuildScreen4(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 4, 0));
+            commands.AddLast(new DeclareLotCommand(0, 4, 0));
 
             commands.AddLast(new AddStoneWallCommand(2, 0, 0));
             commands.AddLast(new AddStoneWallCommand(2, 1, 0));
@@ -1144,7 +1144,7 @@ namespace ServiceProxy
 
         private void BuildScreen5(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 0, 1));
+            commands.AddLast(new DeclareLotCommand(0, 0, 1));
 
             // Upper-left forest. Think Composite!!!
             commands.AddLast(new AddTreeCommand(2, 0, 0));
@@ -1349,7 +1349,7 @@ namespace ServiceProxy
 
         private void BuildScreen6(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 1, 1));
+            commands.AddLast(new DeclareLotCommand(0, 1, 1));
 
             // Upper-left forest. Think Composite!!!
             commands.AddLast(new AddStoneWallCommand(2, 0, 0));
@@ -1551,7 +1551,7 @@ namespace ServiceProxy
 
         private void BuildScreen7(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 2, 1));
+            commands.AddLast(new DeclareLotCommand(0, 2, 1));
 
             // Upper-left forest. Think Composite!!!
             commands.AddLast(new AddStoneWallCommand(2, 0, 0));
@@ -1779,7 +1779,7 @@ namespace ServiceProxy
 
         private void BuildScreen8(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 3, 1));
+            commands.AddLast(new DeclareLotCommand(0, 3, 1));
 
             // Upper-left forest. Think Composite!!!
             commands.AddLast(new AddTreeCommand(2, 0, 0));
@@ -1958,7 +1958,7 @@ namespace ServiceProxy
 
         private void BuildScreen9(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 4, 1));
+            commands.AddLast(new DeclareLotCommand(0, 4, 1));
 
             // Upper-left forest. Think Composite!!!
             commands.AddLast(new AddTreeCommand(2, 0, 0));
@@ -2167,7 +2167,7 @@ namespace ServiceProxy
 
         private void BuildScreen10(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 0, 2));
+            commands.AddLast(new DeclareLotCommand(0, 0, 2));
 
             commands.AddLast(new AddWaterCommand(2, 0, 0));
             commands.AddLast(new AddWaterCommand(2, 1, 0));
@@ -2344,7 +2344,7 @@ namespace ServiceProxy
 
         private void BuildScreen11(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 1, 2));
+            commands.AddLast(new DeclareLotCommand(0, 1, 2));
 
             // Upper-left forest. Think Composite!!!
             commands.AddLast(new AddTreeCommand(2, 0, 0));
@@ -2486,7 +2486,7 @@ namespace ServiceProxy
 
         private void BuildScreen12(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 2, 2));
+            commands.AddLast(new DeclareLotCommand(0, 2, 2));
 
             // Upper-left forest. Think Composite!!!
             //            commands.AddLast(new AddTreeCommand(2, 0, 0));
@@ -2527,7 +2527,7 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(2, 1, 4));
             commands.AddLast(new AddTreeCommand(2, 2, 4));
             commands.AddLast(new AddTreeCommand(2, 3, 4));
-            commands.AddLast(new AddStairsCommand(2, 4, 4, 26));
+            commands.AddLast(new AddStairsCommand(2, 4, 4, 1));
 
             commands.AddLast(new AddTreeCommand(2, 0, 5));
             commands.AddLast(new AddTreeCommand(2, 1, 5));
@@ -2688,7 +2688,7 @@ namespace ServiceProxy
 
         private void BuildScreen13(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 3, 2));
+            commands.AddLast(new DeclareLotCommand(0, 3, 2));
 
             // Upper-left forest. Think Composite!!!
             commands.AddLast(new AddTreeCommand(2, 0, 0));
@@ -2886,7 +2886,7 @@ namespace ServiceProxy
 
         private void BuildScreen14(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 4, 2));
+            commands.AddLast(new DeclareLotCommand(0, 4, 2));
 
             commands.AddLast(new AddTreeCommand(2, 0, 0));
             commands.AddLast(new AddTreeCommand(2, 1, 0));
@@ -2979,7 +2979,7 @@ namespace ServiceProxy
 
         private void BuildScreen15(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 0, 3));
+            commands.AddLast(new DeclareLotCommand(0, 0, 3));
 
             commands.AddLast(new AddWaterCommand(2, 0, 0));
             commands.AddLast(new AddWaterCommand(2, 1, 0));
@@ -3245,7 +3245,7 @@ namespace ServiceProxy
 
         private void BuildScreen16(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 1, 3));
+            commands.AddLast(new DeclareLotCommand(0, 1, 3));
 
             // Upper-left forest. Think Composite!!!
             commands.AddLast(new AddTreeCommand(2, 0, 0));
@@ -3446,7 +3446,7 @@ namespace ServiceProxy
 
         private void BuildScreen17(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 2, 3));
+            commands.AddLast(new DeclareLotCommand(0, 2, 3));
 
             // Upper-left forest. Think Composite!!!
             commands.AddLast(new AddTreeCommand(2, 0, 0));
@@ -3642,7 +3642,7 @@ namespace ServiceProxy
 
         private void BuildScreen18(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 3, 3));
+            commands.AddLast(new DeclareLotCommand(0, 3, 3));
 
             // Upper-left forest. Think Composite!!!
             commands.AddLast(new AddTreeCommand(2, 0, 0));
@@ -3823,7 +3823,7 @@ namespace ServiceProxy
 
         private void BuildScreen19(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 4, 3));
+            commands.AddLast(new DeclareLotCommand(0, 4, 3));
 
             // Upper-left forest. Think Composite!!!
             commands.AddLast(new AddTreeCommand(2, 0, 0));
@@ -4005,7 +4005,7 @@ namespace ServiceProxy
 
         private void BuildScreen20(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 0, 4));
+            commands.AddLast(new DeclareLotCommand(0, 0, 4));
 
             commands.AddLast(new AddWaterCommand(2, 0, 0));
             commands.AddLast(new AddWaterCommand(2, 1, 0));
@@ -4253,7 +4253,7 @@ namespace ServiceProxy
 
         private void BuildScreen21(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 1, 4));
+            commands.AddLast(new DeclareLotCommand(0, 1, 4));
 
             // Upper-left forest
             commands.AddLast(new AddTreeCommand(2, 0, 0));
@@ -4466,7 +4466,7 @@ namespace ServiceProxy
 
         private void BuildScreen22(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 2, 4));
+            commands.AddLast(new DeclareLotCommand(0, 2, 4));
 
             // Upper-left forest
             commands.AddLast(new AddTreeCommand(2, 0, 0));
@@ -4652,7 +4652,7 @@ namespace ServiceProxy
 
         private void BuildScreen23(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 3, 4));
+            commands.AddLast(new DeclareLotCommand(0, 3, 4));
 
             // Upper-left forest
             commands.AddLast(new AddTreeCommand(2, 0, 0));
@@ -4792,7 +4792,7 @@ namespace ServiceProxy
 
         private void BuildScreen24(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareLotCommand("Outside", 4, 4));
+            commands.AddLast(new DeclareLotCommand(0, 4, 4));
 
             commands.AddLast(new AddTreeCommand(2, 0, 0));
             commands.AddLast(new AddTreeCommand(2, 1, 0));
@@ -4914,6 +4914,13 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 19));
             commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 19));
             commands.AddLast(new AddEdgeCommand(4, 11, 0, 0, 19));
+        }
+
+        private void BuildScreen25(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(1, 0, 0));
+
+            commands.AddLast(new AddTreeCommand(2, 11, 0));
         }
     }
 }
