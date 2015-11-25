@@ -4,8 +4,8 @@
 class Underground : public Region
 {
 public:
-	Underground(int id, int x, int y) :
-		Region(id, x, y) {}
+	Underground(int id, int x, int y, int nEntryX, int nEntryY) :
+		Region(id, x, y, nEntryX, nEntryY) {}
 
 protected:
 

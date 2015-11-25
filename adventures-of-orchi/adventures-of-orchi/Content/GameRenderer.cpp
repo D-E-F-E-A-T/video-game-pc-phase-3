@@ -232,7 +232,14 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		int nDestination = static_cast<Portal *>(pCollidedStairs)->GetDestination();
 
 		m_pRegion = m_pWorld->Go(nDestination);
-		m_pCurrentSubdivision = m_pRegion->LoadSubdivision(0, 0);
+
+		int entryX = 0;
+		int entryY = 0;
+
+		m_pRegion->GetEntry(&entryX, &entryY);
+
+		m_pCurrentSubdivision =
+			m_pRegion->LoadSubdivision(entryX, entryY);
 
 		m_pCollided->clear();
 
@@ -361,7 +368,13 @@ void GameRenderer::Render()
 
 	DEVICE_CONTEXT_2D->BeginDraw();
 
-	m_pCurrentSubdivision->Render(m_deviceResources);
+	float fScreenDimensions[]
+	{ 
+		m_fWindowWidth, 
+		m_fWindowHeight 
+	};
+
+	m_pCurrentSubdivision->Render(fScreenDimensions, &grid, m_deviceResources);
 	DEVICE_CONTEXT_2D->SetTransform(D2D1::Matrix3x2F::Identity());
 
 	DrawLeftMargin();

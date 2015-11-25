@@ -12,11 +12,14 @@
 using namespace Windows::Foundation::Collections;
 using namespace std;
 
-Region::Region(int id, int nWidth, int nHeight)
+Region::Region(int id, int nWidth, int nHeight, int nEntryX, int nEntryY)
 {
 	m_nId = id;
 	m_lpnDimensions[WIDTH_INDEX] = nWidth;
 	m_lpnDimensions[HEIGHT_INDEX] = nHeight;
+
+	m_nEntryX = nEntryX;
+	m_nEntryY = nEntryY;
 }
 
 Region::~Region()
@@ -91,4 +94,10 @@ void Region::GetDimensions(int * columns, int * rows)
 Subdivision * Region::GetSubdivision(int x, int y)
 {
 	return m_lpSubdivisions + (y * m_lpnDimensions[WIDTH_INDEX] + x);
+}
+
+void Region::GetEntry(int * x, int * y)
+{
+	*x = this->m_nEntryX;
+	*y = this->m_nEntryY;
 }

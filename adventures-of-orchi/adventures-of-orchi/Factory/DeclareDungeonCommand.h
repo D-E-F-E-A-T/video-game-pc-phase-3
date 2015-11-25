@@ -16,10 +16,16 @@ public:
 		const shared_ptr<DeviceResources>& deviceResources)
 	{
 		int id = ((ServiceProxy::DeclareDungeonCommand ^)command)->Id;
+
 		int x = ((ServiceProxy::DeclareDungeonCommand ^)command)->X;
 		int y = ((ServiceProxy::DeclareDungeonCommand ^)command)->Y;
 
-		(*pWorld)->AddRegion(new Dungeon(id, x, y));
+		int entryX = ((ServiceProxy::DeclareDungeonCommand ^)command)->EntryX;
+		int entryY = ((ServiceProxy::DeclareDungeonCommand ^)command)->EntryY;
+
+		String ^ color = ((ServiceProxy::DeclareDungeonCommand ^)command)->Color;
+
+		(*pWorld)->AddRegion(new Dungeon(id, x, y, entryX, entryY, color));
 	}
 
 protected:

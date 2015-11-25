@@ -12,6 +12,8 @@ namespace ServiceProxy
         private int x;
         private int y;
         private int id;
+        private int entryX;
+        private int entryY;
 
         public int Type
         {
@@ -30,19 +32,33 @@ namespace ServiceProxy
             get { return y; }
             set { y = value; }
         }
-
+    
         public int Id
         {
             get { return id; }
             set { id = value; }
         }
 
-        public DeclareLandCommand(int id, int x, int y)
+        public int EntryX
+        {
+            get { return entryX; }              
+            set { entryX = value; }
+        }
+
+        public int EntryY
+        {
+            get { return entryY; }
+            set { entryY = value; }
+        }
+
+        public DeclareLandCommand(int id, int x, int y, int entryX, int entryY)
         {
             this.type = 10;
             this.id = id;
             this.x = x;
             this.y = y;
+            this.entryX = entryX;
+            this.entryY = entryY;
         }
     }
 }

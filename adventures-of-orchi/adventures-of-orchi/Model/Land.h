@@ -5,8 +5,8 @@
 class Land : public Onground
 {
 public:
-	Land(int id, int x, int y) :
-		Onground(id, x, y) 
+	Land(int id, int x, int y, int nEntryX, int nEntryY) :
+		Onground(id, x, y, nEntryX, nEntryY) 
 	{
 		m_lpSubdivisions = new Lot[x * y];
 	}

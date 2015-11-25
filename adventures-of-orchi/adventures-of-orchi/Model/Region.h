@@ -6,7 +6,7 @@ using namespace std;
 class Region
 {
 public:
-	Region(int id, int nWidth, int nHeight);
+	Region(int id, int nWidth, int nHeight, int nEntryX, int nEntryY);
 
 	~Region();
 
@@ -20,6 +20,7 @@ public:
 	//Stack * Go(int regionId);
 
 	void GetLocation(int * column, int * row);
+	void GetEntry(int * x, int * y);
 
 	int GetId();
 
@@ -31,6 +32,8 @@ protected:
 
 	int m_nLocation[2];	// Player's location within the region.
 	int m_nId;
+	int m_nEntryX;
+	int m_nEntryY;
 
 private:
 
