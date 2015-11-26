@@ -238,6 +238,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 		m_pRegion->GetEntry(&entryX, &entryY);
 
+		// TODO: Make color part of Subdivision
 		m_pCurrentSubdivision =
 			m_pRegion->LoadSubdivision(entryX, entryY);
 

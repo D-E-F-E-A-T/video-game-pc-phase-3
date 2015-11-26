@@ -23,9 +23,11 @@ public:
 		int entryX = ((ServiceProxy::DeclareDungeonCommand ^)command)->EntryX;
 		int entryY = ((ServiceProxy::DeclareDungeonCommand ^)command)->EntryY;
 
-		String ^ color = ((ServiceProxy::DeclareDungeonCommand ^)command)->Color;
+		int red = ((ServiceProxy::DeclareDungeonCommand ^)command)->Red;
+		int green = ((ServiceProxy::DeclareDungeonCommand ^)command)->Green;
+		int blue= ((ServiceProxy::DeclareDungeonCommand ^)command)->Blue;
 
-		(*pWorld)->AddRegion(new Dungeon(id, x, y, entryX, entryY, color));
+		(*pWorld)->AddRegion(new Dungeon(id, x, y, entryX, entryY, red, green, blue));
 	}
 
 protected:

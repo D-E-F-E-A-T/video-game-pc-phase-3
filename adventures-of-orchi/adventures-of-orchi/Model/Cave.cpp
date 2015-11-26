@@ -1,40 +1,53 @@
 #include "pch.h"
 #include "Cave.h"
 #include "Constants.h"
+#include <DirectXColors.h>
 
+using namespace DirectX;
 
 void Cave::Render(
 	float lpfScreenDimensions[2],
 	Grid * lpGrid,
 	const shared_ptr<DeviceResources>& deviceResources)
 {
-	deviceResources->GetD2DDeviceContext()->Clear(D2D1::ColorF(D2D1::ColorF::Black));
+	float fRed = (float)m_nRed / 255.0f;
+	float fGreen = (float)m_nGreen / 255.0f;
+	float fBlue = (float)m_nBlue / 255.0f;
+
+	XMVECTOR rbgColor = XMVectorSet(
+		fRed,
+		fGreen,
+		fBlue,
+		1.0f);
+
+	XMVECTOR hslColor = XMColorRGBToHSL(rbgColor);
+	deviceResources->GetD2DDeviceContext()->Clear(D2D1::ColorF(fRed, fGreen, fBlue, 1.0f));
 
 	float fGridLeft = lpfScreenDimensions[WIDTH_INDEX] * LEFT_MARGIN_RATIO;
 	float fGridRight = (1.0f - RIGHT_MARGIN_RATIO) * lpfScreenDimensions[WIDTH_INDEX];
 
 	D2D1_RECT_F rectOuterRing
 	{
-		fGridLeft + lpGrid->GetColumnWidth(),
-		lpGrid->GetRowHeight(),
-		fGridRight - lpGrid->GetColumnWidth(),
-		lpfScreenDimensions[HEIGHT_INDEX] - lpGrid->GetRowHeight()
+		fGridLeft,
+		0.0f,
+		fGridRight,
+		lpfScreenDimensions[HEIGHT_INDEX]
 	};
 
 	D2D1_RECT_F rectMiddleRing
 	{
-		fGridLeft + (1.5f * lpGrid->GetColumnWidth()),
-		1.5f * lpGrid->GetRowHeight(),
-		fGridRight - (1.5f * lpGrid->GetColumnWidth()),
-		lpfScreenDimensions[HEIGHT_INDEX] - 1.5f * lpGrid->GetRowHeight()
+		fGridLeft + (1.0f * lpGrid->GetColumnWidth()),
+		1.0f * lpGrid->GetRowHeight(),
+		fGridRight - (1.0f * lpGrid->GetColumnWidth()),
+		lpfScreenDimensions[HEIGHT_INDEX] - 1.0f * lpGrid->GetRowHeight()
 	};
 
 	D2D1_RECT_F rectInnerRing
 	{
-		fGridLeft + (2.0f * lpGrid->GetColumnWidth()),
-		2.0f * lpGrid->GetRowHeight(),
-		fGridRight - (2.0f * lpGrid->GetColumnWidth()),
-		lpfScreenDimensions[HEIGHT_INDEX] - 2.0f * lpGrid->GetRowHeight()
+		fGridLeft + (3.0f * lpGrid->GetColumnWidth()),
+		3.0f * lpGrid->GetRowHeight(),
+		fGridRight - (3.0f * lpGrid->GetColumnWidth()),
+		lpfScreenDimensions[HEIGHT_INDEX] - 3.0f * lpGrid->GetRowHeight()
 	};
 
 	deviceResources->GetD2DDeviceContext()->FillRectangle(

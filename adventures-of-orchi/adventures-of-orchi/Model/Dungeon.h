@@ -5,17 +5,18 @@
 class Dungeon : public Underground
 {
 public:
-	Dungeon(int id, int x, int y, int nEntryX, int nEntryY, String ^ strColor) :
+	Dungeon(int id, int x, int y, int nEntryX, int nEntryY, int nRed, int nGreen, int nBlue) :
 		Underground(id, x, y, nEntryX, nEntryY) 
 	{
 		m_lpSubdivisions = new Cave[x * y];
-		m_strColor = strColor;
+
+		for (int i = 0; i < x * y; i++)
+		{
+			(m_lpSubdivisions + i)->SetColor(nRed, nGreen, nBlue);
+		}
 	}
 
-	String ^ GetColor() { return m_strColor; }
-
 protected:
-	String ^ m_strColor;
 
 private:
 };

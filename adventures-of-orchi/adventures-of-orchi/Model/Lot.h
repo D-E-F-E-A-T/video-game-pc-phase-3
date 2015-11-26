@@ -5,6 +5,7 @@
 class Lot : public Subdivision
 {
 public:
+
 	void Render(
 		float lpfScreenDimensions[2],
 		Grid * lpGrid,

@@ -10,6 +10,13 @@ public:
 		m_lpStack = new Stack();
 	}
 
+	void SetColor(int nRed, int nGreen, int nBlue)
+	{
+		m_nRed = nRed;
+		m_nGreen = nGreen;
+		m_nBlue = nBlue;
+	}
+
 	void Set(int layerId, Space * pSpace)
 	{
 		m_lpStack->Add(layerId, pSpace);
@@ -27,6 +34,9 @@ protected:
 
 //	int m_lpnDimensions[2];
 	int m_nCurrentStackIndex;
+	int m_nRed;
+	int m_nGreen;
+	int m_nBlue;
 
 private:
 };

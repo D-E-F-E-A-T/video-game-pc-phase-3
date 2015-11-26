@@ -30,9 +30,9 @@ namespace ServiceProxy
 
             commands.AddLast(new DeclareWorldCommand("Default"));
 
-            commands.AddLast(new DeclareLandCommand(0, 5, 5, 2, 2));
+            commands.AddLast(new DeclareLandCommand(0, 5, 5, 2, 2, 222, 184, 135));
 
-            commands.AddLast(new DeclareDungeonCommand(1, 5, 7, 2, 6, "#4461AD"));
+            commands.AddLast(new DeclareDungeonCommand(1, 5, 7, 2, 6, 104, 133, 195));
             //commands.AddLast(new DeclareDungeonCommand("Dungeon2", 5, 5));
             //commands.AddLast(new DeclareDungeonCommand("Dungeon3", 5, 5));
             //commands.AddLast(new DeclareDungeonCommand("Dungeon4", 5, 5));
