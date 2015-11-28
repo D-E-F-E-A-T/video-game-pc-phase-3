@@ -19,8 +19,13 @@ public:
 		int x = ((ServiceProxy::DeclareLotCommand ^)command)->X;
 		int y = ((ServiceProxy::DeclareLotCommand ^)command)->Y;
 
+		int red = ((ServiceProxy::DeclareLotCommand ^)command)->Red;
+		int green = ((ServiceProxy::DeclareLotCommand ^)command)->Green;
+		int blue = ((ServiceProxy::DeclareLotCommand ^)command)->Blue;
+
 		Region * region = (*pWorld)->GetRegion(id);
 		*pSubdivision = region->GetSubdivision(x, y);
+		(*pSubdivision)->SetColor(red, green, blue);
 	}
 
 protected:

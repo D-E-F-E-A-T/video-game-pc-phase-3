@@ -24,11 +24,7 @@ public:
 		int nEntryX = ((ServiceProxy::DeclareLandCommand ^)command)->EntryX;
 		int nEntryY = ((ServiceProxy::DeclareLandCommand ^)command)->EntryY;
 
-		int nRed = ((ServiceProxy::DeclareLandCommand ^)command)->Red;
-		int nGreen = ((ServiceProxy::DeclareLandCommand ^)command)->Green;
-		int nBlue = ((ServiceProxy::DeclareLandCommand ^)command)->Blue;
-
-		(*pWorld)->AddRegion(new Land(nId, nX, nY, nEntryX, nEntryY, nRed, nGreen, nBlue));
+		(*pWorld)->AddRegion(new Land(nId, nX, nY, nEntryX, nEntryY));
 	}
 
 protected:

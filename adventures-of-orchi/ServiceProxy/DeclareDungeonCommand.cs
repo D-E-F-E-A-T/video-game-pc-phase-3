@@ -14,9 +14,6 @@ namespace ServiceProxy
         private int id;
         private int entryX;
         private int entryY;
-        private int red;
-        private int green;
-        private int blue;
 
         public int Type
         {
@@ -42,24 +39,6 @@ namespace ServiceProxy
             set { id = value; }
         }
 
-        public int Red
-        {
-            get { return red; }
-            set { red = value; }
-        }
-
-        public int Green
-        {
-            get { return green; }
-            set { green = value; }
-        }
-
-        public int Blue
-        {
-            get { return blue; }
-            set { blue = value; }
-        }
-
         public int EntryX
         {
             get { return entryX; }
@@ -74,7 +53,7 @@ namespace ServiceProxy
 
         
 
-        public DeclareDungeonCommand(int id, int x, int y, int entryX, int entryY, int red, int green, int blue)
+        public DeclareDungeonCommand(int id, int x, int y, int entryX, int entryY)
         {
             this.type = 9;
             this.id = id;
@@ -82,10 +61,7 @@ namespace ServiceProxy
             this.y = y;
             this.entryX = entryX;
             this.entryY = entryY;
-            this.red = red;
-            this.blue = blue;
-            this.green = green;
-            
+
         }
     }
 }

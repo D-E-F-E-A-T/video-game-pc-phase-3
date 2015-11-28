@@ -19,8 +19,13 @@ public:
 		int x = ((ServiceProxy::DeclareCaveCommand ^)command)->X;
 		int y = ((ServiceProxy::DeclareCaveCommand ^)command)->Y;
 
+		int red = ((ServiceProxy::DeclareCaveCommand ^)command)->Red;
+		int green = ((ServiceProxy::DeclareCaveCommand ^)command)->Green;
+		int blue = ((ServiceProxy::DeclareCaveCommand ^)command)->Blue;
+
 		Region * region = (*pWorld)->GetRegion(regionId);
 		*pSubdivision = region->GetSubdivision(x, y);
+		(*pSubdivision)->SetColor(red, green, blue);
 	}
 
 protected:
