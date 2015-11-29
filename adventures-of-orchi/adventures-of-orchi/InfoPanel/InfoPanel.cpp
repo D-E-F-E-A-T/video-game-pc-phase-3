@@ -34,7 +34,7 @@ void InfoPanel::DrawText(float fLeft, float fTop, float fRight, const shared_ptr
 	deviceResources->GetD2DDeviceContext()->DrawTextLayout(
 		D2D1::Point2F(fLeft, fTop),
 		m_textLayout.Get(),
-		deviceResources->m_whiteBrush.Get()
+		deviceResources->m_mapBrushes["white"]
 		);
 }
 
@@ -44,5 +44,5 @@ void InfoPanel::DrawBox(float fLeft, float fTop, float fRight, float fBottom, co
 
 	deviceResources->GetD2DDeviceContext()->DrawRectangle(
 		rect,
-		deviceResources->m_whiteBrush.Get());
+		deviceResources->m_mapBrushes["white"]);
 }

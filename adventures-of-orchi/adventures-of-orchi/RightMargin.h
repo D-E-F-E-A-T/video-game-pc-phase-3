@@ -9,7 +9,7 @@ public:
 	RightMargin();
 	void Draw(
 		ComPtr<ID2D1DeviceContext1> context,
-		ComPtr<ID2D1SolidColorBrush> brush,
+		ID2D1SolidColorBrush * brush,
 		D2D1_RECT_F rect);
 
 protected:

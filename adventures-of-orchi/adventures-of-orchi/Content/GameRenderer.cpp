@@ -393,7 +393,7 @@ void GameRenderer::Render()
 	grid.SetVisibility(true);
 #endif // RENDER_DIAGNOSTICS
 
-	grid.Draw(DEVICE_CONTEXT_2D, m_deviceResources->m_blackBrush);
+	grid.Draw(DEVICE_CONTEXT_2D, m_deviceResources->m_mapBrushes["black"]);
 
 	RenderSpaces2D();
 
@@ -420,7 +420,7 @@ void GameRenderer::Render()
 		HighlightRegion(
 			column,
 			row,
-			m_deviceResources->m_yellowBrush);
+			m_deviceResources->m_mapBrushes["yellow"]);
 	}
 
 	DrawSpriteIntersection();
@@ -643,13 +643,13 @@ void GameRenderer::DrawSpriteIntersection()
 		{
 			DEVICE_CONTEXT_2D->FillRectangle(
 				(*iterator),
-				m_deviceResources->m_greenBrush.Get());
+				m_deviceResources->m_mapBrushes["green"]);
 		}
 		else if ((*iterator2) == COLLISION)
 		{
 			DEVICE_CONTEXT_2D->FillRectangle(
 				(*iterator),
-				m_deviceResources->m_redBrush.Get());
+				m_deviceResources->m_mapBrushes["red"]);
 		}
 	}
 }
@@ -766,7 +766,7 @@ void GameRenderer::DrawLeftMargin()
 
 	leftMargin.Draw(
 		DEVICE_CONTEXT_2D,
-		m_deviceResources->m_blackBrush.Get(),
+		m_deviceResources->m_mapBrushes["black"],
 		rect);
 }
 
@@ -784,7 +784,7 @@ void GameRenderer::DrawRightMargin()
 
 	rightMargin.Draw(
 		DEVICE_CONTEXT_2D,
-		m_deviceResources->m_blackBrush.Get(),
+		m_deviceResources->m_mapBrushes["black"],
 		rect);
 }
 
@@ -867,13 +867,13 @@ void GameRenderer::RenderButtonTouchControls()
 	{
 		m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
 			ellipseX,
-			m_deviceResources->m_blueBrush.Get());
+			m_deviceResources->m_mapBrushes["blue"]);
 	}
 	else
 	{
 		m_deviceResources->GetD2DDeviceContext()->FillEllipse(
 			ellipseX,
-			m_deviceResources->m_blueBrush.Get());
+			m_deviceResources->m_mapBrushes["blue"]);
 	}
 
 
@@ -892,13 +892,13 @@ void GameRenderer::RenderButtonTouchControls()
 	{
 		m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
 			ellipseB,
-			m_deviceResources->m_redBrush.Get());
+			m_deviceResources->m_mapBrushes["red"]);
 	}
 	else
 	{
 		m_deviceResources->GetD2DDeviceContext()->FillEllipse(
 			ellipseB,
-			m_deviceResources->m_redBrush.Get());
+			m_deviceResources->m_mapBrushes["red"]);
 	}
 
 	D2D1_ELLIPSE ellipseA
@@ -916,13 +916,13 @@ void GameRenderer::RenderButtonTouchControls()
 	{
 		m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
 			ellipseA,
-			m_deviceResources->m_greenBrush.Get());
+			m_deviceResources->m_mapBrushes["green"]);
 	}
 	else
 	{
 		m_deviceResources->GetD2DDeviceContext()->FillEllipse(
 			ellipseA,
-			m_deviceResources->m_greenBrush.Get());
+			m_deviceResources->m_mapBrushes["green"]);
 	}
 
 	D2D1_ELLIPSE ellipseY
@@ -940,13 +940,13 @@ void GameRenderer::RenderButtonTouchControls()
 	{
 		m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
 			ellipseY,
-			m_deviceResources->m_yellowBrush.Get());
+			m_deviceResources->m_mapBrushes["yellow"]);
 	}
 	else
 	{
 		m_deviceResources->GetD2DDeviceContext()->FillEllipse(
 			ellipseY,
-			m_deviceResources->m_yellowBrush.Get());
+			m_deviceResources->m_mapBrushes["yellow"]);
 	}
 }
 
@@ -983,13 +983,13 @@ void GameRenderer::RenderDirectionalTouchControls()
 	{
 		m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
 			ellipseWest,
-			m_deviceResources->m_whiteBrush.Get());
+			m_deviceResources->m_mapBrushes["white"]);
 	}
 	else
 	{
 		m_deviceResources->GetD2DDeviceContext()->FillEllipse(
 			ellipseWest,
-			m_deviceResources->m_whiteBrush.Get());
+			m_deviceResources->m_mapBrushes["white"]);
 	}
 
 
@@ -1008,13 +1008,13 @@ void GameRenderer::RenderDirectionalTouchControls()
 	{
 		m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
 			ellipseEast,
-			m_deviceResources->m_whiteBrush.Get());
+			m_deviceResources->m_mapBrushes["white"]);
 	}
 	else
 	{
 		m_deviceResources->GetD2DDeviceContext()->FillEllipse(
 			ellipseEast,
-			m_deviceResources->m_whiteBrush.Get());
+			m_deviceResources->m_mapBrushes["white"]);
 	}
 
 	D2D1_ELLIPSE ellipseSouth
@@ -1032,13 +1032,13 @@ void GameRenderer::RenderDirectionalTouchControls()
 	{
 		m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
 			ellipseSouth,
-			m_deviceResources->m_whiteBrush.Get());
+			m_deviceResources->m_mapBrushes["white"]);
 	}
 	else
 	{
 		m_deviceResources->GetD2DDeviceContext()->FillEllipse(
 			ellipseSouth,
-			m_deviceResources->m_whiteBrush.Get());
+			m_deviceResources->m_mapBrushes["white"]);
 	}
 
 	D2D1_ELLIPSE ellipseNorth
@@ -1056,13 +1056,13 @@ void GameRenderer::RenderDirectionalTouchControls()
 	{
 		m_deviceResources->GetD2DDeviceContext()->DrawEllipse(
 			ellipseNorth,
-			m_deviceResources->m_whiteBrush.Get());
+			m_deviceResources->m_mapBrushes["white"]);
 	}
 	else
 	{
 		m_deviceResources->GetD2DDeviceContext()->FillEllipse(
 			ellipseNorth,
-			m_deviceResources->m_whiteBrush.Get());
+			m_deviceResources->m_mapBrushes["white"]);
 	}
 }
 

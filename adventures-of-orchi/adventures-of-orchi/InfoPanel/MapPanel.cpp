@@ -93,5 +93,5 @@ void MapPanel::DrawGrid(float fLeft, float fTop, float fRight, float fBottom, co
 
 	deviceResources->GetD2DDeviceContext()->FillEllipse(
 		ellipseLocation,
-		deviceResources->m_greenBrush.Get());
+		deviceResources->m_mapBrushes["green"]);
 }

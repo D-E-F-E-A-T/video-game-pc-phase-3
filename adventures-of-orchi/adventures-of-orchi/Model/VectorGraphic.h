@@ -37,7 +37,7 @@ public:
 
 		DEVICE_CONTEXT_2D->FillRectangle(
 			rect,
-			m_deviceResources->m_blackBrush.Get());
+			m_deviceResources->m_mapBrushes["black"]);
 #endif // RENDER_DIAGNOSTICS
 	}
 

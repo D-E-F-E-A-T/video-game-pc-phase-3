@@ -52,23 +52,23 @@ void Cave::Render(
 
 	deviceResources->GetD2DDeviceContext()->FillRectangle(
 		rectOuterRing,
-		deviceResources->m_redBrush.Get());
+		deviceResources->m_mapBrushes["red"]);
 
 	deviceResources->GetD2DDeviceContext()->FillRectangle(
 		rectInnerRing,
-		deviceResources->m_blueBrush.Get());
+		deviceResources->m_mapBrushes["dodgerblue"]);
 
 
 
 	deviceResources->GetD2DDeviceContext()->DrawRectangle(
 		rectMiddleRing,
-		deviceResources->m_whiteBrush.Get());
+		deviceResources->m_mapBrushes["white"]);
 
 
 
 	deviceResources->GetD2DDeviceContext()->DrawRectangle(
 		rectInnerRing,
-		deviceResources->m_whiteBrush.Get());
+		deviceResources->m_mapBrushes["white"]);
 
 
 
@@ -88,7 +88,7 @@ void Cave::Render(
 	deviceResources->GetD2DDeviceContext()->DrawLine(
 		srcTL, 
 		dstTL, 
-		deviceResources->m_whiteBrush.Get());
+		deviceResources->m_mapBrushes["white"]);
 
 	D2D1_POINT_2F srcTR
 	{
@@ -105,7 +105,7 @@ void Cave::Render(
 	deviceResources->GetD2DDeviceContext()->DrawLine(
 		srcTR,
 		dstTR,
-		deviceResources->m_whiteBrush.Get());
+		deviceResources->m_mapBrushes["white"]);
 
 	D2D1_POINT_2F srcBR
 	{
@@ -122,7 +122,7 @@ void Cave::Render(
 	deviceResources->GetD2DDeviceContext()->DrawLine(
 		srcBR,
 		dstBR,
-		deviceResources->m_whiteBrush.Get());
+		deviceResources->m_mapBrushes["white"]);
 
 	D2D1_POINT_2F srcBL
 	{
@@ -139,5 +139,5 @@ void Cave::Render(
 	deviceResources->GetD2DDeviceContext()->DrawLine(
 		srcBL,
 		dstBL,
-		deviceResources->m_whiteBrush.Get());
+		deviceResources->m_mapBrushes["white"]);
 }

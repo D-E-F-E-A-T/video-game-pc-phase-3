@@ -6,6 +6,7 @@
 #include "IDeviceNotify.h"
 
 using namespace Microsoft::WRL;
+using namespace Platform;
 
 // Controls all the DirectX device resources.
 class DeviceResources
@@ -47,6 +48,7 @@ public:
 	IDWriteFactory2*		GetDWriteFactory() const				{ return m_dwriteFactory.Get();	 }
 	IWICImagingFactory2*	GetWicImagingFactory() const			{ return m_wicFactory.Get(); }
 	D2D1::Matrix3x2F		GetOrientationTransform2D() const		{ return m_orientationTransform2D; }
+
 
 //	private:
 	void CreateDeviceIndependentResources();
@@ -97,16 +99,9 @@ public:
 	// The IDeviceNotify can be held directly as it owns the DeviceResources.
 	IDeviceNotify* m_deviceNotify;
 
-	ComPtr<ID2D1SolidColorBrush>                    m_blackBrush;
 	ComPtr<IDWriteTextFormat>                       m_textFormat;
 	ComPtr<ID2D1PathGeometry>                       m_pathGeometry;
 	ComPtr<ID2D1PathGeometry>                       m_objectGeometry;
-	ComPtr<ID2D1SolidColorBrush>                    m_whiteBrush;
-	ComPtr<ID2D1SolidColorBrush>					m_orangeBrush;
-	ComPtr<ID2D1SolidColorBrush>					m_greenBrush;
-	ComPtr<ID2D1SolidColorBrush>					m_yellowBrush;
-	ComPtr<ID2D1SolidColorBrush>					m_grayBrush;
-	ComPtr<ID2D1SolidColorBrush>					m_blueBrush;
-	ComPtr<ID2D1SolidColorBrush>					m_redBrush;
-	ComPtr<ID2D1SolidColorBrush>					m_purpleBrush;
+
+	std::map<String ^, ID2D1SolidColorBrush *>		m_mapBrushes;
 };

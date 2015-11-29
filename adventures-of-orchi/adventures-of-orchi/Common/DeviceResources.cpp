@@ -61,7 +61,8 @@ DeviceResources::DeviceResources() :
 	m_dpi(-1.0f),
 	m_compositionScaleX(1.0f),
 	m_compositionScaleY(1.0f),
-	m_deviceNotify(nullptr)
+	m_deviceNotify(nullptr),
+	m_mapBrushes()
 {
 	CreateDeviceIndependentResources();
 	CreateDeviceResources();
@@ -708,68 +709,35 @@ DXGI_MODE_ROTATION DeviceResources::ComputeDisplayRotation()
 
 void DeviceResources::CreateBrushes()
 {
-	ThrowIfFailed(
-		m_d2dContext->CreateSolidColorBrush(
-			D2D1::ColorF(D2D1::ColorF::Black),
-			&m_blackBrush
-			)
-		);
+	ID2D1SolidColorBrush * temp;
 
-	ThrowIfFailed(
-		m_d2dContext->CreateSolidColorBrush(
-			D2D1::ColorF(D2D1::ColorF::White),
-			&m_whiteBrush
-			)
-		);
+	ThrowIfFailed(m_d2dContext->CreateSolidColorBrush(ColorF(ColorF::Black), &temp));
+	m_mapBrushes["black"] = temp;
 
-	ThrowIfFailed(
-		m_d2dContext->CreateSolidColorBrush(
-			D2D1::ColorF(D2D1::ColorF::Orange),
-			&m_orangeBrush
-			)
-		);
+	ThrowIfFailed(m_d2dContext->CreateSolidColorBrush(ColorF(ColorF::White), &temp));
+	m_mapBrushes["white"] = temp;
 
-	ThrowIfFailed(
-		m_d2dContext->CreateSolidColorBrush(
-			D2D1::ColorF(D2D1::ColorF::Yellow),
-			&m_yellowBrush
-			)
-		);
+	ThrowIfFailed(m_d2dContext->CreateSolidColorBrush(ColorF(ColorF::Orange), &temp));
+	m_mapBrushes["orange"] = temp;
 
-	ThrowIfFailed(
-		m_d2dContext->CreateSolidColorBrush(
-			D2D1::ColorF(D2D1::ColorF::Green),
-			&m_greenBrush
-			)
-		);
+	ThrowIfFailed(m_d2dContext->CreateSolidColorBrush(ColorF(ColorF::Yellow), &temp));
+	m_mapBrushes["yellow"] = temp;
 
-	ThrowIfFailed(
-		m_d2dContext->CreateSolidColorBrush(
-			D2D1::ColorF(D2D1::ColorF::LimeGreen),
-			&m_greenBrush)
-		);
+	ThrowIfFailed(m_d2dContext->CreateSolidColorBrush(ColorF(ColorF::Green), &temp));
+	m_mapBrushes["green"] = temp;
 
-	ThrowIfFailed(
-		m_d2dContext->CreateSolidColorBrush(
-			D2D1::ColorF(D2D1::ColorF::Gray),
-			&m_grayBrush)
-		);
+	ThrowIfFailed(m_d2dContext->CreateSolidColorBrush(ColorF(ColorF::LimeGreen), &temp));
+	m_mapBrushes["limegreen"] = temp;
 
-	ThrowIfFailed(
-		m_d2dContext->CreateSolidColorBrush(
-			D2D1::ColorF(D2D1::ColorF::DodgerBlue),
-			&m_blueBrush)
-		);
+	ThrowIfFailed(m_d2dContext->CreateSolidColorBrush(ColorF(ColorF::Gray), &temp));
+	m_mapBrushes["gray"] = temp;
 
-	ThrowIfFailed(
-		m_d2dContext->CreateSolidColorBrush(
-			D2D1::ColorF(D2D1::ColorF::Red),
-			&m_redBrush)
-		);
+	ThrowIfFailed(m_d2dContext->CreateSolidColorBrush(ColorF(ColorF::DodgerBlue), &temp));
+	m_mapBrushes["dodgerblue"] = temp;
 
-	ThrowIfFailed(
-		m_d2dContext->CreateSolidColorBrush(
-			D2D1::ColorF(D2D1::ColorF::Purple),
-			&m_purpleBrush)
-		);
+	ThrowIfFailed(m_d2dContext->CreateSolidColorBrush(ColorF(ColorF::Red), &temp));
+	m_mapBrushes["red"] = temp;
+
+	ThrowIfFailed(m_d2dContext->CreateSolidColorBrush(ColorF(ColorF::Purple), &temp));
+	m_mapBrushes["purple"] = temp;
 }
