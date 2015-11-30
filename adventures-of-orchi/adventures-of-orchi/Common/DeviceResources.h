@@ -104,4 +104,5 @@ public:
 	ComPtr<ID2D1PathGeometry>                       m_objectGeometry;
 
 	std::map<String ^, ID2D1SolidColorBrush *>		m_mapBrushes;
+	std::map<String ^, ID2D1SolidColorBrush *> GetBrushes() { return m_mapBrushes; }
 };

@@ -5,10 +5,10 @@
 class Land : public Onground
 {
 public:
-	Land(int id, int x, int y, int nEntryX, int nEntryY) :
-		Onground(id, x, y, nEntryX, nEntryY) 
+	Land(int id, int nColumns, int nRows, int nEntryX, int nEntryY) :
+		Onground(id, nColumns, nRows, nEntryX, nEntryY) 
 	{
-		m_lpSubdivisions = new Lot[x * y];
+		m_lpSubdivisions = new Lot[nColumns * nRows];
 	}
 
 protected:

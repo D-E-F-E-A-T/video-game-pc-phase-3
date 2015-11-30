@@ -33,7 +33,7 @@ protected:
 	Stack * m_lpStack;
 
 //	int m_lpnDimensions[2];
-	int m_nCurrentStackIndex;
+//	int m_nCurrentStackIndex;
 	int m_nRed;
 	int m_nGreen;
 	int m_nBlue;

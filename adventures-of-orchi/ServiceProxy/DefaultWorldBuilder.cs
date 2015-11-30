@@ -34,7 +34,7 @@ namespace ServiceProxy
             //  individual subdivisions override, if need to.
             commands.AddLast(new DeclareLandCommand(0, 5, 5, 2, 2));
 
-            commands.AddLast(new DeclareDungeonCommand(1, 5, 7, 2, 2));
+            commands.AddLast(new DeclareDungeonCommand(1, 5, 7, 2, 6));
             //commands.AddLast(new DeclareDungeonCommand("Dungeon2", 5, 5));
             //commands.AddLast(new DeclareDungeonCommand("Dungeon3", 5, 5));
             //commands.AddLast(new DeclareDungeonCommand("Dungeon4", 5, 5));
@@ -4920,7 +4920,7 @@ namespace ServiceProxy
 
         private void BuildScreen25(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareCaveCommand(1, 0, 0, 104, 133, 195));
+            commands.AddLast(new DeclareCaveCommand(1, 2, 6, 104, 133, 195));
 
             //            commands.AddLast(new AddTreeCommand(2, 11, 0));
         }

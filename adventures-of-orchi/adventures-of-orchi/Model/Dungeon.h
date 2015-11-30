@@ -5,10 +5,10 @@
 class Dungeon : public Underground
 {
 public:
-	Dungeon(int id, int x, int y, int nEntryX, int nEntryY) :
-		Underground(id, x, y, nEntryX, nEntryY) 
+	Dungeon(int id, int columns, int rows, int nEntryX, int nEntryY) :
+		Underground(id, columns, rows, nEntryX, nEntryY) 
 	{
-		m_lpSubdivisions = new Cave[x * y];
+		m_lpSubdivisions = new Cave[columns * rows];
 
 /*
 		for (int i = 0; i < x * y; i++)

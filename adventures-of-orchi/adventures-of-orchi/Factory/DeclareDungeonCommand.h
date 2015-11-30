@@ -17,13 +17,13 @@ public:
 	{
 		int id = ((ServiceProxy::DeclareDungeonCommand ^)command)->Id;
 
-		int x = ((ServiceProxy::DeclareDungeonCommand ^)command)->X;
-		int y = ((ServiceProxy::DeclareDungeonCommand ^)command)->Y;
+		int columns = ((ServiceProxy::DeclareDungeonCommand ^)command)->Columns;
+		int rows = ((ServiceProxy::DeclareDungeonCommand ^)command)->Rows;
 
 		int entryX = ((ServiceProxy::DeclareDungeonCommand ^)command)->EntryX;
 		int entryY = ((ServiceProxy::DeclareDungeonCommand ^)command)->EntryY;
 
-		(*pWorld)->AddRegion(new Dungeon(id, x, y, entryX, entryY));
+		(*pWorld)->AddRegion(new Dungeon(id, columns, rows, entryX, entryY));
 	}
 
 protected:

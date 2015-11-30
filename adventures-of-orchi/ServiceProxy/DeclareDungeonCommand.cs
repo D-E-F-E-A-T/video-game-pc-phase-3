@@ -9,8 +9,8 @@ namespace ServiceProxy
     public sealed class DeclareDungeonCommand : BuildCommand
     {
         private int type;
-        private int x;
-        private int y;
+        private int columns;
+        private int rows;
         private int id;
         private int entryX;
         private int entryY;
@@ -21,16 +21,16 @@ namespace ServiceProxy
             set { type = value; }
         }
 
-        public int X
+        public int Columns
         {
-            get { return x; }
-            set { x = value; }
+            get { return columns; }
+            set { columns = value; }
         }
 
-        public int Y
+        public int Rows
         {
-            get { return y; }
-            set { y = value; }
+            get { return rows; }
+            set { rows = value; }
         }
 
         public int Id
@@ -53,12 +53,12 @@ namespace ServiceProxy
 
         
 
-        public DeclareDungeonCommand(int id, int x, int y, int entryX, int entryY)
+        public DeclareDungeonCommand(int id, int columns, int rows, int entryX, int entryY)
         {
             this.type = 9;
             this.id = id;
-            this.x = x;
-            this.y = y;
+            this.columns = columns;
+            this.rows = rows;
             this.entryX = entryX;
             this.entryY = entryY;
 

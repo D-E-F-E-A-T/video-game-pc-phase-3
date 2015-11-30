@@ -9,8 +9,8 @@ namespace ServiceProxy
     public sealed class DeclareCaveCommand : BuildCommand
     {
         private int type;
-        private int x;
-        private int y;
+        private int column;
+        private int row;
         private int regionId;
         private int red;
         private int green;
@@ -22,16 +22,16 @@ namespace ServiceProxy
             set { type = value; }
         }
 
-        public int X
+        public int Column
         {
-            get { return x; }
-            set { x = value; }
+            get { return column; }
+            set { column = value; }
         }
 
-        public int Y
+        public int Row
         {
-            get { return y; }
-            set { y = value; }
+            get { return row; }
+            set { row = value; }
         }
 
         public int RegionId
@@ -58,12 +58,12 @@ namespace ServiceProxy
             set { blue = value; }
         }
 
-        public DeclareCaveCommand(int regionId, int x, int y, int red, int green, int blue)
+        public DeclareCaveCommand(int regionId, int nColumn, int nRow, int red, int green, int blue)
         {
             this.type = 8;
             this.regionId = regionId;
-            this.x = x;
-            this.y = y;
+            this.column = nColumn;
+            this.row = nRow;
             this.red = red;
             this.green = green;
             this.blue = blue;
