@@ -238,9 +238,13 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 		m_pRegion->GetEntry(&entryX, &entryY);
 
-		// TODO: Make color part of Subdivision
 		m_pCurrentSubdivision =
 			m_pRegion->LoadSubdivision(entryX, entryY);
+
+		m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pPlayer);
+		m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pSword);
+
+		m_nSwordDirection = SOUTH;
 
 		m_pCollided->clear();
 
