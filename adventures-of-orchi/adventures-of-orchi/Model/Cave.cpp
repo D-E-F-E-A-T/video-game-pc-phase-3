@@ -71,6 +71,11 @@ void Cave::Render(
 		rectMiddleRing,
 		temp);
 
+	deviceResources->GetD2DDeviceContext()->DrawRectangle(
+		rectMiddleRing,
+		deviceResources->m_mapBrushes["black"],
+		DUNGEON_LINE_WIDTH);
+
 
 
 
@@ -99,36 +104,10 @@ void Cave::Render(
 		rectInnerRing,
 		temp);
 
-
-/*
-
-*/
-
-/*
-	deviceResources->GetD2DDeviceContext()->DrawRectangle(
-		rectMiddleRing,
-		deviceResources->m_mapBrushes["white"]);
-
-	deviceResources->GetD2DDeviceContext()->FillRectangle(
-		rectInnerRing,
-		deviceResources->m_mapBrushes["dodgerblue"]);
-*/
-
-
-
-/*
-	deviceResources->GetD2DDeviceContext()->DrawRectangle(
-		rectMiddleRing,
-		deviceResources->m_mapBrushes["white"]);
-
-
-
 	deviceResources->GetD2DDeviceContext()->DrawRectangle(
 		rectInnerRing,
-		deviceResources->m_mapBrushes["white"]);
-*/
-
-
+		deviceResources->m_mapBrushes["black"],
+		DUNGEON_LINE_WIDTH);
 
 
 	D2D1_POINT_2F srcTL
@@ -146,7 +125,8 @@ void Cave::Render(
 	deviceResources->GetD2DDeviceContext()->DrawLine(
 		srcTL, 
 		dstTL, 
-		deviceResources->m_mapBrushes["black"]);
+		deviceResources->m_mapBrushes["black"],
+		DUNGEON_LINE_WIDTH);
 
 	D2D1_POINT_2F srcTR
 	{
@@ -163,7 +143,8 @@ void Cave::Render(
 	deviceResources->GetD2DDeviceContext()->DrawLine(
 		srcTR,
 		dstTR,
-		deviceResources->m_mapBrushes["black"]);
+		deviceResources->m_mapBrushes["black"],
+		DUNGEON_LINE_WIDTH);
 
 	D2D1_POINT_2F srcBR
 	{
@@ -180,7 +161,8 @@ void Cave::Render(
 	deviceResources->GetD2DDeviceContext()->DrawLine(
 		srcBR,
 		dstBR,
-		deviceResources->m_mapBrushes["black"]);
+		deviceResources->m_mapBrushes["black"],
+		DUNGEON_LINE_WIDTH);
 
 	D2D1_POINT_2F srcBL
 	{
@@ -197,5 +179,6 @@ void Cave::Render(
 	deviceResources->GetD2DDeviceContext()->DrawLine(
 		srcBL,
 		dstBL,
-		deviceResources->m_mapBrushes["black"]);
+		deviceResources->m_mapBrushes["black"],
+		DUNGEON_LINE_WIDTH);
 }
