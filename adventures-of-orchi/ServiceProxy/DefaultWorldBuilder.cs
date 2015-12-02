@@ -201,6 +201,8 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(2, 1, 7));
             commands.AddLast(new AddTreeCommand(2, 1, 8));
 
+            commands.AddLast(new AddStairsCommand(2, 4, 7, 2));
+
 
 
             // Upper-right forest
@@ -2583,7 +2585,7 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(2, 1, 4));
             commands.AddLast(new AddTreeCommand(2, 2, 4));
             commands.AddLast(new AddTreeCommand(2, 3, 4));
-            commands.AddLast(new AddStairsCommand(2, 4, 4, 2));
+            commands.AddLast(new AddStairsCommand(2, 4, 4, 1));
 
             commands.AddLast(new AddTreeCommand(2, 0, 5));
             commands.AddLast(new AddTreeCommand(2, 1, 5));
