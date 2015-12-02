@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Clause.h"
 
 class Antecedent : public Clause

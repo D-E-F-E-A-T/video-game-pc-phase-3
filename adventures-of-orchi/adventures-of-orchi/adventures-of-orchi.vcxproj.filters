@@ -77,6 +77,9 @@
     <Filter Include="Factory">
       <UniqueIdentifier>{cc7d2622-227d-40c0-9ad3-6820e0aa9d9a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scripting">
+      <UniqueIdentifier>{3715b8e6-67b2-4522-9c44-ac278924367c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -430,6 +433,39 @@
     </ClInclude>
     <ClInclude Include="Factory\DeclareWorldCommand.h">
       <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripting\Statement.h">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripting\Rule.h">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripting\Condition.h">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripting\Precondition.h">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripting\Postcondition.h">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripting\Clause.h">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripting\Antecedent.h">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripting\Consequent.h">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripting\Probability.h">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripting\Placement.h">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripting\Behavior.h">
+      <Filter>Scripting</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

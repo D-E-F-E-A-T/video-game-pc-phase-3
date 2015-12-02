@@ -38,7 +38,7 @@
     <WindowsTargetPlatformMinVersion>10.0.10240.0</WindowsTargetPlatformMinVersion>
     <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
-    <ProjectName>View</ProjectName>
+    <ProjectName>Engine</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -307,6 +307,17 @@
     <ClInclude Include="Render\SpriteRenderer.h" />
     <ClInclude Include="RightMargin.h" />
     <ClInclude Include="Model\Space.h" />
+    <ClInclude Include="Scripting\Antecedent.h" />
+    <ClInclude Include="Scripting\Behavior.h" />
+    <ClInclude Include="Scripting\Clause.h" />
+    <ClInclude Include="Scripting\Condition.h" />
+    <ClInclude Include="Scripting\Consequent.h" />
+    <ClInclude Include="Scripting\Placement.h" />
+    <ClInclude Include="Scripting\Postcondition.h" />
+    <ClInclude Include="Scripting\Precondition.h" />
+    <ClInclude Include="Scripting\Probability.h" />
+    <ClInclude Include="Scripting\Rule.h" />
+    <ClInclude Include="Scripting\Statement.h" />
     <ClInclude Include="Sprites\BasicLoader.h" />
     <ClInclude Include="Sprites\BasicSprites.h" />
     <ClInclude Include="Sprites\SimpleSprites.h" />
