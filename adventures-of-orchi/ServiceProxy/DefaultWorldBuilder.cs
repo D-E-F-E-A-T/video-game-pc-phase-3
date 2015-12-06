@@ -966,7 +966,7 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 7, 3, 1));
             commands.AddLast(new AddEdgeCommand(4, 0, 8, 3, 1));
 
-
+            commands.AddLast(new AddStairsCommand(2, 8, 7, 6));
         }
 
         private void BuildScreen3(LinkedList<BuildCommand> commands)
@@ -2745,7 +2745,7 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(2, 1, 4));
             commands.AddLast(new AddTreeCommand(2, 2, 4));
             commands.AddLast(new AddTreeCommand(2, 3, 4));
-            commands.AddLast(new AddStairsCommand(2, 4, 4, 6));
+//            commands.AddLast(new AddStairsCommand(2, 4, 4, 6));
 
             commands.AddLast(new AddTreeCommand(2, 0, 5));
             commands.AddLast(new AddTreeCommand(2, 1, 5));
