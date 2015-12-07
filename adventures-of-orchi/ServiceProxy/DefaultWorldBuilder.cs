@@ -40,7 +40,7 @@ namespace ServiceProxy
             commands.AddLast(new DeclareDungeonCommand(4, 7, 7, 3, 3));
             commands.AddLast(new DeclareDungeonCommand(5, 9, 10, 5, 7));
             commands.AddLast(new DeclareDungeonCommand(6, 11, 7, 6, 2));
-            //commands.AddLast(new DeclareDungeonCommand("Dungeon7", 5, 5));
+            commands.AddLast(new DeclareDungeonCommand(7, 9, 8, 4, 5));
 
             //commands.AddLast(new DeclareCaveCommand("CaveGetFirstSword", 1, 1));
             //commands.AddLast(new DeclareCaveCommand("Cave1", 5, 5));
@@ -276,6 +276,59 @@ namespace ServiceProxy
             BuildScreen288(commands);
             BuildScreen289(commands);
             BuildScreen290(commands);
+
+            // Dungeon 7
+            BuildScreen300(commands);
+
+            BuildScreen301(commands);
+            BuildScreen302(commands);
+            BuildScreen303(commands);
+            BuildScreen304(commands);
+            BuildScreen305(commands);
+
+            BuildScreen306(commands);
+            BuildScreen307(commands);
+            BuildScreen308(commands);
+            BuildScreen309(commands);
+            BuildScreen310(commands);
+            BuildScreen311(commands);
+            BuildScreen312(commands);
+
+            BuildScreen313(commands);
+            BuildScreen314(commands);
+            BuildScreen315(commands);
+            BuildScreen316(commands);
+            BuildScreen317(commands);
+            BuildScreen318(commands);
+            BuildScreen319(commands);
+
+            BuildScreen320(commands);
+            BuildScreen321(commands);
+            BuildScreen322(commands);
+            BuildScreen323(commands);
+            BuildScreen324(commands);
+            BuildScreen325(commands);
+            BuildScreen326(commands);
+
+            BuildScreen327(commands);
+            BuildScreen328(commands);
+            BuildScreen329(commands);
+            BuildScreen330(commands);
+            BuildScreen331(commands);
+            BuildScreen332(commands);
+            BuildScreen333(commands);
+
+            BuildScreen334(commands);
+            BuildScreen335(commands);
+            BuildScreen336(commands);
+            BuildScreen337(commands);
+
+            BuildScreen338(commands);
+            BuildScreen339(commands);
+            BuildScreen340(commands);
+            BuildScreen341(commands);
+            BuildScreen342(commands);
+            BuildScreen343(commands);
 
 
 
@@ -2745,7 +2798,7 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(2, 1, 4));
             commands.AddLast(new AddTreeCommand(2, 2, 4));
             commands.AddLast(new AddTreeCommand(2, 3, 4));
-//            commands.AddLast(new AddStairsCommand(2, 4, 4, 6));
+            commands.AddLast(new AddStairsCommand(2, 4, 4, 7));
 
             commands.AddLast(new AddTreeCommand(2, 0, 5));
             commands.AddLast(new AddTreeCommand(2, 1, 5));
@@ -8349,7 +8402,934 @@ namespace ServiceProxy
             //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 288));
         }
 
+        private void BuildScreen300(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 2, 7, 215, 215, 0));
 
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 302));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 302));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 302));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 289));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 289));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 289));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 286));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 286));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 286));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 288));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 288));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 288));
+        }
+
+        private void BuildScreen301(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 1, 6, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 307));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 307));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 307));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 289));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 289));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 289));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 286));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 286));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 286));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 288));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 288));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 288));
+        }
+
+        private void BuildScreen302(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 1, 6, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 308));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 308));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 308));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 289));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 289));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 289));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 300));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 300));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 300));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 288));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 288));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 288));
+        }
+
+        private void BuildScreen303(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 5, 6, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 311));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 311));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 311));
+
+            commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 304));
+            commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 304));
+            commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 304));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 300));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 300));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 300));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 288));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 288));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 288));
+        }
+
+        private void BuildScreen304(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 6, 6, 215, 215, 0));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 311));
+
+            commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 305));
+            commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 305));
+            commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 305));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 300));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 300));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 300));
+
+            commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 305));
+            commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 305));
+            commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 305));
+        }
+
+        private void BuildScreen305(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 7, 6, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 312));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 312));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 312));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 305));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 305));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 305));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 300));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 300));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 300));
+
+            commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 304));
+            commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 304));
+            commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 304));
+        }
+
+        private void BuildScreen306(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 0, 5, 215, 215, 0));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 312));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 312));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 312));
+
+            commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 307));
+            commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 307));
+            commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 307));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 300));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 300));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 300));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 304));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 304));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 304));
+        }
+
+        private void BuildScreen307(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 0, 5, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 313));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 313));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 313));
+
+            commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 308));
+            commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 308));
+            commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 308));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 301));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 301));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 301));
+
+            commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 306));
+            commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 306));
+            commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 306));
+        }
+
+        private void BuildScreen308(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 2, 5, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 314));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 314));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 314));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 308));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 308));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 308));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 302));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 302));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 302));
+
+            commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 307));
+            commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 307));
+            commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 307));
+        }
+
+        private void BuildScreen309(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 3, 5, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 315));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 315));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 315));
+
+            commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 310));
+            commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 310));
+            commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 310));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 302));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 302));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 302));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 307));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 307));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 307));
+        }
+
+        private void BuildScreen310(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 4, 5, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 316));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 316));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 316));
+
+            commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 311));
+            commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 311));
+            commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 311));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 302));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 302));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 302));
+
+            commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 309));
+            commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 309));
+            commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 309));
+        }
+
+        private void BuildScreen311(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 5, 5, 215, 215, 0));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 316));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 316));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 316));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 311));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 303));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 303));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 303));
+
+            commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 311));
+            commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 311));
+            commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 311));
+        }
+
+        private void BuildScreen312(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 7, 5, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 319));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 319));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 319));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 311));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 305));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 305));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 305));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 311));
+        }
+
+        private void BuildScreen313(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 1, 4, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 319));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 319));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 319));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 311));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 305));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 305));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 305));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 311));
+        }
+
+        private void BuildScreen314(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 2, 4, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 321));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 321));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 321));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 311));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 308));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 308));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 308));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 311));
+        }
+
+        private void BuildScreen315(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 3, 4, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 322));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 322));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 322));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 311));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 309));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 309));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 309));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 311));
+        }
+
+        private void BuildScreen316(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 4, 4, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 323));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 323));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 323));
+
+            commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 317));
+            commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 317));
+            commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 317));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 310));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 310));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 310));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 311));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 311));
+        }
+
+        private void BuildScreen317(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 5, 4, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 324));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 324));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 324));
+
+            commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 318));
+            commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 318));
+            commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 318));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 31));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 310));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 310));
+
+            commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 316));
+            commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 316));
+            commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 316));
+        }
+
+        private void BuildScreen318(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 6, 4, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 325));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 325));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 325));
+
+            commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 319));
+            commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 319));
+            commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 319));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 31));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 310));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 310));
+
+            commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 317));
+            commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 317));
+            commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 317));
+        }
+
+        private void BuildScreen319(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 6, 4, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 326));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 326));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 326));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 319));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 319));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 319));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 312));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 312));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 312));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 317));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 317));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 317));
+        }
+
+        private void BuildScreen320(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 1, 3, 215, 215, 0));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 326));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 326));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 326));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 319));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 319));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 319));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 313));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 313));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 313));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 317));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 317));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 317));
+        }
+
+        private void BuildScreen321(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 2, 3, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 328));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 328));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 328));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 319));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 319));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 319));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 314));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 314));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 314));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 317));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 317));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 317));
+        }
+
+        private void BuildScreen322(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 3, 3, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 329));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 329));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 329));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 319));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 319));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 319));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 315));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 315));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 315));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 317));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 317));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 317));
+        }
+
+        private void BuildScreen323(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 4, 3, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 330));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 330));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 330));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 319));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 319));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 319));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 316));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 316));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 316));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 317));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 317));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 317));
+        }
+
+        private void BuildScreen324(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 5, 3, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 331));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 331));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 331));
+
+            commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 325));
+            commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 325));
+            commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 325));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 317));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 317));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 317));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 317));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 317));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 317));
+        }
+
+        private void BuildScreen325(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 6, 3, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 332));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 332));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 332));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 325));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 325));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 325));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 318));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 318));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 318));
+
+            commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 324));
+            commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 324));
+            commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 324));
+        }
+
+        private void BuildScreen326(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 7, 3, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 333));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 333));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 333));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 325));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 325));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 325));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 319));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 319));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 319));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 324));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 324));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 324));
+        }
+
+        private void BuildScreen327(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 1, 2, 215, 215, 0));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 333));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 333));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 333));
+
+            commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 328));
+            commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 328));
+            commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 328));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 319));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 319));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 319));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 324));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 324));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 324));
+        }
+
+        private void BuildScreen328(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 2, 2, 215, 215, 0));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 333));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 333));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 333));
+
+            commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 329));
+            commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 329));
+            commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 329));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 321));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 321));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 321));
+
+            commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 327));
+            commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 327));
+            commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 327));
+        }
+
+        private void BuildScreen329(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 3, 2, 215, 215, 0));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 333));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 333));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 333));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 329));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 329));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 329));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 322));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 322));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 322));
+
+            commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 328));
+            commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 328));
+            commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 328));
+        }
+
+        private void BuildScreen330(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 4, 2, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 336));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 336));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 336));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 329));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 329));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 329));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 323));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 323));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 323));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 328));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 328));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 328));
+        }
+
+        private void BuildScreen331(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 5, 2, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 337));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 337));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 337));
+
+            commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 332));
+            commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 332));
+            commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 332));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 324));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 324));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 324));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 328));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 328));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 328));
+        }
+
+        private void BuildScreen332(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 6, 2, 215, 215, 0));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 337));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 337));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 337));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 332));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 332));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 332));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 324));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 324));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 324));
+
+            commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 331));
+            commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 331));
+            commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 331));
+        }
+
+        private void BuildScreen333(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 7, 2, 215, 215, 0));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 337));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 337));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 337));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 332));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 332));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 332));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 326));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 326));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 326));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 331));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 331));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 331));
+        }
+
+        private void BuildScreen334(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 2, 1, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 339));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 339));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 339));
+
+            commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 335));
+            commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 335));
+            commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 335));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 326));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 326));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 326));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 331));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 331));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 331));
+        }
+
+        private void BuildScreen335(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 3, 1, 215, 215, 0));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 337));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 337));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 337));
+
+            commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 336));
+            commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 336));
+            commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 336));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 326));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 326));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 326));
+
+            commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 334));
+            commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 334));
+            commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 334));
+        }
+
+        private void BuildScreen336(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 4, 1, 215, 215, 0));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 337));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 337));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 337));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 336));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 336));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 336));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 330));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 330));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 330));
+
+            commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 335));
+            commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 335));
+            commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 335));
+        }
+
+        private void BuildScreen337(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 5, 1, 215, 215, 0));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 340));
+            commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 340));
+            commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 340));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 336));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 336));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 336));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 331));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 331));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 331));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 335));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 335));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 335));
+        }
+
+        private void BuildScreen338(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 1, 0, 215, 215, 0));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 340));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 340));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 340));
+
+            commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 329));
+            commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 329));
+            commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 329));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 331));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 331));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 331));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 335));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 335));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 335));
+        }
+
+        private void BuildScreen339(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 2, 0, 215, 215, 0));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 340));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 340));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 340));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 329));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 329));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 329));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 334));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 334));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 334));
+
+            commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 338));
+            commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 338));
+            commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 338));
+        }
+
+        private void BuildScreen340(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 5, 0, 215, 215, 0));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 340));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 340));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 340));
+
+            commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 341));
+            commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 341));
+            commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 341));
+
+            commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 337));
+            commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 337));
+            commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 337));
+
+            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 338));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 338));
+            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 338));
+        }
+
+        private void BuildScreen341(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 6, 0, 215, 215, 0));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 340));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 340));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 340));
+
+            commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 342));
+            commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 342));
+            commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 342));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 337));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 337));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 337));
+
+            commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 340));
+            commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 340));
+            commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 340));
+        }
+
+        private void BuildScreen342(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 7, 0, 215, 215, 0));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 340));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 340));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 340));
+
+            commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 343));
+            commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 343));
+            commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 343));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 337));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 337));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 337));
+
+            commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 341));
+            commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 341));
+            commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 341));
+        }
+
+        private void BuildScreen343(LinkedList<BuildCommand> commands)
+        {
+            commands.AddLast(new DeclareCaveCommand(7, 8, 0, 215, 215, 0));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 340));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 340));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 340));
+
+            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 343));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 343));
+            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 343));
+
+            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 337));
+            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 337));
+            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 337));
+
+            commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 342));
+            commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 342));
+            commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 342));
+        }
     }
 }
+
+
+
+
+
 
