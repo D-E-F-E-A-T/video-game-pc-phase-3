@@ -8803,7 +8803,7 @@ namespace ServiceProxy
 
         private void BuildScreen319(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareCaveCommand(7, 6, 4, 215, 215, 0));
+            commands.AddLast(new DeclareCaveCommand(7, 7, 4, 215, 215, 0));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 326));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 326));
