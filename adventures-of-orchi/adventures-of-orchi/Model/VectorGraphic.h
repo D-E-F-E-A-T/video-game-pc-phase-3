@@ -37,7 +37,7 @@ public:
 
 		DEVICE_CONTEXT_2D->FillRectangle(
 			rect,
-			m_deviceResources->m_mapBrushes["black"]);
+			m_deviceResources->m_mapBrushes["red"]);
 #endif // RENDER_DIAGNOSTICS
 	}
 
