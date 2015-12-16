@@ -1,5 +1,5 @@
 ﻿/*
-    Copyright 2015 Richard Bernardino
+    Copyright 2016 Richard Bernardino
 
     Licensed under the Apache License, Version 2.0 (the "License");  
     you may not use this file except in compliance with the License.  
@@ -20,21 +20,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/*
-AddEdgeCommand = 0
-AddForestCommand = 1
-AddGrassCommand = 2 
-AddRockCommand = 3
-AddStairsCommand = 4
-AddStoneWallCommand = 5
-AddTreeCommand = 6
-AddWaterCommand = 7
-DeclareCaveCommand = 8
-DeclareDungeonCommand = 9
-DeclareLandCommand = 10
-DeclareLotCommand = 11
-DeclareWorldCommand = 12
-*/
 namespace ServiceProxy
 {
     public sealed class DefaultWorldBuilder
