@@ -1,17 +1,17 @@
 /*
-Copyright 2016 Richard Bernardino
+	Copyright 2016 Richard Bernardino
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
 
-http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
 */
 #include "pch.h"
 #include "Utils.h"
@@ -68,18 +68,43 @@ void Utils::CalculateSquareCenter(
 	float * x,
 	float * y)
 {
-	float gridWidth = screenWidth -
-		(screenWidth * LEFT_MARGIN_RATIO) -
-		(screenWidth * RIGHT_MARGIN_RATIO);
-
-	float rowHeight = (screenHeight - 2.0f * MARGIN) / NUM_GRID_ROWS;
-	float columnWidth = (gridWidth - 2.0f * MARGIN) / NUM_GRID_COLUMNS;
+	float rowHeight = CalculateSquareHeight(screenHeight);
+	float columnWidth = CalculateSquareWidth(screenWidth);
 
 	*x = (screenWidth * LEFT_MARGIN_RATIO) + MARGIN + (columnWidth * column) + (columnWidth / 2.0f);
 	*y = MARGIN + (rowHeight * row) + (rowHeight / 2.0f);
 
 	*x /= screenWidth;
 	*y /= screenHeight;
+}
+
+void Utils::CalculateSquareOrigin(
+	float fScreenWidth,
+	float fScreenHeight,
+	int nColumn,
+	int nRow,
+	float * fXRatio,
+	float * fYRatio)
+{
+	float rowHeight = CalculateSquareHeight(fScreenHeight);
+	float columnWidth = CalculateSquareWidth(fScreenWidth);
+
+	*fXRatio = ((fScreenWidth * LEFT_MARGIN_RATIO) + MARGIN + (columnWidth * (float)nColumn)) / fScreenWidth;
+	*fYRatio = (MARGIN + (rowHeight * (float)nRow)) / fScreenHeight;
+}
+
+float Utils::CalculateSquareHeight(float screenHeight)
+{
+	return (screenHeight - 2.0f * MARGIN) / NUM_GRID_ROWS;
+}
+
+float Utils::CalculateSquareWidth(float screenWidth)
+{
+	float gridWidth = screenWidth -
+		(screenWidth * LEFT_MARGIN_RATIO) -
+		(screenWidth * RIGHT_MARGIN_RATIO);
+
+	return (gridWidth - 2.0f * MARGIN) / NUM_GRID_COLUMNS;
 }
 
 void Utils::ConvertGlobalToGridLocation(

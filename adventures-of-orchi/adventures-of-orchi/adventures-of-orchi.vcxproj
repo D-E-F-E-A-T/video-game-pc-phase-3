@@ -300,6 +300,7 @@
     <ClInclude Include="Model\Thing.h" />
     <ClInclude Include="Model\Tree.h" />
     <ClInclude Include="Model\Water.h" />
+    <ClInclude Include="Model\Wireframe.h" />
     <ClInclude Include="Model\World.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Model\Portal.h" />
@@ -326,6 +327,7 @@
     <ClInclude Include="Sprites\Sprite.h" />
     <ClInclude Include="Sprites\SpriteUtils.h" />
     <ClInclude Include="Utils.h" />
+    <ClInclude Include="Wireframe\EdgeFrame.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.xaml.cpp">
@@ -379,6 +381,7 @@
     <ClCompile Include="Sprites\BasicSprites.cpp" />
     <ClCompile Include="Sprites\SpriteUtils.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="Wireframe\EdgeFrame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

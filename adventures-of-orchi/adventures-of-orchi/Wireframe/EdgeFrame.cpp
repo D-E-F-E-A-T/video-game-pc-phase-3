@@ -13,14 +13,24 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-#pragma once
-#include "Statement.h"
+#include "pch.h"
+#include "EdgeFrame.h"
 
-class Placement : public Statement
+
+EdgeFrame::EdgeFrame()
 {
-public:
+	list<XMFLOAT3> frame;
 
-protected:
+	frame.push_back(XMFLOAT3{ 0.0f, 0.0f, 0.0f });
+	frame.push_back(XMFLOAT3{ 1.0f, 0.0f, 0.0f });
+	frame.push_back(XMFLOAT3{ 1.0f, 1.0f, 0.0f });
+	frame.push_back(XMFLOAT3{ 0.0f, 1.0f, 0.0f });
+	frame.push_back(XMFLOAT3{ 0.0f, 0.0f, 0.0f });
 
-private:
-};
+	m_pElements.push_back(frame);
+}
+
+EdgeFrame::~EdgeFrame()
+{
+
+}

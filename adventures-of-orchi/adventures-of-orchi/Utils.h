@@ -44,4 +44,15 @@ public:
 	static float GetMinValue(vector<float> values, int * index);
 
 	static float CalculateDistance(float2 pt, float2 p2);
+
+	static float CalculateSquareHeight(float screenHeight);
+	static float CalculateSquareWidth(float screenWidth);
+
+	static void CalculateSquareOrigin(
+		float fScreenWidth,
+		float fScreenHeight,
+		int nColumn,
+		int nRow,
+		float * fXRatio,
+		float * fYRatio);
 };

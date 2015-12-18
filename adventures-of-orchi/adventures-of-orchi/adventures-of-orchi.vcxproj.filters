@@ -80,6 +80,9 @@
     <Filter Include="Scripting">
       <UniqueIdentifier>{3715b8e6-67b2-4522-9c44-ac278924367c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Wireframe">
+      <UniqueIdentifier>{8a2670fa-41a8-4018-8086-502e2579692c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -178,6 +181,9 @@
     </ClCompile>
     <ClCompile Include="Model\Lot.cpp">
       <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Wireframe\EdgeFrame.cpp">
+      <Filter>Wireframe</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -466,6 +472,12 @@
     </ClInclude>
     <ClInclude Include="Scripting\Behavior.h">
       <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Wireframe.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Wireframe\EdgeFrame.h">
+      <Filter>Wireframe</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

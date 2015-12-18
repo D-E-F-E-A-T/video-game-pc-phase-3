@@ -14,13 +14,26 @@
 	limitations under the License.
 */
 #pragma once
-#include "Statement.h"
+#include "pch.h"
 
-class Placement : public Statement
+using namespace std;
+using namespace DirectX;
+
+// Convention. Go clockwise.
+class Wireframe
 {
 public:
 
+	list<list<XMFLOAT3>> GetElements()
+	{
+		return m_pElements;
+	}
+
 protected:
+	// Each list is a line. 
+	// Each line has a list of coordinates.
+	list<list<XMFLOAT3>> m_pElements;
 
 private:
+
 };

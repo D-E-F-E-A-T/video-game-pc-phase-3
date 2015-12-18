@@ -39,8 +39,8 @@ public:
 		float2 fScaleDimensions,
 		float dpi) = 0;
 
-	float * GetBounds();
-	float2 GetDimensionsRatio() { return m_fDimensions; }
+//	float * GetBounds();
+	//float2 GetDimensionsRatio() { return m_fDimensions; }
 
 	virtual uint8_t * GetPixels() { return nullptr; }
 
@@ -50,10 +50,11 @@ public:
 protected:
 	// This must not have location. That is part of Space.
 
-	float * m_pfBounds;
-	float2 m_fDimensionsRatio;
+	//float * m_pfBounds;
+	//float2 m_fDimensionsRatio;
+	//float2 m_fDimensions;	
+
 	shared_ptr<DeviceResources> m_deviceResources;
-	float2 m_fDimensions;	
 private:
 
 };

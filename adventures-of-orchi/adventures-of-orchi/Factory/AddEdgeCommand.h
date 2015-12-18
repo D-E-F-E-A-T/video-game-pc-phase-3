@@ -31,7 +31,7 @@ public:
 	{
 		float x;
 		float y;
-
+		
 		Utils::CalculateSquareCenter(
 			fScreenDimensions.x,
 			fScreenDimensions.y,
@@ -39,6 +39,30 @@ public:
 			((ServiceProxy::AddEdgeCommand ^)command)->Y,
 			&x,
 			&y);
+
+/*
+		float2 fOriginRatio;	// Top-Left
+		float2 fDimensionRatio;	// Height-Width
+
+		switch (((ServiceProxy::AddEdgeCommand ^)command)->Direction)
+		{
+		case NORTH:
+
+
+			
+
+			break;
+
+		case EAST:
+			break;
+
+		case SOUTH:
+			break;
+
+		case WEST:
+			break;
+		}
+*/
 
 		(*pSubdivision)->Set(LAYER_2D,
 			new Edge(

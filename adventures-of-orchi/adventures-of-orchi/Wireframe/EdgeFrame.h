@@ -14,13 +14,21 @@
 	limitations under the License.
 */
 #pragma once
-#include "Statement.h"
+#include "..\Model\Wireframe.h"
 
-class Placement : public Statement
+using namespace DirectX;
+
+// Think prototype
+class EdgeFrame : public Wireframe
 {
 public:
+	EdgeFrame();
+	~EdgeFrame();
+	
 
 protected:
 
 private:
 };
+
+
