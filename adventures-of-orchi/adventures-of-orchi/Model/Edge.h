@@ -18,6 +18,7 @@
 #include "VectorGraphic.h"
 #include "Portal.h"
 #include "Constants.h"
+#include "..\Wireframe\EdgeFrame.h"
 
 
 class Edge : public Portal
@@ -43,7 +44,11 @@ public:
 			deviceResources)
 	{
 		m_nDirection = nDirection;
-		m_pRenderable = new VectorGraphic(deviceResources);
+
+		// TODO: Consider using Flyweight.
+		m_pRenderable = new VectorGraphic(
+			deviceResources,
+			new EdgeFrame());
 	}
 
 	int GetDirection() { return m_nDirection; }

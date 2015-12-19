@@ -21,11 +21,30 @@ EdgeFrame::EdgeFrame()
 {
 	list<XMFLOAT3> frame;
 
-	frame.push_back(XMFLOAT3{ 0.0f, 0.0f, 0.0f });
-	frame.push_back(XMFLOAT3{ 1.0f, 0.0f, 0.0f });
-	frame.push_back(XMFLOAT3{ 1.0f, 1.0f, 0.0f });
-	frame.push_back(XMFLOAT3{ 0.0f, 1.0f, 0.0f });
-	frame.push_back(XMFLOAT3{ 0.0f, 0.0f, 0.0f });
+	frame.push_back(XMFLOAT3{ 
+		0.0f, 
+		0.0f,
+		0.0f });
+
+	frame.push_back(XMFLOAT3{ 
+		1.0f, 
+		0.0f,
+		0.0f });
+
+	frame.push_back(XMFLOAT3{ 
+		1.0f, 
+		1.0f,
+		0.0f });
+
+	frame.push_back(XMFLOAT3{ 
+		0.0f, 
+		1.0f,
+		0.0f });
+
+	frame.push_back(XMFLOAT3{ 
+		0.0f, 
+		0.0f,
+		0.0f });
 
 	m_pElements.push_back(frame);
 }

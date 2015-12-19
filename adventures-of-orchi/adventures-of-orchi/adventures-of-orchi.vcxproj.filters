@@ -185,6 +185,9 @@
     <ClCompile Include="Wireframe\EdgeFrame.cpp">
       <Filter>Wireframe</Filter>
     </ClCompile>
+    <ClCompile Include="Model\VectorGraphic.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />

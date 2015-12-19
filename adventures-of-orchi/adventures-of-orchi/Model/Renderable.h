@@ -23,9 +23,12 @@ using namespace std;
 class Renderable
 {
 public:
-	Renderable(const shared_ptr<DeviceResources>& deviceResources)
+	Renderable(
+		const shared_ptr<DeviceResources>& deviceResources,
+		Wireframe * pWireframe)
 	{
 		m_deviceResources = deviceResources;
+		m_pWireframe = pWireframe;
 	}
 
 	// Consider using this when doing 3D.
@@ -46,6 +49,8 @@ public:
 
 	virtual int * GetTextureDimensions() { return nullptr; }
 
+	//virtual void Transform();
+
 
 protected:
 	// This must not have location. That is part of Space.
@@ -53,6 +58,7 @@ protected:
 	//float * m_pfBounds;
 	//float2 m_fDimensionsRatio;
 	//float2 m_fDimensions;	
+	Wireframe * m_pWireframe;
 
 	shared_ptr<DeviceResources> m_deviceResources;
 private:

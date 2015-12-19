@@ -19,8 +19,10 @@ limitations under the License.
 class Renderable2D : public Renderable
 {
 public:
-	Renderable2D(const shared_ptr<DeviceResources>& deviceResources)
-		: Renderable(deviceResources)
+	Renderable2D(
+		const shared_ptr<DeviceResources>& deviceResources,
+		Wireframe * pWireframe)
+		: Renderable(deviceResources, pWireframe)
 	{
 	}
 

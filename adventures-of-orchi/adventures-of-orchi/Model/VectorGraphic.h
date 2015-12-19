@@ -27,8 +27,9 @@ class VectorGraphic : public Renderable2D
 public:
 
 	VectorGraphic(
-		const shared_ptr<DeviceResources>& deviceResources)
-		: Renderable2D(deviceResources)
+		const shared_ptr<DeviceResources>& deviceResources,
+		Wireframe * pWireframe)
+		: Renderable2D(deviceResources, pWireframe)
 	{
 	}
 
@@ -38,27 +39,15 @@ public:
 		float fRotationInRadians,
 		float2 fWindowDimensions,
 		float2 fScaleDimensions,
-		float dpi)
-	{
-#ifdef RENDER_DIAGNOSTICS
-		float2 fScreenLocation = fLocationRatio * fWindowDimensions;
+		float dpi) {};
 
-		D2D1_RECT_F rect
-		{
-			fScreenLocation.x - (fWindowDimensions.x / 100.f),
-			fScreenLocation.y - (fWindowDimensions.y / 100.f),
-			fScreenLocation.x + (fWindowDimensions.x / 100.f),
-			fScreenLocation.y + (fWindowDimensions.y / 100.f)
-		};
+	//void Transform()
+	//{
 
-		DEVICE_CONTEXT_2D->FillRectangle(
-			rect,
-			m_deviceResources->m_mapBrushes["red"]);
-#endif // RENDER_DIAGNOSTICS
-	}
+	//}
 
 protected:
-	Wireframe * m_pWireframe;
+
 
 private:
 };

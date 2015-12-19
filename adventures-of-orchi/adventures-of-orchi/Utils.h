@@ -45,9 +45,10 @@ public:
 
 	static float CalculateDistance(float2 pt, float2 p2);
 
-	static float CalculateSquareHeight(float screenHeight);
-	static float CalculateSquareWidth(float screenWidth);
+	static float CalculateSquareHeightRatio(float screenHeight);
+	static float CalculateSquareWidthRatio(float screenWidth);
 
+/*
 	static void CalculateSquareOrigin(
 		float fScreenWidth,
 		float fScreenHeight,
@@ -55,4 +56,5 @@ public:
 		int nRow,
 		float * fXRatio,
 		float * fYRatio);
+*/
 };

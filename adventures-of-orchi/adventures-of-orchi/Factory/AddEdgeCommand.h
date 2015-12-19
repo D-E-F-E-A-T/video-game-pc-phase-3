@@ -29,46 +29,95 @@ public:
 		Subdivision ** pSubdivision,
 		const shared_ptr<DeviceResources>& deviceResources)
 	{
-		float x;
-		float y;
+		float fX;
+		float fY;
 		
 		Utils::CalculateSquareCenter(
 			fScreenDimensions.x,
 			fScreenDimensions.y,
 			((ServiceProxy::AddEdgeCommand ^)command)->X,
 			((ServiceProxy::AddEdgeCommand ^)command)->Y,
-			&x,
-			&y);
+			&fX,
+			&fY);
 
-/*
 		float2 fOriginRatio;	// Top-Left
-		float2 fDimensionRatio;	// Height-Width
+		float2 fDimensionRatio; // { 0.01f, 0.01f };
+
+		float2 fSquareRatio =
+		{
+			Utils::CalculateSquareHeightRatio(fScreenDimensions.x),
+			Utils::CalculateSquareWidthRatio(fScreenDimensions.y)
+		};
 
 		switch (((ServiceProxy::AddEdgeCommand ^)command)->Direction)
 		{
 		case NORTH:
+			fDimensionRatio = float2 
+			{
+				fSquareRatio.x,
+				0.01f
+			};
 
-
-			
+			fOriginRatio = float2
+			{
+				fX - fSquareRatio.x / 2.0f,
+				fY - fSquareRatio.y / 2.0f
+			};
 
 			break;
 
 		case EAST:
+			fDimensionRatio = float2
+			{
+				0.01f,
+				fSquareRatio.y
+			};
+
+			fOriginRatio = float2
+			{
+				fX + (fSquareRatio.x / 2.0f) - fDimensionRatio.x,
+				fY - (fSquareRatio.y / 2.0f)
+			};
 			break;
 
 		case SOUTH:
+			fDimensionRatio = float2
+			{
+				fSquareRatio.x,
+				0.1f
+			};
+
+			fOriginRatio = float2
+			{
+				fX - (fSquareRatio.x / 2.0f),
+				fY + (fSquareRatio.y / 2.0f) - fDimensionRatio.y
+			};
+
 			break;
 
 		case WEST:
+			fDimensionRatio = float2
+			{
+				0.1f,
+				fSquareRatio.y
+			};
+
+			fOriginRatio = float2
+			{
+				fX - (fSquareRatio.x / 2.0f),
+				fY - (fSquareRatio.y / 2.0f)
+			};
+
 			break;
 		}
-*/
+
+
 
 		(*pSubdivision)->Set(LAYER_2D,
 			new Edge(
-				float2(x, y),
-				0.f,
-				float2(0.2f, 0.2f),
+				fOriginRatio,
+				0.f,					// Rotation.
+				fDimensionRatio, 
 				((ServiceProxy::AddEdgeCommand ^)command)->Direction,
 				((ServiceProxy::AddEdgeCommand ^)command)->Destination,
 				deviceResources));

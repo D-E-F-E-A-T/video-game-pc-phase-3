@@ -78,6 +78,7 @@ void Utils::CalculateSquareCenter(
 	*y /= screenHeight;
 }
 
+/*
 void Utils::CalculateSquareOrigin(
 	float fScreenWidth,
 	float fScreenHeight,
@@ -92,19 +93,20 @@ void Utils::CalculateSquareOrigin(
 	*fXRatio = ((fScreenWidth * LEFT_MARGIN_RATIO) + MARGIN + (columnWidth * (float)nColumn)) / fScreenWidth;
 	*fYRatio = (MARGIN + (rowHeight * (float)nRow)) / fScreenHeight;
 }
+*/
 
-float Utils::CalculateSquareHeight(float screenHeight)
+float Utils::CalculateSquareHeightRatio(float fScreenHeight)
 {
-	return (screenHeight - 2.0f * MARGIN) / NUM_GRID_ROWS;
+	return (fScreenHeight - 2.0f * MARGIN) / NUM_GRID_ROWS / fScreenHeight;
 }
 
-float Utils::CalculateSquareWidth(float screenWidth)
+float Utils::CalculateSquareWidthRatio(float fScreenWidth)
 {
-	float gridWidth = screenWidth -
-		(screenWidth * LEFT_MARGIN_RATIO) -
-		(screenWidth * RIGHT_MARGIN_RATIO);
+	float gridWidth = fScreenWidth -
+		(fScreenWidth * LEFT_MARGIN_RATIO) -
+		(fScreenWidth * RIGHT_MARGIN_RATIO);
 
-	return (gridWidth - 2.0f * MARGIN) / NUM_GRID_COLUMNS;
+	return (gridWidth - 2.0f * MARGIN) / NUM_GRID_COLUMNS / fScreenWidth;
 }
 
 void Utils::ConvertGlobalToGridLocation(

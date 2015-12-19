@@ -28,6 +28,18 @@ public:
 	{
 	}
 
+	// Transform an entire figure.
+	//void Transform()
+	//{
+
+	//}
+
+	// Move a 3D figure at the joints.
+	void Articulate()
+	{
+
+	}
+
 protected:
 
 private:
