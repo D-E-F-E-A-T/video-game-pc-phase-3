@@ -24,15 +24,15 @@ class Wireframe
 {
 public:
 
-	list<list<XMFLOAT3>> GetElements()
+	list<list<XMFLOAT3> *> * GetElements()
 	{
-		return m_pElements;
+		return &m_pElements;
 	}
 
 protected:
 	// Each list is a line. 
 	// Each line has a list of coordinates.
-	list<list<XMFLOAT3>> m_pElements;
+	list<list<XMFLOAT3> *> m_pElements;
 
 private:
 

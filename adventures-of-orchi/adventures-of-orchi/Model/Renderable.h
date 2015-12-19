@@ -16,6 +16,7 @@ limitations under the License.
 #pragma once
 #include "pch.h"
 #include "..\Common\DeviceResources.h"
+#include "Wireframe.h"
 
 using namespace Microsoft::WRL;
 using namespace std;

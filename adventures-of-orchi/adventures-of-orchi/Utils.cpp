@@ -68,8 +68,8 @@ void Utils::CalculateSquareCenter(
 	float * x,
 	float * y)
 {
-	float rowHeight = CalculateSquareHeight(screenHeight);
-	float columnWidth = CalculateSquareWidth(screenWidth);
+	float rowHeight = CalculateSquareHeightRatio(screenHeight);
+	float columnWidth = CalculateSquareWidthRatio(screenWidth);
 
 	*x = (screenWidth * LEFT_MARGIN_RATIO) + MARGIN + (columnWidth * column) + (columnWidth / 2.0f);
 	*y = MARGIN + (rowHeight * row) + (rowHeight / 2.0f);

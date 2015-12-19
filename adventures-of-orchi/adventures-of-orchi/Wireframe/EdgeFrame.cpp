@@ -17,31 +17,42 @@
 #include "EdgeFrame.h"
 
 
+// The convention will be to define all vertices
+//	within the range [0.0f, 1.0f].  
+//	Vector operations will then move the vertices
+//	into the correct place and scale based on
+//	factors such as screen size.
+//	Each line is represented at a list of 3D vertices
+//	XMFLOAT3 is used instead of XMFLOAT2 to avoid
+//	the extra overhead of converting XMFLOAT3 to
+//	XMFLOAT2.
 EdgeFrame::EdgeFrame()
 {
-	list<XMFLOAT3> frame;
+	list<XMFLOAT3> * frame = new list<XMFLOAT3>;
 
-	frame.push_back(XMFLOAT3{ 
+	// Convention to be used, define vertices 
+	//	clockwise around around the centroid.
+	frame->push_back(XMFLOAT3{ 
 		0.0f, 
 		0.0f,
 		0.0f });
 
-	frame.push_back(XMFLOAT3{ 
+	frame->push_back(XMFLOAT3{ 
 		1.0f, 
 		0.0f,
 		0.0f });
 
-	frame.push_back(XMFLOAT3{ 
+	frame->push_back(XMFLOAT3{ 
 		1.0f, 
 		1.0f,
 		0.0f });
 
-	frame.push_back(XMFLOAT3{ 
+	frame->push_back(XMFLOAT3{ 
 		0.0f, 
 		1.0f,
 		0.0f });
 
-	frame.push_back(XMFLOAT3{ 
+	frame->push_back(XMFLOAT3{ 
 		0.0f, 
 		0.0f,
 		0.0f });

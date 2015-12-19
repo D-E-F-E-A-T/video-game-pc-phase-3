@@ -39,7 +39,7 @@ public:
 		float fRotationInRadians,
 		float2 fWindowDimensions,
 		float2 fScaleDimensions,
-		float dpi) {};
+		float dpi); 
 
 	//void Transform()
 	//{
