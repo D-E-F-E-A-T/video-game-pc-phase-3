@@ -44,10 +44,6 @@ namespace ServiceProxy
             commands.AddLast(new DeclareDungeonCommand(7, 9, 8, 4, 5));
             commands.AddLast(new DeclareDungeonCommand(8, 9, 8, 4, 5));
 
-            //commands.AddLast(new DeclareCaveCommand("CaveGetFirstSword", 1, 1));
-            //commands.AddLast(new DeclareCaveCommand("Cave1", 5, 5));
-            //commands.AddLast(new DeclareCaveCommand("Cave2", 5, 5));
-            //commands.AddLast(new DeclareCaveCommand("Cave3", 5, 5));
 
 
 
@@ -2833,9 +2829,7 @@ namespace ServiceProxy
             commands.AddLast(new DeclareLotCommand(0, 2, 2, 222, 184, 135));
 
             // Upper-left forest. Think Composite!!!
-            //            commands.AddLast(new AddTreeCommand(2, 0, 0));
-            commands.AddLast(new AddGrassCommand(3, 0, 0));
-
+            commands.AddLast(new AddTreeCommand(2, 0, 0));     
             commands.AddLast(new AddTreeCommand(2, 1, 0));
             commands.AddLast(new AddTreeCommand(2, 2, 0));
             commands.AddLast(new AddTreeCommand(2, 3, 0));
@@ -2883,7 +2877,7 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(2, 2, 6));
 
 
-            // Upper-right forest
+            // Upper - right forest
             commands.AddLast(new AddTreeCommand(2, 11, 0));
             commands.AddLast(new AddTreeCommand(2, 12, 0));
             commands.AddLast(new AddTreeCommand(2, 13, 0));
@@ -2922,7 +2916,7 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(4, 16, 6));
 
 
-            // Lower-left forest
+            // Lower - left forest
             commands.AddLast(new AddTreeCommand(2, 0, 9));
             commands.AddLast(new AddTreeCommand(2, 1, 9));
             commands.AddLast(new AddTreeCommand(2, 2, 9));
@@ -2969,7 +2963,7 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(2, 6, 14));
 
 
-            // Lower-right forest
+            // Lower - right forest
             commands.AddLast(new AddTreeCommand(2, 12, 9));
             commands.AddLast(new AddTreeCommand(2, 13, 9));
             commands.AddLast(new AddTreeCommand(2, 14, 9));
@@ -3010,6 +3004,7 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(2, 14, 14));
             commands.AddLast(new AddTreeCommand(2, 15, 14));
             commands.AddLast(new AddTreeCommand(2, 16, 14));
+
 
 
             commands.AddLast(new AddEdgeCommand(4, 0, 7, 3, 11));

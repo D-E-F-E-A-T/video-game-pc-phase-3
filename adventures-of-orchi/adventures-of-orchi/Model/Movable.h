@@ -30,6 +30,7 @@ public:
 		: Space(
 			pfLocationRatio,
 			fRotationInRadians,
+			pfDimensions,
 			bIsVisible,
 			false,
 			true,

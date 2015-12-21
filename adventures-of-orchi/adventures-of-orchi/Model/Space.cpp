@@ -24,6 +24,7 @@ using namespace DirectX;
 Space::Space(
 	float2 fLocationRatio,
 	float fRotationInRadians,
+	float2 fDimensionsRatio,
 	bool bIsVisible,
 	bool bIsActionable,
 	bool bIsCollidable,
@@ -36,6 +37,8 @@ Space::Space(
 	m_bIsActionable = bIsActionable;
 	m_bIsCollidable = bIsCollidable;
 	m_fRotationInRadians = fRotationInRadians;
+
+	m_fDimensionsRatio = fDimensionsRatio;
 }
 
 Space::~Space()
@@ -68,8 +71,9 @@ void Space::Render(
 			renderTargetView,
 			m_fLocationRatio,
 			m_fRotationInRadians,
+			m_fDimensionsRatio, // Dimensions of the bounding box for a wireframe.
 			fWindowDimensions,
-			fScaleDimensions,
+			fScaleDimensions,	// Dimensions of the bounding box for a texture.
 			dpi);
 	}
 }

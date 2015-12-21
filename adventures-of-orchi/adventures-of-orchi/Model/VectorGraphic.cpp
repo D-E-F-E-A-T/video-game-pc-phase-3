@@ -15,13 +15,15 @@
 */
 #include "pch.h"
 #include "VectorGraphic.h"
+#include "..\Utils.h"
 
 using namespace std;
 
 void VectorGraphic::Render(
 	ComPtr<ID3D11RenderTargetView> renderTargetView,
-	float2  fLocationRatio,
+	float2 fLocationRatio,
 	float fRotationInRadians,
+	float2 fDimensionsRatio,
 	float2 fWindowDimensions,
 	float2 fScaleDimensions,
 	float dpi)
@@ -31,7 +33,6 @@ void VectorGraphic::Render(
 	
 	// Now, just need to transform the wireframe based on
 	//	the current window dimensions.
-
 	list<list<XMFLOAT3> *> * listElements = m_pWireframe->GetElements();
 
 	list<list<XMFLOAT3> *>::const_iterator iteratorElements;
@@ -44,37 +45,65 @@ void VectorGraphic::Render(
 
 		list<XMFLOAT3> * listVertices = (*iteratorElements);
 
-		
 		for (iteratorVertices = listVertices->begin();
 			iteratorVertices != prev(listVertices->end());
 			iteratorVertices++)
 		{
-			float fCurrent[3];
-			float fNext[3];
-
 			// Convert from XMFLOAT3 to XMVECTOR to
 			//	support SIMD architectures.
-			XMVECTOR xmVectorCurrent = XMLoadFloat3(&(*iteratorVertices));
-			
-			fCurrent[0] = XMVectorGetX(xmVectorCurrent);
-			fCurrent[1] = XMVectorGetY(xmVectorCurrent);
-			fCurrent[2] = XMVectorGetZ(xmVectorCurrent);
+			XMVECTOR vecWireframeCurrent = XMLoadFloat3(&(*iteratorVertices));
+			XMVECTOR vecWireframeNext = XMLoadFloat3(&(*(next(iteratorVertices))));
 
-			XMVECTOR xmVectorNext = XMLoadFloat3(&(*(next(iteratorVertices))));
-			fNext[0] = XMVectorGetX(xmVectorNext);
-			fNext[1] = XMVectorGetY(xmVectorNext);
-			fNext[2] = XMVectorGetZ(xmVectorNext);
+			// Translate each vertex of the wireframe from 
+			//	[0.0f, 1.0f] to the range of the dimensions or a 
+			//	grid square.
+			
+			//float fWireframeXScaled = fLocationRatio.x * fDimensionsRatio.x * fWindowDimensions.x;
+			//float fWireframeYScaled = fLocationRatio.y * fDimensionsRatio.y * fWindowDimensions.y;
+
+			// Translate each vertex.
+			//XMVECTOR xmOrigin = XMVectorSet(
+			//	fX,
+			//	fY,
+			//	0.0f,
+			//	0.0f);
+			XMVECTOR vecOriginRatio = XMVectorSet(
+				fLocationRatio.x,
+				fLocationRatio.y,
+				0.0f,
+				0.0f);
+
+			XMVECTOR vecDimensionsRatio = XMVectorSet(
+				fDimensionsRatio.x,
+				fDimensionsRatio.y,
+				0.0f,
+				0.0f);
+
+			XMVECTOR vecScreenDimensions = XMVectorSet(
+				fWindowDimensions.x,
+				fWindowDimensions.y,
+				0.0f,
+				0.0f);
+
+			
+			// Calculate the resultant to place the origin
+			//	in the correct spot on the grid.
+			XMVECTOR vecCurrentScaled =
+				(vecWireframeCurrent * vecDimensionsRatio + vecOriginRatio) * vecScreenDimensions;
+
+			XMVECTOR vecNextScaled =
+				(vecWireframeNext * vecDimensionsRatio + vecOriginRatio) * vecScreenDimensions;
 
 			D2D1_POINT_2F src
 			{
-				fCurrent[0] * 100.f,
-				fCurrent[1] * 100.f
+				XMVectorGetX(vecCurrentScaled), 
+				XMVectorGetY(vecCurrentScaled) 
 			};
 
 			D2D1_POINT_2F dst
 			{
-				fNext[0] * 100.f,
-				fNext[1] * 100.f
+				XMVectorGetX(vecNextScaled), 
+				XMVectorGetY(vecNextScaled)
 			};
 
 			m_deviceResources->GetD2DDeviceContext()->DrawLine(
@@ -87,25 +116,19 @@ void VectorGraphic::Render(
 
 
 
-	//for (list<XMFLOAT3> line : listElements)
-	//{
-
-	//}
 	//#ifdef RENDER_DIAGNOSTICS
-	//		float2 fScreenLocation = fLocationRatio * fWindowDimensions;
-	//
-	//		D2D1_RECT_F rect
-	//		{
-	//			fScreenLocation.x - (fWindowDimensions.x / 100.f),
-	//			fScreenLocation.y - (fWindowDimensions.y / 100.f),
-	//			fScreenLocation.x + (fWindowDimensions.x / 100.f),
-	//			fScreenLocation.y + (fWindowDimensions.y / 100.f)
-	//		};
-	//
-	//		DEVICE_CONTEXT_2D->FillRectangle(
-	//			rect,
-	//			m_deviceResources->m_mapBrushes["red"]);
+			//float2 fScreenLocation = fLocationRatio * fWindowDimensions;
+	
+			//D2D1_RECT_F rect
+			//{
+			//	fScreenLocation.x - (fWindowDimensions.x / 100.f),
+			//	fScreenLocation.y - (fWindowDimensions.y / 100.f),
+			//	fScreenLocation.x + (fWindowDimensions.x / 100.f),
+			//	fScreenLocation.y + (fWindowDimensions.y / 100.f)
+			//};
+	
+			//DEVICE_CONTEXT_2D->FillRectangle(
+			//	rect,
+			//	m_deviceResources->m_mapBrushes["red"]);
 	//#endif // RENDER_DIAGNOSTICS
 }
-
-	//			m_deviceResources->m_mapBrushes["red"]);

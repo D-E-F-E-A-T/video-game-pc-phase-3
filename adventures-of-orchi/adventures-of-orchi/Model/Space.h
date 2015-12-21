@@ -35,6 +35,7 @@ public:
 	Space(
 		float2 fLocationRatio,
 		float fRotationInRadians,
+		float2 fDimensionsRatio,
 		bool bIsVisible,
 		bool bIsActionable,
 		bool bIsCollidable,
@@ -43,6 +44,8 @@ public:
 	~Space();
 
 	float2 GetLocationRatio();
+
+	// Only used by the sword
 	void SetLocationRatio(float2 fLocationRatio) { m_fLocationRatio = fLocationRatio; }
 
 	virtual float CalculateDistance(Space * space);
@@ -95,8 +98,14 @@ public:
 
 protected:
 	Renderable * m_pRenderable;
+	
+	// Ratio relative to the entire screen, not just the grid.
 	float2 m_fLocationRatio;
 	float m_fRotationInRadians;
+
+	// Ratio relative to the entire screen, not just the grid.
+	float2 m_fDimensionsRatio;
+
 	bool m_bIsVisible;
 	bool m_bIsActionable;
 	bool m_bIsCollidable;

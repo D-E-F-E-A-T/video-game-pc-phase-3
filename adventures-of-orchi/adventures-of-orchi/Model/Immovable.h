@@ -25,7 +25,7 @@ public:
 	Immovable(
 		float2 pfLocationRatio,
 		float fRotationInRadians,
-		float2 pfDimensionRatio,
+		float2 pfDimensionsRatio,
 		bool bIsVisible,
 		bool bIsActionable,
 		bool bIsCollidable,
@@ -33,6 +33,7 @@ public:
 		: Space(
 			pfLocationRatio,
 			fRotationInRadians,
+			pfDimensionsRatio,
 			bIsVisible,
 			bIsActionable,
 			bIsCollidable,

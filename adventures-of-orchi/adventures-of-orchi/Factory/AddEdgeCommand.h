@@ -45,8 +45,8 @@ public:
 
 		float2 fSquareRatio =
 		{
-			Utils::CalculateSquareHeightRatio(fScreenDimensions.x),
-			Utils::CalculateSquareWidthRatio(fScreenDimensions.y)
+			Utils::CalculateSquareWidthRatio(fScreenDimensions.x),
+			Utils::CalculateSquareHeightRatio(fScreenDimensions.y)
 		};
 
 		switch (((ServiceProxy::AddEdgeCommand ^)command)->Direction)
@@ -55,7 +55,7 @@ public:
 			fDimensionRatio = float2 
 			{
 				fSquareRatio.x,
-				0.01f
+				fSquareRatio.y * 0.1f
 			};
 
 			fOriginRatio = float2
@@ -69,7 +69,7 @@ public:
 		case EAST:
 			fDimensionRatio = float2
 			{
-				0.01f,
+				fSquareRatio.x * 0.1f,
 				fSquareRatio.y
 			};
 
@@ -84,7 +84,7 @@ public:
 			fDimensionRatio = float2
 			{
 				fSquareRatio.x,
-				0.1f
+				fSquareRatio.y * 0.1f
 			};
 
 			fOriginRatio = float2
@@ -98,7 +98,7 @@ public:
 		case WEST:
 			fDimensionRatio = float2
 			{
-				0.1f,
+				fSquareRatio.x * 0.1f,
 				fSquareRatio.y
 			};
 
@@ -115,7 +115,7 @@ public:
 
 		(*pSubdivision)->Set(LAYER_2D,
 			new Edge(
-				fOriginRatio,
+				fOriginRatio,			// Relative to the entire screen. Not just the Grid.
 				0.f,					// Rotation.
 				fDimensionRatio, 
 				((ServiceProxy::AddEdgeCommand ^)command)->Direction,

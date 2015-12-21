@@ -39,6 +39,7 @@ public:
 		ComPtr<ID3D11RenderTargetView> renderTargetView,
 		float2 fLocationRatio,
 		float fRotationInRadians,
+		float2 fDimensionsRatio,
 		float2 fWindowDimensions,
 		float2 fScaleDimensions,
 		float dpi) = 0;

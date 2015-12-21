@@ -60,6 +60,7 @@ void Utils::InsertionSortI(int values[], int length)
 // The return values are relative to the entire screen.
 //	Thus, 0.f = left edge of the screen.
 //			1.f = right edge of the screen.
+/*
 void Utils::CalculateSquareCenter(
 	float screenWidth,
 	float screenHeight,
@@ -70,6 +71,28 @@ void Utils::CalculateSquareCenter(
 {
 	float rowHeight = CalculateSquareHeightRatio(screenHeight);
 	float columnWidth = CalculateSquareWidthRatio(screenWidth);
+
+	*x = (screenWidth * LEFT_MARGIN_RATIO) + MARGIN + (columnWidth * column) + (columnWidth / 2.0f);
+	*y = MARGIN + (rowHeight * row) + (rowHeight / 2.0f);
+
+	*x /= screenWidth;
+	*y /= screenHeight;
+}
+*/
+void Utils::CalculateSquareCenter(
+	float screenWidth,
+	float screenHeight,
+	int column,
+	int row,
+	float * x,
+	float * y)
+{
+	float gridWidth = screenWidth -
+		(screenWidth * LEFT_MARGIN_RATIO) -
+		(screenWidth * RIGHT_MARGIN_RATIO);
+
+	float rowHeight = (screenHeight - 2.0f * MARGIN) / NUM_GRID_ROWS;
+	float columnWidth = (gridWidth - 2.0f * MARGIN) / NUM_GRID_COLUMNS;
 
 	*x = (screenWidth * LEFT_MARGIN_RATIO) + MARGIN + (columnWidth * column) + (columnWidth / 2.0f);
 	*y = MARGIN + (rowHeight * row) + (rowHeight / 2.0f);
@@ -97,7 +120,9 @@ void Utils::CalculateSquareOrigin(
 
 float Utils::CalculateSquareHeightRatio(float fScreenHeight)
 {
-	return (fScreenHeight - 2.0f * MARGIN) / NUM_GRID_ROWS / fScreenHeight;
+	float fSquareRawHeight = fScreenHeight / (float)NUM_GRID_ROWS;
+
+	return fSquareRawHeight / fScreenHeight;
 }
 
 float Utils::CalculateSquareWidthRatio(float fScreenWidth)
@@ -106,7 +131,9 @@ float Utils::CalculateSquareWidthRatio(float fScreenWidth)
 		(fScreenWidth * LEFT_MARGIN_RATIO) -
 		(fScreenWidth * RIGHT_MARGIN_RATIO);
 
-	return (gridWidth - 2.0f * MARGIN) / NUM_GRID_COLUMNS / fScreenWidth;
+	float fSquareRawWidth = gridWidth / (float)NUM_GRID_COLUMNS;
+
+	return fSquareRawWidth / fScreenWidth;
 }
 
 void Utils::ConvertGlobalToGridLocation(
