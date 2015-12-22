@@ -23,6 +23,9 @@
 //	are within the Other.  
 //	Then check if any point of the Other is
 //	within the Edge.
+// By my convention, m_pLocationRatio for the Player
+//	is defined as the centroid of the space.
+//	However, 
 bool Edge::IsOverlapping(Space * pOther)
 {
 	vector<D2D1_POINT_2F> edgeBounds;

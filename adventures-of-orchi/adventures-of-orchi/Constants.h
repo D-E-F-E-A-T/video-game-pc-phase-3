@@ -388,4 +388,3 @@
 #ifndef LOWER_LEFT
 #define LOWER_LEFT 3
 #endif // LOWER_LEFT 
-

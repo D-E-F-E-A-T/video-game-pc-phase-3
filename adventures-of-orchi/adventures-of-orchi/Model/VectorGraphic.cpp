@@ -55,12 +55,16 @@ void VectorGraphic::Render(
 			XMVECTOR vecWireframeCurrent = XMLoadFloat3(&(*iteratorVertices));
 			XMVECTOR vecWireframeNext = XMLoadFloat3(&(*(next(iteratorVertices))));
 
+			// Convention: Origin is always the centroid.
 			XMVECTOR vecOriginRatio = XMVectorSet(
-				fLocationRatio.x,
-				fLocationRatio.y,
+				fLocationRatio.x - (fDimensionsRatio.x / 2.0f),
+				fLocationRatio.y - (fDimensionsRatio.y / 2.0f),
 				0.0f,
 				0.0f);
 
+			// Since the originVector is now the centroid
+			//	of the VectorGraphic, need to bisect 
+			//	the graphic in the x and y directions.
 			XMVECTOR vecDimensionsRatio = XMVectorSet(
 				fDimensionsRatio.x,
 				fDimensionsRatio.y,

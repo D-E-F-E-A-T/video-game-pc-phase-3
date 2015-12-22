@@ -61,9 +61,13 @@ GameRenderer::GameRenderer(const shared_ptr<DeviceResources>& deviceResources, C
 	m_pCurrentSubdivision = m_pRegion->LoadSubdivision(2, 2);
 
 	m_pPlayer = new Player(
-		float2(0.5f, 0.5f),
+		float2(0.5f, 0.5f),	// This is the centroid of the player.
 		0.f,
-		float2(1.f, 1.f),
+		float2
+		{
+			Utils::CalculateSquareWidthRatio(m_fWindowWidth),
+			Utils::CalculateSquareHeightRatio(m_fWindowHeight)
+		},
 		true,
 		deviceResources);
 

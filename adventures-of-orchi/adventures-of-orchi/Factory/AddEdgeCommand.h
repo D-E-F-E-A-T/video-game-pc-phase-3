@@ -52,21 +52,37 @@ public:
 		switch (((ServiceProxy::AddEdgeCommand ^)command)->Direction)
 		{
 		case NORTH:
-			fDimensionRatio = float2 
+		{
+			fDimensionRatio = float2
 			{
 				fSquareRatio.x,
 				fSquareRatio.y * EDGE_RATIO
 			};
 
+//			float fYTopRatio = fY - (fSquareRatio.y / 2.0f);
+
+			// The is the height ratio of the edge. It still needs to be
+			//	offset since the location ratio is based on the 
+			//	centroid, now.
+			float fEdgeHeight =
+				(fScreenDimensions.y / (float)NUM_GRID_ROWS) * EDGE_RATIO;
+
+			float fEdgeHeightMidpoint =
+				fEdgeHeight / 2.0f;
+
+			float fEdgeHeightMidpointOffsetRatio =
+				fEdgeHeightMidpoint / fScreenDimensions.y;
+
 			fOriginRatio = float2
 			{
-				fX - fSquareRatio.x / 2.0f,
-				fY - fSquareRatio.y / 2.0f
+				fX,
+				(fY - fSquareRatio.y / 2.0f) + fEdgeHeightMidpointOffsetRatio
 			};
-
-			break;
+		}
+		break;
 
 		case EAST:
+		{
 			fDimensionRatio = float2
 			{
 				fSquareRatio.x * EDGE_RATIO,
@@ -78,9 +94,11 @@ public:
 				fX + (fSquareRatio.x / 2.0f) - fDimensionRatio.x,
 				fY - (fSquareRatio.y / 2.0f)
 			};
-			break;
+		}
+		break;
 
 		case SOUTH:
+		{
 			fDimensionRatio = float2
 			{
 				fSquareRatio.x,
@@ -92,10 +110,11 @@ public:
 				fX - (fSquareRatio.x / 2.0f),
 				fY + (fSquareRatio.y / 2.0f) - fDimensionRatio.y
 			};
-
-			break;
+		}
+		break;
 
 		case WEST:
+		{
 			fDimensionRatio = float2
 			{
 				fSquareRatio.x * EDGE_RATIO,
@@ -107,10 +126,10 @@ public:
 				fX - (fSquareRatio.x / 2.0f),
 				fY - (fSquareRatio.y / 2.0f)
 			};
-
-			break;
 		}
-
+		break;
+		}
+		
 
 
 		(*pSubdivision)->Set(LAYER_2D,
