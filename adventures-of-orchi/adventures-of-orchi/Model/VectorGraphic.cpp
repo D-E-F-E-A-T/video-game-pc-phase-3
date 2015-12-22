@@ -28,6 +28,7 @@ void VectorGraphic::Render(
 	float2 fScaleDimensions,
 	float dpi)
 {
+#ifdef RENDER_DIAGNOSTICS
 	// Edge(Space) has a Renderable(VectorGraphic)
 	// Space calls this and passes in the window dimensions.
 	
@@ -50,23 +51,10 @@ void VectorGraphic::Render(
 			iteratorVertices++)
 		{
 			// Convert from XMFLOAT3 to XMVECTOR to
-			//	support SIMD architectures.
+			//	support SIMD architectures (Luna, 2012).
 			XMVECTOR vecWireframeCurrent = XMLoadFloat3(&(*iteratorVertices));
 			XMVECTOR vecWireframeNext = XMLoadFloat3(&(*(next(iteratorVertices))));
 
-			// Translate each vertex of the wireframe from 
-			//	[0.0f, 1.0f] to the range of the dimensions or a 
-			//	grid square.
-			
-			//float fWireframeXScaled = fLocationRatio.x * fDimensionsRatio.x * fWindowDimensions.x;
-			//float fWireframeYScaled = fLocationRatio.y * fDimensionsRatio.y * fWindowDimensions.y;
-
-			// Translate each vertex.
-			//XMVECTOR xmOrigin = XMVectorSet(
-			//	fX,
-			//	fY,
-			//	0.0f,
-			//	0.0f);
 			XMVECTOR vecOriginRatio = XMVectorSet(
 				fLocationRatio.x,
 				fLocationRatio.y,
@@ -113,22 +101,5 @@ void VectorGraphic::Render(
 		}
 	}
 
-
-
-
-	//#ifdef RENDER_DIAGNOSTICS
-			//float2 fScreenLocation = fLocationRatio * fWindowDimensions;
-	
-			//D2D1_RECT_F rect
-			//{
-			//	fScreenLocation.x - (fWindowDimensions.x / 100.f),
-			//	fScreenLocation.y - (fWindowDimensions.y / 100.f),
-			//	fScreenLocation.x + (fWindowDimensions.x / 100.f),
-			//	fScreenLocation.y + (fWindowDimensions.y / 100.f)
-			//};
-	
-			//DEVICE_CONTEXT_2D->FillRectangle(
-			//	rect,
-			//	m_deviceResources->m_mapBrushes["red"]);
-	//#endif // RENDER_DIAGNOSTICS
+#endif // RENDER_DIAGNOSTICS
 }

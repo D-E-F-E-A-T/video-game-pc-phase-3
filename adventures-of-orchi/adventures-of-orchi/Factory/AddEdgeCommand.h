@@ -1,17 +1,17 @@
 /*
-Copyright 2016 Richard Bernardino
+	Copyright 2016 Richard Bernardino
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
 
-http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
 */
 #pragma once
 #include "BuildCommand.h"
@@ -40,8 +40,8 @@ public:
 			&fX,
 			&fY);
 
-		float2 fOriginRatio;	// Top-Left
-		float2 fDimensionRatio; // { 0.01f, 0.01f };
+		float2 fOriginRatio;	// Top-Left, relative to ENTIRE screen.
+		float2 fDimensionRatio;	// Area to squeeze the wireframe into, relative to a single grid square.
 
 		float2 fSquareRatio =
 		{
@@ -55,7 +55,7 @@ public:
 			fDimensionRatio = float2 
 			{
 				fSquareRatio.x,
-				fSquareRatio.y * 0.1f
+				fSquareRatio.y * EDGE_RATIO
 			};
 
 			fOriginRatio = float2
@@ -69,7 +69,7 @@ public:
 		case EAST:
 			fDimensionRatio = float2
 			{
-				fSquareRatio.x * 0.1f,
+				fSquareRatio.x * EDGE_RATIO,
 				fSquareRatio.y
 			};
 
@@ -84,7 +84,7 @@ public:
 			fDimensionRatio = float2
 			{
 				fSquareRatio.x,
-				fSquareRatio.y * 0.1f
+				fSquareRatio.y * EDGE_RATIO
 			};
 
 			fOriginRatio = float2
@@ -98,7 +98,7 @@ public:
 		case WEST:
 			fDimensionRatio = float2
 			{
-				fSquareRatio.x * 0.1f,
+				fSquareRatio.x * EDGE_RATIO,
 				fSquareRatio.y
 			};
 

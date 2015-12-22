@@ -195,3 +195,12 @@ float Utils::CalculateDistance(
 
 	return sqrt((deltaX * deltaX) + (deltaY * deltaY));
 }
+
+boolean Utils::IsPointInPolygon(D2D1_POINT_2F pt, vector<D2D1_POINT_2F> * polygon)
+{
+	return
+		((pt.x > polygon->at(UPPER_LEFT).x) && (pt.y > polygon->at(UPPER_LEFT).y)) &&
+		((pt.x < polygon->at(UPPER_RIGHT).x) && (pt.y > polygon->at(UPPER_RIGHT).y)) &&
+		((pt.x < polygon->at(LOWER_RIGHT).x) && (pt.y < polygon->at(LOWER_RIGHT).y)) &&
+		((pt.x > polygon->at(LOWER_LEFT).x) && (pt.y < polygon->at(LOWER_LEFT).y));
+}
