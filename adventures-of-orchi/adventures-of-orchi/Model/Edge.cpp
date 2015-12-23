@@ -34,64 +34,64 @@ bool Edge::IsOverlapping(Space * pOther)
 	edgeBounds.push_back(
 		D2D1_POINT_2F 
 		{
-			m_fLocationRatio.x,
-			m_fLocationRatio.y
+			m_fLocationRatio.x - (m_fDimensionsRatio.x / 2.0f),
+			m_fLocationRatio.y - (m_fDimensionsRatio.y / 2.0f)
 		}
 	);
 
 	edgeBounds.push_back(
 		D2D1_POINT_2F
 		{
-			m_fLocationRatio.x + m_fDimensionsRatio.x,
-			m_fLocationRatio.y
+			m_fLocationRatio.x + (m_fDimensionsRatio.x / 2.0f),
+			m_fLocationRatio.y - (m_fDimensionsRatio.y / 2.0f)
 		}
 	);
 
 	edgeBounds.push_back(
 		D2D1_POINT_2F
 		{
-			m_fLocationRatio.x + m_fDimensionsRatio.x,
+			m_fLocationRatio.x + (m_fDimensionsRatio.x / 2.0f),
+			m_fLocationRatio.y + (m_fDimensionsRatio.y / 2.0f)
+		}
+	);
+
+	edgeBounds.push_back(
+		D2D1_POINT_2F
+		{
+			m_fLocationRatio.x - (m_fDimensionsRatio.x / 2.0f),
 			m_fLocationRatio.y + m_fDimensionsRatio.y
 		}
 	);
 
-	edgeBounds.push_back(
+	otherBounds.push_back(
 		D2D1_POINT_2F
 		{
-			m_fLocationRatio.x,
-			m_fLocationRatio.y + m_fDimensionsRatio.y
+			pOther->GetLocationRatio().x - (pOther->GetLocationRatio().x / 2.0f),
+			pOther->GetLocationRatio().y - (pOther->GetLocationRatio().y / 2.0f)
 		}
 	);
 
 	otherBounds.push_back(
 		D2D1_POINT_2F
 		{
-			pOther->GetLocationRatio().x,
-			pOther->GetLocationRatio().y
+			pOther->GetLocationRatio().x + (pOther->GetDimensionsRatio().x / 2.0f),
+			pOther->GetLocationRatio().y - (pOther->GetDimensionsRatio().y / 2.0f)
 		}
 	);
 
 	otherBounds.push_back(
 		D2D1_POINT_2F
 		{
-			pOther->GetLocationRatio().x + pOther->GetDimensionsRatio().x,
-			pOther->GetLocationRatio().y
+			pOther->GetLocationRatio().x + (pOther->GetDimensionsRatio().x / 2.0f),
+			pOther->GetLocationRatio().y + (pOther->GetDimensionsRatio().y / 2.0f)
 		}
 	);
 
 	otherBounds.push_back(
 		D2D1_POINT_2F
 		{
-			pOther->GetLocationRatio().x + pOther->GetDimensionsRatio().x,
-			pOther->GetLocationRatio().y + pOther->GetDimensionsRatio().y
-		}
-	);
-
-	otherBounds.push_back(
-		D2D1_POINT_2F
-		{
-			pOther->GetLocationRatio().x,
-			pOther->GetLocationRatio().y + pOther->GetDimensionsRatio().y
+			pOther->GetLocationRatio().x - (pOther->GetDimensionsRatio().x / 2.0f),
+			pOther->GetLocationRatio().y + (pOther->GetDimensionsRatio().y / 2.0f)
 		}
 	);
 
