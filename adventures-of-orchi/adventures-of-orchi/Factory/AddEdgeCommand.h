@@ -59,8 +59,6 @@ public:
 				fSquareRatio.y * EDGE_RATIO
 			};
 
-//			float fYTopRatio = fY - (fSquareRatio.y / 2.0f);
-
 			// The is the height ratio of the edge. It still needs to be
 			//	offset since the location ratio is based on the 
 			//	centroid, now.
@@ -89,10 +87,20 @@ public:
 				fSquareRatio.y
 			};
 
+			float fEdgeWidth =
+				((fScreenDimensions.x * (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO))
+					/ (float)NUM_GRID_COLUMNS) * EDGE_RATIO;
+
+			float fEdgeWidthMidpoint =
+				fEdgeWidth / 2.0f;
+
+			float fEdgeWidthMidpointOffsetRatio =
+				fEdgeWidthMidpoint / fScreenDimensions.x;
+
 			fOriginRatio = float2
 			{
-				fX + (fSquareRatio.x / 2.0f) - fDimensionRatio.x,
-				fY - (fSquareRatio.y / 2.0f)
+				(fX + fSquareRatio.x / 2.0f) - fEdgeWidthMidpointOffsetRatio,
+				fY
 			};
 		}
 		break;
@@ -105,10 +113,19 @@ public:
 				fSquareRatio.y * EDGE_RATIO
 			};
 
+			float fEdgeHeight =
+				(fScreenDimensions.y / (float)NUM_GRID_ROWS) * EDGE_RATIO;
+
+			float fEdgeHeightMidpoint =
+				fEdgeHeight / 2.0f;
+
+			float fEdgeHeightMidpointOffsetRatio =
+				fEdgeHeightMidpoint / fScreenDimensions.y;
+
 			fOriginRatio = float2
 			{
-				fX - (fSquareRatio.x / 2.0f),
-				fY + (fSquareRatio.y / 2.0f) - fDimensionRatio.y
+				fX,
+				(fY + fSquareRatio.y / 2.0f) - fEdgeHeightMidpointOffsetRatio
 			};
 		}
 		break;
@@ -121,10 +138,20 @@ public:
 				fSquareRatio.y
 			};
 
+			float fEdgeWidth =
+				((fScreenDimensions.x * (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO))
+					/ (float)NUM_GRID_COLUMNS) * EDGE_RATIO;
+
+			float fEdgeWidthMidpoint =
+				fEdgeWidth / 2.0f;
+
+			float fEdgeWidthMidpointOffsetRatio =
+				fEdgeWidthMidpoint / fScreenDimensions.x;
+
 			fOriginRatio = float2
 			{
-				fX - (fSquareRatio.x / 2.0f),
-				fY - (fSquareRatio.y / 2.0f)
+				(fX - fSquareRatio.x / 2.0f) + fEdgeWidthMidpointOffsetRatio,
+				fY
 			};
 		}
 		break;
