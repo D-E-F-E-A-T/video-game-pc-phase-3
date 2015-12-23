@@ -39,7 +39,7 @@ public:
 		m_nPreviousMoveDirection = CENTER;
 		m_pRenderable = new Texture("link.dds", m_deviceResources);
 
-		m_lpSkipFunctions = new (void (Player::*[4])());
+		m_lpSkipFunctions = new (void (Player::*[4])(float2));
 		m_lpSkipFunctions[NORTH] = &Player::SkipNorth;
 		m_lpSkipFunctions[EAST] = &Player::SkipEast;
 		m_lpSkipFunctions[SOUTH] = &Player::SkipSouth;
@@ -51,15 +51,15 @@ public:
 		delete[] m_lpSkipFunctions;
 	}
 
-	void SkipNorth();
-	void SkipEast();
-	void SkipSouth();
-	void SkipWest();
+	void SkipNorth(float2);
+	void SkipEast(float2);
+	void SkipSouth(float2);
+	void SkipWest(float2);
 
 
-	void Skip(int nDirection)
+	void Skip(int nDirection, float2 fScreenDimensions)
 	{
-		(*this.*m_lpSkipFunctions[nDirection])();
+		(*this.*m_lpSkipFunctions[nDirection])(fScreenDimensions);
 	}
 
 protected:
@@ -68,6 +68,6 @@ private:
 	int m_pGridLocation[NUM_DIMENSIONS];
 	int m_nUnitsPerGridSquare[NUM_DIMENSIONS];
 
-	void (Player::**m_lpSkipFunctions)();
+	void (Player::**m_lpSkipFunctions)(float2);
 	int m_nPreviousMoveDirection;
 };

@@ -17,22 +17,42 @@ limitations under the License.
 #include "Player.h"
 #include "..\Constants.h"
 
-void Player::SkipNorth()
+void Player::SkipNorth(float2 fScreenDimensions)
 {
-	m_fLocationRatio = float2{ m_fLocationRatio.x , 0.85f };
+	m_fLocationRatio = float2
+	{ 
+		m_fLocationRatio.x, 
+		(fScreenDimensions.y * (1.f - SKIP_RATIO)) / fScreenDimensions.y
+	};
 }
 
-void Player::SkipEast()
+void Player::SkipEast(float2 fScreenDimensions)
 {
-	m_fLocationRatio = float2{ LEFT_MARGIN_RATIO + 0.1f, m_fLocationRatio.y };
+	float fGridWidth = (fScreenDimensions.x * (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO));
+
+	m_fLocationRatio = float2
+	{ 
+		LEFT_MARGIN_RATIO + ((fGridWidth * SKIP_RATIO) / fGridWidth),
+		m_fLocationRatio.y 
+	};
 }
 
-void Player::SkipSouth()
+void Player::SkipSouth(float2 fScreenDimensions)
 {
-	m_fLocationRatio = float2{ m_fLocationRatio.x, 0.15f };
+	m_fLocationRatio = float2
+	{ 
+		m_fLocationRatio.x, 
+		(fScreenDimensions.y * SKIP_RATIO / fScreenDimensions.y)
+	};
 }
 
-void Player::SkipWest()
+void Player::SkipWest(float2 fScreenDimensions)
 {
-	m_fLocationRatio = float2{ 1.0f - RIGHT_MARGIN_RATIO - 0.1f, m_fLocationRatio.y };
+	float fGridWidth = (fScreenDimensions.x * (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO));
+
+	m_fLocationRatio = float2
+	{ 
+		1.0f - RIGHT_MARGIN_RATIO - ((fGridWidth * SKIP_RATIO) / fGridWidth),
+		m_fLocationRatio.y 
+	};
 }

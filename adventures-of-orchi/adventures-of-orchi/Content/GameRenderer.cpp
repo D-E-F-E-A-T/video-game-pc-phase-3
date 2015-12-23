@@ -213,7 +213,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 		int nDirection = static_cast<Edge *>(pCollidedEdge)->GetDirection();
 
-		m_pPlayer->Skip(nDirection);
+		m_pPlayer->Skip(nDirection, float2{ m_fWindowWidth, m_fWindowHeight });
 		m_pCurrentSubdivision = m_pRegion->Slide(nDirection);
 
 		m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pPlayer);
