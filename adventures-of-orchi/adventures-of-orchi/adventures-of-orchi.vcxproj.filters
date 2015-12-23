@@ -188,6 +188,9 @@
     <ClCompile Include="Model\VectorGraphic.cpp">
       <Filter>Model</Filter>
     </ClCompile>
+    <ClCompile Include="Wireframe\BorderFrame.cpp">
+      <Filter>Wireframe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -484,6 +487,15 @@
     </ClInclude>
     <ClInclude Include="Model\Obstacle.h">
       <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Border.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Wireframe\BorderFrame.h">
+      <Filter>Wireframe</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\AddBorderCommand.h">
+      <Filter>Factory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

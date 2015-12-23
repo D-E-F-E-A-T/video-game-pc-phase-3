@@ -39,6 +39,7 @@ limitations under the License.
 #include "DeclareLandCommand.h"
 #include "DeclareLotCommand.h"
 #include "DeclareWorldCommand.h"
+#include "AddBorderCommand.h"
 
 using namespace Windows::Foundation::Collections;
 using namespace std;
@@ -58,11 +59,12 @@ WorldFactory::WorldFactory()
 	m_buildCommands[10] = new DeclareLandCommand();
 	m_buildCommands[11] = new DeclareLotCommand();
 	m_buildCommands[12] = new DeclareWorldCommand();
+	m_buildCommands[13] = new AddBorderCommand();
 }
 
 WorldFactory::~WorldFactory()
 {
-	for (int i = 0; i < 13; i++)
+	for (int i = 0; i < 14; i++)
 	{
 		delete m_buildCommands[i];
 	}
@@ -82,7 +84,7 @@ World * WorldFactory::Build(float2 fScreenDimensions, const shared_ptr<DeviceRes
 
 	for each (ServiceProxy::BuildCommand ^ command in commands)
 	{
-		for (int i = 0; i < 13; i++)
+		for (int i = 0; i < 14; i++)
 		{
 			if (command->Type == i)
 			{

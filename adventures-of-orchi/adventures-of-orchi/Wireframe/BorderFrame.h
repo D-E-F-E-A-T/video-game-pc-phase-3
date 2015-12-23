@@ -14,31 +14,21 @@
 	limitations under the License.
 */
 #pragma once
-#include "Obstacle.h"
-#include "Texture.h"
+#include "..\Model\Wireframe.h"
 
-class Tree : public Obstacle
+using namespace DirectX;
+
+// Think prototype
+class BorderFrame : public Wireframe
 {
 public:
-	Tree(
-		float2 pfLocationRatio,
-		float fRotationInRadians,
-		float2 pfDimensions,
-		bool bIsVisible,
-		const shared_ptr<DeviceResources>& deviceResources) :
-		Obstacle(
-			pfLocationRatio,
-			fRotationInRadians,
-			pfDimensions,
-			true,
-			false,
-			true,
-			deviceResources)
-	{
-		m_pRenderable = new Texture("tree.dds", deviceResources);
-	}
+	BorderFrame();
+	~BorderFrame();
+	
 
 protected:
 
 private:
 };
+
+

@@ -27,7 +27,7 @@ public:
 		const shared_ptr<DeviceResources>& deviceResources);
 
 protected:
-	BuildCommand * m_buildCommands[13];
+	BuildCommand * m_buildCommands[14];
 
 private:
 };
