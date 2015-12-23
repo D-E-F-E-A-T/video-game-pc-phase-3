@@ -14,27 +14,31 @@
 	limitations under the License.
 */
 #pragma once
-#include "Traversable.h"
+#include "Immovable.h"
 
-class Grass : public Traversable
+using namespace Platform;
+
+class Obstacle : public Immovable
 {
 public:
-	Grass(
+	Obstacle(
 		float2 pfLocationRatio,
 		float fRotationInRadians,
 		float2 pfDimensions,
 		bool bIsVisible,
-		const shared_ptr<DeviceResources>& deviceResources) :
-		Traversable(
+		bool bIsActionable,
+		bool bIsCollidable,
+		const shared_ptr<DeviceResources>& deviceResources)
+		: Immovable(
 			pfLocationRatio,
 			fRotationInRadians,
 			pfDimensions,
-			true,
-			false,
-			true,
+			bIsVisible,
+			bIsActionable,
+			bIsCollidable,
 			deviceResources)
 	{
-		m_pRenderable = new Texture("grass.dds", deviceResources);
+
 	}
 
 protected:

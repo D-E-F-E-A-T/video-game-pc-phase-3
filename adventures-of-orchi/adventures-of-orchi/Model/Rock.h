@@ -14,10 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 #pragma once
-#include "Thing.h"
+#include "Obstacle.h"
 #include "Texture.h"
 
-class Rock: public Thing
+class Rock: public Obstacle
 {
 public:
 	Rock(
@@ -26,7 +26,7 @@ public:
 		float2 pfDimensions,
 		bool bIsVisible,
 		const shared_ptr<DeviceResources>& deviceResources) :
-		Thing(
+		Obstacle(
 			pfLocationRatio,
 			fRotationInRadians,
 			pfDimensions,

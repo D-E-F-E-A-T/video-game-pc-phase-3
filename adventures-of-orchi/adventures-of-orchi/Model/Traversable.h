@@ -18,10 +18,10 @@ limitations under the License.
 
 using namespace Platform;
 
-class Thing : public Immovable
+class Traversable : public Immovable
 {
 public:
-	Thing(
+	Traversable(
 		float2 pfLocationRatio,
 		float fRotationInRadians,
 		float2 pfDimensions,

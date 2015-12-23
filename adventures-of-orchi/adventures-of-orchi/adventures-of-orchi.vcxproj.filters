@@ -231,9 +231,6 @@
     <ClInclude Include="Model\Character.h">
       <Filter>Model</Filter>
     </ClInclude>
-    <ClInclude Include="Model\Thing.h">
-      <Filter>Model</Filter>
-    </ClInclude>
     <ClInclude Include="Model\Player.h">
       <Filter>Model</Filter>
     </ClInclude>
@@ -481,6 +478,12 @@
     </ClInclude>
     <ClInclude Include="Wireframe\EdgeFrame.h">
       <Filter>Wireframe</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Traversable.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Obstacle.h">
+      <Filter>Model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

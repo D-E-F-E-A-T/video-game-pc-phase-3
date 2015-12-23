@@ -254,6 +254,7 @@
     <ClInclude Include="Model\Renderable2D.h" />
     <ClInclude Include="Model\Renderable3D.h" />
     <ClInclude Include="Model\Subdivision.h" />
+    <ClInclude Include="Model\Traversable.h" />
     <ClInclude Include="Model\Underground.h" />
     <ClInclude Include="Model\Onground.h" />
     <ClInclude Include="Model\VectorGraphic.h" />
@@ -297,7 +298,7 @@
     <ClInclude Include="Model\StoneWall.h" />
     <ClInclude Include="Model\Sword.h" />
     <ClInclude Include="Model\Texture.h" />
-    <ClInclude Include="Model\Thing.h" />
+    <ClInclude Include="Model\Obstacle.h" />
     <ClInclude Include="Model\Tree.h" />
     <ClInclude Include="Model\Water.h" />
     <ClInclude Include="Model\Wireframe.h" />
