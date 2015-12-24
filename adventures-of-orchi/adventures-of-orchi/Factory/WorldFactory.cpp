@@ -40,6 +40,9 @@ limitations under the License.
 #include "DeclareLotCommand.h"
 #include "DeclareWorldCommand.h"
 #include "AddBorderCommand.h"
+#include "DeclareTemplateCommand.h"
+#include "EndTemplateCommand.h"
+#include "..\Model\StateMachine.h"
 
 using namespace Windows::Foundation::Collections;
 using namespace std;
@@ -60,11 +63,13 @@ WorldFactory::WorldFactory()
 	m_buildCommands[11] = new DeclareLotCommand();
 	m_buildCommands[12] = new DeclareWorldCommand();
 	m_buildCommands[13] = new AddBorderCommand();
+	m_buildCommands[14] = new DeclareTemplateCommand();
+	m_buildCommands[15] = new EndTemplateCommand();
 }
 
 WorldFactory::~WorldFactory()
 {
-	for (int i = 0; i < 14; i++)
+	for (int i = 0; i < 16; i++)
 	{
 		delete m_buildCommands[i];
 	}
@@ -72,26 +77,7 @@ WorldFactory::~WorldFactory()
 
 World * WorldFactory::Build(float2 fScreenDimensions, const shared_ptr<DeviceResources>& deviceResources)
 {
-	World * retVal = nullptr;
+	StateMachine stateMachine;
 
-	ServiceProxy::ServiceProxy ^ proxy = ref new ServiceProxy::ServiceProxy();
-
-	IIterable<ServiceProxy::BuildCommand ^> ^ commands = proxy->Build();
-
-	String ^ strCurrentRegionId;
-
-	Subdivision * pCurrentSubdivision = nullptr;
-
-	for each (ServiceProxy::BuildCommand ^ command in commands)
-	{
-		for (int i = 0; i < 14; i++)
-		{
-			if (command->Type == i)
-			{
-				m_buildCommands[i]->Process(&retVal, fScreenDimensions, command, &pCurrentSubdivision, deviceResources);
-			}
-		}
-	}
-
-	return retVal;
+	return stateMachine.Process(m_buildCommands, fScreenDimensions, deviceResources);
 }

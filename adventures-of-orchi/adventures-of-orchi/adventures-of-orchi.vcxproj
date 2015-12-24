@@ -235,7 +235,9 @@
     <ClInclude Include="Factory\DeclareDungeonCommand.h" />
     <ClInclude Include="Factory\DeclareLandCommand.h" />
     <ClInclude Include="Factory\DeclareLotCommand.h" />
+    <ClInclude Include="Factory\DeclareTemplateCommand.h" />
     <ClInclude Include="Factory\DeclareWorldCommand.h" />
+    <ClInclude Include="Factory\EndTemplateCommand.h" />
     <ClInclude Include="Factory\WorldFactory.h" />
     <ClInclude Include="InfoPanel\ButtonsPanel.h" />
     <ClInclude Include="InfoPanel\InfoPanel.h" />
@@ -256,6 +258,8 @@
     <ClInclude Include="Model\Renderable2D.h" />
     <ClInclude Include="Model\Renderable3D.h" />
     <ClInclude Include="Model\Subdivision.h" />
+    <ClInclude Include="Model\Template.h" />
+    <ClInclude Include="Model\TemplateRepository.h" />
     <ClInclude Include="Model\Traversable.h" />
     <ClInclude Include="Model\Underground.h" />
     <ClInclude Include="Model\Onground.h" />
@@ -366,6 +370,8 @@
     <ClCompile Include="Model\Lot.cpp" />
     <ClCompile Include="Model\Movable.cpp" />
     <ClCompile Include="Model\Region.cpp" />
+    <ClCompile Include="Model\Template.cpp" />
+    <ClCompile Include="Model\TemplateRepository.cpp" />
     <ClCompile Include="Model\Texture.cpp" />
     <ClCompile Include="Model\Player.cpp" />
     <ClCompile Include="Model\Space.cpp" />

@@ -191,6 +191,12 @@
     <ClCompile Include="Wireframe\BorderFrame.cpp">
       <Filter>Wireframe</Filter>
     </ClCompile>
+    <ClCompile Include="Model\Template.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\TemplateRepository.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -495,6 +501,18 @@
       <Filter>Wireframe</Filter>
     </ClInclude>
     <ClInclude Include="Factory\AddBorderCommand.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Template.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\DeclareTemplateCommand.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\TemplateRepository.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\EndTemplateCommand.h">
       <Filter>Factory</Filter>
     </ClInclude>
   </ItemGroup>
