@@ -22,9 +22,37 @@ using namespace std;
 
 StateMachine::StateMachine()
 {
+	m_nStateId = 0;
+
+	m_buildCommands[ADD_EDGE_COMMAND] = new AddEdgeCommand();
+	m_buildCommands[ADD_FOREST_COMMAND] = new AddForestCommand();
+	m_buildCommands[ADD_GRASS_COMMAND] = new AddGrassCommand();
+	m_buildCommands[ADD_ROCK_COMMAND] = new AddRockCommand();
+	m_buildCommands[ADD_STAIRS_COMMAND] = new AddStairsCommand();
+	m_buildCommands[ADD_STONEWALL_COMMAND] = new AddStoneWallCommand();
+	m_buildCommands[ADD_TREE_COMMAND] = new AddTreeCommand();
+	m_buildCommands[ADD_WATER_COMMAND] = new AddWaterCommand();
+	m_buildCommands[DECLARE_CAVE_COMMAND] = new DeclareCaveCommand();
+	m_buildCommands[DECLARE_DUNGEON_COMMAND] = new DeclareDungeonCommand();
+	m_buildCommands[DECLARE_LAND_COMMAND] = new DeclareLandCommand();
+	m_buildCommands[DECLARE_LOT_COMMAND] = new DeclareLotCommand();
+	m_buildCommands[DECLARE_WORLD_COMMAND] = new DeclareWorldCommand();
+	m_buildCommands[ADD_BORDER_COMMAND] = new AddBorderCommand();
+	m_buildCommands[DECLARE_OVERLAY_COMMAND] = new DeclareOverlayCommand();
+	m_buildCommands[END_OVERLAY_COMMAND] = new EndOverlayCommand();
 }
 
-World * Process(float2 fScreenDimensions, const shared_ptr<DeviceResources>& deviceResources)
+StateMachine::~StateMachine()
+{
+	for (int i = 0; i < 16; i++)
+	{
+		delete m_buildCommands[i];
+	}
+}
+
+World * StateMachine::Process(
+	float2 fScreenDimensions, 
+	const shared_ptr<DeviceResources>& deviceResources)
 {
 	World * retVal = nullptr;
 
@@ -38,12 +66,11 @@ World * Process(float2 fScreenDimensions, const shared_ptr<DeviceResources>& dev
 
 	for each (ServiceProxy::BuildCommand ^ command in commands)
 	{
-		// Add state machine.
 		for (int i = 0; i < 16; i++)
 		{
 			if (command->Type == i)
 			{
-				Process(
+				Move(
 					i,
 					&retVal,
 					fScreenDimensions,
@@ -57,29 +84,108 @@ World * Process(float2 fScreenDimensions, const shared_ptr<DeviceResources>& dev
 	return retVal;
 }
 
-void StateMachine::Process(
+void StateMachine::Move(
 	int nCommandType,
 	World ** retVal,
 	float2 fScreenDimensions,
 	ServiceProxy::BuildCommand ^ command,
-	Subdivision * pCurrentSubdivision,
+	Subdivision ** pCurrentSubdivision,
 	const shared_ptr<DeviceResources>& deviceResources)
 {
 	// TODO: Use function pointers.
+	if (m_nStateId == 0)
+	{
+		DoState0(
+			nCommandType,
+			retVal,
+			fScreenDimensions,
+			command,
+			pCurrentSubdivision,
+			deviceResources);
+	}
 
 }
 
-void StateMachine::DoState0()
+void StateMachine::DoState0(
+	int nCommandType,
+	World ** retVal,
+	float2 fScreenDimensions,
+	ServiceProxy::BuildCommand ^ command,
+	Subdivision ** pCurrentSubdivision,
+	const shared_ptr<DeviceResources>& deviceResources)
 {
+	switch (nCommandType)
+	{
+	case ADD_EDGE_COMMAND:
+	case ADD_FOREST_COMMAND:
+	case ADD_GRASS_COMMAND:
+	case ADD_ROCK_COMMAND:
+	case ADD_STAIRS_COMMAND:
+	case ADD_STONEWALL_COMMAND:
+	case ADD_TREE_COMMAND:
+	case ADD_WATER_COMMAND:
+	case ADD_CAVE_COMMAND:
+	case DECLARE_DUNGEON_COMMAND:
+	case DECLARE_LAND_COMMAND:
+	case DECLARE_LOT_COMMAND:
+	case DECLARE_WORLD_COMMAND:
+	case ADD_BORDER_COMMAND:
+		m_buildCommands[nCommandType]->Process(
+			retVal, 
+			fScreenDimensions, 
+			command, 
+			pCurrentSubdivision, 
+			deviceResources);
+		break;
 
+	case DECLARE_OVERLAY_COMMAND:
+		m_buildCommands[DECLARE_OVERLAY_COMMAND]->Process(
+			retVal,
+			fScreenDimensions,
+			command,
+			pCurrentSubdivision,
+			deviceResources);
+		break;
+
+	case END_OVERLAY_COMMAND:
+		m_buildCommands[END_OVERLAY_COMMAND]->Process(
+			retVal,
+			fScreenDimensions,
+			command,
+			pCurrentSubdivision,
+			deviceResources);
+		break;
+	}
 }
 
-void StateMachine::DoState1()
+void StateMachine::DoState1(
+	int nCommandType,
+	World ** retVal,
+	float2 fScreenDimensions,
+	ServiceProxy::BuildCommand ^ command,
+	Subdivision ** pCurrentSubdivision,
+	const shared_ptr<DeviceResources>& deviceResources)
 {
-
+	m_buildCommands[nCommandType]->Process(
+		retVal,
+		fScreenDimensions,
+		command,
+		pCurrentSubdivision,
+		deviceResources);
 }
 
-void StateMachine::DoState2()
+void StateMachine::DoState2(
+	int nCommandType,
+	World ** retVal,
+	float2 fScreenDimensions,
+	ServiceProxy::BuildCommand ^ command,
+	Subdivision ** pCurrentSubdivision,
+	const shared_ptr<DeviceResources>& deviceResources)
 {
-
+	m_buildCommands[nCommandType]->Process(
+		retVal,
+		fScreenDimensions,
+		command,
+		pCurrentSubdivision,
+		deviceResources);
 }

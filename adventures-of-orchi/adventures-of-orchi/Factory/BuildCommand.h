@@ -16,6 +16,7 @@ limitations under the License.
 #pragma once
 #include "pch.h"
 #include "..\Model\Subdivision.h"
+#include "..\Model\World.h"
 
 class BuildCommand
 {

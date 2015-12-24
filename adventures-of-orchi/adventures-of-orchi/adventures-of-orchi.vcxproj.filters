@@ -191,10 +191,13 @@
     <ClCompile Include="Wireframe\BorderFrame.cpp">
       <Filter>Wireframe</Filter>
     </ClCompile>
-    <ClCompile Include="Model\Template.cpp">
+    <ClCompile Include="Model\StateMachine.cpp">
       <Filter>Model</Filter>
     </ClCompile>
-    <ClCompile Include="Model\TemplateRepository.cpp">
+    <ClCompile Include="Model\Overlay.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\OverlayRepository.cpp">
       <Filter>Model</Filter>
     </ClCompile>
   </ItemGroup>
@@ -503,16 +506,19 @@
     <ClInclude Include="Factory\AddBorderCommand.h">
       <Filter>Factory</Filter>
     </ClInclude>
-    <ClInclude Include="Model\Template.h">
+    <ClInclude Include="Model\StateMachine.h">
       <Filter>Model</Filter>
     </ClInclude>
-    <ClInclude Include="Factory\DeclareTemplateCommand.h">
+    <ClInclude Include="Model\Overlay.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\OverlayRepository.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\DeclareOverlayCommand.h">
       <Filter>Factory</Filter>
     </ClInclude>
-    <ClInclude Include="Model\TemplateRepository.h">
-      <Filter>Model</Filter>
-    </ClInclude>
-    <ClInclude Include="Factory\EndTemplateCommand.h">
+    <ClInclude Include="Factory\EndOverlayCommand.h">
       <Filter>Factory</Filter>
     </ClInclude>
   </ItemGroup>

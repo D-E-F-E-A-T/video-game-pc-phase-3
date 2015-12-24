@@ -14,20 +14,34 @@
 	limitations under the License.
 */
 #pragma once
-#include "Subdivision.h"
+#include "Overlay.h"
 
-class Template
+using namespace std;
+
+class OverlayRepository
 {
 public:
-	Template(int nId)
+	
+	static OverlayRepository * GetInstance()
 	{
-		m_nId = nId;
+		if (_instance == nullptr)
+		{
+			_instance = new OverlayRepository();
+		}
+
+		return _instance;
 	}
 
-	void Apply(Subdivision * pSubdivision);
+	void Add(int nId, Overlay * pOverlay);
+	void Finalize(int id);
+	Overlay * Get(int id);
 
 protected:
-	int m_nId;
+	static OverlayRepository * _instance;
+
+	OverlayRepository();
 
 private:
+	map<int, Overlay *> m_pOverlays;
 };
+

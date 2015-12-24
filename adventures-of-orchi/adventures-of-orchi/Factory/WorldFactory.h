@@ -15,7 +15,6 @@ limitations under the License.
 */
 #pragma once
 #include "..\Model\World.h"
-#include "BuildCommand.h"
 
 class WorldFactory
 {
@@ -27,7 +26,6 @@ public:
 		const shared_ptr<DeviceResources>& deviceResources);
 
 protected:
-	BuildCommand * m_buildCommands[14];
 
 private:
 };

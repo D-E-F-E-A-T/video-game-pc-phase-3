@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace ServiceProxy
 {
-    public sealed class DeclareTemplateCommand : BuildCommand
+    public sealed class EndOverlayCommand : BuildCommand
     {
         private int type;
         private int id;
@@ -38,9 +38,9 @@ namespace ServiceProxy
             set { id = value; }
         }
 
-        public DeclareTemplateCommand(int layerId, int id)
+        public EndOverlayCommand(int id)
         {
-            this.type = 14;
+            this.type = 15;
             this.id = id;
         }
     }

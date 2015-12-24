@@ -108,7 +108,8 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeclareTemplateCommand.cs" />
+    <Compile Include="EndOverlayCommand.cs" />
+    <Compile Include="DeclareOverlayCommand.cs" />
     <Compile Include="AddBorderCommand.cs" />
     <Compile Include="AddEdgeCommand.cs" />
     <Compile Include="AddForestCommand.cs" />

@@ -13,23 +13,9 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-#include "TemplateRepository.h"
+#include "pch.h"
+#include "Overlay.h"
 
-
-TemplateRepository * TemplateRepository::_instance = NULL;
-
-void TemplateRepository::Add(int nId, Template * pTemplate)
+void Overlay::Apply(Subdivision * pSubdivision)
 {
-	m_pTemplates[nId] = pTemplate;
 }
-
-void TemplateRepository::Finalize(int id)
-{
-
-}
-
-Template * TemplateRepository::Get(int id)
-{
-	return m_pTemplates[id];
-}
-

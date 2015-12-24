@@ -18,9 +18,9 @@
 #include "..\Model\Border.h"
 #include "..\Utils.h"
 #include "..\Model\World.h"
-#include "..\Model\TemplateRepository.h"
+#include "..\Model\OverlayRepository.h"
 
-class DeclareTemplateCommand : public BuildCommand
+class EndOverlayCommand : public BuildCommand
 {
 public:
 	void Process(
@@ -30,11 +30,10 @@ public:
 		Subdivision ** pSubdivision,
 		const shared_ptr<DeviceResources>& deviceResources)
 	{
-		TemplateRepository * pTemplateRepository =
-			TemplateRepository::GetInstance();
+		OverlayRepository * pOverlayRepository =
+			OverlayRepository::GetInstance();
 
-		pTemplateRepository->Add(
-			new Template(((ServiceProxy::DeclareTemplateCommand ^)command->Id)));
+		pOverlayRepository->Finalize(((ServiceProxy::EndOverlayCommand ^)command)->Id);
 	}
 
 protected:

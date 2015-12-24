@@ -10704,9 +10704,9 @@ namespace ServiceProxy
 
         private void DefineTemplates(LinkedList<BuildCommand> commands)
         {
-            commands.AddLast(new DeclareTemplateCommand(1));
-            commands.AddLast(new AddBorderCommand(4, 4, 4));
-            commands.AddLast(new AddBorderCommand(4, 4, 4));
+            //commands.AddLast(new DeclareOverlayCommand(1));
+            //commands.AddLast(new AddBorderCommand(4, 4, 4));
+            //commands.AddLast(new AddBorderCommand(4, 4, 4));
         }
     }
 }
