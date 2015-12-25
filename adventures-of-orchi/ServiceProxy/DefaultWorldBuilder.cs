@@ -29,9 +29,9 @@ namespace ServiceProxy
             LinkedList<BuildCommand> commands =
                 new LinkedList<BuildCommand>();
 
-            DefineTemplates(commands);
-
             commands.AddLast(new DeclareWorldCommand("Default"));
+
+            DefineTemplate0(commands);
 
             // Could specify color in the region then let
             //  individual subdivisions override, if need to.
@@ -9653,8 +9653,9 @@ namespace ServiceProxy
             commands.AddLast(new DeclareCaveCommand(8, 4, 5, 35, 31, 32));
 
             // Define this in an overlay/template.
-//            commands.AddLast(new AddBorderCommand(4, 4, 4));
-//            commands.AddLast(new AddBorderCommand(4,))
+
+            // TODO: Check if Overlay 1 has been defined.
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 421));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 421));
@@ -10402,7 +10403,7 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 460));
         }
 
-        private void DefineTemplates(LinkedList<BuildCommand> commands)
+        private void DefineTemplate0(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareOverlayCommand(1));
 
@@ -10465,11 +10466,3 @@ namespace ServiceProxy
         }
     }
 }
-
-
-
-
-
-
-
-

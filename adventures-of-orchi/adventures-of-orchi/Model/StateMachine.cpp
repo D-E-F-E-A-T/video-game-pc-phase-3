@@ -91,9 +91,19 @@ void StateMachine::Move(
 	Subdivision ** pCurrentSubdivision,
 	const shared_ptr<DeviceResources>& deviceResources)
 {
+#ifdef _DEBUG
+	char buffer[64];
+	sprintf_s(buffer, "StateMachine: m_nCurrentStateId %d\n", m_nCurrentStateId);
+	OutputDebugStringA(buffer);
+#endif // _DEBUG
+
 	// TODO: Use function pointers.		
 	if (m_nCurrentStateId == 0)
 	{
+#ifndef _DEBUG
+		OutputDebugStringA("DoState0\n");
+#endif // _DEBUG
+
 		m_nCurrentStateId = DoState0(
 			nCommandType,
 			retVal,
@@ -104,6 +114,10 @@ void StateMachine::Move(
 	}
 	else if (m_nCurrentStateId == 1)
 	{
+#ifndef _DEBUG
+		OutputDebugStringA("DoState1\n");
+#endif // _DEBUG
+
 		m_nCurrentStateId = DoState1(
 			nCommandType,
 			retVal,
@@ -150,6 +164,9 @@ int StateMachine::DoState0(
 				pCurrentSubdivision,
 				deviceResources);
 
+			// Note: pCurrentSubdivision is set 
+			//	normally.
+
 			nNextState = 0;
 		}
 		break;
@@ -162,6 +179,9 @@ int StateMachine::DoState0(
 				command,
 				pCurrentSubdivision,
 				deviceResources);
+
+			// Note: pCurrentSubdivision is now set to
+			//	a brand new Overlay.
 
 			nNextState = 1;
 		}

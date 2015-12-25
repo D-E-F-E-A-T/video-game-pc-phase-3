@@ -521,6 +521,9 @@
     <ClInclude Include="Factory\EndOverlayCommand.h">
       <Filter>Factory</Filter>
     </ClInclude>
+    <ClInclude Include="Factory\ApplyOverlayCommand.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\StoreLogo.png">

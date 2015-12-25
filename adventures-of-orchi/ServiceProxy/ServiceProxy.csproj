@@ -108,6 +108,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplyOverlayCommand.cs" />
     <Compile Include="EndOverlayCommand.cs" />
     <Compile Include="DeclareOverlayCommand.cs" />
     <Compile Include="AddBorderCommand.cs" />

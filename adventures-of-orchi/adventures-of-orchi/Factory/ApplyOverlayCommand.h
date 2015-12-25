@@ -20,7 +20,7 @@
 #include "..\Model\World.h"
 #include "..\Model\OverlayRepository.h"
 
-class EndOverlayCommand : public BuildCommand
+class ApplyOverlayCommand : public BuildCommand
 {
 public:
 	void Process(
@@ -33,9 +33,39 @@ public:
 		OverlayRepository * pOverlayRepository =
 			OverlayRepository::GetInstance();
 
-		pOverlayRepository->Finalize(((ServiceProxy::EndOverlayCommand ^)command)->Id);
+		// Get the items in the overlay.
+		Overlay * pOverlay = pOverlayRepository->Get(
+			((ServiceProxy::ApplyOverlayCommand ^)command)->Id);
 
-		*pSubdivision = nullptr;
+		// Idea: Overlay the + operator to add
+		//	an Overlay to a Subdivision.
+
+		// Apply the items to the Subdivision.
+		Stack * pStack = pOverlay->GetStack();
+		int numLayers = pStack->GetNumLayers();
+
+		for (int i = LAYER_MOVABLES; i < LAYER_2D; i++)
+		{
+			Layer * pLayer = pStack->Get(i);
+
+			std::vector<Space *>::const_iterator iterator;
+
+			for (iterator = pLayer->GetSpaces()->begin();
+			iterator != pLayer->GetSpaces()->end();
+				iterator++)
+			{
+
+				/*
+						(*pSubdivision)->Set(LAYER_COLLIDABLES,
+							new Tree(
+								float2(x, y),
+								0.f,
+								float2(1.f, 1.f),
+								true,
+								deviceResources));
+				*/
+			}
+		}
 	}
 
 protected:

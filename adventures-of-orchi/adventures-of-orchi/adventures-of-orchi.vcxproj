@@ -230,6 +230,7 @@
     <ClInclude Include="Factory\AddStoneWallCommand.h" />
     <ClInclude Include="Factory\AddTreeCommand.h" />
     <ClInclude Include="Factory\AddWaterCommand.h" />
+    <ClInclude Include="Factory\ApplyOverlayCommand.h" />
     <ClInclude Include="Factory\BuildCommand.h" />
     <ClInclude Include="Factory\DeclareCaveCommand.h" />
     <ClInclude Include="Factory\DeclareDungeonCommand.h" />
