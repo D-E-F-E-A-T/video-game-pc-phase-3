@@ -23,6 +23,7 @@ using namespace std;
 StateMachine::StateMachine()
 {
 	m_nCurrentStateId = 0;
+	pCurrentSubdivision = nullptr;
 
 	m_buildCommands[ADD_EDGE_COMMAND] = new AddEdgeCommand();
 	m_buildCommands[ADD_FOREST_COMMAND] = new AddForestCommand();
@@ -61,8 +62,6 @@ World * StateMachine::Process(
 	IIterable<ServiceProxy::BuildCommand ^> ^ commands = proxy->Build();
 
 	String ^ strCurrentRegionId;
-
-	Subdivision * pCurrentSubdivision = nullptr;
 
 	for each (ServiceProxy::BuildCommand ^ command in commands)
 	{

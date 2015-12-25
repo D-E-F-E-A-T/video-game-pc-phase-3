@@ -92,5 +92,6 @@ protected:
 private:
 	int m_nCurrentStateId;
 	BuildCommand * m_buildCommands[16];
+	Subdivision * pCurrentSubdivision;
 
 };

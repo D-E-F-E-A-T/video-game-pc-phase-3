@@ -30,12 +30,17 @@ public:
 		Subdivision ** pSubdivision,
 		const shared_ptr<DeviceResources>& deviceResources)
 	{
+		Overlay * pOverlay = new Overlay();
+
+		*pSubdivision = pOverlay;
+		(*pSubdivision)->SetColor(0, 0, 0);
+
 		OverlayRepository * pOverlayRepository =
 			OverlayRepository::GetInstance();
 
 		pOverlayRepository->Add(
 			((ServiceProxy::DeclareOverlayCommand ^)command)->Id,
-			new Overlay());
+			pOverlay);
 	}
 
 protected:

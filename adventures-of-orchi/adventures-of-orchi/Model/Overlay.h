@@ -16,14 +16,20 @@
 #pragma once
 #include "Subdivision.h"
 
-class Overlay
+class Overlay : public Subdivision
 {
 public:
-	Overlay() {};
+	Overlay();
+
+	// TODO: Possibly overload operate +.
 	void Apply(Subdivision * pSubdivision);
+	
+	void Render(
+		float lpfScreenDimensions[2],
+		Grid * lpGrid,
+		const shared_ptr<DeviceResources>& deviceResources);
 
 protected:
-
 
 private:
 };

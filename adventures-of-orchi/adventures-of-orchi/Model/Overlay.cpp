@@ -16,8 +16,22 @@
 #include "pch.h"
 #include "Overlay.h"
 
+
+Overlay::Overlay()
+{
+
+};
+
 void Overlay::Apply(Subdivision * pSubdivision)
 {
 	// Should cover the case where the subdivision and the overlay
 	//	try to define the same space.
+}
+
+void Overlay::Render(
+	float lpfScreenDimensions[2],
+	Grid * lpGrid,
+	const shared_ptr<DeviceResources>& deviceResources)
+{
+
 }
