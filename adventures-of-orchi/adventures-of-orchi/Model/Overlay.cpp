@@ -18,4 +18,6 @@
 
 void Overlay::Apply(Subdivision * pSubdivision)
 {
+	// Should cover the case where the subdivision and the overlay
+	//	try to define the same space.
 }

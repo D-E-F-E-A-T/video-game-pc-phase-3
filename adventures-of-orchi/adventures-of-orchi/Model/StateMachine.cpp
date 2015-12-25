@@ -22,7 +22,7 @@ using namespace std;
 
 StateMachine::StateMachine()
 {
-	m_nStateId = 0;
+	m_nCurrentStateId = 0;
 
 	m_buildCommands[ADD_EDGE_COMMAND] = new AddEdgeCommand();
 	m_buildCommands[ADD_FOREST_COMMAND] = new AddForestCommand();
@@ -92,10 +92,10 @@ void StateMachine::Move(
 	Subdivision ** pCurrentSubdivision,
 	const shared_ptr<DeviceResources>& deviceResources)
 {
-	// TODO: Use function pointers.
-	if (m_nStateId == 0)
+	// TODO: Use function pointers.		
+	if (m_nCurrentStateId == 0)
 	{
-		DoState0(
+		m_nCurrentStateId = DoState0(
 			nCommandType,
 			retVal,
 			fScreenDimensions,
@@ -103,10 +103,21 @@ void StateMachine::Move(
 			pCurrentSubdivision,
 			deviceResources);
 	}
+	else if (m_nCurrentStateId == 1)
+	{
+		m_nCurrentStateId = DoState1(
+			nCommandType,
+			retVal,
+			fScreenDimensions,
+			command,
+			pCurrentSubdivision,
+			deviceResources);
+	}
+	
 
 }
 
-void StateMachine::DoState0(
+int StateMachine::DoState0(
 	int nCommandType,
 	World ** retVal,
 	float2 fScreenDimensions,
@@ -114,51 +125,55 @@ void StateMachine::DoState0(
 	Subdivision ** pCurrentSubdivision,
 	const shared_ptr<DeviceResources>& deviceResources)
 {
+	int nNextState = 0;
+
 	switch (nCommandType)
 	{
-	case ADD_EDGE_COMMAND:
-	case ADD_FOREST_COMMAND:
-	case ADD_GRASS_COMMAND:
-	case ADD_ROCK_COMMAND:
-	case ADD_STAIRS_COMMAND:
-	case ADD_STONEWALL_COMMAND:
-	case ADD_TREE_COMMAND:
-	case ADD_WATER_COMMAND:
-	case ADD_CAVE_COMMAND:
-	case DECLARE_DUNGEON_COMMAND:
-	case DECLARE_LAND_COMMAND:
-	case DECLARE_LOT_COMMAND:
-	case DECLARE_WORLD_COMMAND:
-	case ADD_BORDER_COMMAND:
-		m_buildCommands[nCommandType]->Process(
-			retVal, 
-			fScreenDimensions, 
-			command, 
-			pCurrentSubdivision, 
-			deviceResources);
+		case ADD_EDGE_COMMAND:
+		case ADD_FOREST_COMMAND:
+		case ADD_GRASS_COMMAND:
+		case ADD_ROCK_COMMAND:
+		case ADD_STAIRS_COMMAND:
+		case ADD_STONEWALL_COMMAND:
+		case ADD_TREE_COMMAND:
+		case ADD_WATER_COMMAND:
+		case ADD_CAVE_COMMAND:
+		case DECLARE_DUNGEON_COMMAND:
+		case DECLARE_LAND_COMMAND:
+		case DECLARE_LOT_COMMAND:
+		case DECLARE_WORLD_COMMAND:
+		case ADD_BORDER_COMMAND:
+		{
+			m_buildCommands[nCommandType]->Process(
+				retVal,
+				fScreenDimensions,
+				command,
+				pCurrentSubdivision,
+				deviceResources);
+
+			nNextState = 0;
+		}
 		break;
 
-	case DECLARE_OVERLAY_COMMAND:
-		m_buildCommands[DECLARE_OVERLAY_COMMAND]->Process(
-			retVal,
-			fScreenDimensions,
-			command,
-			pCurrentSubdivision,
-			deviceResources);
-		break;
+		case DECLARE_OVERLAY_COMMAND:
+		{
+			m_buildCommands[DECLARE_OVERLAY_COMMAND]->Process(
+				retVal,
+				fScreenDimensions,
+				command,
+				pCurrentSubdivision,
+				deviceResources);
 
-	case END_OVERLAY_COMMAND:
-		m_buildCommands[END_OVERLAY_COMMAND]->Process(
-			retVal,
-			fScreenDimensions,
-			command,
-			pCurrentSubdivision,
-			deviceResources);
+			nNextState = 1;
+		}
 		break;
 	}
+
+	return nNextState;
 }
 
-void StateMachine::DoState1(
+// Declare Overlay for a Subdivision
+int StateMachine::DoState1(
 	int nCommandType,
 	World ** retVal,
 	float2 fScreenDimensions,
@@ -166,26 +181,44 @@ void StateMachine::DoState1(
 	Subdivision ** pCurrentSubdivision,
 	const shared_ptr<DeviceResources>& deviceResources)
 {
-	m_buildCommands[nCommandType]->Process(
-		retVal,
-		fScreenDimensions,
-		command,
-		pCurrentSubdivision,
-		deviceResources);
-}
+	int nNextState = 1;
 
-void StateMachine::DoState2(
-	int nCommandType,
-	World ** retVal,
-	float2 fScreenDimensions,
-	ServiceProxy::BuildCommand ^ command,
-	Subdivision ** pCurrentSubdivision,
-	const shared_ptr<DeviceResources>& deviceResources)
-{
-	m_buildCommands[nCommandType]->Process(
-		retVal,
-		fScreenDimensions,
-		command,
-		pCurrentSubdivision,
-		deviceResources);
+	switch (nCommandType)
+	{
+		case ADD_EDGE_COMMAND:
+		case ADD_FOREST_COMMAND:
+		case ADD_GRASS_COMMAND:
+		case ADD_ROCK_COMMAND:
+		case ADD_STAIRS_COMMAND:
+		case ADD_STONEWALL_COMMAND:
+		case ADD_TREE_COMMAND:
+		case ADD_WATER_COMMAND:
+		case ADD_CAVE_COMMAND:
+		case ADD_BORDER_COMMAND:
+		{
+			m_buildCommands[nCommandType]->Process(
+				retVal,
+				fScreenDimensions,
+				command,
+				pCurrentSubdivision,
+				deviceResources);
+
+			nNextState = 1;
+		}
+		break;
+
+		case END_OVERLAY_COMMAND:
+		{
+			m_buildCommands[END_OVERLAY_COMMAND]->Process(
+				retVal,
+				fScreenDimensions,
+				command,
+				pCurrentSubdivision,
+				deviceResources);
+
+			nNextState = 0;
+		}
+	}
+
+	return nNextState;
 }

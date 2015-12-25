@@ -57,7 +57,7 @@ protected:
 		const shared_ptr<DeviceResources>& deviceResources);
 
 	// TODO: Use function pointers.
-	void DoState0(
+	int DoState0(
 		int nCommandType,
 		World ** retVal,
 		float2 fScreenDimensions,
@@ -65,7 +65,7 @@ protected:
 		Subdivision ** pCurrentSubdivision,
 		const shared_ptr<DeviceResources>& deviceResources);
 
-	void DoState1(
+	int DoState1(
 		int nCommandType,
 		World ** retVal,
 		float2 fScreenDimensions,
@@ -73,7 +73,15 @@ protected:
 		Subdivision ** pCurrentSubdivision,
 		const shared_ptr<DeviceResources>& deviceResources);
 
-	void DoState2(
+	int DoState2(
+		int nCommandType,
+		World ** retVal,
+		float2 fScreenDimensions,
+		ServiceProxy::BuildCommand ^ command,
+		Subdivision ** pCurrentSubdivision,
+		const shared_ptr<DeviceResources>& deviceResources);
+
+	void DoState3(
 		int nCommandType,
 		World ** retVal,
 		float2 fScreenDimensions,
@@ -82,7 +90,7 @@ protected:
 		const shared_ptr<DeviceResources>& deviceResources);
 
 private:
-	int m_nStateId;
+	int m_nCurrentStateId;
 	BuildCommand * m_buildCommands[16];
 
 };

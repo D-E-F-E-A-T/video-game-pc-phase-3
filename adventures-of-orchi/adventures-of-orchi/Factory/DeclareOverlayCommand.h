@@ -33,8 +33,9 @@ public:
 		OverlayRepository * pOverlayRepository =
 			OverlayRepository::GetInstance();
 
-		//pOverlayRepository->Add(
-		//	new Overlay(((ServiceProxy::DeclareOverlayCommand ^)command->Id)));
+		pOverlayRepository->Add(
+			((ServiceProxy::DeclareOverlayCommand ^)command)->Id,
+			new Overlay());
 	}
 
 protected:

@@ -19,15 +19,11 @@
 class Overlay
 {
 public:
-	Overlay(int nId)
-	{
-		m_nId = nId;
-	}
-
+	Overlay() {};
 	void Apply(Subdivision * pSubdivision);
 
 protected:
-	int m_nId;
+
 
 private:
 };
