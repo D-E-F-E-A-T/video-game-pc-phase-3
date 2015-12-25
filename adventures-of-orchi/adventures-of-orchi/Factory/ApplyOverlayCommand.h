@@ -54,16 +54,53 @@ public:
 			iterator != pLayer->GetSpaces()->end();
 				iterator++)
 			{
+				ServiceProxy::BuildCommand ^ pProxyCommand = (*iterator)->GetBuildCommand();
 
-				/*
-						(*pSubdivision)->Set(LAYER_COLLIDABLES,
-							new Tree(
-								float2(x, y),
-								0.f,
-								float2(1.f, 1.f),
-								true,
-								deviceResources));
-				*/
+				BuildCommand * pCommand = nullptr;
+
+				if (pProxyCommand->Type == ADD_BORDER_COMMAND)
+				{
+					pCommand = new AddBorderCommand();
+				}
+				else if (pProxyCommand->Type == ADD_EDGE_COMMAND)
+				{
+					pCommand = new AddEdgeCommand();
+				}
+				else if (pProxyCommand->Type == ADD_FOREST_COMMAND)
+				{
+					pCommand = new AddForestCommand();
+				}
+				else if (pProxyCommand->Type == ADD_GRASS_COMMAND)
+				{
+					pCommand = new AddGrassCommand();
+				}
+				else if (pProxyCommand->Type == ADD_ROCK_COMMAND)
+				{
+					pCommand = new AddRockCommand();
+				}
+				else if (pProxyCommand->Type == ADD_STAIRS_COMMAND)
+				{
+					pCommand = new AddStairsCommand();
+				}
+				else if (pProxyCommand->Type == ADD_STONEWALL_COMMAND)
+				{
+					pCommand = new AddStoneWallCommand();
+				}
+				else if (pProxyCommand->Type == ADD_TREE_COMMAND)
+				{
+					pCommand = new AddTreeCommand();
+				}
+				else if (pProxyCommand->Type == ADD_WATER_COMMAND)
+				{
+					pCommand = new AddWaterCommand();
+				}
+
+				pCommand->Process(
+					pWorld,
+					fScreenDimensions,
+					nullptr,
+					pSubdivision,
+					deviceResources);
 			}
 		}
 	}

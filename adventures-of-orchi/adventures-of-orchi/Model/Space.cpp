@@ -28,6 +28,7 @@ Space::Space(
 	bool bIsVisible,
 	bool bIsActionable,
 	bool bIsCollidable,
+	ServiceProxy::BuildCommand ^ pCommand,
 	const shared_ptr<DeviceResources>& deviceResources)
 {
 	m_deviceResources = deviceResources;
@@ -39,6 +40,8 @@ Space::Space(
 	m_fRotationInRadians = fRotationInRadians;
 
 	m_fDimensionsRatio = fDimensionsRatio;
+
+	m_pCommand = pCommand;
 }
 
 Space::~Space()

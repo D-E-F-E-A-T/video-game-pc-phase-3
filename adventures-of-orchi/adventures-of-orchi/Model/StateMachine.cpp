@@ -41,11 +41,12 @@ StateMachine::StateMachine()
 	m_buildCommands[ADD_BORDER_COMMAND] = new AddBorderCommand();
 	m_buildCommands[DECLARE_OVERLAY_COMMAND] = new DeclareOverlayCommand();
 	m_buildCommands[END_OVERLAY_COMMAND] = new EndOverlayCommand();
+	m_buildCommands[APPLY_OVERLAY_COMMAND] = new ApplyOverlayCommand();
 }
 
 StateMachine::~StateMachine()
 {
-	for (int i = 0; i < 16; i++)
+	for (int i = 0; i < NUM_BUILD_COMMANDS; i++)
 	{
 		delete m_buildCommands[i];
 	}
@@ -65,7 +66,7 @@ World * StateMachine::Process(
 
 	for each (ServiceProxy::BuildCommand ^ command in commands)
 	{
-		for (int i = 0; i < 16; i++)
+		for (int i = 0; i < NUM_BUILD_COMMANDS; i++)
 		{
 			if (command->Type == i)
 			{
@@ -150,7 +151,7 @@ int StateMachine::DoState0(
 		case ADD_STONEWALL_COMMAND:
 		case ADD_TREE_COMMAND:
 		case ADD_WATER_COMMAND:
-		case ADD_CAVE_COMMAND:
+		case DECLARE_CAVE_COMMAND:
 		case DECLARE_DUNGEON_COMMAND:
 		case DECLARE_LAND_COMMAND:
 		case DECLARE_LOT_COMMAND:
@@ -212,7 +213,7 @@ int StateMachine::DoState1(
 		case ADD_STONEWALL_COMMAND:
 		case ADD_TREE_COMMAND:
 		case ADD_WATER_COMMAND:
-		case ADD_CAVE_COMMAND:
+		case DECLARE_CAVE_COMMAND:
 		case ADD_BORDER_COMMAND:
 		{
 			m_buildCommands[nCommandType]->Process(

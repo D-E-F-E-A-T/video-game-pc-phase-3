@@ -166,6 +166,7 @@ public:
 				fDimensionRatio, 
 				((ServiceProxy::AddEdgeCommand ^)command)->Direction,
 				((ServiceProxy::AddEdgeCommand ^)command)->Destination,
+				command,
 				deviceResources));
 	}
 

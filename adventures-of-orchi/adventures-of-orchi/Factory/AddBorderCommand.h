@@ -66,6 +66,7 @@ public:
 				fOriginRatio,			// Relative to the entire screen. Not just the Grid.
 				0.f,					// Rotation.
 				fDimensionRatio, 
+				command,
 				deviceResources));
 	}
 

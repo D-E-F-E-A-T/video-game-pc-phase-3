@@ -30,6 +30,7 @@ public:
 		float2 pfDimensionRatio,
 		int nDirection,
 		int nDestination,
+		ServiceProxy::BuildCommand ^ pCommand,
 		const shared_ptr<DeviceResources>& deviceResources) :
 		Portal(
 			pfLocationRatio,
@@ -41,6 +42,7 @@ public:
 #elif // RENDER_DIAGNOSTICS
 			false,
 #endif // RENDER_DIAGNOSTICS
+			pCommand,
 			deviceResources)
 	{
 		m_nDirection = nDirection;

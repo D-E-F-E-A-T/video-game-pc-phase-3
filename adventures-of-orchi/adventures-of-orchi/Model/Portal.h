@@ -26,6 +26,7 @@ public:
 		float2 pfDimensionRatio, 
 		int nDestination,
 		bool bIsVisible,
+		ServiceProxy::BuildCommand ^ pCommand,
 		const shared_ptr<DeviceResources>& deviceResources) :
 		Immovable(
 			pfLocationRatio, 
@@ -34,6 +35,7 @@ public:
 			bIsVisible,
 			true, 
 			true, 
+			pCommand,
 			deviceResources)
 	{
 		m_nDestination = nDestination;

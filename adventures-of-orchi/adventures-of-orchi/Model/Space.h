@@ -39,6 +39,7 @@ public:
 		bool bIsVisible,
 		bool bIsActionable,
 		bool bIsCollidable,
+		ServiceProxy::BuildCommand ^ pCommand,
 		const shared_ptr<DeviceResources>& deviceResources);
 
 	~Space();
@@ -97,6 +98,11 @@ public:
 		return (fDistance < DEFAULT_OVERLAPPING_DISTANCE);
 	}
 
+	ServiceProxy::BuildCommand ^ GetBuildCommand()
+	{
+		return m_pCommand;
+	}
+
 protected:
 	Renderable * m_pRenderable;
 	
@@ -112,6 +118,11 @@ protected:
 	bool m_bIsCollidable;
 
 	shared_ptr<DeviceResources> m_deviceResources;
+
+	// Instead of doing deep copies, store the
+	//	build command. This is okay as long
+	//	as build commands are stateless????
+	ServiceProxy::BuildCommand ^ m_pCommand;
 
 private:
 

@@ -32,6 +32,7 @@
 #include "..\Factory\AddBorderCommand.h"
 #include "..\Factory\DeclareOverlayCommand.h"
 #include "..\Factory\EndOverlayCommand.h"
+#include "..\Factory\ApplyOverlayCommand.h"
 #include "..\Model\StateMachine.h"
 
 using namespace Windows::Foundation::Collections;
@@ -91,7 +92,7 @@ protected:
 
 private:
 	int m_nCurrentStateId;
-	BuildCommand * m_buildCommands[16];
+	BuildCommand * m_buildCommands[NUM_BUILD_COMMANDS];
 	Subdivision * pCurrentSubdivision;
 
 };

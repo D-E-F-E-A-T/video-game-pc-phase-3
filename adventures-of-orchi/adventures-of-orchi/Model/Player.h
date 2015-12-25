@@ -34,6 +34,7 @@ public:
 			fRotationInRadians,
 			pfDimensions,
 			true,
+			nullptr,
 			deviceResources)
 	{
 		m_nPreviousMoveDirection = CENTER;

@@ -30,6 +30,7 @@ public:
 			fRotationInRadians,
 			float2{ 2.5f, 1.f },
 			false,
+			nullptr,
 			deviceResources)
 	{
 		m_pRenderable = new Texture("sword.dds", deviceResources);

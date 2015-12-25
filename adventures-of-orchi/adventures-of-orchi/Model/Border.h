@@ -10,6 +10,7 @@ public:
 		float2 pfLocationRatio,
 		float fRotationInRadians,
 		float2 pfDimensions,
+		ServiceProxy::BuildCommand ^ pCommand,
 		const shared_ptr<DeviceResources>& deviceResources) :
 		Obstacle(
 			pfLocationRatio,
@@ -22,6 +23,7 @@ public:
 #endif // RENDER_DIAGNOSTICS
 			false,
 			true,
+			pCommand,
 			deviceResources)
 	{
 		m_pRenderable = new VectorGraphic(

@@ -28,6 +28,7 @@ public:
 		bool bIsVisible,
 		bool bIsActionable,
 		bool bIsCollidable,
+		ServiceProxy::BuildCommand ^ pCommand,
 		const shared_ptr<DeviceResources>& deviceResources)
 		: Immovable(
 			pfLocationRatio,
@@ -36,6 +37,7 @@ public:
 			bIsVisible,
 			bIsActionable,
 			bIsCollidable,
+			pCommand,
 			deviceResources)
 	{
 

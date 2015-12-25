@@ -25,12 +25,14 @@ public:
 		float fRotationInRadians,
 		float2 pfDimensions,
 		bool bIsVisible,
+		ServiceProxy::BuildCommand ^ pCommand,
 		const shared_ptr<DeviceResources>& deviceResources)
 		: Movable(
 			pfLocationRatio,
 			fRotationInRadians,
 			pfDimensions,
 			bIsVisible,
+			pCommand,
 			deviceResources) {};
 
 protected:

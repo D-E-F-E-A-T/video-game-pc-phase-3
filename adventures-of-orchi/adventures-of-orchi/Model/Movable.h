@@ -26,6 +26,7 @@ public:
 		float fRotationInRadians,
 		float2 pfDimensions,
 		bool bIsVisible,
+		ServiceProxy::BuildCommand ^ pCommand,
 		const shared_ptr<DeviceResources>& deviceResources)
 		: Space(
 			pfLocationRatio,
@@ -34,6 +35,7 @@ public:
 			bIsVisible,
 			false,
 			true,
+			pCommand,
 			deviceResources)
 	{
 		m_lpMoveFunctions = new (void (Movable::*[4])(int, float));

@@ -24,6 +24,7 @@ public:
 		float fRotationInRadians,
 		float2 pfDimensions,
 		bool bIsVisible,
+		ServiceProxy::BuildCommand ^ pCommand,
 		const shared_ptr<DeviceResources>& deviceResources) :
 		Traversable(
 			pfLocationRatio,
@@ -32,6 +33,7 @@ public:
 			true,
 			false,
 			true,
+			pCommand,
 			deviceResources)
 	{
 		m_pRenderable = new Texture("grass.dds", deviceResources);

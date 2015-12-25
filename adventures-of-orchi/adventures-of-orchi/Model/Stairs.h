@@ -31,6 +31,7 @@ public:
 		float fRotationInRadians,
 		float2 pfDimensionRatio,
 		int nDestination,
+		ServiceProxy::BuildCommand ^ pCommand,
 		const shared_ptr<DeviceResources>& deviceResources) :
 		Portal(
 			pfLocationRatio,
@@ -38,6 +39,7 @@ public:
 			pfDimensionRatio,
 			nDestination,
 			true,
+			pCommand,
 			deviceResources)
 	{
 		m_pRenderable = new Texture("stairs.dds", deviceResources);

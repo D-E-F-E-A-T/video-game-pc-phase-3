@@ -25,6 +25,7 @@ public:
 		float fRotationInRadians,
 		float2 pfDimensions,
 		bool bIsVisible,
+		ServiceProxy::BuildCommand ^ pCommand,
 		const shared_ptr<DeviceResources>& deviceResources) :
 		Obstacle(
 			pfLocationRatio,
@@ -33,6 +34,7 @@ public:
 			true,
 			false,
 			true,
+			pCommand,
 			deviceResources)
 	{
 		m_pRenderable = new Texture("water.dds", deviceResources);
