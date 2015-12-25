@@ -34,8 +34,8 @@ namespace ServiceProxy
 
         public int Id
         {
-            get { return Id; }
-            set { Id = value; }
+            get { return id; }
+            set { id = value; }
         }
 
         public ApplyOverlayCommand(int id)

@@ -101,7 +101,7 @@ void StateMachine::Move(
 	// TODO: Use function pointers.		
 	if (m_nCurrentStateId == 0)
 	{
-#ifndef _DEBUG
+#ifdef _DEBUG
 		OutputDebugStringA("DoState0\n");
 #endif // _DEBUG
 
@@ -115,7 +115,7 @@ void StateMachine::Move(
 	}
 	else if (m_nCurrentStateId == 1)
 	{
-#ifndef _DEBUG
+#ifdef _DEBUG
 		OutputDebugStringA("DoState1\n");
 #endif // _DEBUG
 
@@ -157,6 +157,7 @@ int StateMachine::DoState0(
 		case DECLARE_LOT_COMMAND:
 		case DECLARE_WORLD_COMMAND:
 		case ADD_BORDER_COMMAND:
+		case APPLY_OVERLAY_COMMAND:
 		{
 			m_buildCommands[nCommandType]->Process(
 				retVal,
@@ -213,7 +214,6 @@ int StateMachine::DoState1(
 		case ADD_STONEWALL_COMMAND:
 		case ADD_TREE_COMMAND:
 		case ADD_WATER_COMMAND:
-		case DECLARE_CAVE_COMMAND:
 		case ADD_BORDER_COMMAND:
 		{
 			m_buildCommands[nCommandType]->Process(

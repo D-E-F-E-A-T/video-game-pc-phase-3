@@ -44,7 +44,7 @@ public:
 		Stack * pStack = pOverlay->GetStack();
 		int numLayers = pStack->GetNumLayers();
 
-		for (int i = LAYER_MOVABLES; i < LAYER_2D; i++)
+		for (int i = LAYER_MOVABLES; i <= LAYER_2D; i++)
 		{
 			Layer * pLayer = pStack->Get(i);
 
@@ -95,12 +95,15 @@ public:
 					pCommand = new AddWaterCommand();
 				}
 
-				pCommand->Process(
-					pWorld,
-					fScreenDimensions,
-					nullptr,
-					pSubdivision,
-					deviceResources);
+				if (pCommand != nullptr)
+				{
+					pCommand->Process(
+						pWorld,
+						fScreenDimensions,
+						pProxyCommand,
+						pSubdivision,
+						deviceResources);
+				}
 			}
 		}
 	}
