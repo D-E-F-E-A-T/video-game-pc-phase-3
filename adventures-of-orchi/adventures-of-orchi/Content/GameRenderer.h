@@ -34,6 +34,7 @@ limitations under the License.
 #include "..\InfoPanel\InfoPanel.h"
 #include "..\Controller\XBoxOneControllerView.h"
 #include "..\Factory\WorldFactory.h"
+#include "..\Controller\TouchScreenControllerView.h"
 
 using namespace Windows::UI::Core;
 using namespace std;
@@ -59,9 +60,6 @@ public:
 	void OnSizeChanged(
 		WindowSizeChangedEventArgs ^ args,
 		UserInteractionMode uiMode);
-
-	void RenderButtonTouchControls();
-	void RenderDirectionalTouchControls();
 
 	Grid grid;
 
@@ -141,24 +139,14 @@ private:
 
 	vector<InfoPanel *> * m_infoPanels;
 
-	XBoxOneControllerView xboxController;
+	XBoxOneControllerView m_xboxController;
+	TouchScreenControllerView m_touchScreenController;
 	UserInteractionMode m_uiMode;
-
-	// TODO: Use function pointers:
-	bool CheckNorthButton(float2 fHitPoint);
-	bool CheckEastButton(float2 fHitPoint);
-	bool CheckSouthButton(float2 fHitPoint);
-	bool CheckWestButton(float2 fHitPoint);
 
 	bool m_bNorthButtonPressed;
 	bool m_bEastButtonPressed;
 	bool m_bSouthButtonPressed;
 	bool m_bWestButtonPressed;
-
-	bool CheckYButton(float2 fHitPoint);
-	bool CheckBButton(float2 fHitPoint);
-	bool CheckAButton(float2 fHitPoint);
-	bool CheckXButton(float2 fHitPoint);
 
 	bool m_bYButtonPressed;
 	bool m_bBButtonPressed;

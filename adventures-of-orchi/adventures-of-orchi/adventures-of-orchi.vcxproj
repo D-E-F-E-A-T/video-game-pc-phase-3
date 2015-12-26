@@ -352,6 +352,7 @@
     <ClCompile Include="Content\GameRenderer.cpp" />
     <ClCompile Include="Content\Landscape.cpp" />
     <ClCompile Include="Content\Portrait.cpp" />
+    <ClCompile Include="Controller\TouchScreenControllerView.cpp" />
     <ClCompile Include="Controller\XBoxOneControllerView.cpp" />
     <ClCompile Include="DDSTextureLoader.cpp" />
     <ClCompile Include="DirectXPage.xaml.cpp">

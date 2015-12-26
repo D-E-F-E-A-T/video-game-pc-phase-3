@@ -755,4 +755,7 @@ void DeviceResources::CreateBrushes()
 
 	ThrowIfFailed(m_d2dContext->CreateSolidColorBrush(ColorF(ColorF::Purple), &temp));
 	m_mapBrushes["purple"] = temp;
+
+	ThrowIfFailed(m_d2dContext->CreateSolidColorBrush(ColorF(ColorF::Blue), &temp));
+	m_mapBrushes["blue"] = temp;
 }
