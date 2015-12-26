@@ -16,11 +16,11 @@ public:
 			pfLocationRatio,
 			fRotationInRadians,
 			pfDimensions,
-#ifdef RENDER_DIAGNOSTICS
+#ifdef _DEBUG
 			true,
-#elif // RENDER_DIAGNOSTICS
+#else // _DEBUG
 			false,
-#endif // RENDER_DIAGNOSTICS
+#endif // _DEBUG
 			false,
 			true,
 			pCommand,

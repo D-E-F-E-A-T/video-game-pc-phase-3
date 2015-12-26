@@ -28,7 +28,7 @@ void VectorGraphic::Render(
 	float2 fScaleDimensions,
 	float dpi)
 {
-#ifdef RENDER_DIAGNOSTICS
+#ifdef _DEBUG
 	// Edge(Space) has a Renderable(VectorGraphic)
 	// Space calls this and passes in the window dimensions.
 	
@@ -105,5 +105,5 @@ void VectorGraphic::Render(
 		}
 	}
 
-#endif // RENDER_DIAGNOSTICS
+#endif // _DEBUG
 }

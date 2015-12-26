@@ -127,10 +127,10 @@ private:
 	Region * m_pRegion;
 	WorldFactory m_worldFactory;
 
-#ifdef RENDER_DIAGNOSTICS
+#ifdef _DEBUG
 	vector<D2D1_RECT_F> m_collidedRects;
 	vector<int> m_collidedRectStatuses;
-#endif // RENDER_DIAGNOSTICS
+#endif // _DEBUG
 
 	int m_nSwordDirection;
 	LifePanel m_lifePanel;

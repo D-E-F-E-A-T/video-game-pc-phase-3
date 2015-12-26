@@ -20,7 +20,9 @@
 BorderFrame::BorderFrame()
 {
 	list<XMFLOAT3> * outer = new list<XMFLOAT3>;
-	list<XMFLOAT3> * inner = new list<XMFLOAT3>;
+	list<XMFLOAT3> * cross1 = new list<XMFLOAT3>;
+	list<XMFLOAT3> * cross2 = new list<XMFLOAT3>;
+
 
 	// Convention to be used, define vertices 
 	//	clockwise around around the centroid.
@@ -52,32 +54,30 @@ BorderFrame::BorderFrame()
 	m_pElements.push_back(outer);
 
 
-	inner->push_back(XMFLOAT3{
-		0.2f,
-		0.2f,
+	cross1->push_back(XMFLOAT3{
+		0.0f,
+		0.0f,
 		0.0f });
 
-	inner->push_back(XMFLOAT3{
-		0.8f,
-		0.2f,
+	cross1->push_back(XMFLOAT3{
+		1.0f,
+		1.0f,
 		0.0f });
 
-	inner->push_back(XMFLOAT3{
-		0.8f,
-		0.8f,
+	m_pElements.push_back(cross1);
+
+
+	cross2->push_back(XMFLOAT3{
+		1.0f,
+		0.0f,
 		0.0f });
 
-	inner->push_back(XMFLOAT3{
-		0.2f,
-		0.8f,
+	cross2->push_back(XMFLOAT3{
+		0.0f,
+		1.0f,
 		0.0f });
 
-	inner->push_back(XMFLOAT3{
-		0.2f,
-		0.2f,
-		0.0f });
-
-	m_pElements.push_back(inner);
+	m_pElements.push_back(cross2);
 }
 
 BorderFrame::~BorderFrame()

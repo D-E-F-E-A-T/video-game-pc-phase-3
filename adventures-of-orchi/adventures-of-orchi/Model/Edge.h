@@ -37,11 +37,11 @@ public:
 			fRotationInRadians,
 			pfDimensionRatio,
 			nDestination,
-#ifdef RENDER_DIAGNOSTICS
+#ifdef _DEBUG
 			true,
-#elif // RENDER_DIAGNOSTICS
+#else // _DEBUG
 			false,
-#endif // RENDER_DIAGNOSTICS
+#endif // _DEBUG
 			pCommand,
 			deviceResources)
 	{

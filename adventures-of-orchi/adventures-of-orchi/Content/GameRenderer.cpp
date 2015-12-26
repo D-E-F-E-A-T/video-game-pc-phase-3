@@ -227,10 +227,10 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 #endif // USE_PORTALS
 
-#ifdef RENDER_DIAGNOSTICS
+#ifdef _DEBUG
 	m_collidedRects.clear();
 	m_collidedRectStatuses.clear();
-#endif // RENDER_DIAGNOSTICS
+#endif // _DEBUG
 
 	m_pCollided->clear();
 
@@ -296,7 +296,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 				intersectRect,
 				float2(m_fWindowWidth, m_fWindowHeight));
 
-#ifdef RENDER_DIAGNOSTICS
+#ifdef _DEBUG
 			if (m_nCollisionState != NO_INTERSECTION)
 			{
 				//if (m_nCollisionState == COLLISION)
@@ -318,7 +318,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 				m_collidedRects.push_back(rect);
 				m_collidedRectStatuses.push_back(m_nCollisionState);
 			}
-#endif // RENDER_DIAGNOSTICS
+#endif // _DEBUG
 		}
 	}
 
@@ -412,15 +412,15 @@ void GameRenderer::Render()
 	}
 
 
-#ifdef RENDER_DIAGNOSTICS
+#ifdef _DEBUG
 	grid.SetVisibility(true);
-#endif // RENDER_DIAGNOSTICS
+#endif // _DEBUG
 
 	grid.Draw(DEVICE_CONTEXT_2D, m_deviceResources->m_mapBrushes["black"]);
 
 	RenderSpaces2D();
 
-#ifdef RENDER_DIAGNOSTICS
+#ifdef _DEBUG
 
 	std::list<Space *>::const_iterator iterator;
 
@@ -447,7 +447,7 @@ void GameRenderer::Render()
 	}
 
 	DrawSpriteIntersection();
-#endif // RENDER_DIAGNOSTICS
+#endif // _DEBUG
 
 	if (m_uiMode == UserInteractionMode::Touch)
 	{
@@ -461,10 +461,10 @@ void GameRenderer::Render()
 
 	m_pCollided->clear();
 
-#ifdef RENDER_DIAGNOSTICS
+#ifdef _DEBUG
 	m_collidedRects.clear();
 	m_collidedRectStatuses.clear();
-#endif // RENDER_DIAGNOSTICS
+#endif // _DEBUG
 
 
 }
@@ -652,7 +652,7 @@ void GameRenderer::RenderSpaces3D()
 
 
 
-#ifdef RENDER_DIAGNOSTICS
+#ifdef _DEBUG
 void GameRenderer::DrawSpriteIntersection()
 {
 	std::vector<D2D1_RECT_F>::const_iterator iterator;
@@ -676,7 +676,7 @@ void GameRenderer::DrawSpriteIntersection()
 		}
 	}
 }
-#endif // RENDER_DIAGNOSTICS
+#endif // _DEBUG
 
 void GameRenderer::HighlightRegion(int * pLocation, ComPtr<ID2D1SolidColorBrush> brush)
 {

@@ -2660,7 +2660,6 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(2, 15, 14));
             commands.AddLast(new AddTreeCommand(2, 16, 14));
 
-            commands.AddLast(new AddEdgeCommand(4, 7, 0, 0, 5));
             commands.AddLast(new AddEdgeCommand(4, 8, 0, 0, 5));
             commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 5));
             commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 5));
@@ -4151,7 +4150,6 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 9, 0, 0, 13));
             commands.AddLast(new AddEdgeCommand(4, 10, 0, 0, 13));
 
-            commands.AddLast(new AddEdgeCommand(4, 16, 4, 1, 19));
             commands.AddLast(new AddEdgeCommand(4, 16, 5, 1, 19));
             commands.AddLast(new AddEdgeCommand(4, 16, 6, 1, 19));
             commands.AddLast(new AddEdgeCommand(4, 16, 7, 1, 19));
