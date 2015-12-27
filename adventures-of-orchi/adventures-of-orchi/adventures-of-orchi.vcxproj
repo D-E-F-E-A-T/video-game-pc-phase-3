@@ -219,6 +219,7 @@
     <ClInclude Include="Content\OrientationRenderer.h" />
     <ClInclude Include="Content\Portrait.h" />
     <ClInclude Include="Content\ScreenOrientation.h" />
+    <ClInclude Include="Controller\AIControllerView.h" />
     <ClInclude Include="Controller\ControllerView.h" />
     <ClInclude Include="Controller\KeyboardControllerView.h" />
     <ClInclude Include="Controller\XBoxOneControllerView.h" />
@@ -355,6 +356,7 @@
     <ClCompile Include="Content\GameRenderer.cpp" />
     <ClCompile Include="Content\Landscape.cpp" />
     <ClCompile Include="Content\Portrait.cpp" />
+    <ClCompile Include="Controller\AIControllerView.cpp" />
     <ClCompile Include="Controller\KeyboardControllerView.cpp" />
     <ClCompile Include="Controller\TouchScreenControllerView.cpp" />
     <ClCompile Include="Controller\XBoxOneControllerView.cpp" />

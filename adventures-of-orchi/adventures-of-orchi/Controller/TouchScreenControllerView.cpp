@@ -539,3 +539,12 @@ bool TouchScreenControllerView::CheckXButton(
 	return retVal;
 }
 
+void TouchScreenControllerView::OnInput(
+	Character * pCharacter,
+	KeyEventArgs^ args,
+	float2 fHitPoint)
+{
+
+}
+
+

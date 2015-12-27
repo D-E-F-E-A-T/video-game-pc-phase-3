@@ -15,10 +15,16 @@ limitations under the License.
 */
 #pragma once
 #include "..\Model\Player.h"
+#include "ControllerView.h"
 
-class XBoxOneControllerView
+class XBoxOneControllerView : public ControllerView
 {
 public:
+	void OnInput(
+		Character * pCharacter,
+		KeyEventArgs^ args,
+		float2 fHitPoint);
+
 	void FetchControllerInput();
 	void MovePlayer(
 		Player * pPlayer,

@@ -212,6 +212,9 @@
     <ClCompile Include="Controller\KeyboardControllerView.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
+    <ClCompile Include="Controller\AIControllerView.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -541,6 +544,9 @@
     </ClInclude>
     <ClInclude Include="Collision\PredictiveCollisionStrategy.h">
       <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\AIControllerView.h">
+      <Filter>Controller</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

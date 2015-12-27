@@ -14,20 +14,16 @@
 	limitations under the License.
 */
 #pragma once
-#include "..\Model\Player.h"
+#include "pch.h"
 #include "ControllerView.h"
 
-using namespace Windows::UI::Core;
-
-class KeyboardControllerView : public ControllerView
+class AIControllerView : public ControllerView
 {
 public:
 	void OnInput(
 		Character * pCharacter,
 		KeyEventArgs^ args,
 		float2 fHitPoint);
-
-	void HandleKeystroke(Player * pPlayer, int nCollisionState, KeyEventArgs^ args, float fVelocity);
 
 protected:
 

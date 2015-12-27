@@ -43,3 +43,11 @@ void KeyboardControllerView::HandleKeystroke(
 		pPlayer->MoveNorth(nCollisionState, fVelocity);
 	}
 }
+
+void KeyboardControllerView::OnInput(
+	Character * pCharacter,
+	KeyEventArgs^ args,
+	float2 fHitPoint)
+{
+
+}

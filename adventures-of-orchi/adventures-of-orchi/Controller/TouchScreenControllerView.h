@@ -17,13 +17,19 @@
 #include "pch.h"
 #include "..\Constants.h"
 #include "..\Common\DeviceResources.h"
+#include "ControllerView.h"
 
 using namespace std;
 
-class TouchScreenControllerView
+class TouchScreenControllerView : public ControllerView
 {
 public:
 	TouchScreenControllerView();
+
+	void OnInput(
+		Character * pCharacter,
+		KeyEventArgs^ args,
+		float2 fHitPoint);
 
 	void RenderButtonTouchControls(
 		float2 fWindowBounds,
@@ -49,6 +55,7 @@ public:
 	{
 		return (*this.*m_lpButtonFunctions[nButton])(fWindowBounds, fHitPoint);
 	}
+
 
 protected:
 	bool CheckNorthButton(float2 fWindowBounds, float2 fHitPoint);

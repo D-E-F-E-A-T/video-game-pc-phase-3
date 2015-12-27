@@ -169,6 +169,8 @@ void GameRenderer::CreateWindowSizeDependentResources()
 // Called once per frame, rotates the cube and calculates the model and view matrices.
 int GameRenderer::Update(DX::StepTimer const& timer)
 {
+	uint32 fps = timer.GetFramesPerSecond();
+
 	// Not handling portrait mode for this release.
 	if (m_nOrientation == PORTRAIT)
 		return 1;
@@ -321,6 +323,8 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 #endif // _DEBUG
 		}
 	}
+
+	// TODO: Code toward a ControllerView interface.
 
 	// if the gamepad is not connected, check the keyboard.
 	if (m_xboxController.GetIsControllerConnected())
