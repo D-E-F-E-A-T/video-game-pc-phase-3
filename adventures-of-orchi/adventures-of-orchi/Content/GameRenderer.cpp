@@ -436,7 +436,9 @@ void GameRenderer::Render()
 	DrawSpriteIntersection();
 #endif // _DEBUG
 
-	if (m_uiMode == UserInteractionMode::Touch)
+	// If a gamepad is connected, never use the touchscreen controls.
+	if (m_xboxController.GetIsControllerConnected() == false &&
+		m_uiMode == UserInteractionMode::Touch)
 	{
 		m_touchScreenController.RenderButtonTouchControls(
 			float2{ m_fWindowWidth, m_fWindowHeight },
@@ -445,7 +447,7 @@ void GameRenderer::Render()
 			m_bButtonPressed[A_BUTTON],
 			m_bButtonPressed[B_BUTTON],
 			m_deviceResources);
-					
+
 		m_touchScreenController.RenderDirectionalTouchControls(
 			float2{ m_fWindowWidth, m_fWindowHeight },
 			m_bButtonPressed[NORTH_BUTTON],
@@ -874,13 +876,17 @@ void GameRenderer::OnPointerPressed(ResolutionScale resolutionScale, float fX, f
 {
 	float fScaleFactor = 1.0f; // Recommended value.
 
-	for (int i = 0; i < NUM_BUTTONS; i++)
+	if (m_xboxController.GetIsControllerConnected() == false &&
+		m_uiMode == UserInteractionMode::Touch)
 	{
-		if (m_touchScreenController.CheckButton(
-			i,
-			float2{ m_fWindowWidth, m_fWindowHeight },
-			float2{ fX * fScaleFactor, fY * fScaleFactor }))
-			m_bButtonPressed[i] = true;
+		for (int i = 0; i < NUM_BUTTONS; i++)
+		{
+			if (m_touchScreenController.CheckButton(
+				i,
+				float2{ m_fWindowWidth, m_fWindowHeight },
+				float2{ fX * fScaleFactor, fY * fScaleFactor }))
+				m_bButtonPressed[i] = true;
+		}
 	}
 }
 
