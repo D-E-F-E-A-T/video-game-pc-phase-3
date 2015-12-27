@@ -23,6 +23,8 @@ using namespace std;
 class TouchScreenControllerView
 {
 public:
+	TouchScreenControllerView();
+
 	void RenderButtonTouchControls(
 		float2 fWindowBounds,
 		bool bXButtonPressed,
@@ -39,7 +41,16 @@ public:
 		bool bWestButtonPressed,
 		const std::shared_ptr<DeviceResources>& deviceResources);
 
-	// TODO: Use function pointers:
+	bool (TouchScreenControllerView::**m_lpButtonFunctions)(
+		float2 fWindowBounds, 
+		float2 fHitPoint);
+
+	bool CheckButton(int nButton, float2 fWindowBounds, float2 fHitPoint)
+	{
+		return (*this.*m_lpButtonFunctions[nButton])(fWindowBounds, fHitPoint);
+	}
+
+protected:
 	bool CheckNorthButton(float2 fWindowBounds, float2 fHitPoint);
 	bool CheckEastButton(float2 fWindowBounds, float2 fHitPoint);
 	bool CheckSouthButton(float2 fWindowBounds, float2 fHitPoint);
@@ -49,8 +60,6 @@ public:
 	bool CheckBButton(float2 fWindowBounds, float2 fHitPoint);
 	bool CheckAButton(float2 fWindowBounds, float2 fHitPoint);
 	bool CheckXButton(float2 fWindowBounds, float2 fHitPoint);
-
-protected:
 
 
 private:

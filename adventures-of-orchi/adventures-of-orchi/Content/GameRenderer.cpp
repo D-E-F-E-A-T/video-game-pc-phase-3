@@ -1,17 +1,17 @@
 ﻿/*
-Copyright 2016 Richard Bernardino
+	Copyright 2016 Richard Bernardino
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
 
-http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
 */
 #include "pch.h"
 #include "GameRenderer.h"
@@ -346,29 +346,16 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 	}
 	else
 	{
-		if (m_bNorthButtonPressed)
+		for (int i = NORTH; i <= WEST; i++)
 		{
-			m_pPlayer->MoveNorth(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-			m_nSwordDirection = NORTH;
-		}
-		else if (m_bEastButtonPressed)
-		{
-			m_pPlayer->MoveEast(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-			m_nSwordDirection = EAST;
-		}
-		else if (m_bSouthButtonPressed)
-		{
-			m_pPlayer->MoveSouth(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-			m_nSwordDirection = SOUTH;
-		}
-		else if (m_bWestButtonPressed)
-		{
-			m_pPlayer->MoveWest(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-			m_nSwordDirection = WEST;
+			if (m_bButtonPressed[i])
+			{
+				m_pPlayer->Move(i, m_nCollisionState, PLAYER_MOVE_VELOCITY);
+				m_nSwordDirection = i;
+			}
 		}
 
-
-		if (m_bAButtonPressed)
+		if (m_bButtonPressed[A_BUTTON])
 			ThrowSword(m_nSwordDirection);
 	}
 
@@ -453,18 +440,18 @@ void GameRenderer::Render()
 	{
 		m_touchScreenController.RenderButtonTouchControls(
 			float2{ m_fWindowWidth, m_fWindowHeight },
-			m_bXButtonPressed,
-			m_bYButtonPressed,
-			m_bAButtonPressed,
-			m_bBButtonPressed,
+			m_bButtonPressed[X_BUTTON],
+			m_bButtonPressed[Y_BUTTON],
+			m_bButtonPressed[A_BUTTON],
+			m_bButtonPressed[B_BUTTON],
 			m_deviceResources);
 					
 		m_touchScreenController.RenderDirectionalTouchControls(
 			float2{ m_fWindowWidth, m_fWindowHeight },
-			m_bNorthButtonPressed,
-			m_bEastButtonPressed,
-			m_bSouthButtonPressed,
-			m_bWestButtonPressed,
+			m_bButtonPressed[NORTH_BUTTON],
+			m_bButtonPressed[EAST_BUTTON],
+			m_bButtonPressed[SOUTH_BUTTON],
+			m_bButtonPressed[WEST_BUTTON],
 			m_deviceResources);
 	}
 
@@ -875,26 +862,26 @@ void GameRenderer::UpdateSword()
 
 void GameRenderer::OnPointerReleased()
 {
-	if (m_bNorthButtonPressed ||
-		m_bEastButtonPressed ||
-		m_bSouthButtonPressed ||
-		m_bWestButtonPressed)
+	if (m_bButtonPressed[NORTH_BUTTON] ||
+		m_bButtonPressed[EAST_BUTTON] ||
+		m_bButtonPressed[SOUTH_BUTTON] ||
+		m_bButtonPressed[WEST_BUTTON])
 	{
-		m_bNorthButtonPressed = false;
-		m_bEastButtonPressed = false;
-		m_bSouthButtonPressed = false;
-		m_bWestButtonPressed = false;
+		m_bButtonPressed[NORTH_BUTTON] = false;
+		m_bButtonPressed[EAST_BUTTON] = false;
+		m_bButtonPressed[SOUTH_BUTTON] = false;
+		m_bButtonPressed[WEST_BUTTON] = false;
 	}
 
-	if (m_bYButtonPressed ||
-		m_bBButtonPressed ||
-		m_bAButtonPressed ||
-		m_bXButtonPressed)
+	if (m_bButtonPressed[Y_BUTTON] ||
+		m_bButtonPressed[B_BUTTON] ||
+		m_bButtonPressed[A_BUTTON] ||
+		m_bButtonPressed[X_BUTTON])
 	{
-		m_bYButtonPressed = false;
-		m_bBButtonPressed = false;
-		m_bAButtonPressed = false;
-		m_bXButtonPressed = false;
+		m_bButtonPressed[Y_BUTTON] = false;
+		m_bButtonPressed[B_BUTTON] = false;
+		m_bButtonPressed[A_BUTTON] = false;
+		m_bButtonPressed[X_BUTTON] = false;
 	}
 }
 
@@ -902,44 +889,13 @@ void GameRenderer::OnPointerPressed(ResolutionScale resolutionScale, float fX, f
 {
 	float fScaleFactor = 1.0f; // Recommended value.
 
-	if (m_touchScreenController.CheckNorthButton(
-		float2 { m_fWindowWidth, m_fWindowHeight },
-		float2 { fX * fScaleFactor, fY * fScaleFactor }))
-		m_bNorthButtonPressed = true;
-
-	if (m_touchScreenController.CheckEastButton(
-		float2{ m_fWindowWidth, m_fWindowHeight },
-		float2{ fX * fScaleFactor, fY * fScaleFactor }))
-		m_bEastButtonPressed = true;
-
-	if (m_touchScreenController.CheckSouthButton(
-		float2{ m_fWindowWidth, m_fWindowHeight },
-		float2{ fX * fScaleFactor, fY * fScaleFactor }))
-		m_bSouthButtonPressed = true;
-
-	if (m_touchScreenController.CheckWestButton(
-		float2{ m_fWindowWidth, m_fWindowHeight },
-		float2{ fX * fScaleFactor, fY * fScaleFactor }))
-		m_bWestButtonPressed = true;
-
-	if (m_touchScreenController.CheckYButton(
-		float2{ m_fWindowWidth, m_fWindowHeight },
-		float2{ fX * fScaleFactor, fY * fScaleFactor }))
-		m_bYButtonPressed = true;
-
-	if (m_touchScreenController.CheckBButton(
-		float2{ m_fWindowWidth, m_fWindowHeight },
-		float2{ fX * fScaleFactor, fY * fScaleFactor }))
-		m_bBButtonPressed = true;
-
-	if (m_touchScreenController.CheckAButton(
-		float2{ m_fWindowWidth, m_fWindowHeight },
-		float2{ fX * fScaleFactor, fY * fScaleFactor }))
-		m_bAButtonPressed = true;
-
-	if (m_touchScreenController.CheckXButton(
-		float2{ m_fWindowWidth, m_fWindowHeight },
-		float2{ fX * fScaleFactor, fY * fScaleFactor }))
-		m_bXButtonPressed = true;
+	for (int i = 0; i < NUM_BUTTONS; i++)
+	{
+		if (m_touchScreenController.CheckButton(
+			i,
+			float2{ m_fWindowWidth, m_fWindowHeight },
+			float2{ fX * fScaleFactor, fY * fScaleFactor }))
+			m_bButtonPressed[i] = true;
+	}
 }
 

@@ -18,6 +18,21 @@
 #include "..\Common\DeviceResources.h"
 #include "..\Utils.h"
 
+TouchScreenControllerView::TouchScreenControllerView()
+{
+	m_lpButtonFunctions = new (bool (TouchScreenControllerView::*[NUM_BUTTONS])(float2, float2));
+
+	m_lpButtonFunctions[NORTH_BUTTON] = &TouchScreenControllerView::CheckNorthButton;
+	m_lpButtonFunctions[EAST_BUTTON] = &TouchScreenControllerView::CheckEastButton;
+	m_lpButtonFunctions[SOUTH_BUTTON] = &TouchScreenControllerView::CheckSouthButton;
+	m_lpButtonFunctions[WEST_BUTTON] = &TouchScreenControllerView::CheckWestButton;
+
+	m_lpButtonFunctions[Y_BUTTON] = &TouchScreenControllerView::CheckYButton;
+	m_lpButtonFunctions[B_BUTTON] = &TouchScreenControllerView::CheckBButton;
+	m_lpButtonFunctions[A_BUTTON] = &TouchScreenControllerView::CheckAButton;
+	m_lpButtonFunctions[X_BUTTON] = &TouchScreenControllerView::CheckXButton;
+}
+
 void TouchScreenControllerView::RenderButtonTouchControls(
 	float2 fWindowBounds,
 	bool bXButtonPressed,

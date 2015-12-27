@@ -218,6 +218,7 @@
     <ClInclude Include="Content\OrientationRenderer.h" />
     <ClInclude Include="Content\Portrait.h" />
     <ClInclude Include="Content\ScreenOrientation.h" />
+    <ClInclude Include="Controller\ControllerView.h" />
     <ClInclude Include="Controller\KeyboardControllerView.h" />
     <ClInclude Include="Controller\XBoxOneControllerView.h" />
     <ClInclude Include="Controller\TouchScreenControllerView.h" />

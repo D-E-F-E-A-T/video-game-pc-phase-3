@@ -143,16 +143,7 @@ private:
 	TouchScreenControllerView m_touchScreenController;
 	UserInteractionMode m_uiMode;
 
-	bool m_bNorthButtonPressed;
-	bool m_bEastButtonPressed;
-	bool m_bSouthButtonPressed;
-	bool m_bWestButtonPressed;
-
-	bool m_bYButtonPressed;
-	bool m_bBButtonPressed;
-	bool m_bAButtonPressed;
-	bool m_bXButtonPressed;
-
+	bool m_bButtonPressed[NUM_BUTTONS];
 
 	// TODO: 
 	int m_nOrientation;

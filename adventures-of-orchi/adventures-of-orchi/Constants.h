@@ -460,3 +460,39 @@
 #ifndef NUM_BUILD_COMMANDS
 #define NUM_BUILD_COMMANDS 17
 #endif // NUM_BUILD_COMMANDS
+
+#ifndef NORTH_BUTTON
+#define NORTH_BUTTON 0
+#endif // NORTH_BUTTON
+
+#ifndef EAST_BUTTON
+#define EAST_BUTTON 1
+#endif // EAST_BUTTON
+
+#ifndef SOUTH_BUTTON
+#define SOUTH_BUTTON 2
+#endif // SOUTH_BUTTON
+
+#ifndef WEST_BUTTON
+#define WEST_BUTTON 3
+#endif // WEST_BUTTON
+
+#ifndef Y_BUTTON
+#define Y_BUTTON 4
+#endif // Y_BUTTON 
+
+#ifndef B_BUTTON
+#define B_BUTTON 5
+#endif // B_BUTTON
+
+#ifndef A_BUTTON
+#define A_BUTTON 6
+#endif // A_BUTTON
+
+#ifndef X_BUTTON
+#define X_BUTTON 7
+#endif // X_BUTTON
+
+#ifndef NUM_BUTTONS 
+#define NUM_BUTTONS 8
+#endif // NUM_BUTTONS
