@@ -35,7 +35,10 @@ adventures_of_orchiMain::adventures_of_orchiMain(
 	m_gameRenderer = std::unique_ptr<GameRenderer>(new GameRenderer(m_deviceResources, window));
 //	m_sceneRenderer = std::unique_ptr<Sample3DSceneRenderer>(new Sample3DSceneRenderer(m_deviceResources));
 
+#ifdef _DEBUG
 	m_fpsTextRenderer = std::unique_ptr<SampleFpsTextRenderer>(new SampleFpsTextRenderer(m_deviceResources));
+#endif // _DEBUG
+
 
 	// TODO: Change the timer settings if you want something other than the default variable timestep mode.
 	// e.g. for 60 FPS fixed timestep update logic, call:
@@ -102,10 +105,11 @@ int adventures_of_orchiMain::Update()
 	// Update scene objects.
 	m_timer.Tick([&]()
 	{
+#ifdef _DEBUG
 		m_fpsTextRenderer->Update(m_timer);
-		retVal = m_gameRenderer->Update(m_timer);
-//		m_sceneRenderer->Update(m_timer);
+#endif // _DEBUG
 
+		retVal = m_gameRenderer->Update(m_timer);
 	});
 
 	return retVal;
@@ -146,8 +150,10 @@ bool adventures_of_orchiMain::Render()
 	// Render the scene objects.
 	// TODO: Replace this with your app's content rendering functions.
 	m_gameRenderer->Render();
-	//m_sceneRenderer->Render();
+
+#ifdef _DEBUG
 	m_fpsTextRenderer->Render();
+#endif // _DEBUG
 
 	return true;
 }
@@ -172,16 +178,21 @@ void adventures_of_orchiMain::SetUserInteractionMode(UserInteractionMode uiMode)
 // Notifies renderers that device resources need to be released.
 void adventures_of_orchiMain::OnDeviceLost()
 {
-//	m_sceneRenderer->ReleaseDeviceDependentResources();
 	m_gameRenderer->ReleaseDeviceDependentResources();
+
+#ifdef _DEBUG
 	m_fpsTextRenderer->ReleaseDeviceDependentResources();
+#endif // _DEBUG
 }
 
 // Notifies renderers that device resources may now be recreated.
 void adventures_of_orchiMain::OnDeviceRestored()
 {
-//	m_sceneRenderer->CreateDeviceDependentResources();
+#ifdef _DEBUG
 	m_gameRenderer->CreateDeviceDependentResources();
+#endif // _DEBUG
+
 	m_fpsTextRenderer->CreateDeviceDependentResources();
+
 	CreateWindowSizeDependentResources();
 }

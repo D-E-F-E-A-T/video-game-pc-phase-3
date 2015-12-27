@@ -79,8 +79,10 @@ namespace adventures_of_orchi
 		// Cached pointer to device resources.
 		std::shared_ptr<DeviceResources> m_deviceResources;
 
-		// TODO: Replace with your own content renderers.
+#ifdef _DEBUG
 		std::unique_ptr<SampleFpsTextRenderer> m_fpsTextRenderer;
+#endif // _DEBUG
+
 		std::unique_ptr<GameRenderer> m_gameRenderer;
 
 		Windows::Foundation::IAsyncAction^ m_renderLoopWorker;

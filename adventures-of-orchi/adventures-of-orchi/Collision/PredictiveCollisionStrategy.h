@@ -14,14 +14,10 @@
 	limitations under the License.
 */
 #pragma once
-#include "..\Model\Player.h"
 
-using namespace Windows::UI::Core;
-
-class KeyboardControllerView
+class PredictiveCollisionStrategy
 {
 public:
-	void HandleKeystroke(Player * pPlayer, int nCollisionState, KeyEventArgs^ args, float fVelocity);
 
 protected:
 

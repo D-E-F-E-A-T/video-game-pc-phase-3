@@ -214,6 +214,7 @@
     <ClInclude Include="Collision\BroadCollisionStrategy.h" />
     <ClInclude Include="Collision\NarrowCollisionStrategy.h" />
     <ClInclude Include="Collision\PortalCollisionStrategy.h" />
+    <ClInclude Include="Collision\PredictiveCollisionStrategy.h" />
     <ClInclude Include="Content\Landscape.h" />
     <ClInclude Include="Content\OrientationRenderer.h" />
     <ClInclude Include="Content\Portrait.h" />
@@ -348,11 +349,13 @@
     <ClCompile Include="Collision\BroadCollisionStrategy.cpp" />
     <ClCompile Include="Collision\NarrowCollisionStrategy.cpp" />
     <ClCompile Include="Collision\PortalCollisionStrategy.cpp" />
+    <ClCompile Include="Collision\PredictiveCollisionStrategy.cpp" />
     <ClCompile Include="Common\DeviceResources.cpp" />
     <ClCompile Include="adventures_of_orchiMain.cpp" />
     <ClCompile Include="Content\GameRenderer.cpp" />
     <ClCompile Include="Content\Landscape.cpp" />
     <ClCompile Include="Content\Portrait.cpp" />
+    <ClCompile Include="Controller\KeyboardControllerView.cpp" />
     <ClCompile Include="Controller\TouchScreenControllerView.cpp" />
     <ClCompile Include="Controller\XBoxOneControllerView.cpp" />
     <ClCompile Include="DDSTextureLoader.cpp" />

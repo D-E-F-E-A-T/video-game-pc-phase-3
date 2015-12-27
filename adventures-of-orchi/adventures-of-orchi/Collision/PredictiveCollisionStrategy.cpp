@@ -13,17 +13,5 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-#pragma once
-#include "..\Model\Player.h"
-
-using namespace Windows::UI::Core;
-
-class KeyboardControllerView
-{
-public:
-	void HandleKeystroke(Player * pPlayer, int nCollisionState, KeyEventArgs^ args, float fVelocity);
-
-protected:
-
-private:
-};
+#include "pch.h"
+#include "PredictiveCollisionStrategy.h"

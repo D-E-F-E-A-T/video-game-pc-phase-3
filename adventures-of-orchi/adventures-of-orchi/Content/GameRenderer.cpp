@@ -678,6 +678,7 @@ void GameRenderer::DrawSpriteIntersection()
 }
 #endif // _DEBUG
 
+#ifdef _DEBUG
 void GameRenderer::HighlightRegion(int * pLocation, ComPtr<ID2D1SolidColorBrush> brush)
 {
 	if (pLocation)
@@ -685,10 +686,12 @@ void GameRenderer::HighlightRegion(int * pLocation, ComPtr<ID2D1SolidColorBrush>
 			pLocation[HORIZONTAL_AXIS],
 			pLocation[VERTICAL_AXIS], brush);
 }
+#endif // DEBUG
 
 /*
 Highlight the sprite that is being collided with.
 */
+#ifdef _DEBUG
 void GameRenderer::HighlightRegion(int column, int row, ComPtr<ID2D1SolidColorBrush> brush)
 {
 	float x = 0.0f;
@@ -725,29 +728,11 @@ void GameRenderer::HighlightRegion(int column, int row, ComPtr<ID2D1SolidColorBr
 		rect,
 		brush.Get());
 }
+#endif // _DEBUG
 
 void GameRenderer::OnKeyDown(Windows::UI::Core::KeyEventArgs^ args)
 {
-	if (args->VirtualKey == Windows::System::VirtualKey::P)       // Pause
-	{
-	}
-
-	if (args->VirtualKey == Windows::System::VirtualKey::Left)
-	{
-		m_pPlayer->MoveWest(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-	}
-	else if (args->VirtualKey == Windows::System::VirtualKey::Down)
-	{
-		m_pPlayer->MoveSouth(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-	}
-	else if (args->VirtualKey == Windows::System::VirtualKey::Right)
-	{
-		m_pPlayer->MoveEast(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-	}
-	else if (args->VirtualKey == Windows::System::VirtualKey::Up)
-	{
-		m_pPlayer->MoveNorth(m_nCollisionState, PLAYER_MOVE_VELOCITY);
-	}
+	m_keyboardController.HandleKeystroke(m_pPlayer, m_nCollisionState, args, PLAYER_MOVE_VELOCITY);
 }
 
 

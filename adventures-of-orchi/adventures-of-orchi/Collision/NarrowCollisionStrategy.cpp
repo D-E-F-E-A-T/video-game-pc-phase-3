@@ -1,17 +1,17 @@
 /*
-Copyright 2016 Richard Bernardino
+	Copyright 2016 Richard Bernardino
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
 
-http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
 */
 #include "pch.h"
 #include "NarrowCollisionStrategy.h"
@@ -40,7 +40,7 @@ int NarrowCollisionStrategy::Detect(
 	ID3D11DeviceContext2 * context,
 	ID3D11Device2 * device,
 	Player * pPlayer,
-	Space * collided, // std::list<Space *> * collided,
+	Space * collided,
 	Grid * grid, // Player location is the coordinates of the center of the sprite.
 	int * intersectRect,
 	float2 screenDimensions)
@@ -66,10 +66,10 @@ int NarrowCollisionStrategy::Detect(
 	playerTopLeft[VERTICAL_AXIS] = (int)(pPlayer->GetLocationRatio().y * screenDimensions.y - grid->GetRowHeight() / 2.f);
 
 	int renderedSpriteDimensions[2];
-	float obstacleCenterLocation[2];
+	float2 obstacleCenterLocation;
 
-	obstacleCenterLocation[HORIZONTAL_AXIS] = collided->GetLocationRatio().x * screenDimensions.x;
-	obstacleCenterLocation[VERTICAL_AXIS] = collided->GetLocationRatio().y * screenDimensions.y;
+	obstacleCenterLocation.x = collided->GetLocationRatio().x * screenDimensions.x;
+	obstacleCenterLocation.y = collided->GetLocationRatio().y * screenDimensions.y;
 
 	// These are relative to the rendered sprite.
 	//	Take into consideration the actual screen dimensions.
@@ -79,11 +79,11 @@ int NarrowCollisionStrategy::Detect(
 	// Right now, all obstacles are assumed to occupy exactly one grid space.
 	int obstacleTopLeft[2];
 	obstacleTopLeft[HORIZONTAL_AXIS] = 
-		(int)obstacleCenterLocation[HORIZONTAL_AXIS] -
+		(int)obstacleCenterLocation.x -
 		(renderedSpriteDimensions[WIDTH_INDEX] >> 1);
 
 	obstacleTopLeft[VERTICAL_AXIS] = 
-		(int)obstacleCenterLocation[VERTICAL_AXIS] -
+		(int)obstacleCenterLocation.y -
 		(renderedSpriteDimensions[HEIGHT_INDEX] >> 1);
 
 	bIntersection = IntersectRect(

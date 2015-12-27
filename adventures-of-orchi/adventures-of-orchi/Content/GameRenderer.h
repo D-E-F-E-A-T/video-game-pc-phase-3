@@ -35,6 +35,7 @@ limitations under the License.
 #include "..\Controller\XBoxOneControllerView.h"
 #include "..\Factory\WorldFactory.h"
 #include "..\Controller\TouchScreenControllerView.h"
+#include "..\Controller\KeyboardControllerView.h"
 
 using namespace Windows::UI::Core;
 using namespace std;
@@ -116,8 +117,10 @@ private:
 	PortalCollisionStrategy * m_pPortalCollisionDetectionStrategy;
 
 	list<Space *> * m_pCollided;
+#ifdef _DEBUG
 	void HighlightRegion(int column, int row, ComPtr<ID2D1SolidColorBrush> brush);
 	void HighlightRegion(int * pLocation, ComPtr<ID2D1SolidColorBrush> brush);
+#endif // _DEBUG
 
 	DWRITE_TEXT_RANGE m_textRange;
 
@@ -142,6 +145,7 @@ private:
 	XBoxOneControllerView m_xboxController;
 	TouchScreenControllerView m_touchScreenController;
 	UserInteractionMode m_uiMode;
+	KeyboardControllerView m_keyboardController;
 
 	bool m_bButtonPressed[NUM_BUTTONS];
 

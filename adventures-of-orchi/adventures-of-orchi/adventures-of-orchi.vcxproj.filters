@@ -206,6 +206,12 @@
     <ClCompile Include="Model\Border.cpp">
       <Filter>Model</Filter>
     </ClCompile>
+    <ClCompile Include="Collision\PredictiveCollisionStrategy.cpp">
+      <Filter>Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\KeyboardControllerView.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -532,6 +538,9 @@
     </ClInclude>
     <ClInclude Include="Controller\ControllerView.h">
       <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision\PredictiveCollisionStrategy.h">
+      <Filter>Collision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
