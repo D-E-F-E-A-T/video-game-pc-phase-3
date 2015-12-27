@@ -31,6 +31,8 @@ public:
 			new BorderFrame());
 	}
 
+	bool IsOverlapping(Space * pOther);
+
 protected:
 
 private:

@@ -203,6 +203,9 @@
     <ClCompile Include="Controller\TouchScreenControllerView.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
+    <ClCompile Include="Model\Border.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />

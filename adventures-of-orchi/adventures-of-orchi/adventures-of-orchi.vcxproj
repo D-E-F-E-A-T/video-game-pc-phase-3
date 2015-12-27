@@ -369,6 +369,7 @@
     <ClCompile Include="InfoPanel\MapPanel.cpp" />
     <ClCompile Include="InfoPanel\PackPanel.cpp" />
     <ClCompile Include="LeftMargin.cpp" />
+    <ClCompile Include="Model\Border.cpp" />
     <ClCompile Include="Model\Cave.cpp" />
     <ClCompile Include="Model\Edge.cpp" />
     <ClCompile Include="Model\Lot.cpp" />

@@ -3467,21 +3467,6 @@ namespace ServiceProxy
             commands.AddLast(new AddWaterCommand(2, 1, 14));
             commands.AddLast(new AddWaterCommand(2, 2, 14));
 
-            /*
-            commands.AddLast(new AddTreeCommand(2, 3, 0));
-            commands.AddLast(new AddTreeCommand(2, 4, 0));
-            commands.AddLast(new AddTreeCommand(2, 5, 0));
-            commands.AddLast(new AddTreeCommand(2, 6, 0));
-            commands.AddLast(new AddTreeCommand(2, 7, 0));
-
-            commands.AddLast(new AddTreeCommand(2, 3, 1));
-            commands.AddLast(new AddTreeCommand(2, 4, 1));
-            commands.AddLast(new AddTreeCommand(2, 5, 1));
-
-            commands.AddLast(new AddTreeCommand(2, 3, 2));
-            commands.AddLast(new AddTreeCommand(2, 4, 2));
-            */
-
 
             commands.AddLast(new AddTreeCommand(2, 11, 0));
             commands.AddLast(new AddTreeCommand(2, 12, 0));
@@ -5261,6 +5246,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(1, 2, 6, 104, 133, 195));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 28));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 28));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 28));
@@ -5270,6 +5257,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(1, 0, 5, 104, 133, 195));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 27));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 27));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 27));
@@ -5278,6 +5267,8 @@ namespace ServiceProxy
         private void BuildScreen27(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(1, 1, 5, 104, 133, 195));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 26));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 26));
@@ -5291,6 +5282,8 @@ namespace ServiceProxy
         private void BuildScreen28(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(1, 2, 5, 104, 133, 195));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 32));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 32));
@@ -5313,17 +5306,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(1, 3, 5, 104, 133, 195));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 32));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 32));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 32));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 30));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 30));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 30));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 25));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 25));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 25));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 28));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 28));
@@ -5335,17 +5322,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(1, 4, 5, 104, 133, 195));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 35));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 35));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 35));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 30));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 30));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 30));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 25));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 25));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 25));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 29));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 29));
@@ -5357,34 +5338,18 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(1, 1, 4, 104, 133, 195));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 35));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 35));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 35));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 33));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 33));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 33));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 25));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 25));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 25));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 29));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 29));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 29));
         }
 
         private void BuildScreen33(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(1, 2, 4, 104, 133, 195));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 35));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 35));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 35));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 33));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 33));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 33));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 28));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 28));
@@ -5399,26 +5364,22 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(1, 4, 4, 104, 133, 195));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 40));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 40));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 40));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 33));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 33));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 33));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 30));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 30));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 30));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 32));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 32));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 32));
         }
 
         private void BuildScreen39(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(1, 3, 3, 104, 133, 195));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 40));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 40));
@@ -5427,27 +5388,13 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 40));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 40));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 40));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 30));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 30));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 30));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 32));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 32));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 32));
         }
 
         private void BuildScreen40(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(1, 4, 3, 104, 133, 195));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 40));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 40));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 40));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 33));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 33));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 33));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 35));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 35));
@@ -5462,6 +5409,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(1, 2, 2, 104, 133, 195));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 48));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 48));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 48));
@@ -5469,23 +5418,13 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 44));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 44));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 44));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 35));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 35));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 35));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 39));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 39));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 39));
         }
 
         private void BuildScreen44(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(1, 3, 2, 104, 133, 195));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 45));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 45));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 45));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 45));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 45));
@@ -5504,17 +5443,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(1, 4, 2, 104, 133, 195));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 45));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 45));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 45));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 45));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 45));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 45));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 39));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 39));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 39));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 44));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 44));
@@ -5525,47 +5454,33 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(1, 2, 1, 104, 133, 195));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 53));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 53));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 53));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 45));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 45));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 45));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 43));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 43));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 43));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 44));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 44));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 44));
         }
 
         private void BuildScreen53(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(1, 2, 0, 104, 133, 195));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 53));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 53));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 53));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 45));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 45));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 45));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 48));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 48));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 48));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 44));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 44));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 44));
         }
 
         private void BuildScreen54(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(2, 0, 6, 65, 182, 73));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 60));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 60));
@@ -5574,31 +5489,17 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 55));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 55));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 55));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 48));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 48));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 48));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 44));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 44));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 44));
         }
 
         private void BuildScreen55(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(2, 1, 6, 65, 182, 73));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 60));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 60));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 60));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 56));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 56));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 56));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 48));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 48));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 48));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 54));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 54));
@@ -5609,17 +5510,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(2, 2, 6, 65, 182, 73));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 62));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 62));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 62));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 56));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 56));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 56));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 48));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 48));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 48));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 55));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 55));
@@ -5630,135 +5525,85 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(2, 4, 6, 65, 182, 73));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 64));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 64));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 64));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 56));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 56));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 56));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 48));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 48));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 48));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 55));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 55));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 55));
         }
 
         private void BuildScreen60(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(2, 0, 5, 65, 182, 73));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 66));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 66));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 66));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 56));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 56));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 56));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 54));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 54));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 54));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 55));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 55));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 55));
         }
 
         private void BuildScreen62(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(2, 2, 5, 65, 182, 73));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 68));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 68));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 68));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 56));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 56));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 56));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 56));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 56));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 56));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 55));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 55));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 55));
         }
 
         private void BuildScreen64(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(2, 4, 5, 65, 182, 73));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 70));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 70));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 70));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 56));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 56));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 56));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 58));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 58));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 58));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 55));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 55));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 55));
         }
 
         private void BuildScreen66(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(2, 0, 4, 65, 182, 73));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 70));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 70));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 70));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 56));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 56));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 56));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 60));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 60));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 60));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 55));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 55));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 55));
         }
 
         private void BuildScreen67(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(2, 1, 4, 65, 182, 73));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 70));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 70));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 70));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 68));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 68));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 68));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 60));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 60));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 60));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 55));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 55));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 55));
         }
 
         private void BuildScreen68(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(2, 2, 4, 65, 182, 73));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 70));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 70));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 70));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 69));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 69));
@@ -5777,17 +5622,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(2, 3, 4, 65, 182, 73));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 70));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 70));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 70));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 70));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 70));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 70));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 60));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 60));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 60));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 68));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 68));
@@ -5797,6 +5636,8 @@ namespace ServiceProxy
         private void BuildScreen70(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(2, 4, 4, 65, 182, 73));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 76));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 76));
@@ -5819,17 +5660,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(2, 5, 4, 65, 182, 73));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 70));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 70));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 70));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 71));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 71));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 71));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 60));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 60));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 60));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 70));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 70));
@@ -5840,72 +5671,44 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(2, 2, 3, 65, 182, 73));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 80));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 80));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 80));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 71));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 71));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 71));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 60));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 60));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 60));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 70));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 70));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 70));
         }
 
         private void BuildScreen76(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(2, 4, 3, 65, 182, 73));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 82));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 82));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 82));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 71));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 71));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 71));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 76));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 76));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 76));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 70));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 70));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 70));
         }
 
         private void BuildScreen79(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(2, 1, 2, 65, 182, 73));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 82));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 82));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 82));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 80));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 80));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 80));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 76));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 76));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 76));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 70));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 70));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 70));
         }
 
         private void BuildScreen80(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(2, 2, 2, 65, 182, 73));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 82));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 82));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 82));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 81));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 81));
@@ -5924,17 +5727,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(2, 3, 2, 65, 182, 73));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 82));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 82));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 82));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 82));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 82));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 82));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 74));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 74));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 74));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 80));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 80));
@@ -5945,13 +5742,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(2, 4, 2, 65, 182, 73));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 88));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 88));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 88));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 83));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 83));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 83));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 76));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 76));
@@ -5966,21 +5761,15 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(2, 4, 1, 65, 182, 73));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 94));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 94));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 94));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 83));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 83));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 83));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 82));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 82));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 82));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 81));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 81));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 81));
         }
 
         private void BuildScreen94(LinkedList<BuildCommand> commands)
@@ -5996,47 +5785,29 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(3, 1, 4, 200, 205, 45));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 108));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 108));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 108));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 83));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 83));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 83));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 82));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 82));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 82));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 81));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 81));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 81));
         }
 
         private void BuildScreen105(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(3, 5, 4, 200, 205, 45));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 112));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 112));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 112));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 83));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 83));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 83));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 82));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 82));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 82));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 81));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 81));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 81));
         }
 
         private void BuildScreen107(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(3, 0, 3, 200, 205, 45));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 114));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 114));
@@ -6045,23 +5816,13 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 108));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 108));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 108));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 82));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 82));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 82));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 81));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 81));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 81));
         }
 
         private void BuildScreen108(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(3, 1, 3, 200, 205, 45));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 114));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 114));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 114));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 109));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 109));
@@ -6080,17 +5841,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(3, 2, 3, 200, 205, 45));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 116));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 116));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 116));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 109));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 109));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 109));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 101));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 101));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 101));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 108));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 108));
@@ -6101,26 +5856,18 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(3, 3, 3, 200, 205, 45));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 116));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 116));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 116));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 111));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 111));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 111));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 101));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 101));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 101));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 108));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 108));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 108));
         }
 
         private void BuildScreen111(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(3, 4, 3, 200, 205, 45));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 118));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 118));
@@ -6129,10 +5876,6 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 112));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 112));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 112));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 101));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 101));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 101));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 110));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 110));
@@ -6143,9 +5886,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(3, 5, 3, 200, 205, 45));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 118));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 118));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 118));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 113));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 113));
@@ -6164,17 +5905,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(3, 6, 3, 200, 205, 45));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 120));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 120));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 120));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 113));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 113));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 113));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 105));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 105));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 105));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 112));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 112));
@@ -6185,93 +5920,67 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(3, 0, 2, 200, 205, 45));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 121));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 121));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 121));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 113));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 113));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 113));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 107));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 107));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 107));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 111));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 111));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 111));
         }
 
         private void BuildScreen116(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(3, 2, 2, 200, 205, 45));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 123));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 123));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 123));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 113));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 113));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 113));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 109));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 109));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 109));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 111));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 111));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 111));
         }
 
         private void BuildScreen118(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(3, 4, 2, 200, 205, 45));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 125));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 125));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 125));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 113));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 113));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 113));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 111));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 111));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 111));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 111));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 111));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 111));
         }
 
         private void BuildScreen120(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(3, 6, 2, 200, 205, 45));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 127));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 127));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 127));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 113));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 113));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 113));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 113));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 113));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 113));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 111));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 111));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 111));
         }
 
         private void BuildScreen121(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(3, 0, 1, 200, 205, 45));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 127));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 127));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 127));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 122));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 122));
@@ -6280,27 +5989,17 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 114));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 114));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 114));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 111));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 111));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 111));
         }
 
         private void BuildScreen122(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(3, 1, 1, 200, 205, 45));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 129));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 129));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 129));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 122));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 122));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 122));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 114));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 114));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 114));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 121));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 121));
@@ -6311,9 +6010,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(3, 2, 1, 200, 205, 45));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 127));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 127));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 127));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 124));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 124));
@@ -6322,27 +6019,17 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 116));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 116));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 116));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 121));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 121));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 121));
         }
 
         private void BuildScreen124(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(3, 3, 1, 200, 205, 45));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 127));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 127));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 127));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 125));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 125));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 125));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 116));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 116));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 116));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 123));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 123));
@@ -6353,9 +6040,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(3, 4, 1, 200, 205, 45));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 127));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 127));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 127));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 126));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 126));
@@ -6374,6 +6059,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(3, 5, 1, 200, 205, 45));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 133));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 133));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 133));
@@ -6381,10 +6068,6 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 124));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 124));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 124));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 118));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 118));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 118));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 125));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 125));
@@ -6395,13 +6078,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(3, 6, 1, 200, 205, 45));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 133));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 133));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 133));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 120));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 120));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 120));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 120));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 120));
@@ -6416,63 +6093,33 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(3, 1, 0, 200, 205, 45));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 133));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 133));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 133));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 120));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 120));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 120));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 122));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 122));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 122));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 126));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 126));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 126));
         }
 
         private void BuildScreen133(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(3, 5, 0, 200, 205, 45));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 133));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 133));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 133));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 120));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 120));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 120));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 126));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 126));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 126));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 126));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 126));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 126));
         }
 
         private void BuildScreen140(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(4, 4, 6, 87, 80, 162));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 142));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 142));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 142));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 120));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 120));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 120));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 126));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 126));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 126));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 126));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 126));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 126));
         }
 
         private void BuildScreen141(LinkedList<BuildCommand> commands)
@@ -6482,23 +6129,13 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 144));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 144));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 144));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 120));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 120));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 120));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 126));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 126));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 126));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 126));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 126));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 126));
         }
 
         private void BuildScreen142(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(4, 4, 5, 87, 80, 162));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 146));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 146));
@@ -6511,23 +6148,17 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 140));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 140));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 140));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 126));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 126));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 126));
         }
 
         private void BuildScreen143(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(4, 5, 5, 87, 80, 162));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 147));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 147));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 147));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 142));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 142));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 142));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 140));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 140));
@@ -6542,6 +6173,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(4, 1, 4, 87, 80, 162));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 150));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 150));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 150));
@@ -6553,27 +6186,17 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 141));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 141));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 141));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 142));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 142));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 142));
         }
 
         private void BuildScreen145(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(4, 2, 4, 87, 80, 162));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 151));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 151));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 151));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 145));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 145));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 145));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 141));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 141));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 141));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 144));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 144));
@@ -6583,6 +6206,8 @@ namespace ServiceProxy
         private void BuildScreen146(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(4, 4, 4, 87, 80, 162));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 153));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 153));
@@ -6595,19 +6220,13 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 142));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 142));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 142));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 144));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 144));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 144));
         }
 
         private void BuildScreen147(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(4, 5, 4, 87, 80, 162));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 153));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 153));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 153));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 148));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 148));
@@ -6626,17 +6245,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(4, 6, 4, 87, 80, 162));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 154));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 154));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 154));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 148));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 148));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 148));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 143));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 143));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 143));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 147));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 147));
@@ -6647,6 +6260,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(4, 0, 3, 87, 80, 162));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 155));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 155));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 155));
@@ -6654,23 +6269,13 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 150));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 150));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 150));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 143));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 143));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 143));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 147));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 147));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 147));
         }
 
         private void BuildScreen150(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(4, 1, 3, 87, 80, 162));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 151));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 151));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 151));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 151));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 151));
@@ -6689,9 +6294,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(4, 2, 3, 87, 80, 162));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 151));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 151));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 151));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 152));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 152));
@@ -6710,6 +6313,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(4, 3, 3, 87, 80, 162));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 157));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 157));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 157));
@@ -6717,10 +6322,6 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 153));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 153));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 153));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 145));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 145));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 145));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 151));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 151));
@@ -6731,13 +6332,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(4, 4, 3, 87, 80, 162));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 157));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 157));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 157));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 153));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 153));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 153));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 146));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 146));
@@ -6752,42 +6347,22 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(4, 6, 3, 87, 80, 162));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 157));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 157));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 157));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 153));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 153));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 153));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 148));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 148));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 148));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 152));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 152));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 152));
         }
 
         private void BuildScreen155(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(4, 0, 2, 87, 80, 162));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 157));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 157));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 157));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 153));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 153));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 153));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 149));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 149));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 149));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 152));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 152));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 152));
         }
 
         private void BuildScreen156(LinkedList<BuildCommand> commands)
@@ -6797,23 +6372,13 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 159));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 159));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 159));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 153));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 153));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 153));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 149));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 149));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 149));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 152));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 152));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 152));
         }
 
         private void BuildScreen157(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(4, 3, 2, 87, 80, 162));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 160));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 160));
@@ -6826,27 +6391,13 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 152));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 152));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 152));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 152));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 152));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 152));
         }
 
         private void BuildScreen158(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(4, 4, 2, 87, 80, 162));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 160));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 160));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 160));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 158));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 158));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 158));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 152));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 152));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 152));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 157));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 157));
@@ -6856,6 +6407,8 @@ namespace ServiceProxy
         private void BuildScreen159(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(4, 2, 1, 87, 80, 162));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 163));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 163));
@@ -6868,19 +6421,13 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 156));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 156));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 156));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 157));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 157));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 157));
         }
 
         private void BuildScreen160(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(4, 3, 1, 87, 80, 162));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 161));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 161));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 161));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 161));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 161));
@@ -6899,17 +6446,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(4, 4, 1, 87, 80, 162));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 161));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 161));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 161));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 162));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 162));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 162));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 157));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 157));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 157));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 160));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 160));
@@ -6920,17 +6461,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(4, 5, 1, 87, 80, 162));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 164));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 164));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 164));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 162));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 162));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 162));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 157));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 157));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 157));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 161));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 161));
@@ -6941,89 +6476,55 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(4, 2, 0, 87, 80, 162));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 164));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 164));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 164));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 162));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 162));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 162));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 159));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 159));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 159));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 161));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 161));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 161));
         }
 
         private void BuildScreen164(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(4, 5, 0, 87, 80, 162));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 164));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 164));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 164));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 162));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 162));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 162));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 162));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 162));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 162));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 161));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 161));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 161));
         }
 
         private void BuildScreen200(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(5, 5, 9, 205, 127, 47));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 201));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 201));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 201));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 162));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 162));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 162));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 162));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 162));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 162));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 161));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 161));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 161));
         }
 
         private void BuildScreen201(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(5, 5, 8, 205, 127, 47));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 204));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 204));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 204));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 162));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 162));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 162));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 200));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 200));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 200));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 161));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 161));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 161));
         }
 
         private void BuildScreen202(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(5, 3, 7, 205, 127, 47));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 209));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 209));
@@ -7032,31 +6533,17 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 203));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 203));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 203));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 200));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 200));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 200));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 161));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 161));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 161));
         }
 
         private void BuildScreen203(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(5, 4, 7, 205, 127, 47));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 209));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 209));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 209));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 204));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 204));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 204));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 200));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 200));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 200));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 202));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 202));
@@ -7066,6 +6553,8 @@ namespace ServiceProxy
         private void BuildScreen204(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(5, 5, 7, 205, 127, 47));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 211));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 211));
@@ -7088,17 +6577,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(5, 6, 7, 205, 127, 47));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 209));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 209));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 209));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 204));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 204));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 204));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 200));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 200));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 200));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 204));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 204));
@@ -7109,38 +6588,22 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(5, 0, 6, 205, 127, 47));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 209));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 209));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 209));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 207));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 207));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 207));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 200));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 200));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 200));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 204));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 204));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 204));
         }
 
         private void BuildScreen207(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(5, 1, 6, 205, 127, 47));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 209));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 209));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 209));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 208));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 208));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 208));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 200));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 200));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 200));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 206));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 206));
@@ -7151,17 +6614,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(5, 2, 6, 205, 127, 47));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 209));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 209));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 209));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 209));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 209));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 209));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 200));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 200));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 200));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 207));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 207));
@@ -7171,6 +6628,8 @@ namespace ServiceProxy
         private void BuildScreen209(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(5, 3, 6, 205, 127, 47));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 213));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 213));
@@ -7193,17 +6652,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(5, 4, 6, 205, 127, 47));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 213));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 213));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 213));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 210));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 210));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 210));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 202));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 202));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 202));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 209));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 209));
@@ -7214,68 +6663,44 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(5, 5, 6, 205, 127, 47));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 213));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 213));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 213));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 210));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 210));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 210));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 204));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 204));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 204));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 209));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 209));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 209));
         }
 
         private void BuildScreen212(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(5, 7, 6, 205, 127, 47));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 214));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 214));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 214));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 210));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 210));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 210));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 204));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 204));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 204));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 209));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 209));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 209));
         }
 
         private void BuildScreen213(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(5, 3, 5, 205, 127, 47));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 218));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 218));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 218));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 210));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 210));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 210));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 209));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 209));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 209));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 209));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 209));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 209));
         }
 
         private void BuildScreen214(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(5, 7, 5, 205, 127, 47));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 222));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 222));
@@ -7288,27 +6713,13 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 212));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 212));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 212));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 209));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 209));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 209));
         }
 
         private void BuildScreen215(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(5, 8, 5, 205, 127, 47));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 222));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 222));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 222));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 215));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 215));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 215));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 212));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 212));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 212));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 214));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 214));
@@ -7319,26 +6730,18 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(5, 1, 4, 205, 127, 47));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 222));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 222));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 222));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 217));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 217));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 217));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 212));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 212));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 212));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 214));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 214));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 214));
         }
 
         private void BuildScreen217(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(5, 2, 4, 205, 127, 47));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 225));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 225));
@@ -7347,10 +6750,6 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 218));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 218));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 218));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 212));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 212));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 212));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 216));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 216));
@@ -7361,9 +6760,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(5, 3, 4, 205, 127, 47));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 225));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 225));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 225));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 219));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 219));
@@ -7382,17 +6779,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(5, 4, 4, 205, 127, 47));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 225));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 225));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 225));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 220));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 220));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 220));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 213));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 213));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 213));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 218));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 218));
@@ -7403,6 +6794,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(5, 5, 4, 205, 127, 47));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 224));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 224));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 224));
@@ -7410,10 +6803,6 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 221));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 221));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 221));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 213));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 213));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 213));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 219));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 219));
@@ -7424,17 +6813,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(5, 6, 4, 205, 127, 47));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 224));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 224));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 224));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 222));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 222));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 222));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 213));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 213));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 213));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 220));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 220));
@@ -7445,13 +6828,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(5, 7, 4, 205, 127, 47));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 224));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 224));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 224));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 222));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 222));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 222));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 214));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 214));
@@ -7466,47 +6843,33 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(5, 2, 3, 205, 127, 47));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 224));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 224));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 224));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 222));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 222));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 222));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 217));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 217));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 217));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 220));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 220));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 220));
         }
 
         private void BuildScreen224(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(5, 5, 3, 205, 127, 47));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 225));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 225));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 225));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 222));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 222));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 222));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 220));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 220));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 220));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 220));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 220));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 220));
         }
 
         private void BuildScreen225(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(5, 5, 2, 205, 127, 47));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 228));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 228));
@@ -7519,27 +6882,13 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 224));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 224));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 224));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 220));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 220));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 220));
         }
 
         private void BuildScreen226(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(5, 6, 2, 205, 127, 47));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 228));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 226));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 226));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 226));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 224));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 224));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 224));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 225));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 225));
@@ -7550,34 +6899,22 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(5, 4, 1, 205, 127, 47));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 228));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 228));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 228));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 228));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 224));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 224));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 224));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 225));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 225));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 225));
         }
 
         private void BuildScreen228(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(5, 5, 1, 205, 127, 47));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 229));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 229));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 229));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 228));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 225));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 225));
@@ -7592,59 +6929,33 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(5, 5, 0, 205, 127, 47));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 229));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 229));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 229));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 228));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 228));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 228));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 228));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 227));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 227));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 227));
         }
 
         private void BuildScreen250(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 2, 6, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 229));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 229));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 229));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 251));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 251));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 251));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 228));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 227));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 227));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 227));
         }
 
         private void BuildScreen251(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 3, 6, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 229));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 229));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 229));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 252));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 252));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 252));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 228));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 250));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 250));
@@ -7655,17 +6966,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 4, 6, 192, 192, 192));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 256));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 256));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 256));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 252));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 252));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 252));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 228));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 251));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 251));
@@ -7676,72 +6981,40 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 6, 6, 192, 192, 192));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 258));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 258));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 258));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 252));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 252));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 252));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 228));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 251));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 251));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 251));
         }
 
         private void BuildScreen254(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 9, 6, 192, 192, 192));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 254));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 254));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 254));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 252));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 252));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 252));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 228));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 251));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 251));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 251));
         }
 
         private void BuildScreen255(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 2, 5, 192, 192, 192));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 264));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 264));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 264));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 252));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 252));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 252));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 228));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 251));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 251));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 251));
         }
 
         private void BuildScreen256(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 4, 5, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 264));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 264));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 264));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 257));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 257));
@@ -7750,27 +7023,17 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 252));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 252));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 252));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 251));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 251));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 251));
         }
 
         private void BuildScreen257(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 5, 5, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 258));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 258));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 258));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 258));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 258));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 258));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 228));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 228));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 256));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 256));
@@ -7780,6 +7043,8 @@ namespace ServiceProxy
         private void BuildScreen258(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 6, 5, 192, 192, 192));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 266));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 266));
@@ -7802,17 +7067,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 7, 5, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 266));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 266));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 266));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 260));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 260));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 260));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 253));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 253));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 253));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 258));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 258));
@@ -7823,6 +7082,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 8, 5, 192, 192, 192));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 267));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 267));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 267));
@@ -7830,10 +7091,6 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 261));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 261));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 261));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 253));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 253));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 253));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 259));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 259));
@@ -7844,13 +7101,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 9, 5, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 267));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 267));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 267));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 261));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 261));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 261));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 254));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 254));
@@ -7865,38 +7116,22 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 0, 4, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 267));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 267));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 267));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 263));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 263));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 263));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 254));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 254));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 254));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 260));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 260));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 260));
         }
 
         private void BuildScreen263(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 1, 4, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 267));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 267));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 267));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 264));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 264));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 264));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 254));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 254));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 254));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 262));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 262));
@@ -7907,9 +7142,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 2, 4, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 269));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 269));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 269));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 265));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 265));
@@ -7928,17 +7161,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 3, 4, 192, 192, 192));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 270));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 270));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 270));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 265));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 265));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 265));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 255));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 255));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 255));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 264));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 264));
@@ -7949,80 +7176,48 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 6, 4, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 273));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 273));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 273));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 265));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 265));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 265));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 258));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 258));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 258));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 264));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 264));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 264));
         }
 
         private void BuildScreen267(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 8, 4, 192, 192, 192));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 275));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 275));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 275));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 265));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 265));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 265));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 260));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 260));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 260));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 264));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 264));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 264));
         }
 
         private void BuildScreen268(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 1, 3, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 275));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 275));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 275));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 269));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 269));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 269));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 260));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 260));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 260));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 264));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 264));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 264));
         }
 
         private void BuildScreen269(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 2, 3, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 275));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 275));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 275));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 270));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 270));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 270));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 260));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 260));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 260));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 268));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 268));
@@ -8033,9 +7228,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 3, 3, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 275));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 275));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 275));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 271));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 271));
@@ -8054,17 +7247,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 4, 3, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 275));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 275));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 275));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 272));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 272));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 272));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 265));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 265));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 265));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 270));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 270));
@@ -8075,17 +7262,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 5, 3, 192, 192, 192));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 277));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 277));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 277));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 272));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 272));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 272));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 265));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 265));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 265));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 271));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 271));
@@ -8096,51 +7277,29 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 6, 3, 192, 192, 192));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 278));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 278));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 278));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 272));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 272));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 272));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 265));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 265));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 265));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 271));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 271));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 271));
         }
 
         private void BuildScreen274(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 7, 3, 192, 192, 192));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 279));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 279));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 279));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 272));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 272));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 272));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 265));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 265));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 265));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 271));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 271));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 271));
         }
 
         private void BuildScreen275(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 8, 3, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 279));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 279));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 279));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 276));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 276));
@@ -8149,27 +7308,17 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 267));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 267));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 267));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 271));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 271));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 271));
         }
 
         private void BuildScreen276(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 9, 3, 192, 192, 192));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 280));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 280));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 280));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 276));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 276));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 276));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 267));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 267));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 267));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 275));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 275));
@@ -8179,6 +7328,8 @@ namespace ServiceProxy
         private void BuildScreen277(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 5, 2, 192, 192, 192));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 282));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 282));
@@ -8191,19 +7342,13 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 272));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 272));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 272));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 275));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 275));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 275));
         }
 
         private void BuildScreen278(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 6, 2, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 282));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 282));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 282));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 279));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 279));
@@ -8222,17 +7367,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 7, 2, 192, 192, 192));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 283));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 283));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 283));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 279));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 279));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 279));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 272));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 272));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 272));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 278));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 278));
@@ -8243,72 +7382,48 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 9, 2, 192, 192, 192));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 285));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 285));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 285));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 279));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 279));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 279));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 276));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 276));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 276));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 278));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 278));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 278));
         }
 
         private void BuildScreen281(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 3, 1, 192, 192, 192));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 287));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 287));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 287));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 279));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 279));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 279));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 276));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 276));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 276));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 278));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 278));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 278));
         }
 
         private void BuildScreen282(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 5, 1, 192, 192, 192));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 289));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 289));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 289));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 279));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 279));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 279));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 277));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 277));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 277));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 278));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 278));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 278));
         }
 
         private void BuildScreen283(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 7, 1, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 284));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 284));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 284));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 284));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 284));
@@ -8317,27 +7432,17 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 279));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 279));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 279));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 278));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 278));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 278));
         }
 
         private void BuildScreen284(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 8, 1, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 285));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 285));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 285));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 285));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 285));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 285));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 279));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 279));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 279));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 283));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 283));
@@ -8348,9 +7453,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 9, 1, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 285));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 285));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 285));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 286));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 286));
@@ -8369,17 +7472,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 10, 1, 192, 192, 192));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 290));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 290));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 290));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 286));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 286));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 286));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 280));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 280));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 280));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 285));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 285));
@@ -8390,9 +7487,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 3, 0, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 290));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 290));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 290));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 288));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 288));
@@ -8401,27 +7496,17 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 281));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 281));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 281));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 285));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 285));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 285));
         }
 
         private void BuildScreen288(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(6, 4, 0, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 290));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 290));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 290));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 289));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 289));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 289));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 281));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 281));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 281));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 287));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 287));
@@ -8432,13 +7517,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 5, 0, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 290));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 290));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 290));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 289));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 289));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 289));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 282));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 282));
@@ -8453,89 +7532,55 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(6, 10, 0, 192, 192, 192));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 290));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 290));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 290));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 289));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 289));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 289));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 286));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 286));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 286));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 288));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 288));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 288));
         }
 
         private void BuildScreen300(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 2, 7, 215, 215, 0));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 302));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 302));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 302));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 289));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 289));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 289));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 286));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 286));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 286));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 288));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 288));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 288));
         }
 
         private void BuildScreen301(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 1, 6, 215, 215, 0));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 307));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 307));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 307));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 289));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 289));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 289));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 286));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 286));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 286));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 288));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 288));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 288));
         }
 
         private void BuildScreen302(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 1, 6, 215, 215, 0));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 308));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 308));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 308));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 289));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 289));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 289));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 300));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 300));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 300));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 288));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 288));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 288));
         }
 
         private void BuildScreen303(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 5, 6, 215, 215, 0));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 311));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 311));
@@ -8544,31 +7589,17 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 304));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 304));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 304));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 300));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 300));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 300));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 288));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 288));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 288));
         }
 
         private void BuildScreen304(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 6, 6, 215, 215, 0));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 311));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 305));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 305));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 305));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 300));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 300));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 300));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 305));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 305));
@@ -8579,17 +7610,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(7, 7, 6, 215, 215, 0));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 312));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 312));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 312));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 305));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 305));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 305));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 300));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 300));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 300));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 304));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 304));
@@ -8600,26 +7625,18 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(7, 0, 5, 215, 215, 0));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 312));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 312));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 312));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 307));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 307));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 307));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 300));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 300));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 300));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 304));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 304));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 304));
         }
 
         private void BuildScreen307(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 0, 5, 215, 215, 0));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 313));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 313));
@@ -8642,13 +7659,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(7, 2, 5, 215, 215, 0));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 314));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 314));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 314));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 308));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 308));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 308));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 302));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 302));
@@ -8663,6 +7678,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(7, 3, 5, 215, 215, 0));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 315));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 315));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 315));
@@ -8670,19 +7687,13 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 310));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 310));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 310));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 302));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 302));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 302));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 307));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 307));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 307));
         }
 
         private void BuildScreen310(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 4, 5, 215, 215, 0));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 316));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 316));
@@ -8691,10 +7702,6 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 311));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 311));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 311));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 302));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 302));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 302));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 309));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 309));
@@ -8705,13 +7712,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(7, 5, 5, 215, 215, 0));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 316));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 316));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 316));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 311));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 303));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 303));
@@ -8726,89 +7727,67 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(7, 7, 5, 215, 215, 0));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 319));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 319));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 319));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 311));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 305));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 305));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 305));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 311));
         }
 
         private void BuildScreen313(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 1, 4, 215, 215, 0));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 319));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 319));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 319));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 311));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 305));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 305));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 305));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 311));
         }
 
         private void BuildScreen314(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 2, 4, 215, 215, 0));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 321));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 321));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 321));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 311));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 308));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 308));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 308));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 311));
         }
 
         private void BuildScreen315(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 3, 4, 215, 215, 0));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 322));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 322));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 322));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 311));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 309));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 309));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 309));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 311));
         }
 
         private void BuildScreen316(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 4, 4, 215, 215, 0));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 323));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 323));
@@ -8821,15 +7800,13 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 310));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 310));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 310));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 311));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 311));
         }
 
         private void BuildScreen317(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 5, 4, 215, 215, 0));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 324));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 324));
@@ -8838,10 +7815,6 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 318));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 318));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 318));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 31));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 310));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 310));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 316));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 316));
@@ -8852,17 +7825,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(7, 6, 4, 215, 215, 0));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 325));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 325));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 325));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 319));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 319));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 319));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 31));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 310));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 310));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 317));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 317));
@@ -8873,110 +7840,78 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(7, 7, 4, 215, 215, 0));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 326));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 326));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 326));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 319));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 319));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 319));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 312));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 312));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 312));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 317));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 317));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 317));
         }
 
         private void BuildScreen320(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 1, 3, 215, 215, 0));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 326));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 326));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 326));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 319));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 319));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 319));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 313));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 313));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 313));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 317));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 317));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 317));
         }
 
         private void BuildScreen321(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 2, 3, 215, 215, 0));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 328));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 328));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 328));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 319));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 319));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 319));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 314));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 314));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 314));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 317));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 317));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 317));
         }
 
         private void BuildScreen322(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 3, 3, 215, 215, 0));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 329));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 329));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 329));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 319));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 319));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 319));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 315));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 315));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 315));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 317));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 317));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 317));
         }
 
         private void BuildScreen323(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 4, 3, 215, 215, 0));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 330));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 330));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 330));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 319));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 319));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 319));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 316));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 316));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 316));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 317));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 317));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 317));
         }
 
         private void BuildScreen324(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 5, 3, 215, 215, 0));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 331));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 331));
@@ -8989,23 +7924,17 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 317));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 317));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 317));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 317));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 317));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 317));
         }
 
         private void BuildScreen325(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 6, 3, 215, 215, 0));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 332));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 332));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 332));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 325));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 325));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 325));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 318));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 318));
@@ -9020,51 +7949,33 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(7, 7, 3, 215, 215, 0));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 333));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 333));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 333));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 325));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 325));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 325));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 319));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 319));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 319));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 324));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 324));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 324));
         }
 
         private void BuildScreen327(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 1, 2, 215, 215, 0));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 333));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 333));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 333));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 328));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 328));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 328));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 319));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 319));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 319));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 324));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 324));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 324));
         }
 
         private void BuildScreen328(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 2, 2, 215, 215, 0));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 333));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 333));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 333));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 329));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 329));
@@ -9083,13 +7994,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(7, 3, 2, 215, 215, 0));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 333));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 333));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 333));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 329));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 329));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 329));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 322));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 322));
@@ -9104,26 +8009,22 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(7, 4, 2, 215, 215, 0));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 336));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 336));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 336));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 329));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 329));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 329));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 323));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 323));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 323));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 328));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 328));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 328));
         }
 
         private void BuildScreen331(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 5, 2, 215, 215, 0));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 337));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 337));
@@ -9136,27 +8037,13 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 324));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 324));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 324));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 328));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 328));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 328));
         }
 
         private void BuildScreen332(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 6, 2, 215, 215, 0));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 337));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 332));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 332));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 332));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 324));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 324));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 324));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 331));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 331));
@@ -9167,26 +8054,18 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(7, 7, 2, 215, 215, 0));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 337));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 332));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 332));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 332));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 326));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 326));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 326));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 331));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 331));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 331));
         }
 
         private void BuildScreen334(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 2, 1, 215, 215, 0));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 339));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 339));
@@ -9195,31 +8074,17 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 335));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 335));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 335));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 326));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 326));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 326));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 331));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 331));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 331));
         }
 
         private void BuildScreen335(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 3, 1, 215, 215, 0));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 337));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 336));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 336));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 336));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 326));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 326));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 326));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 334));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 334));
@@ -9230,13 +8095,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(7, 4, 1, 215, 215, 0));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 337));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 336));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 336));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 336));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 330));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 330));
@@ -9251,55 +8110,33 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(7, 5, 1, 215, 215, 0));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 340));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 340));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 340));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 336));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 336));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 336));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 331));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 331));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 331));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 335));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 335));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 335));
         }
 
         private void BuildScreen338(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 1, 0, 215, 215, 0));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 340));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 340));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 340));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 329));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 329));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 329));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 331));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 331));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 331));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 335));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 335));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 335));
         }
 
         private void BuildScreen339(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 2, 0, 215, 215, 0));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 340));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 340));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 340));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 329));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 329));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 329));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 334));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 334));
@@ -9314,9 +8151,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(7, 5, 0, 215, 215, 0));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 340));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 340));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 340));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 341));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 341));
@@ -9325,27 +8160,17 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 337));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 337));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 337));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 338));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 338));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 338));
         }
 
         private void BuildScreen341(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(7, 6, 0, 215, 215, 0));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 340));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 340));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 340));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 342));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 342));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 342));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 337));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 340));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 340));
@@ -9356,17 +8181,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(7, 7, 0, 215, 215, 0));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 340));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 340));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 340));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 343));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 343));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 343));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 337));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 341));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 341));
@@ -9377,17 +8196,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(7, 8, 0, 215, 215, 0));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 340));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 340));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 340));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 343));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 343));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 343));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 337));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 342));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 342));
@@ -9398,89 +8207,51 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 0, 6, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 408));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 408));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 408));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 343));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 343));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 343));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 337));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 342));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 342));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 342));
         }
 
         private void BuildScreen401(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 1, 6, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 409));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 409));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 409));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 343));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 343));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 343));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 337));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 342));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 342));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 342));
         }
 
         private void BuildScreen402(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 3, 6, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 411));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 411));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 411));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 343));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 343));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 343));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 337));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 342));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 342));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 342));
         }
 
         private void BuildScreen403(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 4, 6, 35, 31, 32));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 411));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 411));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 411));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 404));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 404));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 404));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 337));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 342));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 342));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 342));
         }
 
         private void BuildScreen404(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 5, 6, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 413));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 413));
@@ -9489,10 +8260,6 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 405));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 405));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 405));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 337));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 403));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 403));
@@ -9503,6 +8270,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 6, 6, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 414));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 414));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 414));
@@ -9510,10 +8279,6 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 406));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 406));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 406));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 337));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 404));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 404));
@@ -9524,6 +8289,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 7, 6, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 415));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 415));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 415));
@@ -9531,10 +8298,6 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 407));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 407));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 407));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 337));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 405));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 405));
@@ -9545,17 +8308,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 8, 6, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 416));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 416));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 416));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 407));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 407));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 407));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 337));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 337));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 407));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 407));
@@ -9566,9 +8323,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 0, 5, 35, 31, 32));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 416));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 416));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 416));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 409));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 409));
@@ -9577,15 +8332,13 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 408));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 408));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 408));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 407));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 407));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 407));
         }
 
         private void BuildScreen409(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 1, 5, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 418));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 418));
@@ -9608,6 +8361,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 2, 5, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 419));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 419));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 419));
@@ -9615,10 +8370,6 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 411));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 411));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 411));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 401));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 401));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 401));
 
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 409));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 409));
@@ -9628,6 +8379,8 @@ namespace ServiceProxy
         private void BuildScreen411(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 3, 5, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 420));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 420));
@@ -9650,9 +8403,6 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 4, 5, 35, 31, 32));
 
-            // Define this in an overlay/template.
-
-            // TODO: Check if Overlay 1 has been defined.
             commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 421));
@@ -9676,6 +8426,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 5, 5, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 422));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 422));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 422));
@@ -9697,13 +8449,11 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 6, 5, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 423));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 423));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 423));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 414));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 414));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 414));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 405));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 405));
@@ -9718,72 +8468,44 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 7, 5, 35, 31, 32));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 423));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 423));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 423));
-
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 414));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 414));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 414));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 406));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 406));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 406));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 413));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 413));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 413));
         }
 
         private void BuildScreen416(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 8, 5, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 425));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 425));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 425));
 
-            //commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 414));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 414));
-            //commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 414));
-
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 407));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 407));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 407));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 413));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 413));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 413));
         }
 
         private void BuildScreen417(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 0, 4, 35, 31, 32));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 425));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 425));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 425));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 418));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 418));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 418));
-
-            //commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 407));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 407));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 407));
-
-            //commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 413));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 413));
-            //commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 413));
         }
 
         private void BuildScreen418(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 1, 4, 35, 31, 32));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 425));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 425));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 425));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 419));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 419));
@@ -9802,9 +8524,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 2, 4, 35, 31, 32));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 425));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 425));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 425));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 420));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 420));
@@ -9823,9 +8543,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 3, 4, 35, 31, 32));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 425));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 425));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 425));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 421));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 421));
@@ -9844,9 +8562,7 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 4, 4, 35, 31, 32));
 
-            //commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 425));
-            //commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 425));
-            //commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 425));
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 422));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 422));
@@ -9864,6 +8580,8 @@ namespace ServiceProxy
         private void BuildScreen422(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 5, 4, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 431));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 431));
@@ -9886,6 +8604,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 6, 4, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 432));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 432));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 432));
@@ -9907,6 +8627,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 7, 4, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 433));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 433));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 433));
@@ -9920,6 +8642,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 8, 4, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 416));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 416));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 416));
@@ -9928,6 +8652,8 @@ namespace ServiceProxy
         private void BuildScreen426(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 0, 3, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 435));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 435));
@@ -9941,6 +8667,8 @@ namespace ServiceProxy
         private void BuildScreen427(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 1, 3, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 436));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 436));
@@ -9958,6 +8686,8 @@ namespace ServiceProxy
         private void BuildScreen428(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 2, 3, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 437));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 437));
@@ -9980,6 +8710,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 3, 3, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 438));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 438));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 438));
@@ -9993,6 +8725,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 4, 3, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 439));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 439));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 439));
@@ -10002,6 +8736,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 5, 3, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 422));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 422));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 422));
@@ -10010,6 +8746,8 @@ namespace ServiceProxy
         private void BuildScreen432(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 6, 3, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 441));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 441));
@@ -10024,6 +8762,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 7, 3, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 434));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 434));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 434));
@@ -10037,6 +8777,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 8, 3, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 1, 6, 3, 433));
             commands.AddLast(new AddEdgeCommand(4, 1, 7, 3, 433));
             commands.AddLast(new AddEdgeCommand(4, 1, 8, 3, 433));
@@ -10046,6 +8788,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 0, 2, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 435));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 435));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 435));
@@ -10054,6 +8798,8 @@ namespace ServiceProxy
         private void BuildScreen436(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 1, 2, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 445));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 445));
@@ -10067,6 +8813,8 @@ namespace ServiceProxy
         private void BuildScreen437(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 2, 2, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 446));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 446));
@@ -10085,6 +8833,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 3, 2, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 429));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 429));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 429));
@@ -10093,6 +8843,8 @@ namespace ServiceProxy
         private void BuildScreen439(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 4, 2, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 448));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 448));
@@ -10111,6 +8863,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 5, 2, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 449));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 449));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 449));
@@ -10127,6 +8881,8 @@ namespace ServiceProxy
         private void BuildScreen441(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 6, 2, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 450));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 450));
@@ -10149,6 +8905,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 7, 2, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 451));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 451));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 451));
@@ -10162,6 +8920,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 8, 2, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 452));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 452));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 452));
@@ -10171,6 +8931,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 0, 1, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 453));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 453));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 453));
@@ -10179,6 +8941,8 @@ namespace ServiceProxy
         private void BuildScreen445(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 1, 1, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 454));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 454));
@@ -10192,6 +8956,8 @@ namespace ServiceProxy
         private void BuildScreen446(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 2, 1, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 455));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 455));
@@ -10214,6 +8980,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 3, 1, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 456));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 456));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 456));
@@ -10226,6 +8994,8 @@ namespace ServiceProxy
         private void BuildScreen448(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 4, 1, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 457));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 457));
@@ -10243,6 +9013,8 @@ namespace ServiceProxy
         private void BuildScreen449(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 5, 1, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 458));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 458));
@@ -10265,6 +9037,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 6, 1, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 459));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 459));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 459));
@@ -10282,6 +9056,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 7, 1, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 442));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 442));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 442));
@@ -10291,6 +9067,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 8, 1, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 1, 0, 461));
             commands.AddLast(new AddEdgeCommand(4, 8, 1, 0, 461));
             commands.AddLast(new AddEdgeCommand(4, 9, 1, 0, 461));
@@ -10299,6 +9077,8 @@ namespace ServiceProxy
         private void BuildScreen453(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 0, 0, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 454));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 454));
@@ -10313,6 +9093,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 1, 0, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 445));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 445));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 445));
@@ -10326,6 +9108,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 2, 0, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 446));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 446));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 446));
@@ -10334,6 +9118,8 @@ namespace ServiceProxy
         private void BuildScreen456(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 3, 0, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 457));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 457));
@@ -10348,6 +9134,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 4, 0, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 448));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 448));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 448));
@@ -10357,6 +9145,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 5, 0, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 449));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 449));
             commands.AddLast(new AddEdgeCommand(4, 9, 13, 2, 449));
@@ -10365,6 +9155,8 @@ namespace ServiceProxy
         private void BuildScreen459(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 6, 0, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 460));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 460));
@@ -10379,6 +9171,8 @@ namespace ServiceProxy
         {
             commands.AddLast(new DeclareCaveCommand(8, 7, 0, 35, 31, 32));
 
+            commands.AddLast(new ApplyOverlayCommand(1));
+
             commands.AddLast(new AddEdgeCommand(4, 15, 6, 1, 461));
             commands.AddLast(new AddEdgeCommand(4, 15, 7, 1, 461));
             commands.AddLast(new AddEdgeCommand(4, 15, 8, 1, 461));
@@ -10391,6 +9185,8 @@ namespace ServiceProxy
         private void BuildScreen461(LinkedList<BuildCommand> commands)
         {
             commands.AddLast(new DeclareCaveCommand(8, 8, 0, 35, 31, 32));
+
+            commands.AddLast(new ApplyOverlayCommand(1));
 
             commands.AddLast(new AddEdgeCommand(4, 7, 13, 2, 452));
             commands.AddLast(new AddEdgeCommand(4, 8, 13, 2, 452));
@@ -10410,9 +9206,6 @@ namespace ServiceProxy
             commands.AddLast(new AddBorderCommand(4, 4, 2));
             commands.AddLast(new AddBorderCommand(4, 5, 2));
             commands.AddLast(new AddBorderCommand(4, 6, 2));
-            commands.AddLast(new AddBorderCommand(4, 7, 2));
-            commands.AddLast(new AddBorderCommand(4, 8, 2));
-            commands.AddLast(new AddBorderCommand(4, 9, 2));
             commands.AddLast(new AddBorderCommand(4, 10, 2));
             commands.AddLast(new AddBorderCommand(4, 11, 2));
             commands.AddLast(new AddBorderCommand(4, 12, 2));
@@ -10428,15 +9221,6 @@ namespace ServiceProxy
             commands.AddLast(new AddBorderCommand(4, 2, 5));
             commands.AddLast(new AddBorderCommand(4, 14, 5));
 
-            commands.AddLast(new AddBorderCommand(4, 2, 6));
-            commands.AddLast(new AddBorderCommand(4, 14, 6));
-
-            commands.AddLast(new AddBorderCommand(4, 2, 7));
-            commands.AddLast(new AddBorderCommand(4, 14, 7));
-
-            commands.AddLast(new AddBorderCommand(4, 2, 8));
-            commands.AddLast(new AddBorderCommand(4, 14, 8));
-
             commands.AddLast(new AddBorderCommand(4, 2, 9));
             commands.AddLast(new AddBorderCommand(4, 14, 9));
 
@@ -10451,9 +9235,6 @@ namespace ServiceProxy
             commands.AddLast(new AddBorderCommand(4, 4, 12));
             commands.AddLast(new AddBorderCommand(4, 5, 12));
             commands.AddLast(new AddBorderCommand(4, 6, 12));
-            commands.AddLast(new AddBorderCommand(4, 7, 12));
-            commands.AddLast(new AddBorderCommand(4, 8, 12));
-            commands.AddLast(new AddBorderCommand(4, 9, 12));
             commands.AddLast(new AddBorderCommand(4, 10, 12));
             commands.AddLast(new AddBorderCommand(4, 11, 12));
             commands.AddLast(new AddBorderCommand(4, 12, 12));
