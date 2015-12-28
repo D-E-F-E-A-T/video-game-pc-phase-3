@@ -65,6 +65,8 @@ XMFLOAT3 LookaheadCalculator::CalculateVector(
 			retVal = { -1.0f * fLocationRatio.x, 0.0f, 0.0f };
 			break;
 	}
+
+	return retVal;
 }
 
 float LookaheadCalculator::CalculateGridsPerFrame(
