@@ -15,3 +15,44 @@
 */
 #include "pch.h"
 #include "LookaheadCalculator.h"
+
+float LookaheadCalculator::CalculateGridsPerFrame(
+	Movable * pMovable, 
+	int nHeading,
+	float fVelocity, 
+	int nFramesPerSecond)
+{
+	// Calculate the frames/grid at the current FPS.
+	//	Ex: 60 FPS * 5 (frames per grid) = 300 frames per grid.
+	float fFramesPerGrid = (float)nFramesPerSecond * fVelocity;
+
+	// Length of each ratio division.
+	// Ex: 1.0f / 300 (frames per grid) = 0.00333 grid / frame. gy
+	//	Or ("Move 0.003333 grid for every frame")
+	float fGridsPerFrame = 1.0f / fFramesPerGrid;
+
+/*
+	XMFLOAT3 retVal;
+
+	switch (nHeading)
+	{
+	case NORTH:
+		retVal = { 0.0f, -1.0f * fGridsPerFrame, 0.0f };
+		break;
+
+	case EAST:
+		retVal = { fGridsPerFrame, 0.0f, 0.0f };
+		break;
+
+	case SOUTH:
+		retVal = { 0.0f, fGridsPerFrame, 0.0f };
+		break;
+
+	case WEST:
+		retVal = { -1.0f * fGridsPerFrame, 0.0f, 0.0f };
+		break;
+	}
+*/
+
+	return retVal;
+}

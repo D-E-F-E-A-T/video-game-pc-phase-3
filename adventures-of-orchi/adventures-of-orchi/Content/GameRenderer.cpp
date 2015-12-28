@@ -79,7 +79,7 @@ GameRenderer::GameRenderer(const shared_ptr<DeviceResources>& deviceResources, C
 	m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pPlayer);
 	m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pSword);
 
-	m_nSwordDirection = SOUTH;
+	m_nHeading = NORTH;
 
 	m_pCollided = new list<Space *>;
 }
@@ -169,8 +169,6 @@ void GameRenderer::CreateWindowSizeDependentResources()
 // Called once per frame, rotates the cube and calculates the model and view matrices.
 int GameRenderer::Update(DX::StepTimer const& timer)
 {
-	uint32 fps = timer.GetFramesPerSecond();
-
 	// Not handling portrait mode for this release.
 	if (m_nOrientation == PORTRAIT)
 		return 1;
@@ -191,6 +189,41 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 	m_xboxController.FetchControllerInput();
 
 	UpdateSword();
+
+	// if the gamepad is not connected, check the keyboard.
+	if (m_xboxController.GetIsControllerConnected())
+	{
+		// This would actually, detect a collision one interation
+		//	too late.  Consider detection earlier since
+		//	this could lead to weird behavior, depending
+		//	on how fast the sprites are moving.
+		//	For example, if sprites are moving very quickly,
+		//	collision would occur when the sprites 
+		//	have deeply intersected each other.
+		//  For slow moving sprites, this would not be 
+		//	much of a problem.
+		m_xboxController.MovePlayer(
+			m_pPlayer,
+			m_nCollisionState,
+			&m_nHeading);
+
+		if (m_xboxController.CheckAButton())
+			ThrowSword(m_nHeading);
+	}
+	else // Use the Touch Screen controls
+	{
+		for (int i = NORTH; i <= WEST; i++)
+		{
+			if (m_bTouchScreenButtonPressed[i])
+			{
+				m_pPlayer->Move(i, m_nCollisionState, PLAYER_MOVE_VELOCITY);
+				m_nHeading = i;
+			}
+		}
+
+		if (m_bTouchScreenButtonPressed[A_BUTTON])
+			ThrowSword(m_nHeading);
+	}
 
 
 	m_broadCollisionDetectionStrategy->Detect(
@@ -240,7 +273,6 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		m_pCollided,
 		XMFLOAT3{ 0.0f, 0.0f, 0.0f });
 
-
 	// First, look for any collided stairs.
 	Space * pCollidedStairs = m_pPortalCollisionDetectionStrategy->Detect(
 		m_pPlayer,
@@ -263,7 +295,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pPlayer);
 		m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pSword);
 
-		m_nSwordDirection = SOUTH;
+		m_nHeading = SOUTH;
 
 		m_pCollided->clear();
 
@@ -272,12 +304,32 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 	m_pCollided->clear();
 
+	XMFLOAT3 vecDifferential = m_lookaheadCalculator.Calculate(
+		m_pPlayer,
+		m_nHeading,
+		WALKING_VELOCITY,
+		timer.GetFramesPerSecond());
+
+#ifdef _DEBUG
+	char buffer[64];
+	XMVECTOR vecWireframeCurrent = XMLoadFloat3(&vecDifferential);
+
+	sprintf_s(
+		buffer,
+		"%f %f %f",
+		XMVectorGetX(vecWireframeCurrent),
+		XMVectorGetY(vecWireframeCurrent),
+		XMVectorGetZ(vecWireframeCurrent));
+#endif // _DEBUG
+
 	m_broadCollisionDetectionStrategy->Detect(
 		LAYER_COLLIDABLES,
 		m_pPlayer,
 		m_pCurrentSubdivision->GetStack(),
 		m_pCollided,
-		XMFLOAT3{ 0.0f, 0.0f, 0.0f });
+		vecDifferential);
+
+
 
 	// Second, look for any collided trees, etc.
 	if (m_pCollided->size() > 0)
@@ -294,7 +346,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 				&grid,
 				intersectRect,
 				float2(m_fWindowWidth, m_fWindowHeight),
-				XMFLOAT3{ 0.0f, 0.0f, 0.0f });
+				vecDifferential);
 
 #ifdef _DEBUG
 			if (m_nCollisionState != NO_INTERSECTION)
@@ -320,45 +372,6 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			}
 #endif // _DEBUG
 		}
-	}
-
-	// TODO: Code toward a ControllerView interface.
-
-	// if the gamepad is not connected, check the keyboard.
-	if (m_xboxController.GetIsControllerConnected())
-	{
-		// This would actually, detect a collision one interation
-		//	too late.  Consider detection earlier since
-		//	this could lead to weird behavior, depending
-		//	on how fast the sprites are moving.
-		//	For example, if sprites are moving very quickly,
-		//	collision would occur when the sprites 
-		//	have deeply intersected each other.
-		//  For slow moving sprites, this would not be 
-		//	much of a problem.
-		m_xboxController.MovePlayer(
-			m_pPlayer,
-			m_nCollisionState,
-			&m_nSwordDirection);
-
-		if (m_xboxController.CheckAButton())
-		{
-			ThrowSword(m_nSwordDirection);
-		}
-	}
-	else
-	{
-		for (int i = NORTH; i <= WEST; i++)
-		{
-			if (m_bButtonPressed[i])
-			{
-				m_pPlayer->Move(i, m_nCollisionState, PLAYER_MOVE_VELOCITY);
-				m_nSwordDirection = i;
-			}
-		}
-
-		if (m_bButtonPressed[A_BUTTON])
-			ThrowSword(m_nSwordDirection);
 	}
 
 	return 1;
@@ -444,18 +457,18 @@ void GameRenderer::Render()
 	{
 		m_touchScreenController.RenderButtonTouchControls(
 			float2{ m_fWindowWidth, m_fWindowHeight },
-			m_bButtonPressed[X_BUTTON],
-			m_bButtonPressed[Y_BUTTON],
-			m_bButtonPressed[A_BUTTON],
-			m_bButtonPressed[B_BUTTON],
+			m_bTouchScreenButtonPressed[X_BUTTON],
+			m_bTouchScreenButtonPressed[Y_BUTTON],
+			m_bTouchScreenButtonPressed[A_BUTTON],
+			m_bTouchScreenButtonPressed[B_BUTTON],
 			m_deviceResources);
 
 		m_touchScreenController.RenderDirectionalTouchControls(
 			float2{ m_fWindowWidth, m_fWindowHeight },
-			m_bButtonPressed[NORTH_BUTTON],
-			m_bButtonPressed[EAST_BUTTON],
-			m_bButtonPressed[SOUTH_BUTTON],
-			m_bButtonPressed[WEST_BUTTON],
+			m_bTouchScreenButtonPressed[NORTH_BUTTON],
+			m_bTouchScreenButtonPressed[EAST_BUTTON],
+			m_bTouchScreenButtonPressed[SOUTH_BUTTON],
+			m_bTouchScreenButtonPressed[WEST_BUTTON],
 			m_deviceResources);
 	}
 
@@ -848,29 +861,29 @@ void GameRenderer::UpdateSword()
 }
 
 
-
+// TODO: Use bit masking.
 void GameRenderer::OnPointerReleased()
 {
-	if (m_bButtonPressed[NORTH_BUTTON] ||
-		m_bButtonPressed[EAST_BUTTON] ||
-		m_bButtonPressed[SOUTH_BUTTON] ||
-		m_bButtonPressed[WEST_BUTTON])
+	if (m_bTouchScreenButtonPressed[NORTH_BUTTON] ||
+		m_bTouchScreenButtonPressed[EAST_BUTTON] ||
+		m_bTouchScreenButtonPressed[SOUTH_BUTTON] ||
+		m_bTouchScreenButtonPressed[WEST_BUTTON])
 	{
-		m_bButtonPressed[NORTH_BUTTON] = false;
-		m_bButtonPressed[EAST_BUTTON] = false;
-		m_bButtonPressed[SOUTH_BUTTON] = false;
-		m_bButtonPressed[WEST_BUTTON] = false;
+		m_bTouchScreenButtonPressed[NORTH_BUTTON] = false;
+		m_bTouchScreenButtonPressed[EAST_BUTTON] = false;
+		m_bTouchScreenButtonPressed[SOUTH_BUTTON] = false;
+		m_bTouchScreenButtonPressed[WEST_BUTTON] = false;
 	}
 
-	if (m_bButtonPressed[Y_BUTTON] ||
-		m_bButtonPressed[B_BUTTON] ||
-		m_bButtonPressed[A_BUTTON] ||
-		m_bButtonPressed[X_BUTTON])
+	if (m_bTouchScreenButtonPressed[Y_BUTTON] ||
+		m_bTouchScreenButtonPressed[B_BUTTON] ||
+		m_bTouchScreenButtonPressed[A_BUTTON] ||
+		m_bTouchScreenButtonPressed[X_BUTTON])
 	{
-		m_bButtonPressed[Y_BUTTON] = false;
-		m_bButtonPressed[B_BUTTON] = false;
-		m_bButtonPressed[A_BUTTON] = false;
-		m_bButtonPressed[X_BUTTON] = false;
+		m_bTouchScreenButtonPressed[Y_BUTTON] = false;
+		m_bTouchScreenButtonPressed[B_BUTTON] = false;
+		m_bTouchScreenButtonPressed[A_BUTTON] = false;
+		m_bTouchScreenButtonPressed[X_BUTTON] = false;
 	}
 }
 
@@ -887,7 +900,7 @@ void GameRenderer::OnPointerPressed(ResolutionScale resolutionScale, float fX, f
 				i,
 				float2{ m_fWindowWidth, m_fWindowHeight },
 				float2{ fX * fScaleFactor, fY * fScaleFactor }))
-				m_bButtonPressed[i] = true;
+				m_bTouchScreenButtonPressed[i] = true;
 		}
 	}
 }

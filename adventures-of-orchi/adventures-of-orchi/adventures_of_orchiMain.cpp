@@ -188,11 +188,11 @@ void adventures_of_orchiMain::OnDeviceLost()
 // Notifies renderers that device resources may now be recreated.
 void adventures_of_orchiMain::OnDeviceRestored()
 {
-#ifdef _DEBUG
 	m_gameRenderer->CreateDeviceDependentResources();
-#endif // _DEBUG
 
+#ifdef _DEBUG
 	m_fpsTextRenderer->CreateDeviceDependentResources();
+#endif // _DEBUG
 
 	CreateWindowSizeDependentResources();
 }

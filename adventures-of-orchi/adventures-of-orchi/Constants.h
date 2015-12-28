@@ -486,3 +486,9 @@
 #ifndef NUM_BUTTONS 
 #define NUM_BUTTONS 8
 #endif // NUM_BUTTONS
+
+// It takes 5.0 seconds to go from 
+//	end-to-end of the grid.
+#ifndef WALKING_VELOCITY
+#define WALKING_VELOCITY 5.0f
+#endif // WALKING_VELOCITY

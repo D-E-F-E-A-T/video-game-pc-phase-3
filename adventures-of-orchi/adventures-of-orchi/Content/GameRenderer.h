@@ -36,6 +36,7 @@ limitations under the License.
 #include "..\Factory\WorldFactory.h"
 #include "..\Controller\TouchScreenControllerView.h"
 #include "..\Controller\KeyboardControllerView.h"
+#include "..\Collision\LookaheadCalculator.h"
 
 using namespace Windows::UI::Core;
 using namespace std;
@@ -117,9 +118,12 @@ private:
 	PortalCollisionStrategy * m_pPortalCollisionDetectionStrategy;
 
 	list<Space *> * m_pCollided;
+
 #ifdef _DEBUG
 	void HighlightRegion(int column, int row, ComPtr<ID2D1SolidColorBrush> brush);
 	void HighlightRegion(int * pLocation, ComPtr<ID2D1SolidColorBrush> brush);
+	vector<D2D1_RECT_F> m_collidedRects;
+	vector<int> m_collidedRectStatuses;
 #endif // _DEBUG
 
 	DWRITE_TEXT_RANGE m_textRange;
@@ -128,12 +132,12 @@ private:
 	Region * m_pRegion;
 	WorldFactory m_worldFactory;
 
-#ifdef _DEBUG
-	vector<D2D1_RECT_F> m_collidedRects;
-	vector<int> m_collidedRectStatuses;
-#endif // _DEBUG
+	// This is needed so that the Sword is aimed
+	//	in the direction the Player currently faces
+	//	and NOT the direction the controller currently
+	//	faces.
+	int m_nHeading;
 
-	int m_nSwordDirection;
 	LifePanel m_lifePanel;
 	MapPanel m_mapPanel;
 	ButtonsPanel m_buttonsPanel;
@@ -147,9 +151,12 @@ private:
 	UserInteractionMode m_uiMode;
 	KeyboardControllerView m_keyboardController;
 
-	bool m_bButtonPressed[NUM_BUTTONS];
+	// TODO: Use bit operations.
+	bool m_bTouchScreenButtonPressed[NUM_BUTTONS];
 
 	// TODO: 
 	int m_nOrientation;
+
+	LookaheadCalculator m_lookaheadCalculator;
 };
 

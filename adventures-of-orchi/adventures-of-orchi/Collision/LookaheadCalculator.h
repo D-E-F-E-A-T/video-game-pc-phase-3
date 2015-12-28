@@ -20,7 +20,11 @@
 class LookaheadCalculator
 {
 public:
-	float2 PredictLocation(Movable * pMovable, float fRatioVelocity, int nFramePerSecond);
+	float CalculateGridsPerFrame(
+		Movable * pMovable, 
+		int nHeading,
+		float fVelocity, 
+		int nFramesPerSecond);
 
 protected:
 
