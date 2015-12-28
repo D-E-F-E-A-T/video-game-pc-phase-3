@@ -67,6 +67,33 @@ float Space::CalculateDistance(Space * space)
 		space->GetLocationRatio());
 }
 
+float Space::CalculateDistance(Space * space, XMFLOAT3 vec3Differential)
+{
+	XMVECTOR vecLocation = 
+		XMVectorSet(
+			space->GetLocationRatio().x,
+			space->GetLocationRatio().y,
+			0.0f,
+			0.0f);
+
+	XMVECTOR vecDifferential = XMLoadFloat3(&(vec3Differential));
+
+	XMVECTOR vecResultant = vecLocation + vecDifferential;
+
+	float2 fResultant
+	{ 
+		XMVectorGetX(vecResultant),
+		XMVectorGetY(vecResultant)
+	};
+
+	return Utils::CalculateDistance(
+		m_fLocationRatio,
+		fResultant);
+
+}
+
+
+
 void Space::Render(
 	ComPtr<ID3D11RenderTargetView> renderTargetView,
 	float2 fWindowDimensions,

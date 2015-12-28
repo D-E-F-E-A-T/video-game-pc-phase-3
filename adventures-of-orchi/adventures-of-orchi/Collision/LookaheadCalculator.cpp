@@ -16,6 +16,57 @@
 #include "pch.h"
 #include "LookaheadCalculator.h"
 
+XMFLOAT3 LookaheadCalculator::CalculateVector(
+	Movable * pMovable,
+	int nHeading,
+	float2 fWindowSize,
+	float fVelocity,
+	int nFramesPerSecond)
+{
+	float fGridsPerFrame = CalculateGridsPerFrame(
+		pMovable,
+		nHeading,
+		fVelocity,
+		nFramesPerSecond);
+
+	float2 fGridDimensions =
+	{
+		fWindowSize.x * (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO),
+		fWindowSize.y * (1.0f - TOP_MARGIN_RATIO - BOTTOM_MARGIN_RATIO)
+	};
+
+	float2 fGridPixelsPerFrame = 
+		fGridsPerFrame * 
+		float2 { fGridDimensions.x, fGridDimensions.y };
+
+	float2 fLocationRatio = 
+	{
+		fGridPixelsPerFrame.x / fWindowSize.x,
+		fGridPixelsPerFrame.y / fWindowSize.y
+	};
+
+	XMFLOAT3 retVal;
+
+	switch (nHeading)
+	{
+		case NORTH:
+			retVal = { 0.0f, -1.0f * fLocationRatio.y, 0.0f };
+			break;
+
+		case EAST:
+			retVal = { fLocationRatio.x, 0.0f, 0.0f };
+			break;
+
+		case SOUTH:
+			retVal = { 0.0f, fLocationRatio.y, 0.0f };
+			break;
+
+		case WEST:
+			retVal = { -1.0f * fLocationRatio.x, 0.0f, 0.0f };
+			break;
+	}
+}
+
 float LookaheadCalculator::CalculateGridsPerFrame(
 	Movable * pMovable, 
 	int nHeading,
@@ -23,36 +74,11 @@ float LookaheadCalculator::CalculateGridsPerFrame(
 	int nFramesPerSecond)
 {
 	// Calculate the frames/grid at the current FPS.
-	//	Ex: 60 FPS * 5 (frames per grid) = 300 frames per grid.
+	//	Ex: 60 FPS * 5 (seconds per grid) = 300 frames per grid.
 	float fFramesPerGrid = (float)nFramesPerSecond * fVelocity;
 
 	// Length of each ratio division.
 	// Ex: 1.0f / 300 (frames per grid) = 0.00333 grid / frame. gy
 	//	Or ("Move 0.003333 grid for every frame")
-	float fGridsPerFrame = 1.0f / fFramesPerGrid;
-
-/*
-	XMFLOAT3 retVal;
-
-	switch (nHeading)
-	{
-	case NORTH:
-		retVal = { 0.0f, -1.0f * fGridsPerFrame, 0.0f };
-		break;
-
-	case EAST:
-		retVal = { fGridsPerFrame, 0.0f, 0.0f };
-		break;
-
-	case SOUTH:
-		retVal = { 0.0f, fGridsPerFrame, 0.0f };
-		break;
-
-	case WEST:
-		retVal = { -1.0f * fGridsPerFrame, 0.0f, 0.0f };
-		break;
-	}
-*/
-
-	return retVal;
+	return 1.0f / fFramesPerGrid;
 }

@@ -20,13 +20,21 @@
 class LookaheadCalculator
 {
 public:
+	XMFLOAT3 CalculateVector(
+		Movable * pMovable,
+		int nHeading,
+		float2 fWindowSize,
+		float fVelocity,
+		int nFramesPerSecond);
+
+protected:
 	float CalculateGridsPerFrame(
 		Movable * pMovable, 
 		int nHeading,
 		float fVelocity, 
 		int nFramesPerSecond);
 
-protected:
+
 
 private:
 };

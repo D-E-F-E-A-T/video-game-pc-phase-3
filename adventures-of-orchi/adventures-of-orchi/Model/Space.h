@@ -50,7 +50,8 @@ public:
 	// Only used by the sword
 	void SetLocationRatio(float2 fLocationRatio) { m_fLocationRatio = fLocationRatio; }
 
-	virtual float CalculateDistance(Space * space);
+	float CalculateDistance(Space * space);
+	float CalculateDistance(Space * space, XMFLOAT3 vecDifferential);
 
 	vector<Space *> DetectCollisions() {}
 
@@ -106,8 +107,28 @@ public:
 protected:
 	Renderable * m_pRenderable;
 	
+	// ***************************************************
 	// Ratio relative to the entire screen, not just the grid.
+	// 
+	// Ex: If screen dimensions are 1920 x 1080.
+	//   LEFT_MARGIN_RATIO = 0.2
+	//   RIGHT_MARGIN_RATIO = 0.2
+	//   TOP_MARGIN_RATIO = 0.0
+	//   BOTTOM_MARGIN_RATIO = 0.0
+	//   NUM_GRID_COLUMNS = 17
+	//   NUM_GRID_ROWS = 15
+	// 
+	// If Space is located at grid location (0,0).
+	// 
+	// Then, m_fLocationRatio for this space is at
+	//   (.2176, 0.0333333).
+	// 
+	// Relative to the Grid is .0176.
+	// However, relative to the entire screen is .2176
+	//	due to the LEFT_MARGIN_RATIO.
+	// ***************************************************
 	float2 m_fLocationRatio;
+
 	float m_fRotationInRadians;
 
 	// Ratio relative to the entire screen, not just the grid.

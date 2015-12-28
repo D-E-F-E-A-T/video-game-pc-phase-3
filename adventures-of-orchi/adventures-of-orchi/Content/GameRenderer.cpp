@@ -304,9 +304,10 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 	m_pCollided->clear();
 
-	XMFLOAT3 vecDifferential = m_lookaheadCalculator.Calculate(
+	XMFLOAT3 vecDifferential = m_lookaheadCalculator.CalculateVector(
 		m_pPlayer,
 		m_nHeading,
+		float2 { m_fWindowWidth, m_fWindowHeight },
 		WALKING_VELOCITY,
 		timer.GetFramesPerSecond());
 
