@@ -37,13 +37,12 @@ NarrowCollisionStrategy::~NarrowCollisionStrategy()
 }
 
 int NarrowCollisionStrategy::Detect(
-	ID3D11DeviceContext2 * context,
-	ID3D11Device2 * device,
 	Player * pPlayer,
 	Space * collided,
 	Grid * grid, // Player location is the coordinates of the center of the sprite.
 	int * intersectRect,
-	float2 screenDimensions)
+	float2 screenDimensions,
+	XMFLOAT3 vecDifferential)
 {
 	bool bIntersection = false;
 

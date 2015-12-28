@@ -27,22 +27,15 @@ public:
 	~NarrowCollisionStrategy();
 
 	int Detect(
-		ID3D11DeviceContext2 * context,
-		ID3D11Device2 * device,
 		Player * player,
 		Space * collided, 
 		Grid * grid,
 		int * intersectRect,
-		float2 screenDimensions);
+		float2 screenDimensions,
+		XMFLOAT3 vecDifferential);
 
 protected:
 private:
-
-	//uint8_t * readPixels(
-	//	ID3D11DeviceContext2 * context,
-	//	ID3D11Device2 * device,
-	//	ID3D11Texture2D * texture,
-	//	int * dimensions);
 
 	bool IntersectRect(
 		int * playerTopLeft,

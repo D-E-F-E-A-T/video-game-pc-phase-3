@@ -16,7 +16,7 @@ limitations under the License.
 #include "pch.h"
 #include "BroadCollisionStrategy.h"
 #include <vector>
-#include "Model\Player.h"
+#include "Model\Movable.h"
 #include "Utils.h"
 #include <iostream>
 #include "Utils.h"
@@ -30,22 +30,25 @@ BroadCollisionStrategy::BroadCollisionStrategy()
 
 void BroadCollisionStrategy::Detect(
 	int nLayer,
-	Player * pPlayer,
+	Movable * pMovable,
 	Stack * stack,
-	list<Space *> * retVal)
+	list<Space *> * retVal,
+	XMFLOAT3 vecDifferential)
 {
 	Calculate(
 		nLayer,
-		pPlayer, 
+		pMovable,
 		stack, 
-		retVal);
+		retVal,
+		vecDifferential);
 }
 
 int BroadCollisionStrategy::Calculate(
 	int nLayer, 
-	Player * player, 
+	Movable * pMovable,
 	Stack * stack,
-	list<Space *> * retVal)
+	list<Space *> * retVal,
+	XMFLOAT3 vecDifferential)
 {
 	int numLayers = stack->GetNumLayers();
 
@@ -55,7 +58,7 @@ int BroadCollisionStrategy::Calculate(
 		iterator != stack->Get(nLayer)->GetSpaces()->end();
 		iterator++)
 	{
-		if (IsClose(player, *(iterator)))
+		if (IsClose(pMovable, *(iterator), vecDifferential))
 		{
 			retVal->push_back(*(iterator));
 		}
@@ -65,10 +68,11 @@ int BroadCollisionStrategy::Calculate(
 }
 
 bool BroadCollisionStrategy::IsClose(
-	Player * player, 
-	Space * obstacle)
+	Movable * pMovable,
+	Space * obstacle,
+	XMFLOAT3 vecDifferential)
 {
-	float distance = obstacle->CalculateDistance(player);
+	float distance = obstacle->CalculateDistance(pMovable);
 	
 	return (distance < 0.075f);		
 }

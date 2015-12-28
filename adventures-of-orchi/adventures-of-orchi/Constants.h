@@ -311,14 +311,6 @@
 #define DECLARE_WORLD_COMMAND 12
 #endif // DECLARE_WORLD_COMMAND
 
-
-
-
-
-#ifndef USE_PORTALS
-#define USE_PORTALS
-#endif // USE_PORTALS
-
 #ifndef BUTTON_SIZE_RATIO
 #define BUTTON_SIZE_RATIO 0.025f
 #endif // BUTTON_RATIO

@@ -193,12 +193,12 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 	UpdateSword();
 
 
-#ifdef USE_PORTALS
 	m_broadCollisionDetectionStrategy->Detect(
 		LAYER_2D,
 		m_pPlayer,
 		m_pCurrentSubdivision->GetStack(),
-		m_pCollided);
+		m_pCollided,
+		XMFLOAT3 { 0.0f, 0.0f, 0.0f });
 
 	// Idea: Precedence order of collided objects.
 	//	For example, if colliding with a tree
@@ -226,9 +226,6 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		return 0;
 	}
 
-
-#endif // USE_PORTALS
-
 #ifdef _DEBUG
 	m_collidedRects.clear();
 	m_collidedRectStatuses.clear();
@@ -240,7 +237,8 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		LAYER_PORTALS,
 		m_pPlayer,
 		m_pCurrentSubdivision->GetStack(),
-		m_pCollided);
+		m_pCollided,
+		XMFLOAT3{ 0.0f, 0.0f, 0.0f });
 
 
 	// First, look for any collided stairs.
@@ -278,7 +276,8 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		LAYER_COLLIDABLES,
 		m_pPlayer,
 		m_pCurrentSubdivision->GetStack(),
-		m_pCollided);
+		m_pCollided,
+		XMFLOAT3{ 0.0f, 0.0f, 0.0f });
 
 	// Second, look for any collided trees, etc.
 	if (m_pCollided->size() > 0)
@@ -290,13 +289,12 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			int intersectRect[4];
 
 			m_nCollisionState = m_pNarrowCollisionDetectionStrategy->Detect(
-				DEVICE_CONTEXT_3D,
-				DEVICE_3D,
 				m_pPlayer,
 				*iterator,
 				&grid,
 				intersectRect,
-				float2(m_fWindowWidth, m_fWindowHeight));
+				float2(m_fWindowWidth, m_fWindowHeight),
+				XMFLOAT3{ 0.0f, 0.0f, 0.0f });
 
 #ifdef _DEBUG
 			if (m_nCollisionState != NO_INTERSECTION)

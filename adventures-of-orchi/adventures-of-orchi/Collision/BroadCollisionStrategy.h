@@ -15,7 +15,7 @@ limitations under the License.
 */
 #pragma once
 #include "pch.h"
-#include "Model\Player.h"
+#include "Model\Movable.h"
 #include "Model\Space.h"
 #include "Model\Stack.h"
 
@@ -23,12 +23,26 @@ class BroadCollisionStrategy
 {
 public:
 	BroadCollisionStrategy();
-	void Detect(int nLayer, Player * pPlayer, Stack * stack, list<Space *> * space);
+
+	void Detect(
+		int nLayer, 
+		Movable * pMovable, 
+		Stack * stack, 
+		list<Space *> * space, 
+		XMFLOAT3 vecDifferential);
 
 protected:
-	int Calculate(int nLayer, Player * player, Stack * stack, list<Space *> * retVal);
+	int Calculate(
+		int nLayer, 
+		Movable * pMovable, 
+		Stack * stack, 
+		list<Space *> * retVal,
+		XMFLOAT3 vecDifferential);
 
-	bool IsClose(Player * player, Space * data);
+	bool IsClose(
+		Movable * pMovable, 
+		Space * data,
+		XMFLOAT3 vecDifferential);
 
 private:
 };

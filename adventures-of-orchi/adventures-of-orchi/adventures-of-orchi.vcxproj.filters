@@ -83,6 +83,9 @@
     <Filter Include="Wireframe">
       <UniqueIdentifier>{8a2670fa-41a8-4018-8086-502e2579692c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AI">
+      <UniqueIdentifier>{2f129434-27f6-42af-a59c-52e5945487b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -206,14 +209,14 @@
     <ClCompile Include="Model\Border.cpp">
       <Filter>Model</Filter>
     </ClCompile>
-    <ClCompile Include="Collision\PredictiveCollisionStrategy.cpp">
-      <Filter>Collision</Filter>
-    </ClCompile>
     <ClCompile Include="Controller\KeyboardControllerView.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
     <ClCompile Include="Controller\AIControllerView.cpp">
       <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision\LookaheadCalculator.cpp">
+      <Filter>Collision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -542,11 +545,11 @@
     <ClInclude Include="Controller\ControllerView.h">
       <Filter>Controller</Filter>
     </ClInclude>
-    <ClInclude Include="Collision\PredictiveCollisionStrategy.h">
-      <Filter>Collision</Filter>
-    </ClInclude>
     <ClInclude Include="Controller\AIControllerView.h">
       <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision\LookaheadCalculator.h">
+      <Filter>Collision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

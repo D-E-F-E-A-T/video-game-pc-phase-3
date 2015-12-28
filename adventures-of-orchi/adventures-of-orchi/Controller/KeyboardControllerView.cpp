@@ -22,11 +22,11 @@ void KeyboardControllerView::HandleKeystroke(
 	KeyEventArgs^ args,
 	float fVelocity)
 {
-	if (args->VirtualKey == Windows::System::VirtualKey::P)       // Pause
+	if (args->VirtualKey == Windows::System::VirtualKey::P)
 	{
+		// Pause
 	}
-
-	if (args->VirtualKey == Windows::System::VirtualKey::Left)
+	else if (args->VirtualKey == Windows::System::VirtualKey::Left)
 	{
 		pPlayer->MoveWest(nCollisionState, fVelocity);
 	}

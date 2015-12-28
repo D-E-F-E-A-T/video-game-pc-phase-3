@@ -13,5 +13,16 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-#include "pch.h"
-#include "PredictiveCollisionStrategy.h"
+#pragma once
+#include "..\Model\Movable.h"
+
+// Calculate the next location.
+class LookaheadCalculator
+{
+public:
+	float2 PredictLocation(Movable * pMovable, float fRatioVelocity, int nFramePerSecond);
+
+protected:
+
+private:
+};
