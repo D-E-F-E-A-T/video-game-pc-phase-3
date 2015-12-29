@@ -24,6 +24,8 @@ XMFLOAT3 LookaheadCalculator::CalculateVector(
 	float fVelocity,
 	int nFramesPerSecond)
 {
+	XMFLOAT3 retVal;
+
 	float fGridsPerFrame = CalculateGridsPerFrame(
 		pMovable,
 		nHeading,
@@ -36,35 +38,33 @@ XMFLOAT3 LookaheadCalculator::CalculateVector(
 		fWindowSize.y * (1.0f - TOP_MARGIN_RATIO - BOTTOM_MARGIN_RATIO)
 	};
 
-	float2 fGridPixelsPerFrame = 
-		fGridsPerFrame * 
-		float2 { fGridDimensions.x, fGridDimensions.y };
+	float2 fGridPixelsPerFrame =
+		fGridsPerFrame *
+		float2{ fGridDimensions.x, fGridDimensions.y };
 
-	float2 fLocationRatio = 
+	float2 fLocationRatio =
 	{
 		fGridPixelsPerFrame.x / fWindowSize.x,
 		fGridPixelsPerFrame.y / fWindowSize.y
 	};
 
-	XMFLOAT3 retVal;
-
 	switch (nHeading)
 	{
-		case NORTH:
-			retVal = { 0.0f, -1.0f * fLocationRatio.y, 0.0f };
-			break;
+	case NORTH:
+		retVal = { 0.0f, -1.0f * fLocationRatio.y, 0.0f };
+		break;
 
-		case EAST:
-			retVal = { fLocationRatio.x, 0.0f, 0.0f };
-			break;
+	case EAST:
+		retVal = { fLocationRatio.x, 0.0f, 0.0f };
+		break;
 
-		case SOUTH:
-			retVal = { 0.0f, fLocationRatio.y, 0.0f };
-			break;
+	case SOUTH:
+		retVal = { 0.0f, fLocationRatio.y, 0.0f };
+		break;
 
-		case WEST:
-			retVal = { -1.0f * fLocationRatio.x, 0.0f, 0.0f };
-			break;
+	case WEST:
+		retVal = { -1.0f * fLocationRatio.x, 0.0f, 0.0f };
+		break;
 	}
 
 	return retVal;
@@ -81,7 +81,7 @@ float LookaheadCalculator::CalculateGridsPerFrame(
 	float fFramesPerGrid = (float)nFramesPerSecond * fVelocity;
 
 	// Length of each ratio division.
-	// Ex: 1.0f / 300 (frames per grid) = 0.00333 grid / frame. gy
+	// Ex: 1.0f / 300 (frames per grid) = 0.00333 grid / frame.
 	//	Or ("Move 0.003333 grid for every frame")
 	return 1.0f / fFramesPerGrid;
 }

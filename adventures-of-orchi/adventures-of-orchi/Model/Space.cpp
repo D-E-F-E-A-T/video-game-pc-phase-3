@@ -67,7 +67,7 @@ float Space::CalculateDistance(Space * space)
 		space->GetLocationRatio());
 }
 
-float Space::CalculateDistance(Space * space, XMFLOAT3 vec3Differential)
+float Space::CalculateDistance(Space * space, XMFLOAT3 * vec3Differential)
 {
 	XMVECTOR vecLocation = 
 		XMVectorSet(
@@ -76,7 +76,7 @@ float Space::CalculateDistance(Space * space, XMFLOAT3 vec3Differential)
 			0.0f,
 			0.0f);
 
-	XMVECTOR vecDifferential = XMLoadFloat3(&(vec3Differential));
+	XMVECTOR vecDifferential = XMLoadFloat3(vec3Differential);
 
 	XMVECTOR vecResultant = vecLocation + vecDifferential;
 

@@ -107,6 +107,7 @@
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="project.json" />
     <None Include="Scripts\Game.os" />
+    <None Include="Scripts\World0.os" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />

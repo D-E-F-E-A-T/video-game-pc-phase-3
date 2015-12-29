@@ -32,7 +32,7 @@ public:
 		Grid * grid,
 		int * intersectRect,
 		float2 screenDimensions,
-		XMFLOAT3 vecDifferential);
+		XMFLOAT3 * vecDifferential);
 
 protected:
 private:

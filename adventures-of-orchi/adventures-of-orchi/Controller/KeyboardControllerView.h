@@ -27,7 +27,12 @@ public:
 		KeyEventArgs^ args,
 		float2 fHitPoint);
 
-	void HandleKeystroke(Player * pPlayer, int nCollisionState, KeyEventArgs^ args, float fVelocity);
+	void HandleKeystroke(
+		Player * pPlayer, 
+		int nCollisionState, 
+		KeyEventArgs^ args, 
+		float fVelocity,
+		int * lpnHeading);
 
 protected:
 

@@ -204,19 +204,3 @@ boolean Utils::IsPointInPolygon(D2D1_POINT_2F pt, vector<D2D1_POINT_2F> * polygo
 		((pt.x < polygon->at(LOWER_RIGHT).x) && (pt.y < polygon->at(LOWER_RIGHT).y)) &&
 		((pt.x > polygon->at(LOWER_LEFT).x) && (pt.y < polygon->at(LOWER_LEFT).y));
 }
-
-float Utils::CalculateMagnitude(XMFLOAT3 vec3)
-{
-	XMVECTOR vec = XMLoadFloat3(&vec3);
-
-	float fXComponent = XMVectorGetX(vec);
-	float fYComponent = XMVectorGetY(vec);
-	float fZComponent = XMVectorGetZ(vec);
-
-	float fMagnitude = sqrt(
-		(fXComponent * fXComponent) +
-		(fYComponent * fYComponent) +
-		(fZComponent * fZComponent));
-
-	return fMagnitude;
-}

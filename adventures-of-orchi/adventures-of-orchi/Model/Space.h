@@ -19,9 +19,6 @@
 #include "..\Common\DeviceResources.h"
 #include "Renderable.h"
 #include "Action.h"
-//#include "..\Content\GameRenderer.h"
-
-
 
 using namespace BasicSprites;
 using namespace std;
@@ -51,7 +48,7 @@ public:
 	void SetLocationRatio(float2 fLocationRatio) { m_fLocationRatio = fLocationRatio; }
 
 	float CalculateDistance(Space * space);
-	float CalculateDistance(Space * space, XMFLOAT3 vecDifferential);
+	float CalculateDistance(Space * space, XMFLOAT3 * vecDifferential);
 
 	vector<Space *> DetectCollisions() {}
 

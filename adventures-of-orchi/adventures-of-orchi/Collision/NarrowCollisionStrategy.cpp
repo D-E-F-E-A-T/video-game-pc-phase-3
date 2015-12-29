@@ -42,7 +42,7 @@ int NarrowCollisionStrategy::Detect(
 	Grid * grid, // Player location is the coordinates of the center of the sprite.
 	int * intersectRect,
 	float2 screenDimensions,
-	XMFLOAT3 vecDifferential)
+	XMFLOAT3 * vec3Differential)
 {
 	bool bIntersection = false;
 
@@ -59,10 +59,21 @@ int NarrowCollisionStrategy::Detect(
 
 	int playerTopLeft[2];
 
+	XMVECTOR vecDifferential = XMLoadFloat3(vec3Differential);
+
 	// Should really use the dimensions of the sprite.
 	//	For now, using the dimensions of the grid space.
-	playerTopLeft[HORIZONTAL_AXIS] = (int)(pPlayer->GetLocationRatio().x * screenDimensions.x - grid->GetColumnWidth() / 2.f);
-	playerTopLeft[VERTICAL_AXIS] = (int)(pPlayer->GetLocationRatio().y * screenDimensions.y - grid->GetRowHeight() / 2.f);
+	float2 fCentroid
+	{
+		pPlayer->GetLocationRatio().x + XMVectorGetX(vecDifferential),
+		pPlayer->GetLocationRatio().y + XMVectorGetY(vecDifferential)
+	};
+
+	playerTopLeft[HORIZONTAL_AXIS] = 
+		(int)(fCentroid.x * screenDimensions.x - grid->GetColumnWidth() / 2.f);
+
+	playerTopLeft[VERTICAL_AXIS] = 
+		(int)(fCentroid.y * screenDimensions.y - grid->GetRowHeight() / 2.f);
 
 	int renderedSpriteDimensions[2];
 	float2 obstacleCenterLocation;

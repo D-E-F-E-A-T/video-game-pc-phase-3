@@ -29,7 +29,7 @@ public:
 		Movable * pMovable, 
 		Stack * stack, 
 		list<Space *> * space, 
-		XMFLOAT3 vecDifferential);
+		XMFLOAT3 * vecDifferential);
 
 protected:
 	int Calculate(
@@ -37,12 +37,12 @@ protected:
 		Movable * pMovable, 
 		Stack * stack, 
 		list<Space *> * retVal,
-		XMFLOAT3 vecDifferential);
+		XMFLOAT3 * vecDifferential);
 
 	bool IsClose(
 		Movable * pMovable, 
 		Space * data,
-		XMFLOAT3 vecDifferential);
+		XMFLOAT3 * vecDifferential);
 
 private:
 };

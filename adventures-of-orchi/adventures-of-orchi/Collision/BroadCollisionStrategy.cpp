@@ -33,7 +33,7 @@ void BroadCollisionStrategy::Detect(
 	Movable * pMovable,
 	Stack * stack,
 	list<Space *> * retVal,
-	XMFLOAT3 vecDifferential)
+	XMFLOAT3 * vecDifferential)
 {
 	Calculate(
 		nLayer,
@@ -48,7 +48,7 @@ int BroadCollisionStrategy::Calculate(
 	Movable * pMovable,
 	Stack * stack,
 	list<Space *> * retVal,
-	XMFLOAT3 vecDifferential)
+	XMFLOAT3 * vecDifferential)
 {
 	int numLayers = stack->GetNumLayers();
 
@@ -70,9 +70,9 @@ int BroadCollisionStrategy::Calculate(
 bool BroadCollisionStrategy::IsClose(
 	Movable * pMovable,
 	Space * obstacle,
-	XMFLOAT3 vecDifferential)
+	XMFLOAT3 * vecDifferential)
 {
-	float distance = obstacle->CalculateDistance(pMovable);
+	float distance = obstacle->CalculateDistance(pMovable, vecDifferential);
 	
 	return (distance < 0.075f);		
 }

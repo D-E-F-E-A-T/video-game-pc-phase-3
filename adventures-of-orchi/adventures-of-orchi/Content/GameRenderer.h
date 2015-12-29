@@ -158,5 +158,6 @@ private:
 	int m_nOrientation;
 
 	LookaheadCalculator m_lookaheadCalculator;
+	void OnControllerInput();
 };
 

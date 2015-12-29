@@ -62,31 +62,31 @@ void XBoxOneControllerView::FetchControllerInput()
 void XBoxOneControllerView::MovePlayer(
 	Player * pPlayer, 
 	int nCollisionState, 
-	int * nSwordDirection)
+	int * nDirection)
 {
 	if (m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_UP)
 	{
 		pPlayer->MoveNorth(nCollisionState, PLAYER_MOVE_VELOCITY);
-		*nSwordDirection = NORTH;
+		*nDirection = NORTH;
 	}
 	else if (m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_DOWN)
 	{
 		pPlayer->MoveSouth(nCollisionState, PLAYER_MOVE_VELOCITY);
-		*nSwordDirection = SOUTH;
+		*nDirection = SOUTH;
 	}
 	else if (m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT)
 	{
 		pPlayer->MoveWest(nCollisionState, PLAYER_MOVE_VELOCITY);
-		*nSwordDirection = WEST;
+		*nDirection = WEST;
 	}
 	else if (m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_RIGHT)
 	{
 		pPlayer->MoveEast(nCollisionState, PLAYER_MOVE_VELOCITY);
-		*nSwordDirection = EAST;
+		*nDirection = EAST;
 	}
 	else
 	{
-		*nSwordDirection = HandleLeftThumbStick(pPlayer, nCollisionState, *nSwordDirection, m_xinputState.Gamepad.sThumbLX, m_xinputState.Gamepad.sThumbLY);
+		*nDirection = HandleLeftThumbStick(pPlayer, nCollisionState, *nDirection, m_xinputState.Gamepad.sThumbLX, m_xinputState.Gamepad.sThumbLY);
 	}
 }
 

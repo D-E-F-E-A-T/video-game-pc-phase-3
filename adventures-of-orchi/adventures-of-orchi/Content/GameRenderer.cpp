@@ -163,33 +163,8 @@ void GameRenderer::CreateWindowSizeDependentResources()
 }
 
 
-
-
-
-// Called once per frame, rotates the cube and calculates the model and view matrices.
-int GameRenderer::Update(DX::StepTimer const& timer)
+void GameRenderer::OnControllerInput()
 {
-	// Not handling portrait mode for this release.
-	if (m_nOrientation == PORTRAIT)
-		return 1;
-
-	int columns = 0;
-	int rows = 0;
-
-	m_pRegion->GetDimensions(&columns, &rows);
-	((MapPanel *)m_infoPanels->at(2))->SetDimensions(columns, rows);
-
-	int nCurrentColumn = 0;
-	int nCurrentRow = 0;
-	m_pRegion->GetLocation(&nCurrentColumn, &nCurrentRow);
-	((MapPanel *)m_infoPanels->at(2))->SetLocation(nCurrentColumn, nCurrentRow);
-
-	// DO NOT USE m_window HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-	m_xboxController.FetchControllerInput();
-
-	UpdateSword();
-
 	// if the gamepad is not connected, check the keyboard.
 	if (m_xboxController.GetIsControllerConnected())
 	{
@@ -224,14 +199,39 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		if (m_bTouchScreenButtonPressed[A_BUTTON])
 			ThrowSword(m_nHeading);
 	}
+}
 
+// Called once per frame, rotates the cube and calculates the model and view matrices.
+int GameRenderer::Update(DX::StepTimer const& timer)
+{
+	// Not handling portrait mode for this release.
+	if (m_nOrientation == PORTRAIT)
+		return 1;
+
+	int columns = 0;
+	int rows = 0;
+
+	m_pRegion->GetDimensions(&columns, &rows);
+	((MapPanel *)m_infoPanels->at(2))->SetDimensions(columns, rows);
+
+	int nCurrentColumn = 0;
+	int nCurrentRow = 0;
+	m_pRegion->GetLocation(&nCurrentColumn, &nCurrentRow);
+	((MapPanel *)m_infoPanels->at(2))->SetLocation(nCurrentColumn, nCurrentRow);
+
+	// DO NOT USE m_window HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+	m_xboxController.FetchControllerInput();
+
+	UpdateSword();
+	OnControllerInput();
 
 	m_broadCollisionDetectionStrategy->Detect(
 		LAYER_2D,
 		m_pPlayer,
 		m_pCurrentSubdivision->GetStack(),
 		m_pCollided,
-		XMFLOAT3 { 0.0f, 0.0f, 0.0f });
+		&(XMFLOAT3 { 0.0f, 0.0f, 0.0f }));
 
 	// Idea: Precedence order of collided objects.
 	//	For example, if colliding with a tree
@@ -271,7 +271,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		m_pPlayer,
 		m_pCurrentSubdivision->GetStack(),
 		m_pCollided,
-		XMFLOAT3{ 0.0f, 0.0f, 0.0f });
+		&(XMFLOAT3{ 0.0f, 0.0f, 0.0f }));
 
 	// First, look for any collided stairs.
 	Space * pCollidedStairs = m_pPortalCollisionDetectionStrategy->Detect(
@@ -313,9 +313,8 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 #ifdef _DEBUG
 	XMVECTOR vecDifferential = XMLoadFloat3(&vec3Differential);
-	XMVECTOR vecMagnitude = XMVector3Length(vecDifferential);
 
-	float fMagnitude = Utils::CalculateMagnitude(vec3Differential);
+	float fMagnitude = XMVectorGetX(XMVector3Length(vecDifferential));
 
 	if (fMagnitude > 0.0f)
 	{
@@ -323,28 +322,12 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 		sprintf_s(
 			buffer1,
-			"Lookahead: %f %f %f %f\n",
-			XMVectorGetX(vecMagnitude),
-			XMVectorGetY(vecMagnitude),
-			XMVectorGetZ(vecMagnitude),
+			"Lookahead: %d %f\n",
+			m_nHeading,
 			fMagnitude);
 
 		OutputDebugStringA(buffer1);
 	}
-#endif // _DEBUG
-
-#ifdef _DEBUG	
-	char buffer[64];
-	XMVECTOR vecWireframeCurrent = XMLoadFloat3(&vec3Differential);
-
-	sprintf_s(
-		buffer,
-		"vecWireframeCurrent: %f %f %f\n",
-		XMVectorGetX(vecWireframeCurrent),
-		XMVectorGetY(vecWireframeCurrent),
-		XMVectorGetZ(vecWireframeCurrent));
-
-	OutputDebugStringA(buffer);
 #endif // _DEBUG
 
 	m_broadCollisionDetectionStrategy->Detect(
@@ -352,7 +335,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		m_pPlayer,
 		m_pCurrentSubdivision->GetStack(),
 		m_pCollided,
-		vec3Differential);
+		&vec3Differential);
 
 
 
@@ -371,7 +354,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 				&grid,
 				intersectRect,
 				float2(m_fWindowWidth, m_fWindowHeight),
-				vec3Differential);
+				&vec3Differential);
 
 #ifdef _DEBUG
 			if (m_nCollisionState != NO_INTERSECTION)
@@ -774,7 +757,17 @@ void GameRenderer::HighlightRegion(int column, int row, ComPtr<ID2D1SolidColorBr
 
 void GameRenderer::OnKeyDown(Windows::UI::Core::KeyEventArgs^ args)
 {
-	m_keyboardController.HandleKeystroke(m_pPlayer, m_nCollisionState, args, PLAYER_MOVE_VELOCITY);
+	m_keyboardController.HandleKeystroke(
+		m_pPlayer, 
+		m_nCollisionState, 
+		args, 
+		PLAYER_MOVE_VELOCITY,
+		&m_nHeading);
+
+	if (args->VirtualKey == Windows::System::VirtualKey::S)
+	{
+		ThrowSword(m_nHeading);
+	}
 }
 
 
