@@ -304,7 +304,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 	m_pCollided->clear();
 
-	XMFLOAT3 vecDifferential = m_lookaheadCalculator.CalculateVector(
+	XMFLOAT3 vec3Differential = m_lookaheadCalculator.CalculateVector(
 		m_pPlayer,
 		m_nHeading,
 		float2 { m_fWindowWidth, m_fWindowHeight },
@@ -312,15 +312,39 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		timer.GetFramesPerSecond());
 
 #ifdef _DEBUG
+	XMVECTOR vecDifferential = XMLoadFloat3(&vec3Differential);
+	XMVECTOR vecMagnitude = XMVector3Length(vecDifferential);
+
+	float fMagnitude = Utils::CalculateMagnitude(vec3Differential);
+
+	if (fMagnitude > 0.0f)
+	{
+		char buffer1[64];
+
+		sprintf_s(
+			buffer1,
+			"Lookahead: %f %f %f %f\n",
+			XMVectorGetX(vecMagnitude),
+			XMVectorGetY(vecMagnitude),
+			XMVectorGetZ(vecMagnitude),
+			fMagnitude);
+
+		OutputDebugStringA(buffer1);
+	}
+#endif // _DEBUG
+
+#ifdef _DEBUG	
 	char buffer[64];
-	XMVECTOR vecWireframeCurrent = XMLoadFloat3(&vecDifferential);
+	XMVECTOR vecWireframeCurrent = XMLoadFloat3(&vec3Differential);
 
 	sprintf_s(
 		buffer,
-		"%f %f %f",
+		"vecWireframeCurrent: %f %f %f\n",
 		XMVectorGetX(vecWireframeCurrent),
 		XMVectorGetY(vecWireframeCurrent),
 		XMVectorGetZ(vecWireframeCurrent));
+
+	OutputDebugStringA(buffer);
 #endif // _DEBUG
 
 	m_broadCollisionDetectionStrategy->Detect(
@@ -328,7 +352,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		m_pPlayer,
 		m_pCurrentSubdivision->GetStack(),
 		m_pCollided,
-		vecDifferential);
+		vec3Differential);
 
 
 
@@ -347,7 +371,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 				&grid,
 				intersectRect,
 				float2(m_fWindowWidth, m_fWindowHeight),
-				vecDifferential);
+				vec3Differential);
 
 #ifdef _DEBUG
 			if (m_nCollisionState != NO_INTERSECTION)

@@ -16,6 +16,7 @@
 #include "pch.h"
 #include "LookaheadCalculator.h"
 
+// @return Vector ratio, relative to the entire screen.
 XMFLOAT3 LookaheadCalculator::CalculateVector(
 	Movable * pMovable,
 	int nHeading,

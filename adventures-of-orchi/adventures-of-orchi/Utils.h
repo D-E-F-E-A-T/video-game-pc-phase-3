@@ -19,6 +19,7 @@
 #include "Constants.h"
 
 using namespace std;
+using namespace DirectX;
 
 class Utils
 {
@@ -49,4 +50,6 @@ public:
 	static float CalculateSquareWidthRatio(float screenWidth);
 
 	static boolean IsPointInPolygon(D2D1_POINT_2F pt, vector<D2D1_POINT_2F> * polygon);
+
+	static float CalculateMagnitude(XMFLOAT3 vec);
 };
