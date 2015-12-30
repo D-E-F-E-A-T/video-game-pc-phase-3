@@ -36,6 +36,18 @@ NarrowCollisionStrategy::~NarrowCollisionStrategy()
 
 }
 
+// Differential has already been used in the 
+//	calculation of the collided.
+#ifdef _DEBUG
+int NarrowCollisionStrategy::Detect(
+	Player * pPlayer,
+	Space * collided,
+	Grid * grid, // Player location is the coordinates of the center of the sprite.
+	int * intersectRect,
+	float2 screenDimensions,
+	XMFLOAT3 * vec3Differential,
+	float * rectLookaheadZone)
+#else
 int NarrowCollisionStrategy::Detect(
 	Player * pPlayer,
 	Space * collided,
@@ -43,6 +55,7 @@ int NarrowCollisionStrategy::Detect(
 	int * intersectRect,
 	float2 screenDimensions,
 	XMFLOAT3 * vec3Differential)
+#endif // _DEBUG
 {
 	bool bIntersection = false;
 
@@ -69,11 +82,14 @@ int NarrowCollisionStrategy::Detect(
 		pPlayer->GetLocationRatio().y + XMVectorGetY(vecDifferential)
 	};
 
-	playerTopLeft[HORIZONTAL_AXIS] = 
-		(int)(fCentroid.x * screenDimensions.x - grid->GetColumnWidth() / 2.f);
+	float2 fPlayerTopLeft = 
+	{
+		fCentroid.x * screenDimensions.x - grid->GetColumnWidth() / 2.f,
+		fCentroid.y * screenDimensions.y - grid->GetRowHeight() / 2.f
+	};
 
-	playerTopLeft[VERTICAL_AXIS] = 
-		(int)(fCentroid.y * screenDimensions.y - grid->GetRowHeight() / 2.f);
+	playerTopLeft[HORIZONTAL_AXIS] = (int)fPlayerTopLeft.x;
+	playerTopLeft[VERTICAL_AXIS] = (int)fPlayerTopLeft.y;
 
 	int renderedSpriteDimensions[2];
 	float2 obstacleCenterLocation;
@@ -85,6 +101,13 @@ int NarrowCollisionStrategy::Detect(
 	//	Take into consideration the actual screen dimensions.
 	renderedSpriteDimensions[WIDTH_INDEX] = (int)grid->GetColumnWidth();
 	renderedSpriteDimensions[HEIGHT_INDEX] = (int)grid->GetRowHeight();
+
+#ifdef _DEBUG
+	rectLookaheadZone[0] = fPlayerTopLeft.x;
+	rectLookaheadZone[1] = fPlayerTopLeft.y;
+	rectLookaheadZone[2] = fPlayerTopLeft.x + grid->GetColumnWidth();
+	rectLookaheadZone[3] = fPlayerTopLeft.y + (int)grid->GetRowHeight();
+#endif // _DEBUG
 
 	// Right now, all obstacles are assumed to occupy exactly one grid space.
 	int obstacleTopLeft[2];

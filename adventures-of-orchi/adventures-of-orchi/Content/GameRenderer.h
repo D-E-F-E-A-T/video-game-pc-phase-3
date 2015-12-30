@@ -105,7 +105,11 @@ private:
 	float m_fWindowWidth;
 	float m_fWindowHeight;
 
+#ifdef _DEBUG
 	void DrawSpriteIntersection();
+	void DrawLookaheadZone();
+#endif // _DEBUG
+
 	int m_nCollisionState;
 
 	int m_nCollidedSpriteColumn;
@@ -124,6 +128,8 @@ private:
 	void HighlightRegion(int * pLocation, ComPtr<ID2D1SolidColorBrush> brush);
 	vector<D2D1_RECT_F> m_collidedRects;
 	vector<int> m_collidedRectStatuses;
+	float m_rectLookaheadZone[4];
+	bool m_bLookaheadValid;
 #endif // _DEBUG
 
 	DWRITE_TEXT_RANGE m_textRange;

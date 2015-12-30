@@ -225,6 +225,9 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 	UpdateSword();
 	OnControllerInput();
+	// Need to do collision calculations by looking ahead.
+	//	Don't actually move the player until the 
+	//	safe distance has been pre-calculated.
 
 	m_broadCollisionDetectionStrategy->Detect(
 		LAYER_2D,
@@ -337,6 +340,9 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		m_pCollided,
 		&vec3Differential);
 
+	// Narrow takes input from the broad.
+	//	Broad has already used the differential in
+	//	it's calculation.
 
 
 	// Second, look for any collided trees, etc.
@@ -348,6 +354,18 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		{
 			int intersectRect[4];
 
+#ifdef _DEBUG
+			m_nCollisionState = m_pNarrowCollisionDetectionStrategy->Detect(
+				m_pPlayer,
+				*iterator,
+				&grid,
+				intersectRect,
+				float2(m_fWindowWidth, m_fWindowHeight),
+				&vec3Differential,
+				m_rectLookaheadZone);
+
+			m_bLookaheadValid = true;
+#else
 			m_nCollisionState = m_pNarrowCollisionDetectionStrategy->Detect(
 				m_pPlayer,
 				*iterator,
@@ -355,6 +373,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 				intersectRect,
 				float2(m_fWindowWidth, m_fWindowHeight),
 				&vec3Differential);
+#endif
 
 #ifdef _DEBUG
 			if (m_nCollisionState != NO_INTERSECTION)
@@ -381,6 +400,12 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 #endif // _DEBUG
 		}
 	}
+#ifdef _DEBUG
+	else
+	{
+		m_bLookaheadValid = false;
+	}
+#endif // _DEBUG
 
 	return 1;
 }
@@ -456,6 +481,7 @@ void GameRenderer::Render()
 			m_deviceResources->m_mapBrushes["yellow"]);
 	}
 
+	DrawLookaheadZone();
 	DrawSpriteIntersection();
 #endif // _DEBUG
 
@@ -676,6 +702,24 @@ void GameRenderer::RenderSpaces3D()
 
 
 
+
+#ifdef _DEBUG
+void GameRenderer::DrawLookaheadZone()
+{
+	if (m_bLookaheadValid)
+	{
+		DEVICE_CONTEXT_2D->DrawRectangle(
+			D2D1_RECT_F
+		{
+			m_rectLookaheadZone[0],
+			m_rectLookaheadZone[1],
+			m_rectLookaheadZone[2],
+			m_rectLookaheadZone[3]
+		},
+			m_deviceResources->m_mapBrushes["purple"]);
+	}
+}
+#endif // _DEBUG
 
 #ifdef _DEBUG
 void GameRenderer::DrawSpriteIntersection()

@@ -66,22 +66,22 @@ void XBoxOneControllerView::MovePlayer(
 {
 	if (m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_UP)
 	{
-		pPlayer->MoveNorth(nCollisionState, PLAYER_MOVE_VELOCITY);
+		pPlayer->MoveNorth(PLAYER_MOVE_VELOCITY);
 		*nDirection = NORTH;
 	}
 	else if (m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_DOWN)
 	{
-		pPlayer->MoveSouth(nCollisionState, PLAYER_MOVE_VELOCITY);
+		pPlayer->MoveSouth(PLAYER_MOVE_VELOCITY);
 		*nDirection = SOUTH;
 	}
 	else if (m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT)
 	{
-		pPlayer->MoveWest(nCollisionState, PLAYER_MOVE_VELOCITY);
+		pPlayer->MoveWest(PLAYER_MOVE_VELOCITY);
 		*nDirection = WEST;
 	}
 	else if (m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_RIGHT)
 	{
-		pPlayer->MoveEast(nCollisionState, PLAYER_MOVE_VELOCITY);
+		pPlayer->MoveEast(PLAYER_MOVE_VELOCITY);
 		*nDirection = EAST;
 	}
 	else
@@ -112,12 +112,12 @@ int XBoxOneControllerView::HandleLeftThumbStick(Player * pPlayer, int nCollision
 	{
 		if (vertical > 0)
 		{
-			pPlayer->MoveNorth(nCollisionState, velocity);
+			pPlayer->MoveNorth(velocity);
 			retVal = NORTH;
 		}
 		else if (vertical < 0)
 		{
-			pPlayer->MoveSouth(nCollisionState, velocity);
+			pPlayer->MoveSouth(velocity);
 			retVal = SOUTH;
 		}
 	}
@@ -125,12 +125,12 @@ int XBoxOneControllerView::HandleLeftThumbStick(Player * pPlayer, int nCollision
 	{
 		if (horizontal > 0)
 		{
-			pPlayer->MoveEast(nCollisionState, velocity);
+			pPlayer->MoveEast(velocity);
 			retVal = EAST;
 		}
 		else if (horizontal < 0)
 		{
-			pPlayer->MoveWest(nCollisionState, velocity);
+			pPlayer->MoveWest(velocity);
 			retVal = WEST;
 		}
 	}
@@ -144,12 +144,12 @@ int XBoxOneControllerView::HandleLeftThumbStick(Player * pPlayer, int nCollision
 			// Upper-right quadrant.
 			if (theta <= 45.f)
 			{
-				pPlayer->MoveEast(nCollisionState, velocity);
+				pPlayer->MoveEast(velocity);
 				retVal = EAST;
 			}
 			else
 			{
-				pPlayer->MoveNorth(nCollisionState, velocity);
+				pPlayer->MoveNorth(velocity);
 				retVal = NORTH;
 			}
 		}
@@ -158,12 +158,12 @@ int XBoxOneControllerView::HandleLeftThumbStick(Player * pPlayer, int nCollision
 			// Lower-right quadrant.
 			if (theta >= -45.f)
 			{
-				pPlayer->MoveEast(nCollisionState, velocity);
+				pPlayer->MoveEast(velocity);
 				retVal = EAST;
 			}
 			else
 			{
-				pPlayer->MoveSouth(nCollisionState, velocity);
+				pPlayer->MoveSouth(velocity);
 				retVal = SOUTH;
 			}
 		}
@@ -172,12 +172,12 @@ int XBoxOneControllerView::HandleLeftThumbStick(Player * pPlayer, int nCollision
 			// Upper-left quadrant.
 			if (theta >= -45.f)
 			{
-				pPlayer->MoveWest(nCollisionState, velocity);
+				pPlayer->MoveWest(velocity);
 				retVal = WEST;
 			}
 			else
 			{
-				pPlayer->MoveNorth(nCollisionState, velocity);
+				pPlayer->MoveNorth(velocity);
 				retVal = NORTH;
 			}
 		}
@@ -186,12 +186,12 @@ int XBoxOneControllerView::HandleLeftThumbStick(Player * pPlayer, int nCollision
 			// Lower-left quadrant.
 			if (theta <= 45.f)
 			{
-				pPlayer->MoveWest(nCollisionState, velocity);
+				pPlayer->MoveWest(velocity);
 				retVal = WEST;
 			}
 			else
 			{
-				pPlayer->MoveSouth(nCollisionState, velocity);
+				pPlayer->MoveSouth(velocity);
 				retVal = SOUTH;
 			}
 		}

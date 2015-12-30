@@ -29,22 +29,22 @@ void KeyboardControllerView::HandleKeystroke(
 	}
 	else if (args->VirtualKey == Windows::System::VirtualKey::Left)
 	{
-		pPlayer->MoveWest(nCollisionState, fVelocity);
+		pPlayer->MoveWest(fVelocity);
 		*lpnHeading = WEST;
 	}
 	else if (args->VirtualKey == Windows::System::VirtualKey::Down)
 	{
-		pPlayer->MoveSouth(nCollisionState, fVelocity);
+		pPlayer->MoveSouth(fVelocity);
 		*lpnHeading = SOUTH;
 	}
 	else if (args->VirtualKey == Windows::System::VirtualKey::Right)
 	{
-		pPlayer->MoveEast(nCollisionState, fVelocity);
+		pPlayer->MoveEast(fVelocity);
 		*lpnHeading = EAST;
 	}
 	else if (args->VirtualKey == Windows::System::VirtualKey::Up)
 	{
-		pPlayer->MoveNorth(nCollisionState, fVelocity);
+		pPlayer->MoveNorth(fVelocity);
 		*lpnHeading = NORTH;
 	}
 }

@@ -38,7 +38,7 @@ public:
 			pCommand,
 			deviceResources)
 	{
-		m_lpMoveFunctions = new (void (Movable::*[4])(int, float));
+		m_lpMoveFunctions = new (void (Movable::*[4])(float));
 		m_lpMoveFunctions[NORTH] = &Movable::MoveNorth;
 		m_lpMoveFunctions[EAST] = &Movable::MoveEast;
 		m_lpMoveFunctions[SOUTH] = &Movable::MoveSouth;
@@ -50,17 +50,17 @@ public:
 		delete [] m_lpMoveFunctions;
 	}
 
-	void MoveNorth(int nCollisionState, float fVelocity);
-	void MoveEast(int nCollisionState, float fVelocity);
-	void MoveSouth(int nCollisionState, float fVelocity);
-	void MoveWest(int nCollisionState, float fVelocity);
+	void MoveNorth(float fVelocity);
+	void MoveEast(float fVelocity);
+	void MoveSouth(float fVelocity);
+	void MoveWest(float fVelocity);
 
 	virtual void Inertia(float fVelocity);
 	void Stop();
 
 	void Move(int nDirection, int nCollisionState, float fVelocity)
 	{
-		(*this.*m_lpMoveFunctions[nDirection])(nCollisionState, fVelocity);
+		(*this.*m_lpMoveFunctions[nDirection])(fVelocity);
 	}
 
 protected:
@@ -69,7 +69,7 @@ protected:
 	
 	// "m_lpFunctions is a pointer to a pointer of functions
 	//	which take in an int and a float and return void."
-	void (Movable::**m_lpMoveFunctions)(int, float);
+	void (Movable::**m_lpMoveFunctions)(float);
 
 private:
 

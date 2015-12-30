@@ -26,13 +26,24 @@ public:
 	NarrowCollisionStrategy();
 	~NarrowCollisionStrategy();
 
+#ifdef _DEBUG
 	int Detect(
 		Player * player,
 		Space * collided, 
 		Grid * grid,
 		int * intersectRect,
 		float2 screenDimensions,
+		XMFLOAT3 * vecDifferential,
+		float * rectLookaheadZone);
+#else
+	int Detect(
+		Player * player,
+		Space * collided,
+		Grid * grid,
+		int * intersectRect,
+		float2 screenDimensions,
 		XMFLOAT3 * vecDifferential);
+#endif // _DEBUG
 
 protected:
 private:
