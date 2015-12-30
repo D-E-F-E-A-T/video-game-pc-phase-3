@@ -117,9 +117,9 @@ private:
 
 	bool m_bSpriteCollisionDetected;
 
-	BroadCollisionStrategy * m_broadCollisionDetectionStrategy;
-	NarrowCollisionStrategy * m_pNarrowCollisionDetectionStrategy;
-	PortalCollisionStrategy * m_pPortalCollisionDetectionStrategy;
+	BroadCollisionStrategy m_broadCollisionDetectionStrategy;
+	NarrowCollisionStrategy m_narrowCollisionDetectionStrategy;
+	PortalCollisionStrategy m_portalCollisionDetectionStrategy;
 
 	list<Space *> * m_pCollided;
 

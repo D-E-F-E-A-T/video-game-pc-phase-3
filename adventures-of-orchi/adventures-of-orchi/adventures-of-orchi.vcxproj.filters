@@ -218,6 +218,9 @@
     <ClCompile Include="Collision\LookaheadCalculator.cpp">
       <Filter>Collision</Filter>
     </ClCompile>
+    <ClCompile Include="Collision\LookaheadCollisionStrategy.cpp">
+      <Filter>Collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -549,6 +552,9 @@
       <Filter>Controller</Filter>
     </ClInclude>
     <ClInclude Include="Collision\LookaheadCalculator.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision\LookaheadCollisionStrategy.h">
       <Filter>Collision</Filter>
     </ClInclude>
   </ItemGroup>

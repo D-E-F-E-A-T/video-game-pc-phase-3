@@ -229,7 +229,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 	//	Don't actually move the player until the 
 	//	safe distance has been pre-calculated.
 
-	m_broadCollisionDetectionStrategy->Detect(
+	m_broadCollisionDetectionStrategy.Detect(
 		LAYER_2D,
 		m_pPlayer,
 		m_pCurrentSubdivision->GetStack(),
@@ -241,7 +241,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 	//	and a portal, then the Portal takes precedence.
 
 	// Edges need to be touched.
-	Space * pCollidedEdge = m_pPortalCollisionDetectionStrategy->Detect(
+	Space * pCollidedEdge = m_portalCollisionDetectionStrategy.Detect(
 		m_pPlayer,
 		m_pCollided);
 
@@ -269,7 +269,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 	m_pCollided->clear();
 
-	m_broadCollisionDetectionStrategy->Detect(
+	m_broadCollisionDetectionStrategy.Detect(
 		LAYER_PORTALS,
 		m_pPlayer,
 		m_pCurrentSubdivision->GetStack(),
@@ -277,7 +277,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		&(XMFLOAT3{ 0.0f, 0.0f, 0.0f }));
 
 	// First, look for any collided stairs.
-	Space * pCollidedStairs = m_pPortalCollisionDetectionStrategy->Detect(
+	Space * pCollidedStairs = m_portalCollisionDetectionStrategy.Detect(
 		m_pPlayer,
 		m_pCollided);
 
@@ -333,7 +333,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 	}
 #endif // _DEBUG
 
-	m_broadCollisionDetectionStrategy->Detect(
+	m_broadCollisionDetectionStrategy.Detect(
 		LAYER_COLLIDABLES,
 		m_pPlayer,
 		m_pCurrentSubdivision->GetStack(),
@@ -355,7 +355,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			int intersectRect[4];
 
 #ifdef _DEBUG
-			m_nCollisionState = m_pNarrowCollisionDetectionStrategy->Detect(
+			m_nCollisionState = m_narrowCollisionDetectionStrategy.Detect(
 				m_pPlayer,
 				*iterator,
 				&grid,
