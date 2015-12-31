@@ -18,6 +18,7 @@
 #include "..\Model\Player.h"
 #include "..\Model\Space.h"
 #include "NarrowCollisionStrategy.h"
+#include "..\Grid.h"
 
 using namespace std;
 using namespace DirectX;
@@ -25,16 +26,13 @@ using namespace DirectX;
 class LookaheadCollisionFilter
 {
 public:
-	list<Space *> * Filter(
-		list<Space *> * pCollided,
-		float2 fLocationRatio,
-		XMFLOAT3 vecDifferential);	
+	void Filter(
+		list<Space *> * pFiltered, // in, out
+		list<Space *> * pCollided, // in
+		float2 fScreenDimensions,
+		float * fCollisionZonePixels);
 
 protected:
-	void CalculateLookaheadZone(
-		float2 fLocationRatio,
-		XMFLOAT3 vecDifferential,
-		float * fLookaheadZone);
 
 private:
 	NarrowCollisionStrategy m_narrowCollisionDetectionStrategy;

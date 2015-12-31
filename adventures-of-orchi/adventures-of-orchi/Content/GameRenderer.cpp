@@ -82,6 +82,7 @@ GameRenderer::GameRenderer(const shared_ptr<DeviceResources>& deviceResources, C
 	m_nHeading = NORTH;
 
 	m_pCollided = new list<Space *>;
+	m_pFilteredCollided = new list<Space *>;
 }
 
 // Initializes view parameters when the window size changes.
@@ -312,7 +313,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		m_nHeading,
 		float2{ m_fWindowWidth, m_fWindowHeight },
 		WALKING_VELOCITY,
-		timer.GetFramesPerSecond(),
+		1, // timer.GetFramesPerSecond(),
 		&grid,
 		m_rectLookaheadZonePixels);
 
@@ -327,7 +328,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 		sprintf_s(
 			buffer1,
-			"Lookahead: %d %f\n",
+			"Lookahead: (Heading %d) (Magnitude %f)\n",
 			m_nHeading,
 			fMagnitude);
 
@@ -342,17 +343,19 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		m_pCollided,
 		&vec3Differential);
 
-	// Narrow takes input from the broad.
-	//	Broad has already used the differential in
-	//	it's calculation.
-
-
-	// Second, look for any collided trees, etc.
 	if (m_pCollided->size() > 0)
 	{
+		m_lookaheadCollisionFilter.Filter(
+			m_pFilteredCollided,
+			m_pCollided,
+			float2{ m_fWindowWidth, m_fWindowHeight },
+			m_rectLookaheadZonePixels);
+		
 		std::list<Space *>::const_iterator iterator;
 
-		for (iterator = m_pCollided->begin(); iterator != m_pCollided->end(); iterator++)
+		for (iterator = m_pFilteredCollided->begin(); 
+			iterator != m_pFilteredCollided->end(); 
+			iterator++)
 		{
 			int intersectRect[4];
 
@@ -474,6 +477,8 @@ void GameRenderer::Render()
 
 	DrawLookaheadZone();
 	DrawSpriteIntersection();
+	DrawFilteredCollided();
+
 #endif // _DEBUG
 
 	// If a gamepad is connected, never use the touchscreen controls.
@@ -502,6 +507,7 @@ void GameRenderer::Render()
 	RenderSpaces3D();
 
 	m_pCollided->clear();
+	m_pFilteredCollided->clear();
 
 #ifdef _DEBUG
 	m_collidedRects.clear();
@@ -695,6 +701,31 @@ void GameRenderer::RenderSpaces3D()
 
 
 #ifdef _DEBUG
+void GameRenderer::DrawFilteredCollided()
+{
+	list<Space *>::const_iterator iterator;
+
+	for (iterator = m_pFilteredCollided->begin(); 
+		iterator != m_pFilteredCollided->end(); 
+		iterator++)
+	{
+		D2D1_ELLIPSE ellipse
+		{
+			D2D1_POINT_2F
+			{
+				(*iterator)->GetLocationRatio().x * m_fWindowWidth,
+				(*iterator)->GetLocationRatio().y * m_fWindowHeight,
+			},
+			m_fWindowWidth * BUTTON_SIZE_RATIO * 0.75f,
+			m_fWindowWidth * BUTTON_SIZE_RATIO * 0.75f
+		};
+
+		DEVICE_CONTEXT_2D->FillEllipse(
+			ellipse,
+			m_deviceResources->m_mapBrushes["limegreen"]);
+	}
+}
+
 void GameRenderer::DrawLookaheadZone()
 {
 	if (m_bLookaheadValid)

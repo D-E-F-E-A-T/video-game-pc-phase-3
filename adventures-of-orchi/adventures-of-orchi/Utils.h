@@ -17,6 +17,7 @@
 #include "pch.h"
 #include "Grid.h"
 #include "Constants.h"
+#include "..\Model\Space.h"
 
 using namespace std;
 using namespace DirectX;
@@ -24,6 +25,7 @@ using namespace DirectX;
 class Utils
 {
 public:
+
 	static void ConvertRatioToGridLocations(Grid grid, float2 fLocationRatio, int * column, int * row);
 
 	static void InsertionSortI(int values[], int length);
@@ -50,4 +52,7 @@ public:
 	static float CalculateSquareWidthRatio(float screenWidth);
 
 	static boolean IsPointInPolygon(D2D1_POINT_2F pt, vector<D2D1_POINT_2F> * polygon);
+
+	static bool AreOverlapping(Space * s1, Space * s2);
+	static bool AreOverlapping(D2D1_RECT_F * pRect, Space * pSpace);
 };

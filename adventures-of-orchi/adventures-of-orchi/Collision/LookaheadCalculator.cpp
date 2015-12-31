@@ -117,8 +117,8 @@ void LookaheadCalculator::CalculateLookaheadZone(
 
 	float2 fPlayerTopLeft =
 	{
-		fCentroid.x * fScreenDimensions.x - grid->GetColumnWidth() / 2.f,
-		fCentroid.y * fScreenDimensions.y - grid->GetRowHeight() / 2.f
+		(fCentroid.x * fScreenDimensions.x) - grid->GetColumnWidth() / 2.f,
+		(fCentroid.y * fScreenDimensions.y) - grid->GetRowHeight() / 2.f
 	};
 
 	playerTopLeft[HORIZONTAL_AXIS] = (int)fPlayerTopLeft.x;

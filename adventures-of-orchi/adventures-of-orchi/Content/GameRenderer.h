@@ -38,6 +38,7 @@ limitations under the License.
 #include "..\Controller\TouchScreenControllerView.h"
 #include "..\Controller\KeyboardControllerView.h"
 #include "..\Collision\LookaheadCalculator.h"
+#include "..\Collision\LookaheadCollisionFilter.h"
 
 using namespace Windows::UI::Core;
 using namespace std;
@@ -109,6 +110,7 @@ private:
 #ifdef _DEBUG
 	void DrawSpriteIntersection();
 	void DrawLookaheadZone();
+	void DrawFilteredCollided();
 #endif // _DEBUG
 
 	int m_nCollisionState;
@@ -122,8 +124,10 @@ private:
 	NarrowCollisionStrategy m_narrowCollisionDetectionStrategy;
 	PortalCollisionStrategy m_portalCollisionDetectionStrategy;
 	LookaheadCalculator m_lookaheadVectorCalculator;
+	LookaheadCollisionFilter m_lookaheadCollisionFilter;
 
 	list<Space *> * m_pCollided;
+	list<Space *> * m_pFilteredCollided;
 
 #ifdef _DEBUG
 	void HighlightRegion(int column, int row, ComPtr<ID2D1SolidColorBrush> brush);

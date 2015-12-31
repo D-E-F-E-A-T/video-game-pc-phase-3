@@ -17,6 +17,7 @@
 #include "Utils.h"
 #include "Grid.h"
 #include "Constants.h"
+#include "..\Model\Space.h"
 
 using namespace std;
 
@@ -203,4 +204,183 @@ boolean Utils::IsPointInPolygon(D2D1_POINT_2F pt, vector<D2D1_POINT_2F> * polygo
 		((pt.x < polygon->at(UPPER_RIGHT).x) && (pt.y > polygon->at(UPPER_RIGHT).y)) &&
 		((pt.x < polygon->at(LOWER_RIGHT).x) && (pt.y < polygon->at(LOWER_RIGHT).y)) &&
 		((pt.x > polygon->at(LOWER_LEFT).x) && (pt.y < polygon->at(LOWER_LEFT).y));
+}
+
+// This is a two-pass algorithm. 
+//	First, check if all the edge points
+//	are within the Other.  
+//	Then check if any point of the Other is
+//	within the Edge.
+// By my convention, m_pLocationRatio for the Player
+//	is defined as the centroid of the space.
+bool Utils::AreOverlapping(Space * s1, Space * s2)
+{
+	vector<D2D1_POINT_2F> edgeBounds;
+	vector<D2D1_POINT_2F> otherBounds;
+
+	edgeBounds.push_back(
+		D2D1_POINT_2F
+	{
+		s1->GetLocationRatio().x - (s1->GetDimensionsRatio().x / 2.0f),
+		s1->GetLocationRatio().y - (s1->GetDimensionsRatio().y / 2.0f)
+	});
+
+	edgeBounds.push_back(
+		D2D1_POINT_2F
+	{
+		s1->GetLocationRatio().x + (s1->GetDimensionsRatio().x / 2.0f),
+		s1->GetLocationRatio().y - (s1->GetDimensionsRatio().y / 2.0f)
+	});
+
+	edgeBounds.push_back(
+		D2D1_POINT_2F
+	{
+		s1->GetLocationRatio().x + (s1->GetDimensionsRatio().x / 2.0f),
+		s1->GetLocationRatio().y + (s1->GetDimensionsRatio().y / 2.0f)
+	});
+
+	edgeBounds.push_back(
+		D2D1_POINT_2F
+	{
+		s1->GetLocationRatio().x - (s1->GetDimensionsRatio().x / 2.0f),
+		s1->GetLocationRatio().y + s1->GetDimensionsRatio().y
+	});
+
+	otherBounds.push_back(
+		D2D1_POINT_2F
+	{
+		s2->GetLocationRatio().x - (s2->GetLocationRatio().x / 2.0f),
+		s2->GetLocationRatio().y - (s2->GetLocationRatio().y / 2.0f)
+	});
+
+	otherBounds.push_back(
+		D2D1_POINT_2F
+	{
+		s2->GetLocationRatio().x + (s2->GetDimensionsRatio().x / 2.0f),
+		s2->GetLocationRatio().y - (s2->GetDimensionsRatio().y / 2.0f)
+	});
+
+	otherBounds.push_back(
+		D2D1_POINT_2F
+	{
+		s2->GetLocationRatio().x + (s2->GetDimensionsRatio().x / 2.0f),
+		s2->GetLocationRatio().y + (s2->GetDimensionsRatio().y / 2.0f)
+	});
+
+	otherBounds.push_back(
+		D2D1_POINT_2F
+	{
+		s2->GetLocationRatio().x - (s2->GetDimensionsRatio().x / 2.0f),
+		s2->GetLocationRatio().y + (s2->GetDimensionsRatio().y / 2.0f)
+	});
+
+	vector<D2D1_POINT_2F>::const_iterator iterator;
+
+	for (iterator = edgeBounds.begin();
+	iterator != edgeBounds.end();
+		iterator++)
+	{
+		if (Utils::IsPointInPolygon(*(iterator), &otherBounds))
+		{
+			return true;
+		}
+	}
+
+	for (iterator = otherBounds.begin();
+	iterator != otherBounds.end();
+		iterator++)
+	{
+		if (Utils::IsPointInPolygon(*(iterator), &edgeBounds))
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool Utils::AreOverlapping(D2D1_RECT_F * pRect, Space * pSpace)
+{
+	vector<D2D1_POINT_2F> rectBounds;
+	vector<D2D1_POINT_2F> spaceBounds;
+
+	rectBounds.push_back(
+		D2D1_POINT_2F
+	{
+		pRect->left,
+		pRect->top
+	});
+
+	rectBounds.push_back(
+		D2D1_POINT_2F
+	{
+		pRect->right,
+		pRect->top
+	});
+
+	rectBounds.push_back(
+		D2D1_POINT_2F
+	{
+		pRect->right,
+		pRect->bottom
+	});
+
+	rectBounds.push_back(
+		D2D1_POINT_2F
+	{
+		pRect->left,
+		pRect->bottom
+	});
+
+	spaceBounds.push_back(
+		D2D1_POINT_2F
+	{
+		pSpace->GetLocationRatio().x - (pSpace->GetLocationRatio().x / 2.0f),
+		pSpace->GetLocationRatio().y - (pSpace->GetLocationRatio().y / 2.0f)
+	});
+
+	spaceBounds.push_back(
+		D2D1_POINT_2F
+	{
+		pSpace->GetLocationRatio().x + (pSpace->GetDimensionsRatio().x / 2.0f),
+		pSpace->GetLocationRatio().y - (pSpace->GetDimensionsRatio().y / 2.0f)
+	});
+
+	spaceBounds.push_back(
+		D2D1_POINT_2F
+	{
+		pSpace->GetLocationRatio().x + (pSpace->GetDimensionsRatio().x / 2.0f),
+		pSpace->GetLocationRatio().y + (pSpace->GetDimensionsRatio().y / 2.0f)
+	});
+
+	spaceBounds.push_back(
+		D2D1_POINT_2F
+	{
+		pSpace->GetLocationRatio().x - (pSpace->GetDimensionsRatio().x / 2.0f),
+		pSpace->GetLocationRatio().y + (pSpace->GetDimensionsRatio().y / 2.0f)
+	});
+
+	vector<D2D1_POINT_2F>::const_iterator iterator;
+
+	for (iterator = rectBounds.begin();
+	iterator != rectBounds.end();
+		iterator++)
+	{
+		if (Utils::IsPointInPolygon(*(iterator), &spaceBounds))
+		{
+			return true;
+		}
+	}
+
+	for (iterator = spaceBounds.begin();
+	iterator != spaceBounds.end();
+		iterator++)
+	{
+		if (Utils::IsPointInPolygon(*(iterator), &rectBounds))
+		{
+			return true;
+		}
+	}
+
+	return false;
 }

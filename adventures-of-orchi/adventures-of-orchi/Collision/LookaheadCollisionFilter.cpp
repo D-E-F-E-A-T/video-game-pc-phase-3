@@ -14,31 +14,31 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 #include "pch.h"
+#include "..\Constants.h"
 #include "LookaheadCollisionFilter.h"
+#include "..\Utils.h"
 
-list<Space *> * LookaheadCollisionFilter::Filter(
+void LookaheadCollisionFilter::Filter(
+	list<Space *> * pFiltered,
 	list<Space *> * pCollided,
-	float2 fLocationRatio,
-	XMFLOAT3 vecDifferential)
+	float2 fScreenDimensions,
+	float * fCollisionZonePixels)
 {
-	// Calculate the Lookahead Zone.
-	float fpLookaheadZone[4];
+	D2D1_RECT_F rectCollisionZone
+	{
+		fCollisionZonePixels[BOUNDS_LEFT] / fScreenDimensions.x,
+		fCollisionZonePixels[BOUNDS_TOP] / fScreenDimensions.y,
+		fCollisionZonePixels[BOUNDS_RIGHT] / fScreenDimensions.x,
+		fCollisionZonePixels[BOUNDS_BOTTOM] / fScreenDimensions.y
+	}; 
 
-	// Determine which of the collided overlap
-	//	with the lookahead zone.
+	std::list<Space *>::const_iterator iterator;
 
-	CalculateLookaheadZone(
-		fLocationRatio,
-		vecDifferential,
-		fpLookaheadZone);
-
-	return nullptr;
-}
-
-void LookaheadCollisionFilter::CalculateLookaheadZone(
-	float2 fLocationRatio,
-	XMFLOAT3 vecDifferential,
-	float * fLookaheadZone)
-{
-
+	for (iterator = pCollided->begin(); iterator != pCollided->end(); iterator++)
+	{
+		if (Utils::AreOverlapping(&rectCollisionZone, *iterator))
+		{
+			pFiltered->push_back(*(iterator));
+		}
+	};
 }
