@@ -307,12 +307,14 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 	m_pCollided->clear();
 
-	XMFLOAT3 vec3Differential = m_lookaheadCalculator.CalculateVector(
+	XMFLOAT3 vec3Differential = m_lookaheadVectorCalculator.Calculate(
 		m_pPlayer,
 		m_nHeading,
-		float2 { m_fWindowWidth, m_fWindowHeight },
+		float2{ m_fWindowWidth, m_fWindowHeight },
 		WALKING_VELOCITY,
-		timer.GetFramesPerSecond());
+		timer.GetFramesPerSecond(),
+		&grid,
+		m_rectLookaheadZonePixels);
 
 #ifdef _DEBUG
 	XMVECTOR vecDifferential = XMLoadFloat3(&vec3Differential);
@@ -354,28 +356,17 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		{
 			int intersectRect[4];
 
-#ifdef _DEBUG
 			m_nCollisionState = m_narrowCollisionDetectionStrategy.Detect(
 				m_pPlayer,
 				*iterator,
 				&grid,
 				intersectRect,
 				float2(m_fWindowWidth, m_fWindowHeight),
-				&vec3Differential,
-				m_rectLookaheadZone);
-
-			m_bLookaheadValid = true;
-#else
-			m_nCollisionState = m_pNarrowCollisionDetectionStrategy->Detect(
-				m_pPlayer,
-				*iterator,
-				&grid,
-				intersectRect,
-				float2(m_fWindowWidth, m_fWindowHeight),
 				&vec3Differential);
-#endif
 
 #ifdef _DEBUG
+			m_bLookaheadValid = true;
+
 			if (m_nCollisionState != NO_INTERSECTION)
 			{
 				//if (m_nCollisionState == COLLISION)
@@ -711,10 +702,10 @@ void GameRenderer::DrawLookaheadZone()
 		DEVICE_CONTEXT_2D->DrawRectangle(
 			D2D1_RECT_F
 		{
-			m_rectLookaheadZone[0],
-			m_rectLookaheadZone[1],
-			m_rectLookaheadZone[2],
-			m_rectLookaheadZone[3]
+			m_rectLookaheadZonePixels[BOUNDS_LEFT],
+			m_rectLookaheadZonePixels[BOUNDS_TOP],
+			m_rectLookaheadZonePixels[BOUNDS_RIGHT],
+			m_rectLookaheadZonePixels[BOUNDS_BOTTOM]
 		},
 			m_deviceResources->m_mapBrushes["purple"]);
 	}

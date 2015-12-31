@@ -14,15 +14,19 @@
 	limitations under the License.
 */
 #include "pch.h"
+#include "..\Constants.h"
 #include "LookaheadCalculator.h"
+#include "..\Grid.h"
 
 // @return Vector ratio, relative to the entire screen.
-XMFLOAT3 LookaheadCalculator::CalculateVector(
+XMFLOAT3 LookaheadCalculator::Calculate(
 	Movable * pMovable,
 	int nHeading,
 	float2 fWindowSize,
 	float fVelocity,
-	int nFramesPerSecond)
+	int nFramesPerSecond,
+	Grid * grid, // Player location is the coordinates of the center of the sprite.
+	float * pLookaheadZone)
 {
 	XMFLOAT3 retVal;
 
@@ -67,6 +71,13 @@ XMFLOAT3 LookaheadCalculator::CalculateVector(
 		break;
 	}
 
+	CalculateLookaheadZone(
+		pMovable->GetLocationRatio(),
+		&retVal,
+		fWindowSize,
+		grid,
+		pLookaheadZone);
+
 	return retVal;
 }
 
@@ -84,4 +95,37 @@ float LookaheadCalculator::CalculateGridsPerFrame(
 	// Ex: 1.0f / 300 (frames per grid) = 0.00333 grid / frame.
 	//	Or ("Move 0.003333 grid for every frame")
 	return 1.0f / fFramesPerGrid;
+}
+
+void LookaheadCalculator::CalculateLookaheadZone(
+	float2 fLocationRatio,
+	XMFLOAT3 * vec3Differential,
+	float2 fScreenDimensions,
+	Grid * grid, // Player location is the coordinates of the center of the sprite.
+	float * fLookaheadZone)
+{
+	XMVECTOR vecDifferential = XMLoadFloat3(vec3Differential);
+	int playerTopLeft[2];
+
+	// Should really use the dimensions of the sprite.
+	//	For now, using the dimensions of the grid space.
+	float2 fCentroid
+	{
+		fLocationRatio.x + XMVectorGetX(vecDifferential),
+		fLocationRatio.y + XMVectorGetY(vecDifferential)
+	};
+
+	float2 fPlayerTopLeft =
+	{
+		fCentroid.x * fScreenDimensions.x - grid->GetColumnWidth() / 2.f,
+		fCentroid.y * fScreenDimensions.y - grid->GetRowHeight() / 2.f
+	};
+
+	playerTopLeft[HORIZONTAL_AXIS] = (int)fPlayerTopLeft.x;
+	playerTopLeft[VERTICAL_AXIS] = (int)fPlayerTopLeft.y;
+
+	fLookaheadZone[BOUNDS_LEFT] = fPlayerTopLeft.x;
+	fLookaheadZone[BOUNDS_TOP] = fPlayerTopLeft.y;
+	fLookaheadZone[BOUNDS_RIGHT] = fPlayerTopLeft.x + grid->GetColumnWidth();
+	fLookaheadZone[BOUNDS_BOTTOM] = fPlayerTopLeft.y + grid->GetRowHeight();
 }

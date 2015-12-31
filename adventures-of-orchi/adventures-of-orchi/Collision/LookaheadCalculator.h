@@ -15,17 +15,20 @@
 */
 #pragma once
 #include "..\Model\Movable.h"
+#include "..\Grid.h"
 
 // Calculate the next location.
 class LookaheadCalculator
 {
 public:
-	XMFLOAT3 CalculateVector(
+	XMFLOAT3 Calculate(
 		Movable * pMovable,
 		int nHeading,
 		float2 fWindowSize,
 		float fVelocity,
-		int nFramesPerSecond);
+		int nFramesPerSecond,
+		Grid * grid,
+		float * fLookaheadZone);
 
 protected:
 	float CalculateGridsPerFrame(
@@ -34,7 +37,12 @@ protected:
 		float fVelocity, 
 		int nFramesPerSecond);
 
-
+	void CalculateLookaheadZone(
+		float2 fLocationRatio,
+		XMFLOAT3 * vec3Differential,
+		float2 fScreenDimensions,
+		Grid * grid,
+		float * fLookaheadZone);
 
 private:
 };

@@ -14,26 +14,31 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 #include "pch.h"
-#include "LookaheadCollisionStrategy.h"
+#include "LookaheadCollisionFilter.h"
 
-#ifdef _DEBUG
-int LookaheadCollisionStrategy::Detect(
-	Player * player,
-	Space * collided,
-	Grid * grid,
-	int * intersectRect,
-	float2 screenDimensions,
-	XMFLOAT3 * vecDifferential,
-	float * rectLookaheadZone)
-#else
-int LookaheadCollisionStrategy::Detect(
-	Player * player,
-	Space * collided,
-	Grid * grid,
-	int * intersectRect,
-	float2 screenDimensions,
-	XMFLOAT3 * vecDifferential)
-#endif // _DEBUG
+list<Space *> * LookaheadCollisionFilter::Filter(
+	list<Space *> * pCollided,
+	float2 fLocationRatio,
+	XMFLOAT3 vecDifferential)
 {
-	return 0;
+	// Calculate the Lookahead Zone.
+	float fpLookaheadZone[4];
+
+	// Determine which of the collided overlap
+	//	with the lookahead zone.
+
+	CalculateLookaheadZone(
+		fLocationRatio,
+		vecDifferential,
+		fpLookaheadZone);
+
+	return nullptr;
+}
+
+void LookaheadCollisionFilter::CalculateLookaheadZone(
+	float2 fLocationRatio,
+	XMFLOAT3 vecDifferential,
+	float * fLookaheadZone)
+{
+
 }

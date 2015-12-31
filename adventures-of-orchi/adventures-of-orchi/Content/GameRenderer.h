@@ -24,6 +24,7 @@ limitations under the License.
 #include "..\Collision\NarrowCollisionStrategy.h"
 #include "Model\Stack.h"
 #include "..\Collision\PortalCollisionStrategy.h"
+#include "..\Collision\LookaheadCalculator.h"
 #include "..\Model\World.h"
 #include "Model\Sword.h"
 #include "..\InfoPanel\LifePanel.h"
@@ -120,6 +121,7 @@ private:
 	BroadCollisionStrategy m_broadCollisionDetectionStrategy;
 	NarrowCollisionStrategy m_narrowCollisionDetectionStrategy;
 	PortalCollisionStrategy m_portalCollisionDetectionStrategy;
+	LookaheadCalculator m_lookaheadVectorCalculator;
 
 	list<Space *> * m_pCollided;
 
@@ -128,9 +130,10 @@ private:
 	void HighlightRegion(int * pLocation, ComPtr<ID2D1SolidColorBrush> brush);
 	vector<D2D1_RECT_F> m_collidedRects;
 	vector<int> m_collidedRectStatuses;
-	float m_rectLookaheadZone[4];
 	bool m_bLookaheadValid;
 #endif // _DEBUG
+
+	float m_rectLookaheadZonePixels[4];
 
 	DWRITE_TEXT_RANGE m_textRange;
 

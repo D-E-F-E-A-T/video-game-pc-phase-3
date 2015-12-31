@@ -492,3 +492,23 @@
 #ifndef WALKING_VELOCITY
 #define WALKING_VELOCITY 5.0f
 #endif // WALKING_VELOCITY
+
+#ifndef TEST_LOOKAHEAD
+#define TEST_LOOKAHEAD
+#endif // TEST_LOOKAHEAD
+
+#ifndef BOUNDS_LEFT
+#define BOUNDS_LEFT 0
+#endif // BOUNDS_LEFT
+
+#ifndef BOUNDS_TOP
+#define BOUNDS_TOP 1
+#endif // BOUNDS_TOP
+
+#ifndef BOUNDS_RIGHT
+#define BOUNDS_RIGHT 2
+#endif // BOUNDS_RIGHT
+
+#ifndef BOUNDS_BOTTOM
+#define BOUNDS_BOTTOM 3
+#endif // BOUNDS_BOTTOM

@@ -215,10 +215,10 @@
     <ClCompile Include="Controller\AIControllerView.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
-    <ClCompile Include="Collision\LookaheadCalculator.cpp">
+    <ClCompile Include="Collision\LookaheadCollisionFilter.cpp">
       <Filter>Collision</Filter>
     </ClCompile>
-    <ClCompile Include="Collision\LookaheadCollisionStrategy.cpp">
+    <ClCompile Include="Collision\LookaheadCalculator.cpp">
       <Filter>Collision</Filter>
     </ClCompile>
   </ItemGroup>
@@ -551,10 +551,10 @@
     <ClInclude Include="Controller\AIControllerView.h">
       <Filter>Controller</Filter>
     </ClInclude>
-    <ClInclude Include="Collision\LookaheadCalculator.h">
+    <ClInclude Include="Collision\LookaheadCollisionFilter.h">
       <Filter>Collision</Filter>
     </ClInclude>
-    <ClInclude Include="Collision\LookaheadCollisionStrategy.h">
+    <ClInclude Include="Collision\LookaheadCalculator.h">
       <Filter>Collision</Filter>
     </ClInclude>
   </ItemGroup>

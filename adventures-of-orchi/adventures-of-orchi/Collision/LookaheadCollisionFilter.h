@@ -15,37 +15,27 @@
 */
 #pragma once
 #include "pch.h"
+#include "..\Model\Player.h"
+#include "..\Model\Space.h"
+#include "NarrowCollisionStrategy.h"
 
-#include "Model\Player.h"
-#include <list>
+using namespace std;
+using namespace DirectX;
 
-
-class NarrowCollisionStrategy
+class LookaheadCollisionFilter
 {
 public:
-	NarrowCollisionStrategy();
-	~NarrowCollisionStrategy();
-
-	int Detect(
-		Player * player,
-		Space * collided,
-		Grid * grid,
-		int * intersectRect,
-		float2 screenDimensions,
-		XMFLOAT3 * vec3Differential);
+	list<Space *> * Filter(
+		list<Space *> * pCollided,
+		float2 fLocationRatio,
+		XMFLOAT3 vecDifferential);	
 
 protected:
+	void CalculateLookaheadZone(
+		float2 fLocationRatio,
+		XMFLOAT3 vecDifferential,
+		float * fLookaheadZone);
 
 private:
-
-	bool IntersectRect(
-		int * playerTopLeft,
-		int * obstacleTopLeft,
-		int width,
-		int height,
-		int * retVal);
-
-#ifdef _DEBUG
-	void DumpPixels(int width, int height, uint8_t * data);
-#endif // _DEBUG
+	NarrowCollisionStrategy m_narrowCollisionDetectionStrategy;
 };
