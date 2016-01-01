@@ -111,6 +111,7 @@ private:
 	void DrawSpriteIntersection();
 	void DrawLookaheadZone();
 	void DrawFilteredCollided();
+	void DrawBroadCollisionZone();
 #endif // _DEBUG
 
 	int m_nCollisionState;
@@ -135,6 +136,7 @@ private:
 	vector<D2D1_RECT_F> m_collidedRects;
 	vector<int> m_collidedRectStatuses;
 	bool m_bLookaheadValid;
+	XMVECTOR m_vecDifferential;
 #endif // _DEBUG
 
 	float m_rectLookaheadZonePixels[4];

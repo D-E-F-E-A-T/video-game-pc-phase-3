@@ -39,6 +39,7 @@ protected:
 
 	void CalculateLookaheadZone(
 		float2 fLocationRatio,
+		int nHeading,
 		XMFLOAT3 * vec3Differential,
 		float2 fScreenDimensions,
 		Grid * grid,

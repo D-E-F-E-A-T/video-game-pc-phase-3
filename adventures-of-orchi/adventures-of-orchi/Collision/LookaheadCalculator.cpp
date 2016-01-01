@@ -73,6 +73,7 @@ XMFLOAT3 LookaheadCalculator::Calculate(
 
 	CalculateLookaheadZone(
 		pMovable->GetLocationRatio(),
+		nHeading,
 		&retVal,
 		fWindowSize,
 		grid,
@@ -99,33 +100,77 @@ float LookaheadCalculator::CalculateGridsPerFrame(
 
 void LookaheadCalculator::CalculateLookaheadZone(
 	float2 fLocationRatio,
+	int nHeading,
 	XMFLOAT3 * vec3Differential,
 	float2 fScreenDimensions,
 	Grid * grid, // Player location is the coordinates of the center of the sprite.
 	float * fLookaheadZone)
 {
 	XMVECTOR vecDifferential = XMLoadFloat3(vec3Differential);
+	int playerTopLeftTranslated[2];
 	int playerTopLeft[2];
 
 	// Should really use the dimensions of the sprite.
 	//	For now, using the dimensions of the grid space.
-	float2 fCentroid
+	float2 fCentroidTranslated
 	{
 		fLocationRatio.x + XMVectorGetX(vecDifferential),
 		fLocationRatio.y + XMVectorGetY(vecDifferential)
 	};
 
-	float2 fPlayerTopLeft =
+	float2 fPlayerTopLeftTranslated =
 	{
-		(fCentroid.x * fScreenDimensions.x) - grid->GetColumnWidth() / 2.f,
-		(fCentroid.y * fScreenDimensions.y) - grid->GetRowHeight() / 2.f
+		(fCentroidTranslated.x * fScreenDimensions.x) - grid->GetColumnWidth() / 2.f,
+		(fCentroidTranslated.y * fScreenDimensions.y) - grid->GetRowHeight() / 2.f
 	};
 
-	playerTopLeft[HORIZONTAL_AXIS] = (int)fPlayerTopLeft.x;
-	playerTopLeft[VERTICAL_AXIS] = (int)fPlayerTopLeft.y;
+	float2 fPlayerTopLeft =
+	{
+		(fLocationRatio.x * fScreenDimensions.x) - grid->GetColumnWidth() / 2.f,
+		(fLocationRatio.y * fScreenDimensions.y) - grid->GetRowHeight() / 2.f
+	};
 
-	fLookaheadZone[BOUNDS_LEFT] = fPlayerTopLeft.x;
-	fLookaheadZone[BOUNDS_TOP] = fPlayerTopLeft.y;
-	fLookaheadZone[BOUNDS_RIGHT] = fPlayerTopLeft.x + grid->GetColumnWidth();
-	fLookaheadZone[BOUNDS_BOTTOM] = fPlayerTopLeft.y + grid->GetRowHeight();
+	//playerTopLeftTranslated[HORIZONTAL_AXIS] = (int)fCentroidTranslated.x;
+	//playerTopLeftTranslated[VERTICAL_AXIS] = (int)fCentroidTranslated.y;
+
+	switch (nHeading)
+	{ 
+		case NORTH:
+		{
+			fLookaheadZone[BOUNDS_LEFT] = fPlayerTopLeftTranslated.x;
+			fLookaheadZone[BOUNDS_TOP] = fPlayerTopLeftTranslated.y;
+			fLookaheadZone[BOUNDS_RIGHT] = fPlayerTopLeftTranslated.x + grid->GetColumnWidth();
+			fLookaheadZone[BOUNDS_BOTTOM] = fPlayerTopLeft.y + grid->GetRowHeight();
+		}
+		break;
+
+		case EAST:
+		{
+			fLookaheadZone[BOUNDS_LEFT] = fPlayerTopLeft.x;
+			fLookaheadZone[BOUNDS_TOP] = fPlayerTopLeft.y;
+			fLookaheadZone[BOUNDS_RIGHT] = fPlayerTopLeftTranslated.x + grid->GetColumnWidth();
+			fLookaheadZone[BOUNDS_BOTTOM] = fPlayerTopLeft.y + grid->GetRowHeight();
+		}
+		break;
+
+		case SOUTH:
+		{
+			fLookaheadZone[BOUNDS_LEFT] = fPlayerTopLeft.x;
+			fLookaheadZone[BOUNDS_TOP] = fPlayerTopLeft.y;
+			fLookaheadZone[BOUNDS_RIGHT] = fPlayerTopLeft.x + grid->GetColumnWidth();
+			fLookaheadZone[BOUNDS_BOTTOM] = fPlayerTopLeftTranslated.y + grid->GetRowHeight();
+		}
+		break;
+
+		case WEST:
+		{
+			fLookaheadZone[BOUNDS_LEFT] = fPlayerTopLeftTranslated.x;
+			fLookaheadZone[BOUNDS_TOP] = fPlayerTopLeftTranslated.y;
+			fLookaheadZone[BOUNDS_RIGHT] = fPlayerTopLeft.x + grid->GetColumnWidth();
+			fLookaheadZone[BOUNDS_BOTTOM] = fPlayerTopLeftTranslated.y + grid->GetRowHeight();
+		}
+		break;
+	}
+
+
 }

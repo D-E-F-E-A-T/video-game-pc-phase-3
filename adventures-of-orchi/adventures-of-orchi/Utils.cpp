@@ -249,8 +249,8 @@ bool Utils::AreOverlapping(Space * s1, Space * s2)
 	otherBounds.push_back(
 		D2D1_POINT_2F
 	{
-		s2->GetLocationRatio().x - (s2->GetLocationRatio().x / 2.0f),
-		s2->GetLocationRatio().y - (s2->GetLocationRatio().y / 2.0f)
+		s2->GetLocationRatio().x - (s2->GetDimensionsRatio().x / 2.0f),
+		s2->GetLocationRatio().y - (s2->GetDimensionsRatio().y / 2.0f)
 	});
 
 	otherBounds.push_back(
@@ -335,8 +335,8 @@ bool Utils::AreOverlapping(D2D1_RECT_F * pRect, Space * pSpace)
 	spaceBounds.push_back(
 		D2D1_POINT_2F
 	{
-		pSpace->GetLocationRatio().x - (pSpace->GetLocationRatio().x / 2.0f),
-		pSpace->GetLocationRatio().y - (pSpace->GetLocationRatio().y / 2.0f)
+		pSpace->GetLocationRatio().x - (pSpace->GetDimensionsRatio().x / 2.0f),
+		pSpace->GetLocationRatio().y - (pSpace->GetDimensionsRatio().y / 2.0f)
 	});
 
 	spaceBounds.push_back(

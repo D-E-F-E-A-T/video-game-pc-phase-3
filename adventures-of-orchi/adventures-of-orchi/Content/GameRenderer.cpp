@@ -318,9 +318,9 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		m_rectLookaheadZonePixels);
 
 #ifdef _DEBUG
-	XMVECTOR vecDifferential = XMLoadFloat3(&vec3Differential);
+	m_vecDifferential = XMLoadFloat3(&vec3Differential);
 
-	float fMagnitude = XMVectorGetX(XMVector3Length(vecDifferential));
+	float fMagnitude = XMVectorGetX(XMVector3Length(m_vecDifferential));
 
 	if (fMagnitude > 0.0f)
 	{
@@ -478,6 +478,7 @@ void GameRenderer::Render()
 	DrawLookaheadZone();
 	DrawSpriteIntersection();
 	DrawFilteredCollided();
+	DrawBroadCollisionZone();
 
 #endif // _DEBUG
 
@@ -701,6 +702,24 @@ void GameRenderer::RenderSpaces3D()
 
 
 #ifdef _DEBUG
+void GameRenderer::DrawBroadCollisionZone()
+{
+	D2D1_ELLIPSE ellipse
+	{
+		D2D1_POINT_2F
+		{
+			(XMVectorGetX(m_vecDifferential) + m_pPlayer->GetLocationRatio().x) * m_fWindowWidth,
+			(XMVectorGetY(m_vecDifferential) + m_pPlayer->GetLocationRatio().y) * m_fWindowHeight
+		},
+		m_fWindowWidth * 0.075f,
+		m_fWindowWidth * 0.075f
+	};
+
+	DEVICE_CONTEXT_2D->DrawEllipse(
+		ellipse,
+		m_deviceResources->m_mapBrushes["black"]);
+}
+
 void GameRenderer::DrawFilteredCollided()
 {
 	list<Space *>::const_iterator iterator;
