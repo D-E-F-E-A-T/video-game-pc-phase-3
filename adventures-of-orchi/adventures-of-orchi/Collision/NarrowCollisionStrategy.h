@@ -16,7 +16,8 @@
 #pragma once
 #include "pch.h"
 
-#include "Model\Player.h"
+#include "Model\Movable.h"
+#include "..\Grid.h"
 #include <list>
 
 
@@ -27,7 +28,7 @@ public:
 	~NarrowCollisionStrategy();
 
 	int Detect(
-		Player * player,
+		Movable * pMovable,
 		Space * collided,
 		Grid * grid,
 		int * intersectRect,

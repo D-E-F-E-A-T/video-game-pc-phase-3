@@ -384,3 +384,30 @@ bool Utils::AreOverlapping(D2D1_RECT_F * pRect, Space * pSpace)
 
 	return false;
 }
+
+int Utils::CalculatePixelDistance(
+	float2 fLocationRatio1,
+	float2 fLocationRatio2,
+	float2 fScreenDimensions)
+{
+	float2 fLocationPixel1 = fLocationRatio1 * fScreenDimensions;
+	float2 fLocationPixel2 = fLocationRatio2 * fScreenDimensions;
+
+	float fDeltaX = fabs(fLocationPixel1.x - fLocationPixel2.x);
+	float fDeltaY = fabs(fLocationPixel1.y - fLocationPixel2.y);
+
+	double fPixelDistance = sqrt(
+		(fDeltaX * fDeltaX) +
+		(fDeltaY * fDeltaY));
+
+	return (int)fPixelDistance;
+}
+
+// Convert 1 pixel to a ratio.
+float2 Utils::UnitPixelToRatio(float2 fScreenDimensions)
+{
+	return float2{
+		1.0f / fScreenDimensions.x,
+		1.0f / fScreenDimensions.y
+	};
+}

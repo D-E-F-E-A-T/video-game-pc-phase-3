@@ -14,38 +14,29 @@
 	limitations under the License.
 */
 #pragma once
-#include "..\Model\Movable.h"
-#include "..\Grid.h"
+#include "pch.h"
+#include "NarrowCollisionStrategy.h"
 
-// Calculate the next location.
-class LookaheadCalculator
+using namespace std;
+
+class LookaheadCollisionStrategy
 {
 public:
-	XMFLOAT3 Calculate(
-		Movable * pMovable,
+	void Detect(
+		Movable * pMovable,	// in, out
+		Space * collided,	// in
+		Grid * grid,		// in
+		int * intersectRect,
+		float2 screenDimensions,
+		XMFLOAT3 * vec3Differential,
 		int nHeading,
-		float2 fWindowSize,
-		float fVelocity,
-		int nFramesPerSecond,
-		Grid * grid,
-		float * fLookaheadZone,
-		float2 * fLookaheadPt);
+		float2 fLookaheadPt,
+		vector<D2D1_RECT_F> * pCollidedRects,
+		vector<int> * pCollidedRectStatuses);
 
 protected:
-	float CalculateGridsPerFrame(
-		Movable * pMovable, 
-		int nHeading,
-		float fVelocity, 
-		int nFramesPerSecond);
 
-	void CalculateLookaheadZone(
-		float2 fLocationRatio,
-		int nHeading,
-		XMFLOAT3 * vec3Differential,
-		float2 fScreenDimensions,
-		Grid * grid,
-		float * fLookaheadZone,
-		float2 * fLookaheadPt);
 
 private:
+	NarrowCollisionStrategy m_narrowCollisionDetectionStrategy;
 };

@@ -55,4 +55,11 @@ public:
 
 	static bool AreOverlapping(Space * s1, Space * s2);
 	static bool AreOverlapping(D2D1_RECT_F * pRect, Space * pSpace);
+
+	static int CalculatePixelDistance(
+		float2 fLocationRatio1,
+		float2 fLocationRatio2,
+		float2 fScreenDimensions);
+
+	static float2 UnitPixelToRatio(float2 fScreenDimensions);
 };

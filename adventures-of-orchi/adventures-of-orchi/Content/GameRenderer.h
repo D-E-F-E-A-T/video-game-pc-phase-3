@@ -21,7 +21,7 @@ limitations under the License.
 #include "Grid.h"
 #include "Model\Player.h"
 #include "..\Collision\BroadCollisionStrategy.h"
-#include "..\Collision\NarrowCollisionStrategy.h"
+#include "..\Collision\LookaheadCollisionStrategy.h"
 #include "Model\Stack.h"
 #include "..\Collision\PortalCollisionStrategy.h"
 #include "..\Collision\LookaheadCalculator.h"
@@ -122,10 +122,10 @@ private:
 	bool m_bSpriteCollisionDetected;
 
 	BroadCollisionStrategy m_broadCollisionDetectionStrategy;
-	NarrowCollisionStrategy m_narrowCollisionDetectionStrategy;
 	PortalCollisionStrategy m_portalCollisionDetectionStrategy;
 	LookaheadCalculator m_lookaheadVectorCalculator;
 	LookaheadCollisionFilter m_lookaheadCollisionFilter;
+	LookaheadCollisionStrategy m_lookaheadCollisionDetectionStrategy;
 
 	list<Space *> * m_pCollided;
 	list<Space *> * m_pFilteredCollided;
@@ -137,8 +137,9 @@ private:
 	vector<int> m_collidedRectStatuses;
 	bool m_bLookaheadValid;
 	XMVECTOR m_vecDifferential;
-#endif // _DEBUG
 
+#endif // _DEBUG
+	float2 m_fLookaheadPt;
 	float m_rectLookaheadZonePixels[4];
 
 	DWRITE_TEXT_RANGE m_textRange;

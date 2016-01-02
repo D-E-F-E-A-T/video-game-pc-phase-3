@@ -40,7 +40,7 @@ NarrowCollisionStrategy::~NarrowCollisionStrategy()
 // Differential has already been used in the 
 //	calculation of the collided.
 int NarrowCollisionStrategy::Detect(
-	Player * pPlayer,
+	Movable * pMovable,
 	Space * collided,
 	Grid * grid, // Player location is the coordinates of the center of the sprite.
 	int * intersectRect,
@@ -49,10 +49,10 @@ int NarrowCollisionStrategy::Detect(
 {
 	bool bIntersection = false;
 
-	uint8_t * playerPixels = pPlayer->GetPixels();
+	uint8_t * playerPixels = pMovable->GetPixels();
 	uint8_t * obstaclePixels = collided->GetPixels();
 
-	int * rawPlayerDimensions = pPlayer->GetTextureDimensions();
+	int * rawPlayerDimensions = pMovable->GetTextureDimensions();
 	int * rawObstacleDimensions = collided->GetTextureDimensions();
 
 #ifdef DUMP_PIXELS
@@ -68,8 +68,8 @@ int NarrowCollisionStrategy::Detect(
 	//	For now, using the dimensions of the grid space.
 	float2 fCentroid
 	{
-		pPlayer->GetLocationRatio().x + XMVectorGetX(vecDifferential),
-		pPlayer->GetLocationRatio().y + XMVectorGetY(vecDifferential)
+		pMovable->GetLocationRatio().x + XMVectorGetX(vecDifferential),
+		pMovable->GetLocationRatio().y + XMVectorGetY(vecDifferential)
 	};
 
 	float2 fPlayerTopLeft =

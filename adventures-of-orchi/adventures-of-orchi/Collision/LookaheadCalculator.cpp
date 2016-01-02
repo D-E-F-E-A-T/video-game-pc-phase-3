@@ -26,7 +26,8 @@ XMFLOAT3 LookaheadCalculator::Calculate(
 	float fVelocity,
 	int nFramesPerSecond,
 	Grid * grid, // Player location is the coordinates of the center of the sprite.
-	float * pLookaheadZone)
+	float * pLookaheadZone,
+	float2 * fLookaheadPt)
 {
 	XMFLOAT3 retVal;
 
@@ -77,7 +78,8 @@ XMFLOAT3 LookaheadCalculator::Calculate(
 		&retVal,
 		fWindowSize,
 		grid,
-		pLookaheadZone);
+		pLookaheadZone,
+		fLookaheadPt);
 
 	return retVal;
 }
@@ -104,7 +106,8 @@ void LookaheadCalculator::CalculateLookaheadZone(
 	XMFLOAT3 * vec3Differential,
 	float2 fScreenDimensions,
 	Grid * grid, // Player location is the coordinates of the center of the sprite.
-	float * fLookaheadZone)
+	float * fLookaheadZone,
+	float2 * fLookaheadPt)
 {
 	XMVECTOR vecDifferential = XMLoadFloat3(vec3Differential);
 	int playerTopLeftTranslated[2];
@@ -112,7 +115,7 @@ void LookaheadCalculator::CalculateLookaheadZone(
 
 	// Should really use the dimensions of the sprite.
 	//	For now, using the dimensions of the grid space.
-	float2 fCentroidTranslated
+	*fLookaheadPt =
 	{
 		fLocationRatio.x + XMVectorGetX(vecDifferential),
 		fLocationRatio.y + XMVectorGetY(vecDifferential)
@@ -120,8 +123,8 @@ void LookaheadCalculator::CalculateLookaheadZone(
 
 	float2 fPlayerTopLeftTranslated =
 	{
-		(fCentroidTranslated.x * fScreenDimensions.x) - grid->GetColumnWidth() / 2.f,
-		(fCentroidTranslated.y * fScreenDimensions.y) - grid->GetRowHeight() / 2.f
+		(fLookaheadPt->x * fScreenDimensions.x) - grid->GetColumnWidth() / 2.f,
+		(fLookaheadPt->y * fScreenDimensions.y) - grid->GetRowHeight() / 2.f
 	};
 
 	float2 fPlayerTopLeft =
@@ -129,9 +132,6 @@ void LookaheadCalculator::CalculateLookaheadZone(
 		(fLocationRatio.x * fScreenDimensions.x) - grid->GetColumnWidth() / 2.f,
 		(fLocationRatio.y * fScreenDimensions.y) - grid->GetRowHeight() / 2.f
 	};
-
-	//playerTopLeftTranslated[HORIZONTAL_AXIS] = (int)fCentroidTranslated.x;
-	//playerTopLeftTranslated[VERTICAL_AXIS] = (int)fCentroidTranslated.y;
 
 	switch (nHeading)
 	{ 

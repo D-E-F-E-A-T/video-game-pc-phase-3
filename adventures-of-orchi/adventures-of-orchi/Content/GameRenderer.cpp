@@ -313,9 +313,10 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		m_nHeading,
 		float2{ m_fWindowWidth, m_fWindowHeight },
 		WALKING_VELOCITY,
-		1, // timer.GetFramesPerSecond(),
+		timer.GetFramesPerSecond(),
 		&grid,
-		m_rectLookaheadZonePixels);
+		m_rectLookaheadZonePixels,
+		&m_fLookaheadPt);
 
 #ifdef _DEBUG
 	m_vecDifferential = XMLoadFloat3(&vec3Differential);
@@ -359,38 +360,59 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		{
 			int intersectRect[4];
 
-			m_nCollisionState = m_narrowCollisionDetectionStrategy.Detect(
+#ifdef _DEBUG
+			// m_pPlayer will be modified, if needed
+			m_lookaheadCollisionDetectionStrategy.Detect(
 				m_pPlayer,
 				*iterator,
 				&grid,
 				intersectRect,
 				float2(m_fWindowWidth, m_fWindowHeight),
-				&vec3Differential);
+				&vec3Differential,
+				m_nHeading,
+				m_fLookaheadPt,
+				&m_collidedRects,
+				&m_collidedRectStatuses);
+#else
+			m_lookaheadCollisionDetectionStrategy.Detect(
+				m_pPlayer,
+				*iterator,
+				&grid,
+				intersectRect,
+				float2(m_fWindowWidth, m_fWindowHeight),
+				&vec3Differential,
+				m_nHeading,
+				m_fLookaheadPt,
+				nullptr,
+				nullptr);
+#endif // _DEBUG
 
+			// m_nCollisionState much only be NO_INTERSECTION 
+			//	or INTERSECTION at this point.
 #ifdef _DEBUG
 			m_bLookaheadValid = true;
 
-			if (m_nCollisionState != NO_INTERSECTION)
-			{
-				//if (m_nCollisionState == COLLISION)
-				//{
-				//	int actionCode = (*iterator)->Act(this, m_pWorld);
+			//if (m_nCollisionState != NO_INTERSECTION)
+			//{
+			//	//if (m_nCollisionState == COLLISION)
+			//	//{
+			//	//	int actionCode = (*iterator)->Act(this, m_pWorld);
 
-				//	if (actionCode == 1)
-				//		return 0;
-				//}
+			//	//	if (actionCode == 1)
+			//	//		return 0;
+			//	//}
 
-				D2D1_RECT_F rect
-				{
-					(float)intersectRect[0],
-					(float)intersectRect[2],
-					(float)intersectRect[1],
-					(float)intersectRect[3]
-				};
+			//	D2D1_RECT_F rect
+			//	{
+			//		(float)intersectRect[0],
+			//		(float)intersectRect[2],
+			//		(float)intersectRect[1],
+			//		(float)intersectRect[3]
+			//	};
 
-				m_collidedRects.push_back(rect);
-				m_collidedRectStatuses.push_back(m_nCollisionState);
-			}
+			//	m_collidedRects.push_back(rect);
+			//	m_collidedRectStatuses.push_back(m_nCollisionState);
+			//}
 #endif // _DEBUG
 		}
 	}
@@ -717,7 +739,8 @@ void GameRenderer::DrawBroadCollisionZone()
 
 	DEVICE_CONTEXT_2D->DrawEllipse(
 		ellipse,
-		m_deviceResources->m_mapBrushes["black"]);
+		m_deviceResources->m_mapBrushes["purple"],
+		3.0f);
 }
 
 void GameRenderer::DrawFilteredCollided()
@@ -749,15 +772,31 @@ void GameRenderer::DrawLookaheadZone()
 {
 	if (m_bLookaheadValid)
 	{
+		D2D1_ELLIPSE ellipse
+		{
+			D2D1_POINT_2F
+			{
+				m_fLookaheadPt.x * m_fWindowWidth,
+				m_fLookaheadPt.y * m_fWindowHeight
+			},
+			m_fWindowWidth * 0.0025f,
+			m_fWindowWidth * 0.0025f
+		};
+
+		DEVICE_CONTEXT_2D->FillEllipse(
+			ellipse,
+			m_deviceResources->m_mapBrushes["purple"]);
+
 		DEVICE_CONTEXT_2D->DrawRectangle(
 			D2D1_RECT_F
-		{
-			m_rectLookaheadZonePixels[BOUNDS_LEFT],
-			m_rectLookaheadZonePixels[BOUNDS_TOP],
-			m_rectLookaheadZonePixels[BOUNDS_RIGHT],
-			m_rectLookaheadZonePixels[BOUNDS_BOTTOM]
-		},
-			m_deviceResources->m_mapBrushes["purple"]);
+			{
+				m_rectLookaheadZonePixels[BOUNDS_LEFT],
+				m_rectLookaheadZonePixels[BOUNDS_TOP],
+				m_rectLookaheadZonePixels[BOUNDS_RIGHT],
+				m_rectLookaheadZonePixels[BOUNDS_BOTTOM]
+			},
+			m_deviceResources->m_mapBrushes["purple"],
+			1.0f);
 	}
 }
 #endif // _DEBUG
