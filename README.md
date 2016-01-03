@@ -10,12 +10,14 @@ While many aspects of the look-and-feel and gameplay of the classic Zelda game w
 As in the first two phases of this project, the code is developed with C++/XAML/DirectX 11.
 
 
+
 Compilation
-<hr>
+-----------------------------------
 Visual Studio 2015 (at least Community edition) and Windows 10 are required for compilation. 
 
+
 Play
-<hr>
+-----------------------------------
 The game can be played in the following ways:
 <ul>
     <li>Using and XBox One game controller (wired or wireless with wireless adapter)</li>
@@ -25,7 +27,7 @@ The game can be played in the following ways:
 
 
 Referenced Works
-<hr>
+-----------------------------------
 <ul>
     <li>Introduction to 3D Game Programming with DirectX 11, Frank D. Luna, ISBN: 978-1-9364202-2-3</li>
     <li>Linear Algebra and Its Applications 2nd Edition, David C. Lay</li>
