@@ -19,30 +19,30 @@
 void KeyboardControllerView::HandleKeystroke(
 	Player * pPlayer, 
 	int nCollisionState, 
-	KeyEventArgs^ args,
+	String ^ args,
 	float fVelocity,
 	int * lpnHeading)
 {
-	if (args->VirtualKey == Windows::System::VirtualKey::P)
+	if (args == "P")
 	{
 		// Pause
 	}
-	else if (args->VirtualKey == Windows::System::VirtualKey::Left)
+	else if (args->Equals("Left"))
 	{
 		pPlayer->MoveWest(fVelocity);
 		*lpnHeading = WEST;
 	}
-	else if (args->VirtualKey == Windows::System::VirtualKey::Down)
+	else if (args->Equals("Down"))
 	{
 		pPlayer->MoveSouth(fVelocity);
 		*lpnHeading = SOUTH;
 	}
-	else if (args->VirtualKey == Windows::System::VirtualKey::Right)
+	else if (args->Equals("Right"))
 	{
 		pPlayer->MoveEast(fVelocity);
 		*lpnHeading = EAST;
 	}
-	else if (args->VirtualKey == Windows::System::VirtualKey::Up)
+	else if (args->Equals("Up"))
 	{
 		pPlayer->MoveNorth(fVelocity);
 		*lpnHeading = NORTH;

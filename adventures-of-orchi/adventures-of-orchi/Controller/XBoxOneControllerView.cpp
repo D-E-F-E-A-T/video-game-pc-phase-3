@@ -59,35 +59,49 @@ void XBoxOneControllerView::FetchControllerInput()
 }
 
 // Maybe this should just return direction and not do any actions.
-void XBoxOneControllerView::MovePlayer(
+bool XBoxOneControllerView::MovePlayer(
 	Player * pPlayer, 
 	int nCollisionState, 
 	int * nDirection)
 {
+	bool retVal = false;
+
 	if (m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_UP)
 	{
 		pPlayer->MoveNorth(PLAYER_MOVE_VELOCITY);
 		*nDirection = NORTH;
+		retVal = true;
 	}
 	else if (m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_DOWN)
 	{
 		pPlayer->MoveSouth(PLAYER_MOVE_VELOCITY);
 		*nDirection = SOUTH;
+		retVal = true;
 	}
 	else if (m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT)
 	{
 		pPlayer->MoveWest(PLAYER_MOVE_VELOCITY);
 		*nDirection = WEST;
+		retVal = true;
 	}
 	else if (m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_RIGHT)
 	{
 		pPlayer->MoveEast(PLAYER_MOVE_VELOCITY);
 		*nDirection = EAST;
+		retVal = true;
 	}
 	else
 	{
-		*nDirection = HandleLeftThumbStick(pPlayer, nCollisionState, *nDirection, m_xinputState.Gamepad.sThumbLX, m_xinputState.Gamepad.sThumbLY);
+		*nDirection = HandleLeftThumbStick(
+			pPlayer, 
+			nCollisionState, 
+			*nDirection, 
+			m_xinputState.Gamepad.sThumbLX, 
+			m_xinputState.Gamepad.sThumbLY,
+			&retVal);
 	}
+
+	return retVal;
 }
 
 unsigned short XBoxOneControllerView::CheckAButton()
@@ -95,14 +109,24 @@ unsigned short XBoxOneControllerView::CheckAButton()
 	return m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_A;
 }
 
-int XBoxOneControllerView::HandleLeftThumbStick(Player * pPlayer, int nCollisionState, int nSwordDirection, short horizontal, short vertical)
+int XBoxOneControllerView::HandleLeftThumbStick(
+	Player * pPlayer, 
+	int nCollisionState, 
+	int nSwordDirection, 
+	short horizontal, 
+	short vertical,
+	bool * bStatus)
 {
 	float radius = (float)(sqrt((double)horizontal * (double)horizontal + (double)vertical * (double)vertical));
 	float velocity = 0.f;
 	int retVal = NORTH;
 
 	if (radius < WALKING_THRESHOLD)
+	{
+		*bStatus = false;
 		return nSwordDirection;
+	}
+
 	if (radius >= WALKING_THRESHOLD && radius < RUNNING_THRESHOLD)
 		velocity = PLAYER_MOVE_VELOCITY;
 	else if (radius >= RUNNING_THRESHOLD)
@@ -196,6 +220,8 @@ int XBoxOneControllerView::HandleLeftThumbStick(Player * pPlayer, int nCollision
 			}
 		}
 	}
+
+	*bStatus = true;
 
 	return retVal;
 }

@@ -83,6 +83,8 @@ GameRenderer::GameRenderer(const shared_ptr<DeviceResources>& deviceResources, C
 
 	m_pCollided = new list<Space *>;
 	m_pFilteredCollided = new list<Space *>;
+
+	m_pKeyboardStack = new list<String ^>;
 }
 
 // Initializes view parameters when the window size changes.
@@ -164,8 +166,10 @@ void GameRenderer::CreateWindowSizeDependentResources()
 }
 
 
-void GameRenderer::OnControllerInput()
+bool GameRenderer::OnControllerInput()
 {
+	bool retVal = false;
+
 	// if the gamepad is not connected, check the keyboard.
 	if (m_xboxController.GetIsControllerConnected())
 	{
@@ -178,13 +182,14 @@ void GameRenderer::OnControllerInput()
 		//	have deeply intersected each other.
 		//  For slow moving sprites, this would not be 
 		//	much of a problem.
-		m_xboxController.MovePlayer(
+		retVal = m_xboxController.MovePlayer(
 			m_pPlayer,
 			m_nCollisionState,
 			&m_nHeading);
 
-		if (m_xboxController.CheckAButton())
-			ThrowSword(m_nHeading);
+		// Temporary.
+//		if (m_xboxController.CheckAButton())
+//			ThrowSword(m_nHeading);
 	}
 	else // Use the Touch Screen controls
 	{
@@ -194,12 +199,17 @@ void GameRenderer::OnControllerInput()
 			{
 				m_pPlayer->Move(i, m_nCollisionState, PLAYER_MOVE_VELOCITY);
 				m_nHeading = i;
+				retVal = true;
+				break;
 			}
 		}
 
-		if (m_bTouchScreenButtonPressed[A_BUTTON])
-			ThrowSword(m_nHeading);
+		// Temporary.
+		//if (m_bTouchScreenButtonPressed[A_BUTTON])
+		//	ThrowSword(m_nHeading);
 	}
+
+	return retVal;
 }
 
 // Called once per frame, rotates the cube and calculates the model and view matrices.
@@ -224,206 +234,220 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 	m_xboxController.FetchControllerInput();
 
-	UpdateSword();
-	OnControllerInput();
+	bool bMoveInputReady = false;
+
+	bMoveInputReady = OnControllerInput();
+	bMoveInputReady |= HandleKeyboardQueue();
+
+	// Temporary.
+	// UpdateSword();
+
 	// Need to do collision calculations by looking ahead.
 	//	Don't actually move the player until the 
 	//	safe distance has been pre-calculated.
 
-	m_broadCollisionDetectionStrategy.Detect(
-		LAYER_2D,
-		m_pPlayer,
-		m_pCurrentSubdivision->GetStack(),
-		m_pCollided,
-		&(XMFLOAT3 { 0.0f, 0.0f, 0.0f }));
-
-	// Idea: Precedence order of collided objects.
-	//	For example, if colliding with a tree
-	//	and a portal, then the Portal takes precedence.
-
-	// Edges need to be touched.
-	Space * pCollidedEdge = m_portalCollisionDetectionStrategy.Detect(
-		m_pPlayer,
-		m_pCollided);
-
-	if (pCollidedEdge)
+	// Only use collision detection if there 
+	//	 the User wants to move.
+	if (bMoveInputReady)
 	{
-		int minIndex = 0;
-
-		int nDirection = static_cast<Edge *>(pCollidedEdge)->GetDirection();
-
-		m_pPlayer->Skip(nDirection, float2{ m_fWindowWidth, m_fWindowHeight });
-		m_pCurrentSubdivision = m_pRegion->Slide(nDirection);
-
-		m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pPlayer);
-		m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pSword);
-
-		m_pCollided->clear();
-
-		return 0;
-	}
-
-#ifdef _DEBUG
-	m_collidedRects.clear();
-	m_collidedRectStatuses.clear();
-#endif // _DEBUG
-
-	m_pCollided->clear();
-
-	m_broadCollisionDetectionStrategy.Detect(
-		LAYER_PORTALS,
-		m_pPlayer,
-		m_pCurrentSubdivision->GetStack(),
-		m_pCollided,
-		&(XMFLOAT3{ 0.0f, 0.0f, 0.0f }));
-
-	// First, look for any collided stairs.
-	Space * pCollidedStairs = m_portalCollisionDetectionStrategy.Detect(
-		m_pPlayer,
-		m_pCollided);
-
-	if (pCollidedStairs)
-	{
-		int nDestination = static_cast<Portal *>(pCollidedStairs)->GetDestination();
-
-		m_pRegion = m_pWorld->Go(nDestination);
-
-		int entryX = 0;
-		int entryY = 0;
-
-		m_pRegion->GetEntry(&entryX, &entryY);
-
-		m_pCurrentSubdivision =
-			m_pRegion->LoadSubdivision(entryX, entryY);
-
-		m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pPlayer);
-		m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pSword);
-
-		m_nHeading = SOUTH;
-
-		m_pCollided->clear();
-
-		return 0;
-	}
-
-	m_pCollided->clear();
-
-	XMFLOAT3 vec3Differential = m_lookaheadVectorCalculator.Calculate(
-		m_pPlayer,
-		m_nHeading,
-		float2{ m_fWindowWidth, m_fWindowHeight },
-		WALKING_VELOCITY,
-		timer.GetFramesPerSecond(),
-		&grid,
-		m_rectLookaheadZonePixels,
-		&m_fLookaheadPt);
-
-#ifdef _DEBUG
-	m_vecDifferential = XMLoadFloat3(&vec3Differential);
-
-	float fMagnitude = XMVectorGetX(XMVector3Length(m_vecDifferential));
-
-	if (fMagnitude > 0.0f)
-	{
-		char buffer1[64];
-
-		sprintf_s(
-			buffer1,
-			"Lookahead: (Heading %d) (Magnitude %f)\n",
-			m_nHeading,
-			fMagnitude);
-
-		OutputDebugStringA(buffer1);
-	}
-#endif // _DEBUG
-
-	m_broadCollisionDetectionStrategy.Detect(
-		LAYER_COLLIDABLES,
-		m_pPlayer,
-		m_pCurrentSubdivision->GetStack(),
-		m_pCollided,
-		&vec3Differential);
-
-	if (m_pCollided->size() > 0)
-	{
-		m_lookaheadCollisionFilter.Filter(
-			m_pFilteredCollided,
+		m_broadCollisionDetectionStrategy.Detect(
+			LAYER_2D,
+			m_pPlayer,
+			m_pCurrentSubdivision->GetStack(),
 			m_pCollided,
-			float2{ m_fWindowWidth, m_fWindowHeight },
-			m_rectLookaheadZonePixels);
-		
-		std::list<Space *>::const_iterator iterator;
+			&(XMFLOAT3{ 0.0f, 0.0f, 0.0f }));
 
-		for (iterator = m_pFilteredCollided->begin(); 
-			iterator != m_pFilteredCollided->end(); 
-			iterator++)
+		// Idea: Precedence order of collided objects.
+		//	For example, if colliding with a tree
+		//	and a portal, then the Portal takes precedence.
+
+		// Edges need to be touched.
+		Space * pCollidedEdge = m_portalCollisionDetectionStrategy.Detect(
+			m_pPlayer,
+			m_pCollided);
+
+		if (pCollidedEdge)
 		{
-			int intersectRect[4];
+			int minIndex = 0;
 
-#ifdef _DEBUG
-			// m_pPlayer will be modified, if needed
-			m_lookaheadCollisionDetectionStrategy.Detect(
-				m_pPlayer,
-				*iterator,
-				&grid,
-				intersectRect,
-				float2(m_fWindowWidth, m_fWindowHeight),
-				&vec3Differential,
-				m_nHeading,
-				m_fLookaheadPt,
-				&m_collidedRects,
-				&m_collidedRectStatuses);
-#else
-			m_lookaheadCollisionDetectionStrategy.Detect(
-				m_pPlayer,
-				*iterator,
-				&grid,
-				intersectRect,
-				float2(m_fWindowWidth, m_fWindowHeight),
-				&vec3Differential,
-				m_nHeading,
-				m_fLookaheadPt,
-				nullptr,
-				nullptr);
-#endif // _DEBUG
+			int nDirection = static_cast<Edge *>(pCollidedEdge)->GetDirection();
 
-			// m_nCollisionState much only be NO_INTERSECTION 
-			//	or INTERSECTION at this point.
-#ifdef _DEBUG
-			m_bLookaheadValid = true;
+			m_pPlayer->Skip(nDirection, float2{ m_fWindowWidth, m_fWindowHeight });
+			m_pCurrentSubdivision = m_pRegion->Slide(nDirection);
 
-			//if (m_nCollisionState != NO_INTERSECTION)
-			//{
-			//	//if (m_nCollisionState == COLLISION)
-			//	//{
-			//	//	int actionCode = (*iterator)->Act(this, m_pWorld);
+			m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pPlayer);
+			m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pSword);
 
-			//	//	if (actionCode == 1)
-			//	//		return 0;
-			//	//}
+			m_pCollided->clear();
 
-			//	D2D1_RECT_F rect
-			//	{
-			//		(float)intersectRect[0],
-			//		(float)intersectRect[2],
-			//		(float)intersectRect[1],
-			//		(float)intersectRect[3]
-			//	};
-
-			//	m_collidedRects.push_back(rect);
-			//	m_collidedRectStatuses.push_back(m_nCollisionState);
-			//}
-#endif // _DEBUG
+			return 0;
 		}
-	}
+
 #ifdef _DEBUG
-	else
-	{
-		m_bLookaheadValid = false;
-	}
+		m_collidedRects.clear();
+		m_collidedRectStatuses.clear();
 #endif // _DEBUG
 
-	return 1;
+		m_pCollided->clear();
+
+		m_broadCollisionDetectionStrategy.Detect(
+			LAYER_PORTALS,
+			m_pPlayer,
+			m_pCurrentSubdivision->GetStack(),
+			m_pCollided,
+			&(XMFLOAT3{ 0.0f, 0.0f, 0.0f }));
+
+		// First, look for any collided stairs.
+		Space * pCollidedStairs = m_portalCollisionDetectionStrategy.Detect(
+			m_pPlayer,
+			m_pCollided);
+
+		if (pCollidedStairs)
+		{
+			int nDestination = static_cast<Portal *>(pCollidedStairs)->GetDestination();
+
+			m_pRegion = m_pWorld->Go(nDestination);
+
+			int entryX = 0;
+			int entryY = 0;
+
+			m_pRegion->GetEntry(&entryX, &entryY);
+
+			m_pCurrentSubdivision =
+				m_pRegion->LoadSubdivision(entryX, entryY);
+
+			m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pPlayer);
+			m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pSword);
+
+			m_nHeading = SOUTH;
+
+			m_pCollided->clear();
+
+			return 0;
+		}
+
+		m_pCollided->clear();
+
+		// vec3Differential = displacement vector to the lookahead point.
+		XMFLOAT3 vec3Differential = m_lookaheadVectorCalculator.Calculate(
+			m_pPlayer,
+			m_nHeading,
+			float2{ m_fWindowWidth, m_fWindowHeight },
+			WALKING_VELOCITY,
+			1, // timer.GetFramesPerSecond(),
+			&grid,
+			m_rectLookaheadZonePixels,
+			&m_fLookaheadPt);
+
+#ifdef _DEBUG
+		m_vecDifferential = XMLoadFloat3(&vec3Differential);
+
+		float fMagnitude = XMVectorGetX(XMVector3Length(m_vecDifferential));
+
+		if (fMagnitude > 0.0f)
+		{
+			char buffer1[64];
+
+			sprintf_s(
+				buffer1,
+				"Lookahead: (Heading %d) (Magnitude %f)\n",
+				m_nHeading,
+				fMagnitude);
+
+			OutputDebugStringA(buffer1);
+		}
+#endif // _DEBUG
+
+		m_broadCollisionDetectionStrategy.Detect(
+			LAYER_COLLIDABLES,
+			m_pPlayer,
+			m_pCurrentSubdivision->GetStack(),
+			m_pCollided,
+			&vec3Differential);
+
+		if (m_pCollided->size() > 0)
+		{
+			m_lookaheadCollisionFilter.Filter(
+				m_pFilteredCollided,
+				m_pCollided,
+				float2{ m_fWindowWidth, m_fWindowHeight },
+				m_rectLookaheadZonePixels);
+
+			std::list<Space *>::const_iterator iterator;
+
+			for (iterator = m_pFilteredCollided->begin();
+			iterator != m_pFilteredCollided->end();
+				iterator++)
+			{
+				int intersectRect[4];
+
+#ifdef _DEBUG
+				// m_pPlayer will be modified, if needed
+				m_lookaheadCollisionDetectionStrategy.Detect(
+					m_pPlayer,
+					*iterator,
+					&grid,
+					intersectRect,
+					float2(m_fWindowWidth, m_fWindowHeight),
+					&vec3Differential,
+					m_nHeading,
+					m_fLookaheadPt,
+					&m_collidedRects,
+					&m_collidedRectStatuses);
+#else
+				m_lookaheadCollisionDetectionStrategy.Detect(
+					m_pPlayer,
+					*iterator,
+					&grid,
+					intersectRect,
+					float2(m_fWindowWidth, m_fWindowHeight),
+					&vec3Differential,
+					m_nHeading,
+					m_fLookaheadPt,
+					nullptr,
+					nullptr);
+#endif // _DEBUG
+
+				// m_nCollisionState much only be NO_INTERSECTION 
+				//	or INTERSECTION at this point.
+#ifdef _DEBUG
+				m_bLookaheadValid = true;
+
+				//if (m_nCollisionState != NO_INTERSECTION)
+				//{
+				//	//if (m_nCollisionState == COLLISION)
+				//	//{
+				//	//	int actionCode = (*iterator)->Act(this, m_pWorld);
+
+				//	//	if (actionCode == 1)
+				//	//		return 0;
+				//	//}
+
+				//	D2D1_RECT_F rect
+				//	{
+				//		(float)intersectRect[0],
+				//		(float)intersectRect[2],
+				//		(float)intersectRect[1],
+				//		(float)intersectRect[3]
+				//	};
+
+				//	m_collidedRects.push_back(rect);
+				//	m_collidedRectStatuses.push_back(m_nCollisionState);
+				//}
+#endif // _DEBUG
+			}
+		}
+#ifdef _DEBUG
+		else
+		{
+			m_bLookaheadValid = false;
+		}
+#endif // _DEBUG
+
+		return 1;
+	}
+
+	return 0;
 }
 
 // Renders one frame using the vertex and pixel shaders.
@@ -879,18 +903,33 @@ void GameRenderer::HighlightRegion(int column, int row, ComPtr<ID2D1SolidColorBr
 }
 #endif // _DEBUG
 
+// Handle keystrokes in main loop to keep it synchronous with
+//	the controller and touch screen inputs.
 void GameRenderer::OnKeyDown(Windows::UI::Core::KeyEventArgs^ args)
 {
-	m_keyboardController.HandleKeystroke(
-		m_pPlayer, 
-		m_nCollisionState, 
-		args, 
-		PLAYER_MOVE_VELOCITY,
-		&m_nHeading);
-
-	if (args->VirtualKey == Windows::System::VirtualKey::S)
+	if (args->VirtualKey == Windows::System::VirtualKey::P)
 	{
-		ThrowSword(m_nHeading);
+//		m_pKeyboardStack->push_front("P");
+	}
+	else if (args->VirtualKey == Windows::System::VirtualKey::S)
+	{
+		m_pKeyboardStack->push_front("S");
+	}
+	else if (args->VirtualKey == Windows::System::VirtualKey::Left)
+	{
+		m_pKeyboardStack->push_front("Left");
+	}
+	else if (args->VirtualKey == Windows::System::VirtualKey::Down)
+	{
+		m_pKeyboardStack->push_front("Down");
+	}
+	else if (args->VirtualKey == Windows::System::VirtualKey::Right)
+	{
+		m_pKeyboardStack->push_front("Right");
+	}
+	else if (args->VirtualKey == Windows::System::VirtualKey::Up)
+	{
+		m_pKeyboardStack->push_front("Up");
 	}
 }
 
@@ -1047,3 +1086,36 @@ void GameRenderer::OnPointerPressed(ResolutionScale resolutionScale, float fX, f
 	}
 }
 
+// Do this to queue up keyboard requests and make sure
+//	keyboard, touch, and controller inputs are
+//	handled on the same clock.
+// Thread-safety issues?
+bool GameRenderer::HandleKeyboardQueue()
+{
+	if (m_pKeyboardStack->size() > 0)
+	{
+		int nQueueSize = m_pKeyboardStack->size();
+
+		String ^ strCommand = m_pKeyboardStack->back();
+		m_pKeyboardStack->pop_back();
+
+		m_keyboardController.HandleKeystroke(
+			m_pPlayer,
+			m_nCollisionState,
+			strCommand,
+			PLAYER_MOVE_VELOCITY,
+			&m_nHeading);
+		
+		// Temporary
+		//if (strCommand->Equals("S"))
+		//{
+		//	ThrowSword(m_nHeading);
+		//}
+		
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}

@@ -30,7 +30,7 @@ public:
 	void HandleKeystroke(
 		Player * pPlayer, 
 		int nCollisionState, 
-		KeyEventArgs^ args, 
+		String ^ args, 
 		float fVelocity,
 		int * lpnHeading);
 

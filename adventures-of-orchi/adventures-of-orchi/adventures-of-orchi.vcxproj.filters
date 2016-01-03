@@ -86,6 +86,9 @@
     <Filter Include="AI">
       <UniqueIdentifier>{2f129434-27f6-42af-a59c-52e5945487b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Logging">
+      <UniqueIdentifier>{48c6d9e0-4589-4473-a15f-5e9c0031be7c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />

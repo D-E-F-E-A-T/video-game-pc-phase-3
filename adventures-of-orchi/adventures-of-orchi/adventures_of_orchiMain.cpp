@@ -76,12 +76,13 @@ void adventures_of_orchiMain::StartRenderLoop()
 		while (action->Status == AsyncStatus::Started)
 		{
 			critical_section::scoped_lock lock(m_criticalSection);
-			if (Update() == 1)
+			Update(); // Check for 1 is no longer valid.
+								// Want to always refresh the screen
+								// since not just the player will be moving
+								// such as the Monsters.
+			if (Render())
 			{
-				if (Render())
-				{
-					m_deviceResources->Present();
-				}
+				m_deviceResources->Present();
 			}
 		}
 	});

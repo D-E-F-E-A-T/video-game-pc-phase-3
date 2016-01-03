@@ -46,6 +46,7 @@ using namespace Microsoft::WRL;
 using namespace DX;
 using namespace Windows::UI::ViewManagement;
 using namespace Windows::Graphics::Display;
+using namespace Windows::System;
 
 // This sample renderer instantiates a basic rendering pipeline.
 class GameRenderer
@@ -174,6 +175,9 @@ private:
 	int m_nOrientation;
 
 	LookaheadCalculator m_lookaheadCalculator;
-	void OnControllerInput();
+	bool OnControllerInput();
+
+	list<String ^> * m_pKeyboardStack;
+	bool HandleKeyboardQueue();
 };
 

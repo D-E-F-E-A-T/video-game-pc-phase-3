@@ -26,12 +26,10 @@ public:
 		float2 fHitPoint);
 
 	void FetchControllerInput();
-	void MovePlayer(
+	bool MovePlayer(
 		Player * pPlayer,
 		int collisionState,
 		int * swordDirection);
-
-	int HandleLeftThumbStick(short horizontal, short vertical);
 
 	bool GetIsControllerConnected() { return m_isControllerConnected; }
 	unsigned short CheckAButton();
@@ -44,7 +42,8 @@ private:
 		int nCollisionState,
 		int nSwordDirection,
 		short horizontal,
-		short vertical);
+		short vertical,
+		bool * retVal);
 
 	bool                    m_isControllerConnected;  // Do we have a controller connected
 	XINPUT_CAPABILITIES     m_xinputCaps;             // Capabilites of the controller

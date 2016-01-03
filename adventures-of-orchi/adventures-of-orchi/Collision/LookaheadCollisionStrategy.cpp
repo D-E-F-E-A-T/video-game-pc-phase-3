@@ -46,10 +46,8 @@ void LookaheadCollisionStrategy::Detect(
 	//	- 1 px.  
 	//	If a no collision is ever detected, move the player 
 	//	to the lookahead point.
-	XMFLOAT3 pvec3Displacement;
-	XMFLOAT3 pvec3PreviousDisplacement;
-
-	pvec3PreviousDisplacement = pvec3Displacement;
+	XMFLOAT3 pvec3DisplacementRatio;
+	XMFLOAT3 pvec3PreviousDisplacementRatio{ 0.0f, 0.0f, 0.0f };
 
 	for (int i = 0; i <= nPixelDistance; i++)
 	{
@@ -57,7 +55,7 @@ void LookaheadCollisionStrategy::Detect(
 		{
 			case NORTH:
 			{
-				pvec3Displacement =
+				pvec3DisplacementRatio =
 				{
 					0.0f,
 					fUnitRatio.y * (float)i * -1.0f,
@@ -68,7 +66,7 @@ void LookaheadCollisionStrategy::Detect(
 
 			case EAST:
 			{
-				pvec3Displacement =
+				pvec3DisplacementRatio =
 				{
 					fUnitRatio.x * (float)i,
 					0.0f,
@@ -79,7 +77,7 @@ void LookaheadCollisionStrategy::Detect(
 
 			case SOUTH:
 			{
-				pvec3Displacement =
+				pvec3DisplacementRatio =
 				{
 					0.0f,
 					fUnitRatio.y * (float)i,
@@ -90,7 +88,7 @@ void LookaheadCollisionStrategy::Detect(
 
 			case WEST:
 			{
-				pvec3Displacement =
+				pvec3DisplacementRatio =
 				{
 					fUnitRatio.x * (float)i * -1.0f,
 					0.0f,
@@ -106,19 +104,11 @@ void LookaheadCollisionStrategy::Detect(
 			pGrid,
 			pnIntersectRect,
 			fScreenDimensions,
-			&pvec3Displacement);
+			&pvec3DisplacementRatio);
 
 #ifdef _DEBUG
 		if (nCollisionState != NO_INTERSECTION)
 		{
-			//if (m_nCollisionState == COLLISION)
-			//{
-			//	int actionCode = (*iterator)->Act(this, m_pWorld);
-
-			//	if (actionCode == 1)
-			//		return 0;
-			//}
-
 			D2D1_RECT_F rect
 			{
 				(float)pnIntersectRect[0],
@@ -134,53 +124,37 @@ void LookaheadCollisionStrategy::Detect(
 
 		if (nCollisionState == COLLISION)
 		{
-//			XMVECTOR vecDisplacement = XMLoadFloat3(&pvec3PreviousDisplacement);
-
-			float2 fCurrentLocationRatio = pPlayer->GetLocationRatio();
-
-			// Move the player AWAY from the obstacle.
-			switch (nHeading)
+			if (i == 0)
 			{
-			case NORTH:
-				pPlayer->SetLocationRatio(
-					float2
-					{
-						fCurrentLocationRatio.x,
-						fCurrentLocationRatio.y + fUnitRatio.y
-					});
-				break;
+				// This would mean that the Player was left in 
+				//	 a collided state previously.
+				OutputDebugStringA("WARNING: Player left in COLLISION state previously.");
+			}
+			else
+			{
+				// Use the last vector that did not result in a COLLISION.
+				XMVECTOR pvecPreviousDisplacementRatio = XMLoadFloat3(&pvec3PreviousDisplacementRatio);
+				float2 fCurrentLocationRatio = pPlayer->GetLocationRatio();
 
-			case EAST:
-				pPlayer->SetLocationRatio(
-					float2
+				float2 fNextLocationRatio
 				{
-					fCurrentLocationRatio.x - fUnitRatio.x,
-					fCurrentLocationRatio.y
-				});
-				break;
+					fCurrentLocationRatio.x + XMVectorGetX(pvecPreviousDisplacementRatio),
+					fCurrentLocationRatio.y + XMVectorGetY(pvecPreviousDisplacementRatio)
+				};
 
-			case SOUTH:
-				pPlayer->SetLocationRatio(
-					float2
-				{
-					fCurrentLocationRatio.x,
-					fCurrentLocationRatio.y - fUnitRatio.y
-				});
-				break;
-
-			case WEST:
-				pPlayer->SetLocationRatio(
-					float2
-				{
-					fCurrentLocationRatio.x + fUnitRatio.x,
-					fCurrentLocationRatio.y
-				});
-				break;
+				pPlayer->SetLocationRatio(fNextLocationRatio);
 			}
 
 			return;
 		}
 
-		pvec3PreviousDisplacement = pvec3Displacement;
+		XMVECTOR pvecCurrentDisplacementRatio = XMLoadFloat3(&pvec3DisplacementRatio);
+
+		pvec3PreviousDisplacementRatio =
+		{
+			XMVectorGetX(pvecCurrentDisplacementRatio),
+			XMVectorGetY(pvecCurrentDisplacementRatio),
+			XMVectorGetZ(pvecCurrentDisplacementRatio)
+		};
 	}
 }

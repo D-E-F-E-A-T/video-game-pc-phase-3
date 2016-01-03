@@ -87,7 +87,7 @@ int NarrowCollisionStrategy::Detect(
 	obstacleCenterLocation.x = collided->GetLocationRatio().x * screenDimensions.x;
 	obstacleCenterLocation.y = collided->GetLocationRatio().y * screenDimensions.y;
 
-	// These are relative to the rendered sprite.4
+	// These are relative to the rendered sprite.
 	//	Take into consideration the actual screen dimensions.
 	renderedSpriteDimensions[WIDTH_INDEX] = (int)grid->GetColumnWidth();
 	renderedSpriteDimensions[HEIGHT_INDEX] = (int)grid->GetRowHeight();

@@ -400,7 +400,7 @@ int Utils::CalculatePixelDistance(
 		(fDeltaX * fDeltaX) +
 		(fDeltaY * fDeltaY));
 
-	return (int)fPixelDistance;
+	return (int)ceil(fPixelDistance);
 }
 
 // Convert 1 pixel to a ratio.
