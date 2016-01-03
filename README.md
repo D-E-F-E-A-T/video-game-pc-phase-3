@@ -3,11 +3,11 @@ This is phase 3 of the Game project which implements a 2D/3D adventure game of t
 
 This phase continues to build and define the data model and begins defining the dungeons of the world. The requirements of a scripting langauge begin to be identified. 
  
-Up to this point, mechanical aspects of the game have been developed (i.e. placing sprites, movement of the player)  In the next phase, the rules of the game will start to take shape.
+Up to this point, mechanical aspects of the game have been developed (i.e. placing sprites, movement of the player).  In the next phase, the rules of the game will start to take shape.
 
 While many aspects of the look-and-feel and gameplay of the classic Zelda game will be kept in this version, I plan to add some of my own twists to the storyline.
 
-As in the first two phases of this project, the code is developed with C++/XAML/DirectX 11.
+The code is developed with C++/XAML/DirectX 11.
 
 
 
@@ -21,7 +21,7 @@ Play
 The game can be played in the following ways:
 <ul>
     <li>Using and XBox One game controller (wired or wireless with wireless adapter)</li>
-    <li>On a tablet device in tablet mode (using on-screen touch controls)</li>
+    <li>On a tablet device, such as a Surface Pro 3, in tablet mode using on-screen touch controls</li>
     <li>Using the keyboard.</li>
 </ul>
 
