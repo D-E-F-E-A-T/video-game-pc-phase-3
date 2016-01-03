@@ -375,6 +375,16 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 			std::list<Space *>::const_iterator iterator;
 
+			// !!!!!!!!
+			// Need to know which of the collided spaces
+			//	would be collided with first.
+			//	For example, if the Player is approaching
+			// three trees that are in a horizontal line
+			//	from the left.  
+			//	This algorithm would be incorrect to
+			//	try to use the right-most tree.
+			//	Instead, the left-most tree must be used.
+			// !!!!!!!
 			for (iterator = m_pFilteredCollided->begin();
 			iterator != m_pFilteredCollided->end();
 				iterator++)
