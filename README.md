@@ -11,13 +11,24 @@ As in the first two phases of this project, the code is developed with C++/XAML/
 
 
 Compilation
-----------------------
+<hr>
 Visual Studio 2015 (at least Community edition) and Windows 10 are required for compilation. 
 
 Play
---------------------------------
+<hr>
 The game can be played in the following ways:
-1. Using and XBox One game controller (wired or wireless with wireless adapter)
-2. On a tablet device in tablet mode (using on-screen touch controls)
-3. Using the keyboard.
+<ul>
+    <li>Using and XBox One game controller (wired or wireless with wireless adapter)</li>
+    <li>On a tablet device in tablet mode (using on-screen touch controls)</li>
+    <li>Using the keyboard.</li>
+</ul>
+
+
+Referenced Works
+<hr>
+<ul>
+    <li>Introduction to 3D Game Programming with DirectX 11, Frank D. Luna, ISBN: 978-1-9364202-2-3</li>
+    <li>Linear Algebra and Its Applications 2nd Edition, David C. Lay</li>
+    <li>http://www.directxtutorial.com/</li>
+</ul>
 
