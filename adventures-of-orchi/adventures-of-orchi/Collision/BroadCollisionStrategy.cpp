@@ -72,8 +72,14 @@ bool BroadCollisionStrategy::IsClose(
 	Space * obstacle,
 	XMFLOAT3 * vecDifferential)
 {
+	// Calculate distance from obstacle to lookahead point.
 	float distance = obstacle->CalculateDistance(pMovable, vecDifferential);
 	
-	return (distance < 0.075f);		
+	// Does the obstacle fall within the circle centered
+	//	at the lookahead point?
+	XMVECTOR vecLookahead = XMLoadFloat3(vecDifferential);
+	float fLookaheadDistance = XMVectorGetX(XMVector3Length(vecLookahead));
+
+	return (distance <= fLookaheadDistance);
 }
 

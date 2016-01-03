@@ -329,6 +329,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		m_pCollided->clear();
 
 		// vec3Differential = displacement vector to the lookahead point.
+		//		= lookahead distance.
 		XMFLOAT3 vec3Differential = m_lookaheadVectorCalculator.Calculate(
 			m_pPlayer,
 			m_nHeading,
@@ -385,17 +386,26 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			//	try to use the right-most tree.
 			//	Instead, the left-most tree must be used.
 			// !!!!!!!
-			for (iterator = m_pFilteredCollided->begin();
-			iterator != m_pFilteredCollided->end();
-				iterator++)
+			if (m_pFilteredCollided->size() > 0)
 			{
+				Space * pNearestSpace = m_pFilteredCollided->front();
+				float fNearestDistance = m_pPlayer->CalculateDistance(pNearestSpace);
+
+				for (iterator = next(m_pFilteredCollided->begin());
+				iterator != m_pFilteredCollided->end();
+					iterator++)
+				{
+					if (m_pPlayer->CalculateDistance(*iterator) < fNearestDistance)
+						pNearestSpace = (*iterator);
+				}
+
 				int intersectRect[4];
 
 #ifdef _DEBUG
 				// m_pPlayer will be modified, if needed
 				m_lookaheadCollisionDetectionStrategy.Detect(
 					m_pPlayer,
-					*iterator,
+					pNearestSpace,
 					&grid,
 					intersectRect,
 					float2(m_fWindowWidth, m_fWindowHeight),
@@ -418,34 +428,11 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 					nullptr);
 #endif // _DEBUG
 
-				// m_nCollisionState much only be NO_INTERSECTION 
-				//	or INTERSECTION at this point.
 #ifdef _DEBUG
-				m_bLookaheadValid = true;
-
-				//if (m_nCollisionState != NO_INTERSECTION)
-				//{
-				//	//if (m_nCollisionState == COLLISION)
-				//	//{
-				//	//	int actionCode = (*iterator)->Act(this, m_pWorld);
-
-				//	//	if (actionCode == 1)
-				//	//		return 0;
-				//	//}
-
-				//	D2D1_RECT_F rect
-				//	{
-				//		(float)intersectRect[0],
-				//		(float)intersectRect[2],
-				//		(float)intersectRect[1],
-				//		(float)intersectRect[3]
-				//	};
-
-				//	m_collidedRects.push_back(rect);
-				//	m_collidedRectStatuses.push_back(m_nCollisionState);
-				//}
-#endif // _DEBUG
 			}
+
+			m_bLookaheadValid = true;
+#endif // _DEBUG
 		}
 #ifdef _DEBUG
 		else
@@ -760,6 +747,14 @@ void GameRenderer::RenderSpaces3D()
 #ifdef _DEBUG
 void GameRenderer::DrawBroadCollisionZone()
 {
+	float fMagnitude = XMVectorGetX(XMVector3Length(m_vecDifferential));
+	float fRadius = 0.0f;
+
+	if (m_nHeading % 2 == 0)
+		fRadius = fMagnitude * m_fWindowHeight;
+	else
+		fRadius = fMagnitude * m_fWindowWidth;
+
 	D2D1_ELLIPSE ellipse
 	{
 		D2D1_POINT_2F
@@ -767,8 +762,8 @@ void GameRenderer::DrawBroadCollisionZone()
 			(XMVectorGetX(m_vecDifferential) + m_pPlayer->GetLocationRatio().x) * m_fWindowWidth,
 			(XMVectorGetY(m_vecDifferential) + m_pPlayer->GetLocationRatio().y) * m_fWindowHeight
 		},
-		m_fWindowWidth * 0.075f,
-		m_fWindowWidth * 0.075f
+		fRadius,
+		fRadius
 	};
 
 	DEVICE_CONTEXT_2D->DrawEllipse(
