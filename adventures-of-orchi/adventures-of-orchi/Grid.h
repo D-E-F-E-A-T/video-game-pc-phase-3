@@ -30,6 +30,26 @@ public:
 	void SetWindowWidth(float fWidth);
 	void SetWindowHeight(float fHeight);
 	
+	float GetWindowWidth()
+	{
+		return m_fWindowWidth;
+	}
+
+	float GetWindowHeight()
+	{
+		return m_fWindowHeight;
+	}
+
+	float GetGridWidth() 
+	{ 
+		return m_fWindowWidth * (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO);
+	}
+
+	float GetGridHeight() 
+	{ 
+		return m_fWindowHeight * (1.0f - TOP_MARGIN_RATIO - BOTTOM_MARGIN_RATIO);
+	}
+	
 	void SetNumColumns(int nColumns);
 	void SetNumRows(int nRows);
 	void SetVisibility(boolean bVisibility);

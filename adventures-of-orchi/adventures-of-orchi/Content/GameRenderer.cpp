@@ -332,8 +332,8 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 		m_pCollided->clear();
 
-		// vec3Differential = displacement vector to the lookahead point.
-		//		= lookahead distance.
+		// If FPS = 1, velocity = 5,
+		//	magnitude = 0.2f
 		XMFLOAT3 vec3Differential = m_lookaheadVectorCalculator.Calculate(
 			m_pPlayer,
 			m_nHeading,
@@ -758,16 +758,23 @@ void GameRenderer::DrawBroadCollisionZone()
 	float fMagnitude = XMVectorGetX(XMVector3Length(m_vecDifferential));
 	float fRadius = 0.0f;
 
-	float fRadiusX = fMagnitude * (m_fWindowWidth * (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO));
-	float fRadiusY = fMagnitude * (m_fWindowHeight * (1.0f - TOP_MARGIN_RATIO - BOTTOM_MARGIN_RATIO));
+	float2 fGridPixels =
+	{
+		m_fWindowWidth * (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO),
+		m_fWindowHeight * (1.0f - TOP_MARGIN_RATIO - BOTTOM_MARGIN_RATIO)
+	};
 
+	float fRadiusX = fMagnitude * fGridPixels.x;
+	float fRadiusY = fMagnitude * fGridPixels.y;
 
 	D2D1_ELLIPSE ellipse
 	{
 		D2D1_POINT_2F
 		{
-			(XMVectorGetX(m_vecDifferential) + m_pPlayer->GetLocationRatio().x) * m_fWindowWidth,
-			(XMVectorGetY(m_vecDifferential) + m_pPlayer->GetLocationRatio().y) * m_fWindowHeight
+			(m_pPlayer->GetLocationRatio().x * m_fWindowWidth) + 
+				(XMVectorGetX(m_vecDifferential) * fGridPixels.x),
+			(m_pPlayer->GetLocationRatio().y * m_fWindowHeight) +
+				(XMVectorGetY(m_vecDifferential) * fGridPixels.y)
 		},
 		fRadiusX,
 		fRadiusY
@@ -808,12 +815,23 @@ void GameRenderer::DrawLookaheadZone()
 {
 	if (m_bLookaheadValid)
 	{
+		float fMagnitude = XMVectorGetX(XMVector3Length(m_vecDifferential));
+		float fRadius = 0.0f;
+
+		float2 fGridPixels =
+		{
+			m_fWindowWidth * (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO),
+			m_fWindowHeight * (1.0f - TOP_MARGIN_RATIO - BOTTOM_MARGIN_RATIO)
+		};
+
 		D2D1_ELLIPSE ellipse
 		{
 			D2D1_POINT_2F
 			{
-				m_fLookaheadPt.x * m_fWindowWidth,
-				m_fLookaheadPt.y * m_fWindowHeight
+				(m_pPlayer->GetLocationRatio().x * m_fWindowWidth) +
+					(XMVectorGetX(m_vecDifferential) * fGridPixels.x),
+				(m_pPlayer->GetLocationRatio().y * m_fWindowHeight) +
+					(XMVectorGetY(m_vecDifferential) * fGridPixels.y)
 			},
 			m_fWindowWidth * 0.0025f,
 			m_fWindowWidth * 0.0025f

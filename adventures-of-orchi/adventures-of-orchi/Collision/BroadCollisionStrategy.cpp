@@ -73,17 +73,52 @@ int BroadCollisionStrategy::Calculate(
 bool BroadCollisionStrategy::IsClose(
 	Movable * pMovable,
 	Space * obstacle,
-	XMFLOAT3 * vecDifferential,
+	XMFLOAT3 * vec3DifferentialGrid,	// Relative to the grid, NOT globally.
 	Grid * pGrid)
 {
-	// Calculate distance from obstacle to lookahead point.
-	float distance = obstacle->CalculateDistance(pMovable, vecDifferential);
-	
+	float distance = obstacle->CalculateDistance(pMovable, vec3DifferentialGrid);
+
 	// Does the obstacle fall within the circle centered
 	//	at the lookahead point?
-	XMVECTOR vecLookahead = XMLoadFloat3(vecDifferential);
+	XMVECTOR vecLookahead = XMLoadFloat3(vec3DifferentialGrid);
 	float fLookaheadDistance = XMVectorGetX(XMVector3Length(vecLookahead));
 
 	return (distance <= fLookaheadDistance);
-}
 
+	// Calculate distance from obstacle to lookahead point.
+/*
+	XMVECTOR vecDifferentialGrid = XMLoadFloat3(vec3DifferentialGrid);
+
+	XMVECTOR vecDifferentialGlobal =
+		XMVectorSet(
+			(XMVectorGetX(vecDifferentialGrid) * pGrid->GetGridWidth()) / pGrid->GetWindowWidth(),
+			(XMVectorGetY(vecDifferentialGrid) * pGrid->GetGridHeight()) / pGrid->GetWindowHeight(),
+			0.0f,
+			0.0f);
+
+	XMVECTOR vecLocation =
+		XMVectorSet(
+			pMovable->GetLocationRatio().x,
+			pMovable->GetLocationRatio().y,
+			0.0f,
+			0.0f);
+
+	XMVECTOR vecResultant = vecLocation + vecDifferentialGlobal;
+
+	XMFLOAT3 vec3Resultant
+	{
+		XMVectorGetX(vecResultant),
+		XMVectorGetY(vecResultant),
+		0.0f
+	};
+
+	float distance = obstacle->CalculateDistance(pMovable, &vec3Resultant);
+	
+	// Does the obstacle fall within the circle centered
+	//	at the lookahead point?
+	XMVECTOR vecLookahead = XMLoadFloat3(vec3DifferentialGrid);
+	float fLookaheadDistance = XMVectorGetX(XMVector3Length(vecLookahead));
+
+	return (distance <= fLookaheadDistance);
+*/
+}
