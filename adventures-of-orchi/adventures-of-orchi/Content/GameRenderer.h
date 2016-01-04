@@ -179,5 +179,6 @@ private:
 
 	list<String ^> * m_pKeyboardStack;
 	bool HandleKeyboardQueue();
+	int m_nFramesPerSecond;
 };
 

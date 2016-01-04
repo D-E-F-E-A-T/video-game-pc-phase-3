@@ -16,8 +16,10 @@ limitations under the License.
 #pragma once
 #include "pch.h"
 #include "Constants.h"
+#include "..\Common\DeviceResources.h"
 
 using namespace Microsoft::WRL;
+using namespace std;
 
 class Grid
 {
@@ -34,7 +36,8 @@ public:
 
 	void Draw(
 		ComPtr<ID2D1DeviceContext1> context, 
-		ComPtr<ID2D1SolidColorBrush> brush);
+		const shared_ptr<DeviceResources>& deviceResources,
+		int nFramesPerSecond);
 
 	float GetColumnWidth();
 	float GetRowHeight();
@@ -49,7 +52,29 @@ public:
 		return m_nNumColumns;
 	}
 
+	float CalculateGridsPerFrame(
+		float fVelocity,
+		int nFramesPerSecond);
+
 protected:
+	void DrawMajorHorizontalLines(
+		ComPtr<ID2D1DeviceContext1> context,
+		ComPtr<ID2D1SolidColorBrush> brush);
+
+	void DrawMajorVerticalLines(
+		ComPtr<ID2D1DeviceContext1> context,
+		ComPtr<ID2D1SolidColorBrush> brush);
+
+	void DrawMinorHorizontalLines(
+		ComPtr<ID2D1DeviceContext1> context,
+		ComPtr<ID2D1SolidColorBrush> brush,
+		float fFramesPerGrid);
+
+	void DrawMinorVerticalLines(
+		ComPtr<ID2D1DeviceContext1> context,
+		ComPtr<ID2D1SolidColorBrush> brush,
+		float fFramesPerGrid);
+
 
 private:
 	float m_fWindowWidth;

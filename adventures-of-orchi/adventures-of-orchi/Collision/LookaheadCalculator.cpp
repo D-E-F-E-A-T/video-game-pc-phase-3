@@ -31,9 +31,7 @@ XMFLOAT3 LookaheadCalculator::Calculate(
 {
 	XMFLOAT3 retVal;
 
-	float fGridsPerFrame = CalculateGridsPerFrame(
-		pMovable,
-		nHeading,
+	float fGridsPerFrame = grid->CalculateGridsPerFrame(
 		fVelocity,
 		nFramesPerSecond);
 
@@ -82,22 +80,6 @@ XMFLOAT3 LookaheadCalculator::Calculate(
 		fLookaheadPt);
 
 	return retVal;
-}
-
-float LookaheadCalculator::CalculateGridsPerFrame(
-	Movable * pMovable, 
-	int nHeading,
-	float fVelocity, 
-	int nFramesPerSecond)
-{
-	// Calculate the frames/grid at the current FPS.
-	//	Ex: 60 FPS * 5 (seconds per grid) = 300 frames per grid.
-	float fFramesPerGrid = (float)nFramesPerSecond * fVelocity;
-
-	// Length of each ratio division.
-	// Ex: 1.0f / 300 (frames per grid) = 0.00333 grid / frame.
-	//	Or ("Move 0.003333 grid for every frame")
-	return 1.0f / fFramesPerGrid;
 }
 
 void LookaheadCalculator::CalculateLookaheadZone(

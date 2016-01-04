@@ -49,7 +49,7 @@ void LookaheadCollisionStrategy::Detect(
 	XMFLOAT3 pvec3DisplacementRatio;
 	XMFLOAT3 pvec3PreviousDisplacementRatio{ 0.0f, 0.0f, 0.0f };
 
-	for (int i = 0; i <= nPixelDistance; i++)
+	for (int i = 0; i <= nPixelDistance; i += 2)
 	{
 		switch (nHeading)
 		{
@@ -136,11 +136,15 @@ void LookaheadCollisionStrategy::Detect(
 				XMVECTOR pvecPreviousDisplacementRatio = XMLoadFloat3(&pvec3PreviousDisplacementRatio);
 				float2 fCurrentLocationRatio = pPlayer->GetLocationRatio();
 
+				// Push back till no longer colliding? 
+
 				float2 fNextLocationRatio
 				{
 					fCurrentLocationRatio.x + XMVectorGetX(pvecPreviousDisplacementRatio),
 					fCurrentLocationRatio.y + XMVectorGetY(pvecPreviousDisplacementRatio)
 				};
+
+				
 
 				pPlayer->SetLocationRatio(fNextLocationRatio);
 			}

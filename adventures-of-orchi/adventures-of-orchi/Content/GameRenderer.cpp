@@ -215,6 +215,8 @@ bool GameRenderer::OnControllerInput()
 // Called once per frame, rotates the cube and calculates the model and view matrices.
 int GameRenderer::Update(DX::StepTimer const& timer)
 {
+	m_nFramesPerSecond = timer.GetFramesPerSecond();
+
 	// Not handling portrait mode for this release.
 	if (m_nOrientation == PORTRAIT)
 		return 1;
@@ -255,7 +257,8 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			m_pPlayer,
 			m_pCurrentSubdivision->GetStack(),
 			m_pCollided,
-			&(XMFLOAT3{ 0.0f, 0.0f, 0.0f }));
+			&(XMFLOAT3{ 0.0f, 0.0f, 0.0f }),
+			&grid);
 
 		// Idea: Precedence order of collided objects.
 		//	For example, if colliding with a tree
@@ -295,7 +298,8 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			m_pPlayer,
 			m_pCurrentSubdivision->GetStack(),
 			m_pCollided,
-			&(XMFLOAT3{ 0.0f, 0.0f, 0.0f }));
+			&(XMFLOAT3{ 0.0f, 0.0f, 0.0f }),
+			&grid);
 
 		// First, look for any collided stairs.
 		Space * pCollidedStairs = m_portalCollisionDetectionStrategy.Detect(
@@ -364,7 +368,8 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			m_pPlayer,
 			m_pCurrentSubdivision->GetStack(),
 			m_pCollided,
-			&vec3Differential);
+			&vec3Differential,
+			&grid);
 
 		if (m_pCollided->size() > 0)
 		{
@@ -488,7 +493,10 @@ void GameRenderer::Render()
 	grid.SetVisibility(true);
 #endif // _DEBUG
 
-	grid.Draw(DEVICE_CONTEXT_2D, m_deviceResources->m_mapBrushes["black"]);
+	grid.Draw(
+		DEVICE_CONTEXT_2D, 
+		m_deviceResources,
+		m_nFramesPerSecond);
 
 	RenderSpaces2D();
 
@@ -750,10 +758,9 @@ void GameRenderer::DrawBroadCollisionZone()
 	float fMagnitude = XMVectorGetX(XMVector3Length(m_vecDifferential));
 	float fRadius = 0.0f;
 
-	if (m_nHeading % 2 == 0)
-		fRadius = fMagnitude * m_fWindowHeight;
-	else
-		fRadius = fMagnitude * m_fWindowWidth;
+	float fRadiusX = fMagnitude * (m_fWindowWidth * (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO));
+	float fRadiusY = fMagnitude * (m_fWindowHeight * (1.0f - TOP_MARGIN_RATIO - BOTTOM_MARGIN_RATIO));
+
 
 	D2D1_ELLIPSE ellipse
 	{
@@ -762,8 +769,8 @@ void GameRenderer::DrawBroadCollisionZone()
 			(XMVectorGetX(m_vecDifferential) + m_pPlayer->GetLocationRatio().x) * m_fWindowWidth,
 			(XMVectorGetY(m_vecDifferential) + m_pPlayer->GetLocationRatio().y) * m_fWindowHeight
 		},
-		fRadius,
-		fRadius
+		fRadiusX,
+		fRadiusY
 	};
 
 	DEVICE_CONTEXT_2D->DrawEllipse(

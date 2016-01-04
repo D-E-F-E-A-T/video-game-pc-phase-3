@@ -33,14 +33,16 @@ void BroadCollisionStrategy::Detect(
 	Movable * pMovable,
 	Stack * stack,
 	list<Space *> * retVal,
-	XMFLOAT3 * vecDifferential)
+	XMFLOAT3 * vecDifferential,
+	Grid * pGrid)
 {
 	Calculate(
 		nLayer,
 		pMovable,
 		stack, 
 		retVal,
-		vecDifferential);
+		vecDifferential,
+		pGrid);
 }
 
 int BroadCollisionStrategy::Calculate(
@@ -48,7 +50,8 @@ int BroadCollisionStrategy::Calculate(
 	Movable * pMovable,
 	Stack * stack,
 	list<Space *> * retVal,
-	XMFLOAT3 * vecDifferential)
+	XMFLOAT3 * vecDifferential,
+	Grid * pGrid)
 {
 	int numLayers = stack->GetNumLayers();
 
@@ -58,7 +61,7 @@ int BroadCollisionStrategy::Calculate(
 		iterator != stack->Get(nLayer)->GetSpaces()->end();
 		iterator++)
 	{
-		if (IsClose(pMovable, *(iterator), vecDifferential))
+		if (IsClose(pMovable, *(iterator), vecDifferential, pGrid))
 		{
 			retVal->push_back(*(iterator));
 		}
@@ -70,7 +73,8 @@ int BroadCollisionStrategy::Calculate(
 bool BroadCollisionStrategy::IsClose(
 	Movable * pMovable,
 	Space * obstacle,
-	XMFLOAT3 * vecDifferential)
+	XMFLOAT3 * vecDifferential,
+	Grid * pGrid)
 {
 	// Calculate distance from obstacle to lookahead point.
 	float distance = obstacle->CalculateDistance(pMovable, vecDifferential);

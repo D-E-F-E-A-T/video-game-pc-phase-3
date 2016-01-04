@@ -18,6 +18,7 @@ limitations under the License.
 #include "Model\Movable.h"
 #include "Model\Space.h"
 #include "Model\Stack.h"
+#include "..\Grid.h"
 
 class BroadCollisionStrategy
 {
@@ -29,7 +30,8 @@ public:
 		Movable * pMovable, 
 		Stack * stack, 
 		list<Space *> * space, 
-		XMFLOAT3 * vecDifferential);
+		XMFLOAT3 * vecDifferential,
+		Grid * pGrid);
 
 protected:
 	int Calculate(
@@ -37,12 +39,14 @@ protected:
 		Movable * pMovable, 
 		Stack * stack, 
 		list<Space *> * retVal,
-		XMFLOAT3 * vecDifferential);
+		XMFLOAT3 * vecDifferential,
+		Grid * pGrid);
 
 	bool IsClose(
 		Movable * pMovable, 
 		Space * data,
-		XMFLOAT3 * vecDifferential);
+		XMFLOAT3 * vecDifferential,
+		Grid * pGrid);
 
 private:
 };
