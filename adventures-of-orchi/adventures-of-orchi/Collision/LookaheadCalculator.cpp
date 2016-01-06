@@ -18,8 +18,8 @@
 #include "LookaheadCalculator.h"
 #include "..\Grid.h"
 
-// @return Vector ratio, relative to the entire screen.
-XMFLOAT3 LookaheadCalculator::Calculate(
+// @return Ratio relative to the grid, only.
+float LookaheadCalculator::Calculate(
 	Movable * pMovable,
 	int nHeading,
 	float2 fWindowSize,
@@ -29,7 +29,7 @@ XMFLOAT3 LookaheadCalculator::Calculate(
 	float * pLookaheadZone,
 	float2 * fLookaheadPt)
 {
-	XMFLOAT3 vec3Lookahead;
+//	XMFLOAT3 vec3Lookahead;
 
 	float fGridsPerFrame = grid->CalculateGridsPerFrame(
 		fVelocity,

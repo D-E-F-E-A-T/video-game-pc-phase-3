@@ -255,9 +255,11 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		m_broadCollisionDetectionStrategy.Detect(
 			LAYER_2D,
 			m_pPlayer,
+			m_nHeading,
 			m_pCurrentSubdivision->GetStack(),
 			m_pCollided,
 			&(XMFLOAT3{ 0.0f, 0.0f, 0.0f }),
+			0.0f,
 			&grid);
 
 		// Idea: Precedence order of collided objects.
@@ -296,9 +298,11 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		m_broadCollisionDetectionStrategy.Detect(
 			LAYER_PORTALS,
 			m_pPlayer,
+			m_nHeading,
 			m_pCurrentSubdivision->GetStack(),
 			m_pCollided,
 			&(XMFLOAT3{ 0.0f, 0.0f, 0.0f }),
+			0.0f,
 			&grid);
 
 		// First, look for any collided stairs.
@@ -334,7 +338,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 		// If FPS = 1, velocity = 5,
 		//	magnitude = 0.2f
-		XMFLOAT3 vec3Differential = m_lookaheadVectorCalculator.Calculate(
+		XMFLOAT3 vec3Lookahead = m_lookaheadVectorCalculator.Calculate(
 			m_pPlayer,
 			m_nHeading,
 			float2{ m_fWindowWidth, m_fWindowHeight },
@@ -344,11 +348,12 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			m_rectLookaheadZonePixels,
 			&m_fLookaheadPt);
 
+
+		m_vecLookahead = XMLoadFloat3(&vec3Lookahead);
+
+		float fMagnitude = XMVectorGetX(XMVector3Length(m_vecLookahead));
+
 #ifdef _DEBUG
-		m_vecDifferential = XMLoadFloat3(&vec3Differential);
-
-		float fMagnitude = XMVectorGetX(XMVector3Length(m_vecDifferential));
-
 		if (fMagnitude > 0.0f)
 		{
 			char buffer1[64];
@@ -366,9 +371,11 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		m_broadCollisionDetectionStrategy.Detect(
 			LAYER_COLLIDABLES,
 			m_pPlayer,
+			m_nHeading,
 			m_pCurrentSubdivision->GetStack(),
 			m_pCollided,
-			&vec3Differential,
+			&vec3Lookahead,
+			fMagnitude + 0.1f,
 			&grid);
 
 		if (m_pCollided->size() > 0)
@@ -414,7 +421,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 					&grid,
 					intersectRect,
 					float2(m_fWindowWidth, m_fWindowHeight),
-					&vec3Differential,
+					&vec3Lookahead,
 					m_nHeading,
 					m_fLookaheadPt,
 					&m_collidedRects,
@@ -755,7 +762,7 @@ void GameRenderer::RenderSpaces3D()
 #ifdef _DEBUG
 void GameRenderer::DrawBroadCollisionZone()
 {
-	float fMagnitude = XMVectorGetX(XMVector3Length(m_vecDifferential));
+	float fMagnitude = XMVectorGetX(XMVector3Length(m_vecLookahead));
 	float fRadius = 0.0f;
 
 	float2 fGridPixels =
@@ -772,9 +779,9 @@ void GameRenderer::DrawBroadCollisionZone()
 		D2D1_POINT_2F
 		{
 			(m_pPlayer->GetLocationRatio().x * m_fWindowWidth) + 
-				(XMVectorGetX(m_vecDifferential) * fGridPixels.x),
+				(XMVectorGetX(m_vecLookahead) * fGridPixels.x),
 			(m_pPlayer->GetLocationRatio().y * m_fWindowHeight) +
-				(XMVectorGetY(m_vecDifferential) * fGridPixels.y)
+				(XMVectorGetY(m_vecLookahead) * fGridPixels.y)
 		},
 		fRadiusX,
 		fRadiusY
@@ -815,7 +822,7 @@ void GameRenderer::DrawLookaheadZone()
 {
 	if (m_bLookaheadValid)
 	{
-		float fMagnitude = XMVectorGetX(XMVector3Length(m_vecDifferential));
+		float fMagnitude = XMVectorGetX(XMVector3Length(m_vecLookahead));
 		float fRadius = 0.0f;
 
 		float2 fGridPixels =
@@ -829,9 +836,9 @@ void GameRenderer::DrawLookaheadZone()
 			D2D1_POINT_2F
 			{
 				(m_pPlayer->GetLocationRatio().x * m_fWindowWidth) +
-					(XMVectorGetX(m_vecDifferential) * fGridPixels.x),
+					(XMVectorGetX(m_vecLookahead) * fGridPixels.x),
 				(m_pPlayer->GetLocationRatio().y * m_fWindowHeight) +
-					(XMVectorGetY(m_vecDifferential) * fGridPixels.y)
+					(XMVectorGetY(m_vecLookahead) * fGridPixels.y)
 			},
 			m_fWindowWidth * 0.0025f,
 			m_fWindowWidth * 0.0025f

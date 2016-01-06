@@ -28,24 +28,30 @@ public:
 	void Detect(
 		int nLayer, 
 		Movable * pMovable, 
+		int nHeading,
 		Stack * stack, 
 		list<Space *> * space, 
-		XMFLOAT3 * vecDifferential,
+		XMFLOAT3 * vecLookahead,
+		float fLookaheadGridRadius,
 		Grid * pGrid);
 
 protected:
 	int Calculate(
 		int nLayer, 
 		Movable * pMovable, 
+		int nHeading,
 		Stack * stack, 
 		list<Space *> * retVal,
-		XMFLOAT3 * vecDifferential,
+		XMFLOAT3 * vecLookahead,
+		float fLookaheadGridRadius,
 		Grid * pGrid);
 
 	bool IsClose(
 		Movable * pMovable, 
+		int nHeading,
 		Space * data,
-		XMFLOAT3 * vecDifferential,
+		XMFLOAT3 * vecLookahead,
+		float fLookaheadGridRadius,
 		Grid * pGrid);
 
 private:

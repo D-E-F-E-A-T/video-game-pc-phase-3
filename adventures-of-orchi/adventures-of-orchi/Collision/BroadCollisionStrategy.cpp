@@ -31,26 +31,32 @@ BroadCollisionStrategy::BroadCollisionStrategy()
 void BroadCollisionStrategy::Detect(
 	int nLayer,
 	Movable * pMovable,
+	int nHeading,
 	Stack * stack,
 	list<Space *> * retVal,
-	XMFLOAT3 * vecDifferential,
+	XMFLOAT3 * vecLookahead,
+	float fLookaheadGridRadius,
 	Grid * pGrid)
 {
 	Calculate(
 		nLayer,
 		pMovable,
+		nHeading,
 		stack, 
 		retVal,
-		vecDifferential,
+		vecLookahead,
+		fLookaheadGridRadius,
 		pGrid);
 }
 
 int BroadCollisionStrategy::Calculate(
 	int nLayer, 
 	Movable * pMovable,
+	int nHeading,
 	Stack * stack,
 	list<Space *> * retVal,
-	XMFLOAT3 * vecDifferential,
+	XMFLOAT3 * vecLookahead,
+	float fLookaheadGridRadius,
 	Grid * pGrid)
 {
 	int numLayers = stack->GetNumLayers();
@@ -61,7 +67,7 @@ int BroadCollisionStrategy::Calculate(
 		iterator != stack->Get(nLayer)->GetSpaces()->end();
 		iterator++)
 	{
-		if (IsClose(pMovable, *(iterator), vecDifferential, pGrid))
+		if (IsClose(pMovable, nHeading, *(iterator), vecLookahead, fLookaheadGridRadius, pGrid))
 		{
 			retVal->push_back(*(iterator));
 		}
@@ -70,32 +76,40 @@ int BroadCollisionStrategy::Calculate(
 	return 1;
 }
 
+/**
+ * vec3Differential Vector representing the lookahead point.
+ *	The components of this vector represent percentages
+ *	of the grid.
+ *	For example, <0.2f, 0.2f, 0.0f> for a 1920 x 1080 screen
+ *	is <230.4f, 216.0f, 0.0f> in pixels. 
+ *	(With .2 left and right margins. 0 top and bottom margins.
+ */
 bool BroadCollisionStrategy::IsClose(
 	Movable * pMovable,
+	int nHeading,
 	Space * obstacle,
-	XMFLOAT3 * vec3DifferentialGrid,	// Relative to the grid, NOT globally.
+	XMFLOAT3 * vec3LookaheadGrid,
+	float fLookaheadGridRadius,
 	Grid * pGrid)
 {
-	float distance = obstacle->CalculateDistance(pMovable, vec3DifferentialGrid);
-
-	// Does the obstacle fall within the circle centered
-	//	at the lookahead point?
-	XMVECTOR vecLookahead = XMLoadFloat3(vec3DifferentialGrid);
-	float fLookaheadDistance = XMVectorGetX(XMVector3Length(vecLookahead));
-
-	return (distance <= fLookaheadDistance);
-
 	// Calculate distance from obstacle to lookahead point.
-/*
-	XMVECTOR vecDifferentialGrid = XMLoadFloat3(vec3DifferentialGrid);
 
-	XMVECTOR vecDifferentialGlobal =
+	XMVECTOR vecLookaheadGrid = XMLoadFloat3(vec3LookaheadGrid);
+
+	XMVECTOR vecLookaheadGlobal =
 		XMVectorSet(
-			(XMVectorGetX(vecDifferentialGrid) * pGrid->GetGridWidth()) / pGrid->GetWindowWidth(),
-			(XMVectorGetY(vecDifferentialGrid) * pGrid->GetGridHeight()) / pGrid->GetWindowHeight(),
+			(XMVectorGetX(vecLookaheadGrid) * pGrid->GetGridWidth()) / pGrid->GetWindowWidth(),
+			(XMVectorGetY(vecLookaheadGrid) * pGrid->GetGridHeight()) / pGrid->GetWindowHeight(),
 			0.0f,
 			0.0f);
 
+	XMFLOAT3 vec3LookaheadGlobal
+	{
+		XMVectorGetX(vecLookaheadGlobal),
+		XMVectorGetY(vecLookaheadGlobal),
+		0.0f
+	};
+/*
 	XMVECTOR vecLocation =
 		XMVectorSet(
 			pMovable->GetLocationRatio().x,
@@ -111,14 +125,45 @@ bool BroadCollisionStrategy::IsClose(
 		XMVectorGetY(vecResultant),
 		0.0f
 	};
-
-	float distance = obstacle->CalculateDistance(pMovable, &vec3Resultant);
-	
-	// Does the obstacle fall within the circle centered
-	//	at the lookahead point?
-	XMVECTOR vecLookahead = XMLoadFloat3(vec3DifferentialGrid);
-	float fLookaheadDistance = XMVectorGetX(XMVector3Length(vecLookahead));
-
-	return (distance <= fLookaheadDistance);
 */
+
+	float2 fDistanceGlobal = obstacle->CalculateDistance(pMovable, &vec3LookaheadGlobal);
+
+
+
+	float fDistanceGrid = 0.0f;
+
+	// TODO: Using parabolic functions will remove need for case statements.
+	//	Will be needed when steering becomes 360 degrees.
+/*
+	if (nHeading % 2 == 0)
+	{
+		// NORTH or SOUTH.
+		fDistanceGrid = (fDistanceGlobal * pGrid->GetWindowHeight()) / pGrid->GetGridHeight();
+	}
+	else
+	{
+		// EAST or WEST.
+		fDistanceGrid = (fDistanceGlobal * pGrid->GetWindowWidth()) / pGrid->GetGridWidth();
+	}
+*/
+
+	float fDistanceGridX = (fDistanceGlobal * pGrid->GetWindowWidth()) / pGrid->GetGridWidth();
+	float fDistanceGridY = (fDistanceGlobal * pGrid->GetWindowHeight()) / pGrid->GetGridHeight();
+
+	fDistanceGrid =
+		sqrt(fDistanceGridX * fDistanceGridX + fDistanceGridY * fDistanceGridY);
+
+#ifdef _DEBUG
+	char buf[64];
+	sprintf_s(buf, "fDistanceGlobal = %f fDistanceGrid = %f\n", fDistanceGlobal, fDistanceGrid);
+	OutputDebugStringA(buf);
+#endif // _DEBUG
+	
+	// Must compare globals to globals and grids to grids.
+//	XMVECTOR vecLookaheadGrid = XMLoadFloat3(vec3LookaheadGrid);
+//	float fLookaheadDistanceGrid = XMVectorGetX(XMVector3Length(vecLookaheadGrid));
+
+	return (fDistanceGrid <= fLookaheadGridRadius);
+
 }

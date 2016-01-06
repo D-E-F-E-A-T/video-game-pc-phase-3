@@ -21,7 +21,7 @@
 class LookaheadCalculator
 {
 public:
-	XMFLOAT3 Calculate(
+	float Calculate(
 		Movable * pMovable,
 		int nHeading,
 		float2 fWindowSize,

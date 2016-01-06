@@ -137,7 +137,7 @@ private:
 	vector<D2D1_RECT_F> m_collidedRects;
 	vector<int> m_collidedRectStatuses;
 	bool m_bLookaheadValid;
-	XMVECTOR m_vecDifferential;
+	XMVECTOR m_vecLookahead;
 
 #endif // _DEBUG
 	float2 m_fLookaheadPt;
