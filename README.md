@@ -1,4 +1,4 @@
-# The Game project, Phase 3
+# The Video Game project, Phase 3
 This is phase 3 of the Game project which implements a 2D/3D adventure game of the ilk of Nintendo's original "The Legend of Zelda." https://en.wikipedia.org/wiki/The_Legend_of_Zelda_(1986_video_game)
 
 This phase continues to build and define the data model and begins defining the dungeons of the world. The requirements of a scripting langauge begin to be identified. 
@@ -32,5 +32,6 @@ Referenced Works
     <li>Introduction to 3D Game Programming with DirectX 11, Frank D. Luna, ISBN: 978-1-9364202-2-3</li>
     <li>Linear Algebra and Its Applications 2nd Edition, David C. Lay</li>
     <li>http://www.directxtutorial.com/</li>
+    <li><a href="https://code.msdn.microsoft.com/windowsapps/Direct3D-sprite-sample-97ae6262#content">Direct3D sprite sample</a></li>
 </ul>
 
