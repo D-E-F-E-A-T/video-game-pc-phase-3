@@ -42,7 +42,9 @@ public:
 		float * x,
 		float * y);
 
-	static void ConvertGlobalToGridLocation(float2 globalPt, float * x, float * y);
+	static void ConvertScreenRatioToGridRatio(float2 fPoint_screen_ratio, float * x, float * y);
+	static void ConvertGridRatioToScreenRatio(float2 fPoint_grid_ratio, Grid * pGrid, float * x, float * y);
+
 	static void InsertionSortF(float values[], int length);
 	static float GetMinValue(vector<float> values, int * index);
 
@@ -62,4 +64,9 @@ public:
 		float2 fScreenDimensions);
 
 	static float2 UnitPixelToRatio(float2 fScreenDimensions);
+
+	static bool IsPointInEllipse(
+		float2 fPoint,
+		float2 fEllipseCenter,
+		float2 fEllipseDimensions);
 };

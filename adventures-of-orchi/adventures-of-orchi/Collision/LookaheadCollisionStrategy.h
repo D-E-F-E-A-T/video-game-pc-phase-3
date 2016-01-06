@@ -28,7 +28,6 @@ public:
 		Grid * grid,		// in
 		int * intersectRect,
 		float2 screenDimensions,
-		XMFLOAT3 * vec3Differential,
 		int nHeading,
 		float2 fLookaheadPt,
 		vector<D2D1_RECT_F> * pCollidedRects,

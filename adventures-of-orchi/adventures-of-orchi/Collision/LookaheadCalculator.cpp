@@ -29,70 +29,53 @@ float LookaheadCalculator::Calculate(
 	float * pLookaheadZone,
 	float2 * fLookaheadPt)
 {
-//	XMFLOAT3 vec3Lookahead;
-
 	float fGridsPerFrame = grid->CalculateGridsPerFrame(
 		fVelocity,
 		nFramesPerSecond);
 
-	float2 fGridDimensions =
-	{
-		fWindowSize.x * (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO),
-		fWindowSize.y * (1.0f - TOP_MARGIN_RATIO - BOTTOM_MARGIN_RATIO)
-	};
-
-	float2 fGridPixelsPerFrame =
-		fGridsPerFrame *
-		float2{ fGridDimensions.x, fGridDimensions.y };
-
-	// TODO: Move grid calculations into the grid.
-	float2 fLookaheadRatio = // (0.2f, 0.2f)
-	{
-		fGridPixelsPerFrame.x / fGridDimensions.x,
-		fGridPixelsPerFrame.y / fGridDimensions.y
-	};
-
-	switch (nHeading)
-	{
-	case NORTH:
-		vec3Lookahead = { 0.0f, -1.0f * fLookaheadRatio.y, 0.0f };
-		break;
-
-	case EAST:
-		vec3Lookahead = { fLookaheadRatio.x, 0.0f, 0.0f };
-		break;
-
-	case SOUTH:
-		vec3Lookahead = { 0.0f, fLookaheadRatio.y, 0.0f };
-		break;
-
-	case WEST:
-		vec3Lookahead = { -1.0f * fLookaheadRatio.x, 0.0f, 0.0f };
-		break;
-	}
-
 	CalculateLookaheadZone(
 		pMovable->GetLocationRatio(),
 		nHeading,
-		&vec3Lookahead,
+		fGridsPerFrame,
 		fWindowSize,
 		grid,
 		pLookaheadZone,
 		fLookaheadPt);
 
-	return vec3Lookahead;
+	return fGridsPerFrame;
 }
 
 void LookaheadCalculator::CalculateLookaheadZone(
 	float2 fLocationRatio,
 	int nHeading,
-	XMFLOAT3 * vec3Differential,	// Relative to the grid, NOT to global.
+	float fGridsPerFrame,	// Relative to the grid, NOT to global.
 	float2 fScreenDimensions,
 	Grid * grid, // Player location is the coordinates of the center of the sprite.
 	float * fLookaheadZone,
 	float2 * fLookaheadPtRatio)
 {
-	XMVECTOR vecDifferential = XMLoadFloat3(vec3Differential);
+	XMFLOAT3 vec3Lookahead;
+
+	switch (nHeading)
+	{
+	case NORTH:
+		vec3Lookahead = { 0.0f, -1.0f * fGridsPerFrame, 0.0f };
+		break;
+
+	case EAST:
+		vec3Lookahead = { fGridsPerFrame, 0.0f, 0.0f };
+		break;
+
+	case SOUTH:
+		vec3Lookahead = { 0.0f, fGridsPerFrame, 0.0f };
+		break;
+
+	case WEST:
+		vec3Lookahead = { -1.0f * fGridsPerFrame, 0.0f, 0.0f };
+		break;
+	}
+
+	XMVECTOR vecLookahead = XMLoadFloat3(&vec3Lookahead);
 	int playerTopLeftTranslated[2];
 	int playerTopLeft[2];
 
@@ -106,8 +89,8 @@ void LookaheadCalculator::CalculateLookaheadZone(
 	//	For now, using the dimensions of the grid space.
 	*fLookaheadPtRatio =
 	{
-		fLocationRatio.x + ((XMVectorGetX(vecDifferential) * fGridPixels.x) / fScreenDimensions.x),
-		fLocationRatio.y + ((XMVectorGetY(vecDifferential) * fGridPixels.y) / fScreenDimensions.y)
+		fLocationRatio.x + ((XMVectorGetX(vecLookahead) * fGridPixels.x) / fScreenDimensions.x),
+		fLocationRatio.y + ((XMVectorGetY(vecLookahead) * fGridPixels.y) / fScreenDimensions.y)
 	};
 
 	float2 fPlayerTopLeftTranslated =

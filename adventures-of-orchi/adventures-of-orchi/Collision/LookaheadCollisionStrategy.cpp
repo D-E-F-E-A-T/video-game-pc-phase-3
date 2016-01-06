@@ -26,7 +26,6 @@ void LookaheadCollisionStrategy::Detect(
 	Grid * pGrid,
 	int * pnIntersectRect,
 	float2 fScreenDimensions,
-	XMFLOAT3 * pvec3Differential,
 	int nHeading,
 	float2 fLookaheadPt,
 	vector<D2D1_RECT_F> * pCollidedRects,

@@ -258,7 +258,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			m_nHeading,
 			m_pCurrentSubdivision->GetStack(),
 			m_pCollided,
-			&(XMFLOAT3{ 0.0f, 0.0f, 0.0f }),
+			0.0f,
 			0.0f,
 			&grid);
 
@@ -301,7 +301,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			m_nHeading,
 			m_pCurrentSubdivision->GetStack(),
 			m_pCollided,
-			&(XMFLOAT3{ 0.0f, 0.0f, 0.0f }),
+			0.0f,
 			0.0f,
 			&grid);
 
@@ -338,7 +338,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 		// If FPS = 1, velocity = 5,
 		//	magnitude = 0.2f
-		XMFLOAT3 vec3Lookahead = m_lookaheadVectorCalculator.Calculate(
+		m_fLookahead_grid_ratio = m_lookaheadCalculator.Calculate(
 			m_pPlayer,
 			m_nHeading,
 			float2{ m_fWindowWidth, m_fWindowHeight },
@@ -349,12 +349,12 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			&m_fLookaheadPt);
 
 
-		m_vecLookahead = XMLoadFloat3(&vec3Lookahead);
+//		m_vecLookahead = XMLoadFloat3(&vec3Lookahead);
 
-		float fMagnitude = XMVectorGetX(XMVector3Length(m_vecLookahead));
+//		float fMagnitude = XMVectorGetX(XMVector3Length(m_vecLookahead));
 
 #ifdef _DEBUG
-		if (fMagnitude > 0.0f)
+		if (m_fLookahead_grid_ratio > 0.0f)
 		{
 			char buffer1[64];
 
@@ -362,7 +362,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 				buffer1,
 				"Lookahead: (Heading %d) (Magnitude %f)\n",
 				m_nHeading,
-				fMagnitude);
+				m_fLookahead_grid_ratio);
 
 			OutputDebugStringA(buffer1);
 		}
@@ -374,8 +374,8 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			m_nHeading,
 			m_pCurrentSubdivision->GetStack(),
 			m_pCollided,
-			&vec3Lookahead,
-			fMagnitude + 0.1f,
+			m_fLookahead_grid_ratio,
+			m_fLookahead_grid_ratio,
 			&grid);
 
 		if (m_pCollided->size() > 0)
@@ -421,7 +421,6 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 					&grid,
 					intersectRect,
 					float2(m_fWindowWidth, m_fWindowHeight),
-					&vec3Lookahead,
 					m_nHeading,
 					m_fLookaheadPt,
 					&m_collidedRects,
@@ -519,7 +518,7 @@ void GameRenderer::Render()
 		float fX = 0.f;
 		float fY = 0.f;
 
-		Utils::ConvertGlobalToGridLocation((*iterator)->GetLocationRatio(), &fX, &fY);
+		Utils::ConvertScreenRatioToGridRatio((*iterator)->GetLocationRatio(), &fX, &fY);
 
 		Utils::ConvertRatioToGridLocations(
 			grid,
@@ -762,29 +761,27 @@ void GameRenderer::RenderSpaces3D()
 #ifdef _DEBUG
 void GameRenderer::DrawBroadCollisionZone()
 {
-	float fMagnitude = XMVectorGetX(XMVector3Length(m_vecLookahead));
-	float fRadius = 0.0f;
+	float fX = 0.f;
+	float fY = 0.f;
 
-	float2 fGridPixels =
-	{
-		m_fWindowWidth * (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO),
-		m_fWindowHeight * (1.0f - TOP_MARGIN_RATIO - BOTTOM_MARGIN_RATIO)
-	};
-
-	float fRadiusX = fMagnitude * fGridPixels.x;
-	float fRadiusY = fMagnitude * fGridPixels.y;
+	Utils::ConvertGridRatioToScreenRatio(
+		{
+			m_fLookahead_grid_ratio,
+			m_fLookahead_grid_ratio
+		},
+		&grid, 
+		&fX, 
+		&fY);
 
 	D2D1_ELLIPSE ellipse
 	{
 		D2D1_POINT_2F
 		{
-			(m_pPlayer->GetLocationRatio().x * m_fWindowWidth) + 
-				(XMVectorGetX(m_vecLookahead) * fGridPixels.x),
-			(m_pPlayer->GetLocationRatio().y * m_fWindowHeight) +
-				(XMVectorGetY(m_vecLookahead) * fGridPixels.y)
+			(m_pPlayer->GetLocationRatio().x + fX) * m_fWindowWidth,
+			(m_pPlayer->GetLocationRatio().y + fY) * m_fWindowHeight
 		},
-		fRadiusX,
-		fRadiusY
+		fX,
+		fY
 	};
 
 	DEVICE_CONTEXT_2D->DrawEllipse(
@@ -820,9 +817,10 @@ void GameRenderer::DrawFilteredCollided()
 
 void GameRenderer::DrawLookaheadZone()
 {
+/*
 	if (m_bLookaheadValid)
 	{
-		float fMagnitude = XMVectorGetX(XMVector3Length(m_vecLookahead));
+//		float fMagnitude = XMVectorGetX(XMVector3Length(m_vecLookahead));
 		float fRadius = 0.0f;
 
 		float2 fGridPixels =
@@ -836,9 +834,9 @@ void GameRenderer::DrawLookaheadZone()
 			D2D1_POINT_2F
 			{
 				(m_pPlayer->GetLocationRatio().x * m_fWindowWidth) +
-					(XMVectorGetX(m_vecLookahead) * fGridPixels.x),
+					(m_fLookaheadRatio * fGridPixels.x),
 				(m_pPlayer->GetLocationRatio().y * m_fWindowHeight) +
-					(XMVectorGetY(m_vecLookahead) * fGridPixels.y)
+					(m_fLookaheadRatio * fGridPixels.y)
 			},
 			m_fWindowWidth * 0.0025f,
 			m_fWindowWidth * 0.0025f
@@ -859,6 +857,7 @@ void GameRenderer::DrawLookaheadZone()
 			m_deviceResources->m_mapBrushes["purple"],
 			1.0f);
 	}
+*/
 }
 #endif // _DEBUG
 

@@ -124,7 +124,6 @@ private:
 
 	BroadCollisionStrategy m_broadCollisionDetectionStrategy;
 	PortalCollisionStrategy m_portalCollisionDetectionStrategy;
-	LookaheadCalculator m_lookaheadVectorCalculator;
 	LookaheadCollisionFilter m_lookaheadCollisionFilter;
 	LookaheadCollisionStrategy m_lookaheadCollisionDetectionStrategy;
 
@@ -137,7 +136,8 @@ private:
 	vector<D2D1_RECT_F> m_collidedRects;
 	vector<int> m_collidedRectStatuses;
 	bool m_bLookaheadValid;
-	XMVECTOR m_vecLookahead;
+//	XMVECTOR m_vecLookahead;
+	float m_fLookahead_grid_ratio;
 
 #endif // _DEBUG
 	float2 m_fLookaheadPt;

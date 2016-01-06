@@ -137,16 +137,32 @@ float Utils::CalculateSquareWidthRatio(float fScreenWidth)
 	return fSquareRawWidth / fScreenWidth;
 }
 
-void Utils::ConvertGlobalToGridLocation(
-	float2 globalPt,
+void Utils::ConvertScreenRatioToGridRatio(
+	float2 fPoint_screen_ratio,
 	float * x,
 	float * y)
 {
 	// globalPt.x is relative then entire width of the screen.
 	//	Need to subtract the left margin before converting to 
 	//	the correct Grid location.
-	*x = (globalPt.x - LEFT_MARGIN_RATIO) / (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO);
-	*y = globalPt.y;
+	*x = (fPoint_screen_ratio.x - LEFT_MARGIN_RATIO) / (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO);
+	*y = (fPoint_screen_ratio.y - TOP_MARGIN_RATIO) / (1.0f - TOP_MARGIN_RATIO - BOTTOM_MARGIN_RATIO);
+}
+
+void Utils::ConvertGridRatioToScreenRatio(
+	float2 fPoint_grid_ratio, 
+	Grid * pGrid,
+	float * x, 
+	float * y)
+{
+	float2 fPoint_screen_px
+	{
+		(fPoint_grid_ratio.x * pGrid->GetGridWidth()) + (pGrid->GetWindowWidth() * LEFT_MARGIN_RATIO),
+		(fPoint_grid_ratio.y * pGrid->GetGridHeight()) + (pGrid->GetWindowHeight() * TOP_MARGIN_RATIO)
+	};
+
+	*x = fPoint_screen_px.x / pGrid->GetWindowWidth();
+	*y = fPoint_screen_px.y / pGrid->GetWindowHeight();
 }
 
 void Utils::InsertionSortF(float values[], int length)
@@ -410,4 +426,34 @@ float2 Utils::UnitPixelToRatio(float2 fScreenDimensions)
 		1.0f / fScreenDimensions.x,
 		1.0f / fScreenDimensions.y
 	};
+}
+
+bool Utils::IsPointInEllipse(
+	float2 fPoint,
+	float2 fEllipseCenter,
+	float2 fEllipseDimensions)
+{
+	float fLeftTerm = 0.0f;
+	float fRightTerm = 0.0f;
+
+	if (fEllipseDimensions.x > fEllipseDimensions.y)
+	{
+		// Ellipse is wide.
+		fLeftTerm =
+			pow(fPoint.x - fEllipseCenter.x, 2.0) / pow(fEllipseCenter.x, 2.0);
+
+		fRightTerm =
+			pow(fPoint.y - fEllipseCenter.y, 2.0f) / pow(fEllipseCenter.y, 2.0);
+	}
+	else
+	{
+		// Ellipse is tall.
+		fLeftTerm =
+			pow(fPoint.y - fEllipseCenter.x, 2.0) / pow(fEllipseCenter.x, 2.0);
+
+		fRightTerm =
+			pow(fPoint.x - fEllipseCenter.y, 2.0) / pow(fEllipseCenter.y, 2.0);
+	}
+
+	return (fLeftTerm + fRightTerm <= 1.0f);
 }

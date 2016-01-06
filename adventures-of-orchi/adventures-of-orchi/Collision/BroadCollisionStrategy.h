@@ -31,8 +31,8 @@ public:
 		int nHeading,
 		Stack * stack, 
 		list<Space *> * space, 
-		XMFLOAT3 * vecLookahead,
-		float fLookaheadGridRadius,
+		float fLookaheadDistance_grid,
+		float fLookaheadRadius_grid,
 		Grid * pGrid);
 
 protected:
@@ -42,16 +42,16 @@ protected:
 		int nHeading,
 		Stack * stack, 
 		list<Space *> * retVal,
-		XMFLOAT3 * vecLookahead,
-		float fLookaheadGridRadius,
+		float fLookaheadDistance_grid,
+		float fLookaheadRadius_grid,
 		Grid * pGrid);
 
 	bool IsClose(
 		Movable * pMovable, 
 		int nHeading,
 		Space * data,
-		XMFLOAT3 * vecLookahead,
-		float fLookaheadGridRadius,
+		float fLookaheadDistance_grid,
+		float fLookaheadRadius_grid,
 		Grid * pGrid);
 
 private:
