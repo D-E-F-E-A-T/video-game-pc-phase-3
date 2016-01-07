@@ -135,11 +135,11 @@ private:
 	void HighlightRegion(int * pLocation, ComPtr<ID2D1SolidColorBrush> brush);
 	vector<D2D1_RECT_F> m_collidedRects;
 	vector<int> m_collidedRectStatuses;
-	bool m_bLookaheadValid;
-//	XMVECTOR m_vecLookahead;
-	float m_fLookaheadDistance_grid_ratio;
 
 #endif // _DEBUG
+	bool m_bLookaheadValid;
+
+	float m_fLookaheadDistance_grid_ratio;
 	float2 m_fLookaheadPt;
 	float m_rectLookaheadZonePixels[4];
 

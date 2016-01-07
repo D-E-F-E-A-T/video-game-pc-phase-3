@@ -417,7 +417,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			m_nHeading,
 			m_pCurrentSubdivision->GetStack(),
 			m_pCollided,
-			0.2f, // m_fLookaheadDistance_grid_ratio,
+			DEFAULT_LOOKAHEAD_DISTANCE__GRID_RATIO, // m_fLookaheadDistance_grid_ratio,
 			&grid);
 
 		if (m_pCollided->size() > 0)
@@ -468,13 +468,12 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 					&m_collidedRects,
 					&m_collidedRectStatuses);
 #else
-				m_lookaheadCollisionDetectionStrategy.Detect(
+				m_bLookaheadValid = m_lookaheadCollisionDetectionStrategy.Detect(
 					m_pPlayer,
-					*iterator,
+					pNearestSpace,
 					&grid,
 					intersectRect,
 					float2(m_fWindowWidth, m_fWindowHeight),
-					&vec3Differential,
 					m_nHeading,
 					m_fLookaheadPt,
 					nullptr,
@@ -518,11 +517,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 						break;
 					}
 				}
-
-#ifdef _DEBUG
 			}
-
-#endif // _DEBUG
 		}
 #ifdef _DEBUG
 		else
