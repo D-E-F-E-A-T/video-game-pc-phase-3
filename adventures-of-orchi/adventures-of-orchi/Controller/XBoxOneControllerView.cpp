@@ -62,31 +62,36 @@ void XBoxOneControllerView::FetchControllerInput()
 bool XBoxOneControllerView::MovePlayer(
 	Player * pPlayer, 
 	int nCollisionState, 
-	int * nDirection)
+	int * nDirection,
+	float * fForwardVelocity)
 {
 	bool retVal = false;
 
 	if (m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_UP)
 	{
-		pPlayer->MoveNorth(PLAYER_MOVE_VELOCITY);
+		*fForwardVelocity = PLAYER_MOVE_VELOCITY;
+		pPlayer->MoveNorth(*fForwardVelocity);
 		*nDirection = NORTH;
 		retVal = true;
 	}
 	else if (m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_DOWN)
 	{
-		pPlayer->MoveSouth(PLAYER_MOVE_VELOCITY);
+		*fForwardVelocity = PLAYER_MOVE_VELOCITY;
+		pPlayer->MoveSouth(*fForwardVelocity);
 		*nDirection = SOUTH;
 		retVal = true;
 	}
 	else if (m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT)
 	{
-		pPlayer->MoveWest(PLAYER_MOVE_VELOCITY);
+		*fForwardVelocity = PLAYER_MOVE_VELOCITY;
+		pPlayer->MoveWest(*fForwardVelocity);
 		*nDirection = WEST;
 		retVal = true;
 	}
 	else if (m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_RIGHT)
 	{
-		pPlayer->MoveEast(PLAYER_MOVE_VELOCITY);
+		*fForwardVelocity = PLAYER_MOVE_VELOCITY;
+		pPlayer->MoveEast(*fForwardVelocity);
 		*nDirection = EAST;
 		retVal = true;
 	}
@@ -98,7 +103,8 @@ bool XBoxOneControllerView::MovePlayer(
 			*nDirection, 
 			m_xinputState.Gamepad.sThumbLX, 
 			m_xinputState.Gamepad.sThumbLY,
-			&retVal);
+			&retVal,
+			fForwardVelocity);
 	}
 
 	return retVal;
@@ -115,10 +121,11 @@ int XBoxOneControllerView::HandleLeftThumbStick(
 	int nSwordDirection, 
 	short horizontal, 
 	short vertical,
-	bool * bStatus)
+	bool * bStatus,
+	float * fForwardVelocity)
 {
 	float radius = (float)(sqrt((double)horizontal * (double)horizontal + (double)vertical * (double)vertical));
-	float velocity = 0.f;
+//	float velocity = 0.f;
 	int retVal = NORTH;
 
 	if (radius < WALKING_THRESHOLD)
@@ -128,20 +135,20 @@ int XBoxOneControllerView::HandleLeftThumbStick(
 	}
 
 	if (radius >= WALKING_THRESHOLD && radius < RUNNING_THRESHOLD)
-		velocity = PLAYER_MOVE_VELOCITY;
+		*fForwardVelocity = PLAYER_MOVE_VELOCITY;
 	else if (radius >= RUNNING_THRESHOLD)
-		velocity = PLAYER_MOVE_VELOCITY * 2.0f;
+		*fForwardVelocity = PLAYER_MOVE_VELOCITY * 2.0f;
 
 	if (horizontal == 0)
 	{
 		if (vertical > 0)
 		{
-			pPlayer->MoveNorth(velocity);
+			pPlayer->MoveNorth(*fForwardVelocity);
 			retVal = NORTH;
 		}
 		else if (vertical < 0)
 		{
-			pPlayer->MoveSouth(velocity);
+			pPlayer->MoveSouth(*fForwardVelocity);
 			retVal = SOUTH;
 		}
 	}
@@ -149,12 +156,12 @@ int XBoxOneControllerView::HandleLeftThumbStick(
 	{
 		if (horizontal > 0)
 		{
-			pPlayer->MoveEast(velocity);
+			pPlayer->MoveEast(*fForwardVelocity);
 			retVal = EAST;
 		}
 		else if (horizontal < 0)
 		{
-			pPlayer->MoveWest(velocity);
+			pPlayer->MoveWest(*fForwardVelocity);
 			retVal = WEST;
 		}
 	}
@@ -168,12 +175,12 @@ int XBoxOneControllerView::HandleLeftThumbStick(
 			// Upper-right quadrant.
 			if (theta <= 45.f)
 			{
-				pPlayer->MoveEast(velocity);
+				pPlayer->MoveEast(*fForwardVelocity);
 				retVal = EAST;
 			}
 			else
 			{
-				pPlayer->MoveNorth(velocity);
+				pPlayer->MoveNorth(*fForwardVelocity);
 				retVal = NORTH;
 			}
 		}
@@ -182,12 +189,12 @@ int XBoxOneControllerView::HandleLeftThumbStick(
 			// Lower-right quadrant.
 			if (theta >= -45.f)
 			{
-				pPlayer->MoveEast(velocity);
+				pPlayer->MoveEast(*fForwardVelocity);
 				retVal = EAST;
 			}
 			else
 			{
-				pPlayer->MoveSouth(velocity);
+				pPlayer->MoveSouth(*fForwardVelocity);
 				retVal = SOUTH;
 			}
 		}
@@ -196,12 +203,12 @@ int XBoxOneControllerView::HandleLeftThumbStick(
 			// Upper-left quadrant.
 			if (theta >= -45.f)
 			{
-				pPlayer->MoveWest(velocity);
+				pPlayer->MoveWest(*fForwardVelocity);
 				retVal = WEST;
 			}
 			else
 			{
-				pPlayer->MoveNorth(velocity);
+				pPlayer->MoveNorth(*fForwardVelocity);
 				retVal = NORTH;
 			}
 		}
@@ -210,12 +217,12 @@ int XBoxOneControllerView::HandleLeftThumbStick(
 			// Lower-left quadrant.
 			if (theta <= 45.f)
 			{
-				pPlayer->MoveWest(velocity);
+				pPlayer->MoveWest(*fForwardVelocity);
 				retVal = WEST;
 			}
 			else
 			{
-				pPlayer->MoveSouth(velocity);
+				pPlayer->MoveSouth(*fForwardVelocity);
 				retVal = SOUTH;
 			}
 		}

@@ -29,7 +29,8 @@ public:
 	bool MovePlayer(
 		Player * pPlayer,
 		int collisionState,
-		int * swordDirection);
+		int * swordDirection,
+		float * fForwardVelocity);
 
 	bool GetIsControllerConnected() { return m_isControllerConnected; }
 	unsigned short CheckAButton();
@@ -43,7 +44,8 @@ private:
 		int nSwordDirection,
 		short horizontal,
 		short vertical,
-		bool * retVal);
+		bool * retVal,
+		float * fForwardVelocity);
 
 	bool                    m_isControllerConnected;  // Do we have a controller connected
 	XINPUT_CAPABILITIES     m_xinputCaps;             // Capabilites of the controller

@@ -137,7 +137,7 @@ private:
 	vector<int> m_collidedRectStatuses;
 	bool m_bLookaheadValid;
 //	XMVECTOR m_vecLookahead;
-	float m_fLookahead_grid_ratio;
+	float m_fLookaheadDistance_grid_ratio;
 
 #endif // _DEBUG
 	float2 m_fLookaheadPt;
@@ -175,10 +175,10 @@ private:
 	int m_nOrientation;
 
 	LookaheadCalculator m_lookaheadCalculator;
-	bool OnControllerInput();
+	bool OnControllerInput(float * fForwardVelocity);
 
 	list<String ^> * m_pKeyboardStack;
-	bool HandleKeyboardQueue();
+	bool HandleKeyboardQueue(float * fForwardVelocity);
 	int m_nFramesPerSecond;
 };
 

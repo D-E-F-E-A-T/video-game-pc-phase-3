@@ -22,7 +22,7 @@ using namespace std;
 class LookaheadCollisionStrategy
 {
 public:
-	void Detect(
+	bool Detect(
 		Movable * pMovable,	// in, out
 		Space * collided,	// in
 		Grid * grid,		// in

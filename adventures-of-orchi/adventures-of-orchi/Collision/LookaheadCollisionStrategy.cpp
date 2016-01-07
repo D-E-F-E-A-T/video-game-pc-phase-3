@@ -20,7 +20,7 @@
 #include "..\Grid.h"
 #include "..\Utils.h"
 
-void LookaheadCollisionStrategy::Detect(
+bool LookaheadCollisionStrategy::Detect(
 	Movable * pPlayer,
 	Space * pCollided,
 	Grid * pGrid,
@@ -48,7 +48,7 @@ void LookaheadCollisionStrategy::Detect(
 	XMFLOAT3 pvec3DisplacementRatio;
 	XMFLOAT3 pvec3PreviousDisplacementRatio{ 0.0f, 0.0f, 0.0f };
 
-	for (int i = 0; i <= nPixelDistance; i += 2)
+	for (int i = 0; i <= nPixelDistance; i++)
 	{
 		switch (nHeading)
 		{
@@ -123,13 +123,7 @@ void LookaheadCollisionStrategy::Detect(
 
 		if (nCollisionState == COLLISION)
 		{
-			if (i == 0)
-			{
-				// This would mean that the Player was left in 
-				//	 a collided state previously.
-				OutputDebugStringA("WARNING: Player left in COLLISION state previously.");
-			}
-			else
+			if (i > 0)
 			{
 				// Use the last vector that did not result in a COLLISION.
 				XMVECTOR pvecPreviousDisplacementRatio = XMLoadFloat3(&pvec3PreviousDisplacementRatio);
@@ -148,7 +142,7 @@ void LookaheadCollisionStrategy::Detect(
 				pPlayer->SetLocationRatio(fNextLocationRatio);
 			}
 
-			return;
+			return true;
 		}
 
 		XMVECTOR pvecCurrentDisplacementRatio = XMLoadFloat3(&pvec3DisplacementRatio);
@@ -160,4 +154,6 @@ void LookaheadCollisionStrategy::Detect(
 			XMVectorGetZ(pvecCurrentDisplacementRatio)
 		};
 	}
+
+	return false;
 }

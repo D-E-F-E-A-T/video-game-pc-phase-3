@@ -166,7 +166,7 @@ void GameRenderer::CreateWindowSizeDependentResources()
 }
 
 
-bool GameRenderer::OnControllerInput()
+bool GameRenderer::OnControllerInput(float * fForwardVelocity)
 {
 	bool retVal = false;
 
@@ -185,7 +185,8 @@ bool GameRenderer::OnControllerInput()
 		retVal = m_xboxController.MovePlayer(
 			m_pPlayer,
 			m_nCollisionState,
-			&m_nHeading);
+			&m_nHeading,
+			fForwardVelocity);
 
 		// Temporary.
 //		if (m_xboxController.CheckAButton())
@@ -193,11 +194,13 @@ bool GameRenderer::OnControllerInput()
 	}
 	else // Use the Touch Screen controls
 	{
+		*fForwardVelocity = PLAYER_MOVE_VELOCITY;
+
 		for (int i = NORTH; i <= WEST; i++)
 		{
 			if (m_bTouchScreenButtonPressed[i])
 			{
-				m_pPlayer->Move(i, m_nCollisionState, PLAYER_MOVE_VELOCITY);
+				m_pPlayer->Move(i, m_nCollisionState, *fForwardVelocity);
 				m_nHeading = i;
 				retVal = true;
 				break;
@@ -238,8 +241,13 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 	bool bMoveInputReady = false;
 
-	bMoveInputReady = OnControllerInput();
-	bMoveInputReady |= HandleKeyboardQueue();
+	float fForwardVelocity = 0.0f;
+
+	bMoveInputReady = HandleKeyboardQueue(&fForwardVelocity);
+	bMoveInputReady |= OnControllerInput(&fForwardVelocity);
+
+
+	// Note: The Player's location has already been moved at this point.
 
 	// Temporary.
 	// UpdateSword();
@@ -336,12 +344,12 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 		// If FPS = 1, velocity = 5,
 		//	magnitude = 0.2f
-		m_fLookahead_grid_ratio = m_lookaheadCalculator.Calculate(
+		m_fLookaheadDistance_grid_ratio = m_lookaheadCalculator.Calculate(
 			m_pPlayer,
 			m_nHeading,
 			float2{ m_fWindowWidth, m_fWindowHeight },
 			WALKING_VELOCITY,
-			1, // timer.GetFramesPerSecond(),
+			timer.GetFramesPerSecond(),
 			&grid,
 			m_rectLookaheadZonePixels,
 			&m_fLookaheadPt);
@@ -352,7 +360,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 //		float fMagnitude = XMVectorGetX(XMVector3Length(m_vecLookahead));
 
 #ifdef _DEBUG
-		if (m_fLookahead_grid_ratio > 0.0f)
+		if (m_fLookaheadDistance_grid_ratio > 0.0f)
 		{
 			char buffer1[64];
 
@@ -360,7 +368,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 				buffer1,
 				"Lookahead: (Heading %d) (Magnitude %f)\n",
 				m_nHeading,
-				m_fLookahead_grid_ratio);
+				m_fLookaheadDistance_grid_ratio);
 
 			OutputDebugStringA(buffer1);
 		}
@@ -374,14 +382,14 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			fLookaheadOffset_screen_ratio =
 			{
 				0.0f,
-				-1.0f * (m_fLookahead_grid_ratio * grid.GetGridHeight() / m_fWindowHeight),
+				-1.0f * (m_fLookaheadDistance_grid_ratio * grid.GetGridHeight() / m_fWindowHeight),
 			};
 			break;
 
 		case EAST:
 			fLookaheadOffset_screen_ratio =
 			{
-				m_fLookahead_grid_ratio * grid.GetGridWidth() / m_fWindowWidth,
+				m_fLookaheadDistance_grid_ratio * grid.GetGridWidth() / m_fWindowWidth,
 				0.0f
 			};
 			break;
@@ -390,14 +398,14 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			fLookaheadOffset_screen_ratio =
 			{
 				0.0f,
-				(m_fLookahead_grid_ratio * grid.GetGridHeight() / m_fWindowHeight)
+				(m_fLookaheadDistance_grid_ratio * grid.GetGridHeight() / m_fWindowHeight)
 			};
 			break;
 
 		case WEST:
 			fLookaheadOffset_screen_ratio =
 			{
-				-1.0f * (m_fLookahead_grid_ratio * grid.GetGridWidth() / m_fWindowWidth),
+				-1.0f * (m_fLookaheadDistance_grid_ratio * grid.GetGridWidth() / m_fWindowWidth),
 				0.0f
 			};
 			break;
@@ -409,7 +417,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			m_nHeading,
 			m_pCurrentSubdivision->GetStack(),
 			m_pCollided,
-			m_fLookahead_grid_ratio,
+			0.2f, // m_fLookaheadDistance_grid_ratio,
 			&grid);
 
 		if (m_pCollided->size() > 0)
@@ -449,7 +457,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 #ifdef _DEBUG
 				// m_pPlayer will be modified, if needed
-				m_lookaheadCollisionDetectionStrategy.Detect(
+				m_bLookaheadValid = m_lookaheadCollisionDetectionStrategy.Detect(
 					m_pPlayer,
 					pNearestSpace,
 					&grid,
@@ -473,10 +481,47 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 					nullptr);
 #endif // _DEBUG
 
+				if (m_bLookaheadValid == true)
+				{
+					// Need to recalculate the lookahead distance.
+					m_fLookaheadDistance_grid_ratio = m_lookaheadCalculator.Calculate(
+						m_pPlayer,
+						m_nHeading,
+						float2{ m_fWindowWidth, m_fWindowHeight },
+						fForwardVelocity,
+						1, // timer.GetFramesPerSecond(),
+						&grid,
+						m_rectLookaheadZonePixels,
+						&m_fLookaheadPt);
+
+					// Need to reverse at the same velocity.
+					switch (m_nHeading)
+					{
+					case NORTH:
+						m_pPlayer->MoveSouth(fForwardVelocity);
+						m_pPlayer->MoveNorth(0);
+						break;
+
+					case EAST:
+						m_pPlayer->MoveWest(fForwardVelocity);
+						m_pPlayer->MoveEast(0);
+						break;
+
+					case SOUTH:
+						m_pPlayer->MoveNorth(fForwardVelocity);
+						m_pPlayer->MoveSouth(0);
+						break;
+
+					case WEST:
+						m_pPlayer->MoveEast(fForwardVelocity);
+						m_pPlayer->MoveWest(0);
+						break;
+					}
+				}
+
 #ifdef _DEBUG
 			}
 
-			m_bLookaheadValid = true;
 #endif // _DEBUG
 		}
 #ifdef _DEBUG
@@ -800,8 +845,8 @@ void GameRenderer::DrawBroadCollisionZone()
 
 	Utils::ConvertGridRatioToGridPixels(
 		{
-			m_fLookahead_grid_ratio,
-			m_fLookahead_grid_ratio
+			m_fLookaheadDistance_grid_ratio,
+			m_fLookaheadDistance_grid_ratio
 		},
 		&grid, 
 		&fX, 
@@ -1189,12 +1234,14 @@ void GameRenderer::OnPointerPressed(ResolutionScale resolutionScale, float fX, f
 //	keyboard, touch, and controller inputs are
 //	handled on the same clock.
 // Thread-safety issues?
-bool GameRenderer::HandleKeyboardQueue()
+bool GameRenderer::HandleKeyboardQueue(float * fForwardVelocity)
 {
-	if (m_pKeyboardStack->size() > 0)
-	{
-		int nQueueSize = m_pKeyboardStack->size();
+	int nQueueSize = m_pKeyboardStack->size();
 
+	*fForwardVelocity = PLAYER_MOVE_VELOCITY;
+
+	if (nQueueSize > 0)
+	{
 		String ^ strCommand = m_pKeyboardStack->back();
 		m_pKeyboardStack->pop_back();
 
@@ -1202,7 +1249,7 @@ bool GameRenderer::HandleKeyboardQueue()
 			m_pPlayer,
 			m_nCollisionState,
 			strCommand,
-			PLAYER_MOVE_VELOCITY,
+			*fForwardVelocity,
 			&m_nHeading);
 		
 		// Temporary
@@ -1210,7 +1257,7 @@ bool GameRenderer::HandleKeyboardQueue()
 		//{
 		//	ThrowSword(m_nHeading);
 		//}
-		
+		 
 		return true;
 	}
 	else
