@@ -27,31 +27,28 @@ public:
 
 	void Detect(
 		int nLayer, 
-		Movable * pMovable, 
+		float2 fCenter_screen_ratio, // Movable * pMovable, 
 		int nHeading,
 		Stack * stack, 
 		list<Space *> * space, 
-		float fLookaheadDistance_grid,
-		float fLookaheadRadius_grid,
+		float fBroadRadius_grid_ratio,
 		Grid * pGrid);
 
 protected:
 	int Calculate(
 		int nLayer, 
-		Movable * pMovable, 
+		float2 fCenter_screen_ratio, // Movable * pMovable, 
 		int nHeading,
 		Stack * stack, 
 		list<Space *> * retVal,
-		float fLookaheadDistance_grid,
-		float fLookaheadRadius_grid,
+		float fBroadRadius_grid_ratio,
 		Grid * pGrid);
 
 	bool IsClose(
-		Movable * pMovable, 
+		float2 fCenter_screen_ratio, // Movable * pMovable, 
 		int nHeading,
 		Space * data,
-		float fLookaheadDistance_grid,
-		float fLookaheadRadius_grid,
+		float fBroadRadius_grid_ratio,
 		Grid * pGrid);
 
 private:

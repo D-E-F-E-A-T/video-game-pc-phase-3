@@ -30,33 +30,30 @@ BroadCollisionStrategy::BroadCollisionStrategy()
 
 void BroadCollisionStrategy::Detect(
 	int nLayer,
-	Movable * pMovable,
+	float2 fCenter_screen_ratio, // Movable * pMovable,
 	int nHeading,
 	Stack * stack,
 	list<Space *> * retVal,
-	float fLookaheadDistance_grid_ratio,
-	float fLookaheadRadius_grid_ratio,
+	float fBroadRadius_grid_ratio,
 	Grid * pGrid)
 {
 	Calculate(
 		nLayer,
-		pMovable,
+		fCenter_screen_ratio, // pMovable,
 		nHeading,
 		stack, 
 		retVal,
-		fLookaheadDistance_grid_ratio,
-		fLookaheadRadius_grid_ratio,
+		fBroadRadius_grid_ratio,
 		pGrid);
 }
 
 int BroadCollisionStrategy::Calculate(
 	int nLayer, 
-	Movable * pMovable,
+	float2 fCenter_screen_ratio, // Movable * pMovable,
 	int nHeading,
 	Stack * stack,
 	list<Space *> * retVal,
-	float fLookaheadDistance_grid_ratio,
-	float fLookaheadRadius_grid_ratio,
+	float fBroadRadius_grid_ratio,
 	Grid * pGrid)
 {
 	int numLayers = stack->GetNumLayers();
@@ -67,7 +64,7 @@ int BroadCollisionStrategy::Calculate(
 		iterator != stack->Get(nLayer)->GetSpaces()->end();
 		iterator++)
 	{
-		if (IsClose(pMovable, nHeading, *(iterator), fLookaheadDistance_grid_ratio, fLookaheadRadius_grid_ratio, pGrid))
+		if (IsClose(fCenter_screen_ratio, nHeading, *(iterator), fBroadRadius_grid_ratio, pGrid))
 		{
 			retVal->push_back(*(iterator));
 		}
@@ -85,31 +82,30 @@ int BroadCollisionStrategy::Calculate(
  *	(With .2 left and right margins. 0 top and bottom margins.
  */
 bool BroadCollisionStrategy::IsClose(
-	Movable * pMovable,
+	float2 fCenter_screen_ratio, // Movable * pMovable,
 	int nHeading,
 	Space * pObstacle,
-	float fLookaheadDistance_grid_ratio,
-	float fLookaheadRadius_grid_ratio,
+	float fBroadRadius_grid_ratio,
 	Grid * pGrid)
 {
 	// Need to convert ratios into pixels locations.
 	//	Will convert relative to the grid, rather than globally.
-	float fMovableX = 0.0f;
-	float fMovableY = 0.0f;
+	float fSourceX = 0.0f;
+	float fSourceY = 0.0f;
 
 	float fObstacleX = 0.0f;
 	float fObstacleY = 0.0f;
 
 	Utils::ConvertScreenRatioToGridRatio(
-		pMovable->GetLocationRatio(), &fMovableX, &fMovableY);
+		fCenter_screen_ratio, &fSourceX, &fSourceY);
 
 	Utils::ConvertScreenRatioToGridRatio(
 		pObstacle->GetLocationRatio(), &fObstacleX, &fObstacleY);
 
-	XMVECTOR vecMovableLocation_grid_px =
+	XMVECTOR vecSourceLocation_grid_px =
 	{
-		fMovableX * pGrid->GetGridWidth(),
-		fMovableY * pGrid->GetGridHeight()
+		fSourceX * pGrid->GetGridWidth(),
+		fSourceY * pGrid->GetGridHeight()
 	};
 
 	XMVECTOR vecObstacleLocation_grid_px =
@@ -118,31 +114,11 @@ bool BroadCollisionStrategy::IsClose(
 		fObstacleY * pGrid->GetGridHeight()
 	};
 
-
-	XMFLOAT3 vec3Lookahead_grid_px;
-
-	switch (nHeading)
+	float2 fSourceLocation_grid_px
 	{
-	case NORTH:
-		vec3Lookahead_grid_px = { 0.0f, -1.0f * fLookaheadDistance_grid_ratio * pGrid->GetGridHeight(), 0.0f };
-		break;
-
-	case EAST:
-		vec3Lookahead_grid_px = { fLookaheadDistance_grid_ratio * pGrid->GetGridWidth(), 0.0f, 0.0f };
-		break;
-
-	case SOUTH:
-		vec3Lookahead_grid_px = { 0.0f, fLookaheadDistance_grid_ratio * pGrid->GetGridHeight(), 0.0f };
-		break;
-
-	case WEST:
-		vec3Lookahead_grid_px = { -1.0f * fLookaheadDistance_grid_ratio * pGrid->GetGridWidth(), 0.0f, 0.0f };
-		break;
-	}
-
-	XMVECTOR vecLookahead_grid_px = XMLoadFloat3(&vec3Lookahead_grid_px);
-
-	XMVECTOR vecResultant_grid_px = vecMovableLocation_grid_px + vecLookahead_grid_px;
+		XMVectorGetX(vecSourceLocation_grid_px),
+		XMVectorGetY(vecSourceLocation_grid_px)
+	};
 
 	float2 fObstacleLocation_grid_px
 	{ 
@@ -150,103 +126,20 @@ bool BroadCollisionStrategy::IsClose(
 		XMVectorGetY(vecObstacleLocation_grid_px) 
 	};
 
-	float2 fResultantLocation_grid_px
+	float2 fBroadZoneDimensions_grid_px
 	{ 
-		XMVectorGetX(vecResultant_grid_px), 
-		XMVectorGetY(vecResultant_grid_px) 
+		fBroadRadius_grid_ratio * pGrid->GetGridWidth(),
+		fBroadRadius_grid_ratio * pGrid->GetGridHeight()
 	};
 
-	float2 fLookaheadZoneDimensions_grid_px
-	{ 
-		fLookaheadDistance_grid_ratio * pGrid->GetGridWidth() / 2.0f, 
-		fLookaheadDistance_grid_ratio * pGrid->GetGridHeight() / 2.0f 
-	};
+	//return Utils::IsPointInEllipse(
+	//	fObstacleLocation_grid_px,
+	//	fSourceLocation_grid_px,
+	//	fBroadZoneDimensions_grid_px);
 
-	return Utils::IsPointInEllipse(
+	return Utils::IsPointInRectangle(
 		fObstacleLocation_grid_px,
-		fResultantLocation_grid_px,
-		fLookaheadZoneDimensions_grid_px);
-
-
-
-
-
-//		float2 fEllipseDimensions);
-
-
-	// Calculate distance from obstacle to lookahead point.
-/*
-	XMVECTOR vecLookaheadGrid = XMLoadFloat3(vec3LookaheadGrid);
-
-	XMVECTOR vecLookaheadGlobal =
-		XMVectorSet(
-			(XMVectorGetX(vecLookaheadGrid) * pGrid->GetGridWidth()) / pGrid->GetWindowWidth(),
-			(XMVectorGetY(vecLookaheadGrid) * pGrid->GetGridHeight()) / pGrid->GetWindowHeight(),
-			0.0f,
-			0.0f);
-
-	XMFLOAT3 vec3LookaheadGlobal
-	{
-		XMVectorGetX(vecLookaheadGlobal),
-		XMVectorGetY(vecLookaheadGlobal),
-		0.0f
-	};
-*/
-/*
-	XMVECTOR vecLocation =
-		XMVectorSet(
-			pMovable->GetLocationRatio().x,
-			pMovable->GetLocationRatio().y,
-			0.0f,
-			0.0f);
-
-	XMVECTOR vecResultant = vecLocation + vecDifferentialGlobal;
-
-	XMFLOAT3 vec3Resultant
-	{
-		XMVectorGetX(vecResultant),
-		XMVectorGetY(vecResultant),
-		0.0f
-	};
-*/
-
-	//float2 fDistanceGlobal = obstacle->CalculateDistance(pMovable, &vec3LookaheadGlobal);
-
-
-
-	//float fDistanceGrid = 0.0f;
-
-	// TODO: Using parabolic functions will remove need for case statements.
-	//	Will be needed when steering becomes 360 degrees.
-/*
-	if (nHeading % 2 == 0)
-	{
-		// NORTH or SOUTH.
-		fDistanceGrid = (fDistanceGlobal * pGrid->GetWindowHeight()) / pGrid->GetGridHeight();
-	}
-	else
-	{
-		// EAST or WEST.
-		fDistanceGrid = (fDistanceGlobal * pGrid->GetWindowWidth()) / pGrid->GetGridWidth();
-	}
-*/
-
-//	float fDistanceGridX = (fDistanceGlobal * pGrid->GetWindowWidth()) / pGrid->GetGridWidth();
-//	float fDistanceGridY = (fDistanceGlobal * pGrid->GetWindowHeight()) / pGrid->GetGridHeight();
-//
-//	fDistanceGrid =
-//		sqrt(fDistanceGridX * fDistanceGridX + fDistanceGridY * fDistanceGridY);
-//
-//#ifdef _DEBUG
-//	char buf[64];
-//	sprintf_s(buf, "fDistanceGlobal = %f fDistanceGrid = %f\n", fDistanceGlobal, fDistanceGrid);
-//	OutputDebugStringA(buf);
-//#endif // _DEBUG
-//	
-//	// Must compare globals to globals and grids to grids.
-////	XMVECTOR vecLookaheadGrid = XMLoadFloat3(vec3LookaheadGrid);
-////	float fLookaheadDistanceGrid = XMVectorGetX(XMVector3Length(vecLookaheadGrid));
-//
-//	return (fDistanceGrid <= fLookaheadGridRadius);
+		fSourceLocation_grid_px,
+		fBroadZoneDimensions_grid_px);
 
 }

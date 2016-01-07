@@ -44,6 +44,7 @@ public:
 
 	static void ConvertScreenRatioToGridRatio(float2 fPoint_screen_ratio, float * x, float * y);
 	static void ConvertGridRatioToScreenRatio(float2 fPoint_grid_ratio, Grid * pGrid, float * x, float * y);
+	static void ConvertGridRatioToGridPixels(float2 fPoint_grid_ratio, Grid * pGrid, float * x, float * y);
 
 	static void InsertionSortF(float values[], int length);
 	static float GetMinValue(vector<float> values, int * index);
@@ -69,4 +70,9 @@ public:
 		float2 fPoint,
 		float2 fEllipseCenter,
 		float2 fEllipseDimensions);
+
+	static bool IsPointInRectangle(
+		float2 fPoint,
+		float2 fRectangleCenter,
+		float2 fRectangleDimensions);
 };

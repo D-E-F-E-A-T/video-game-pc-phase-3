@@ -254,11 +254,10 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 	{
 		m_broadCollisionDetectionStrategy.Detect(
 			LAYER_2D,
-			m_pPlayer,
+			m_pPlayer->GetLocationRatio(),
 			m_nHeading,
 			m_pCurrentSubdivision->GetStack(),
 			m_pCollided,
-			0.0f,
 			0.0f,
 			&grid);
 
@@ -297,11 +296,10 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 		m_broadCollisionDetectionStrategy.Detect(
 			LAYER_PORTALS,
-			m_pPlayer,
+			m_pPlayer->GetLocationRatio(),
 			m_nHeading,
 			m_pCurrentSubdivision->GetStack(),
 			m_pCollided,
-			0.0f,
 			0.0f,
 			&grid);
 
@@ -368,13 +366,49 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		}
 #endif // _DEBUG
 
+		float2 fLookaheadOffset_screen_ratio;
+		
+		switch (m_nHeading)
+		{
+		case NORTH:
+			fLookaheadOffset_screen_ratio =
+			{
+				0.0f,
+				-1.0f * (m_fLookahead_grid_ratio * grid.GetGridHeight() / m_fWindowHeight),
+			};
+			break;
+
+		case EAST:
+			fLookaheadOffset_screen_ratio =
+			{
+				m_fLookahead_grid_ratio * grid.GetGridWidth() / m_fWindowWidth,
+				0.0f
+			};
+			break;
+
+		case SOUTH:
+			fLookaheadOffset_screen_ratio =
+			{
+				0.0f,
+				(m_fLookahead_grid_ratio * grid.GetGridHeight() / m_fWindowHeight)
+			};
+			break;
+
+		case WEST:
+			fLookaheadOffset_screen_ratio =
+			{
+				-1.0f * (m_fLookahead_grid_ratio * grid.GetGridWidth() / m_fWindowWidth),
+				0.0f
+			};
+			break;
+		}
+
 		m_broadCollisionDetectionStrategy.Detect(
 			LAYER_COLLIDABLES,
-			m_pPlayer,
+			m_pPlayer->GetLocationRatio() + fLookaheadOffset_screen_ratio,
 			m_nHeading,
 			m_pCurrentSubdivision->GetStack(),
 			m_pCollided,
-			m_fLookahead_grid_ratio,
 			m_fLookahead_grid_ratio,
 			&grid);
 
@@ -764,7 +798,7 @@ void GameRenderer::DrawBroadCollisionZone()
 	float fX = 0.f;
 	float fY = 0.f;
 
-	Utils::ConvertGridRatioToScreenRatio(
+	Utils::ConvertGridRatioToGridPixels(
 		{
 			m_fLookahead_grid_ratio,
 			m_fLookahead_grid_ratio
@@ -773,21 +807,78 @@ void GameRenderer::DrawBroadCollisionZone()
 		&fX, 
 		&fY);
 
-	D2D1_ELLIPSE ellipse
+	D2D1_POINT_2F ptOrigin;
+
+	switch (m_nHeading)
 	{
-		D2D1_POINT_2F
+	case NORTH:
+		ptOrigin =
 		{
-			(m_pPlayer->GetLocationRatio().x + fX) * m_fWindowWidth,
-			(m_pPlayer->GetLocationRatio().y + fY) * m_fWindowHeight
-		},
+			m_pPlayer->GetLocationRatio().x * m_fWindowWidth,
+			m_pPlayer->GetLocationRatio().y * m_fWindowHeight - fY
+		};
+		break;
+
+	case EAST:
+		ptOrigin =
+		{
+			m_pPlayer->GetLocationRatio().x * m_fWindowWidth + fX,
+			m_pPlayer->GetLocationRatio().y * m_fWindowHeight
+		};
+		break;
+
+	case SOUTH:
+		ptOrigin =
+		{
+			m_pPlayer->GetLocationRatio().x * m_fWindowWidth,
+			m_pPlayer->GetLocationRatio().y * m_fWindowHeight + fY
+		};
+		break;
+
+	case WEST:
+		ptOrigin =
+		{
+			m_pPlayer->GetLocationRatio().x * m_fWindowWidth - fX,
+			m_pPlayer->GetLocationRatio().y * m_fWindowHeight
+		};
+		break;
+	}
+
+	D2D1_ELLIPSE ellipseOuter
+	{
+		ptOrigin,
 		fX,
 		fY
 	};
 
-	DEVICE_CONTEXT_2D->DrawEllipse(
-		ellipse,
-		m_deviceResources->m_mapBrushes["purple"],
+	D2D1_ELLIPSE ellipseInner
+	{
+		ptOrigin,
+		m_fWindowWidth * 0.0025f,
+		m_fWindowWidth * 0.0025f
+	};
+
+	//DEVICE_CONTEXT_2D->DrawEllipse(
+	//	ellipseOuter,
+	//	m_deviceResources->m_mapBrushes["green"],
+	//	3.0f);
+
+	D2D1_RECT_F rectOuter
+	{
+		ptOrigin.x - fX,
+		ptOrigin.y - fY,
+		ptOrigin.x + fX,
+		ptOrigin.y + fY
+	};
+
+	DEVICE_CONTEXT_2D->DrawRectangle(
+		rectOuter,
+		m_deviceResources->m_mapBrushes["green"],
 		3.0f);
+
+	DEVICE_CONTEXT_2D->FillEllipse(
+		ellipseInner,
+		m_deviceResources->m_mapBrushes["purple"]);
 }
 
 void GameRenderer::DrawFilteredCollided()
@@ -817,35 +908,8 @@ void GameRenderer::DrawFilteredCollided()
 
 void GameRenderer::DrawLookaheadZone()
 {
-/*
 	if (m_bLookaheadValid)
 	{
-//		float fMagnitude = XMVectorGetX(XMVector3Length(m_vecLookahead));
-		float fRadius = 0.0f;
-
-		float2 fGridPixels =
-		{
-			m_fWindowWidth * (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO),
-			m_fWindowHeight * (1.0f - TOP_MARGIN_RATIO - BOTTOM_MARGIN_RATIO)
-		};
-
-		D2D1_ELLIPSE ellipse
-		{
-			D2D1_POINT_2F
-			{
-				(m_pPlayer->GetLocationRatio().x * m_fWindowWidth) +
-					(m_fLookaheadRatio * fGridPixels.x),
-				(m_pPlayer->GetLocationRatio().y * m_fWindowHeight) +
-					(m_fLookaheadRatio * fGridPixels.y)
-			},
-			m_fWindowWidth * 0.0025f,
-			m_fWindowWidth * 0.0025f
-		};
-
-		DEVICE_CONTEXT_2D->FillEllipse(
-			ellipse,
-			m_deviceResources->m_mapBrushes["purple"]);
-
 		DEVICE_CONTEXT_2D->DrawRectangle(
 			D2D1_RECT_F
 			{
@@ -857,7 +921,6 @@ void GameRenderer::DrawLookaheadZone()
 			m_deviceResources->m_mapBrushes["purple"],
 			1.0f);
 	}
-*/
 }
 #endif // _DEBUG
 

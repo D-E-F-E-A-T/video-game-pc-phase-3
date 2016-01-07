@@ -165,6 +165,13 @@ void Utils::ConvertGridRatioToScreenRatio(
 	*y = fPoint_screen_px.y / pGrid->GetWindowHeight();
 }
 
+void Utils::ConvertGridRatioToGridPixels(float2 fPoint_grid_ratio, Grid * pGrid, float * x, float * y)
+{
+	*x = fPoint_grid_ratio.x * pGrid->GetGridWidth();
+	*y = fPoint_grid_ratio.y * pGrid->GetGridHeight();
+}
+
+
 void Utils::InsertionSortF(float values[], int length)
 {
 	int j, temp;
@@ -433,6 +440,7 @@ bool Utils::IsPointInEllipse(
 	float2 fEllipseCenter,
 	float2 fEllipseDimensions)
 {
+/*
 	float fLeftTerm = 0.0f;
 	float fRightTerm = 0.0f;
 
@@ -440,20 +448,34 @@ bool Utils::IsPointInEllipse(
 	{
 		// Ellipse is wide.
 		fLeftTerm =
-			pow(fPoint.x - fEllipseCenter.x, 2.0) / pow(fEllipseCenter.x, 2.0);
+			pow(fPoint.x - fEllipseCenter.x, 2.0) / pow(fEllipseDimensions.x, 2.0);
 
 		fRightTerm =
-			pow(fPoint.y - fEllipseCenter.y, 2.0f) / pow(fEllipseCenter.y, 2.0);
+			pow(fPoint.y - fEllipseCenter.y, 2.0f) / pow(fEllipseDimensions.y, 2.0);
 	}
 	else
 	{
 		// Ellipse is tall.
 		fLeftTerm =
-			pow(fPoint.y - fEllipseCenter.x, 2.0) / pow(fEllipseCenter.x, 2.0);
+			pow(fPoint.y - fEllipseCenter.x, 2.0) / pow(fEllipseDimensions.x, 2.0);
 
 		fRightTerm =
-			pow(fPoint.x - fEllipseCenter.y, 2.0) / pow(fEllipseCenter.y, 2.0);
+			pow(fPoint.x - fEllipseCenter.y, 2.0) / pow(fEllipseDimensions.y, 2.0);
 	}
 
 	return (fLeftTerm + fRightTerm <= 1.0f);
+*/
+
+	return false;
+}
+
+bool Utils::IsPointInRectangle(
+	float2 fPoint_grid_px,
+	float2 fRectangleCenter_grid_px,
+	float2 fRectangleDimensions_grid_px)
+{
+	return (fPoint_grid_px.x <= fRectangleCenter_grid_px.x + fRectangleDimensions_grid_px.x &&
+		fPoint_grid_px.x >= fRectangleCenter_grid_px.x - fRectangleDimensions_grid_px.x &&
+		fPoint_grid_px.y >= fRectangleCenter_grid_px.y - fRectangleDimensions_grid_px.y &&
+		fPoint_grid_px.y <= fRectangleCenter_grid_px.y + fRectangleDimensions_grid_px.y);
 }
