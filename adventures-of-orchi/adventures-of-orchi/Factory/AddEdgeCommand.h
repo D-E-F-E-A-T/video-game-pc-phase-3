@@ -51,110 +51,126 @@ public:
 
 		switch (((ServiceProxy::AddEdgeCommand ^)command)->Direction)
 		{
-		case NORTH:
-		{
-			fDimensionRatio = float2
+			case NORTH:
 			{
-				fSquareRatio.x,
-				fSquareRatio.y * EDGE_RATIO
-			};
+				fDimensionRatio = float2
+				{
+					fSquareRatio.x,
+					fSquareRatio.y * EDGE_RATIO
+				};
 
-			// The is the height ratio of the edge. It still needs to be
-			//	offset since the location ratio is based on the 
-			//	centroid, now.
-			float fEdgeHeight =
-				(fScreenDimensions.y / (float)NUM_GRID_ROWS) * EDGE_RATIO;
+				// The is the height ratio of the edge. It still needs to be
+				//	offset since the location ratio is based on the 
+				//	centroid, now.
+				float fEdgeHeight =
+					(fScreenDimensions.y / (float)NUM_GRID_ROWS) * EDGE_RATIO;
 
-			float fEdgeHeightMidpoint =
-				fEdgeHeight / 2.0f;
+				float fEdgeHeightMidpoint =
+					fEdgeHeight / 2.0f;
 
-			float fEdgeHeightMidpointOffsetRatio =
-				fEdgeHeightMidpoint / fScreenDimensions.y;
+				float fEdgeHeightMidpointOffsetRatio =
+					fEdgeHeightMidpoint / fScreenDimensions.y;
 
-			fOriginRatio = float2
+				fOriginRatio = float2
+				{
+					fX,
+					(fY - fSquareRatio.y / 2.0f) + fEdgeHeightMidpointOffsetRatio
+				};
+			}
+			break;
+
+			case EAST:
 			{
-				fX,
-				(fY - fSquareRatio.y / 2.0f) + fEdgeHeightMidpointOffsetRatio
-			};
-		}
-		break;
+				fDimensionRatio = float2
+				{
+					fSquareRatio.x * EDGE_RATIO,
+					fSquareRatio.y
+				};
 
-		case EAST:
-		{
-			fDimensionRatio = float2
+				float fEdgeWidth =
+					((fScreenDimensions.x * (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO))
+						/ (float)NUM_GRID_COLUMNS) * EDGE_RATIO;
+
+				float fEdgeWidthMidpoint =
+					fEdgeWidth / 2.0f;
+
+				float fEdgeWidthMidpointOffsetRatio =
+					fEdgeWidthMidpoint / fScreenDimensions.x;
+
+				fOriginRatio = float2
+				{
+					(fX + fSquareRatio.x / 2.0f) - fEdgeWidthMidpointOffsetRatio,
+					fY
+				};
+			}
+			break;
+
+			case SOUTH:
 			{
-				fSquareRatio.x * EDGE_RATIO,
-				fSquareRatio.y
-			};
+				fDimensionRatio = float2
+				{
+					fSquareRatio.x,
+					fSquareRatio.y * EDGE_RATIO
+				};
 
-			float fEdgeWidth =
-				((fScreenDimensions.x * (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO))
-					/ (float)NUM_GRID_COLUMNS) * EDGE_RATIO;
+				float fEdgeHeight =
+					(fScreenDimensions.y / (float)NUM_GRID_ROWS) * EDGE_RATIO;
 
-			float fEdgeWidthMidpoint =
-				fEdgeWidth / 2.0f;
+				float fEdgeHeightMidpoint =
+					fEdgeHeight / 2.0f;
 
-			float fEdgeWidthMidpointOffsetRatio =
-				fEdgeWidthMidpoint / fScreenDimensions.x;
+				float fEdgeHeightMidpointOffsetRatio =
+					fEdgeHeightMidpoint / fScreenDimensions.y;
 
-			fOriginRatio = float2
+				fOriginRatio = float2
+				{
+					fX,
+					(fY + fSquareRatio.y / 2.0f) - fEdgeHeightMidpointOffsetRatio
+				};
+			}
+			break;
+
+			case WEST:
 			{
-				(fX + fSquareRatio.x / 2.0f) - fEdgeWidthMidpointOffsetRatio,
-				fY
-			};
-		}
-		break;
+				fDimensionRatio = float2
+				{
+					fSquareRatio.x * EDGE_RATIO,
+					fSquareRatio.y
+				};
 
-		case SOUTH:
-		{
-			fDimensionRatio = float2
+				float fEdgeWidth =
+					((fScreenDimensions.x * (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO))
+						/ (float)NUM_GRID_COLUMNS) * EDGE_RATIO;
+
+				float fEdgeWidthMidpoint =
+					fEdgeWidth / 2.0f;
+
+				float fEdgeWidthMidpointOffsetRatio =
+					fEdgeWidthMidpoint / fScreenDimensions.x;
+
+				fOriginRatio = float2
+				{
+					(fX - fSquareRatio.x / 2.0f) + fEdgeWidthMidpointOffsetRatio,
+					fY
+				};
+			}
+			break;
+
+			default:
 			{
-				fSquareRatio.x,
-				fSquareRatio.y * EDGE_RATIO
-			};
+				fDimensionRatio = float2
+				{
+					fSquareRatio.x,
+					fSquareRatio.y
+				};
 
-			float fEdgeHeight =
-				(fScreenDimensions.y / (float)NUM_GRID_ROWS) * EDGE_RATIO;
-
-			float fEdgeHeightMidpoint =
-				fEdgeHeight / 2.0f;
-
-			float fEdgeHeightMidpointOffsetRatio =
-				fEdgeHeightMidpoint / fScreenDimensions.y;
-
-			fOriginRatio = float2
-			{
-				fX,
-				(fY + fSquareRatio.y / 2.0f) - fEdgeHeightMidpointOffsetRatio
-			};
-		}
-		break;
-
-		case WEST:
-		{
-			fDimensionRatio = float2
-			{
-				fSquareRatio.x * EDGE_RATIO,
-				fSquareRatio.y
-			};
-
-			float fEdgeWidth =
-				((fScreenDimensions.x * (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO))
-					/ (float)NUM_GRID_COLUMNS) * EDGE_RATIO;
-
-			float fEdgeWidthMidpoint =
-				fEdgeWidth / 2.0f;
-
-			float fEdgeWidthMidpointOffsetRatio =
-				fEdgeWidthMidpoint / fScreenDimensions.x;
-
-			fOriginRatio = float2
-			{
-				(fX - fSquareRatio.x / 2.0f) + fEdgeWidthMidpointOffsetRatio,
-				fY
-			};
-		}
-		break;
+				fOriginRatio = float2
+				{
+					fX,
+					fY
+				};
+			}
+			break;
 		}
 		
 

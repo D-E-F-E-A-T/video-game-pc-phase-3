@@ -42,11 +42,6 @@ public:
 		float2 fScaleDimensions,
 		float dpi); 
 
-	//void Transform()
-	//{
-
-	//}
-
 protected:
 
 

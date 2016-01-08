@@ -350,13 +350,34 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 			int nDirection = static_cast<Edge *>(pCollidedEdge)->GetDirection();
 
-			m_pPlayer->Skip(nDirection, float2{ m_fWindowWidth, m_fWindowHeight });
-			m_pCurrentSubdivision = m_pRegion->Slide(nDirection);
+			if (nDirection != DOWNSTAIRS)
+			{
+				m_pPlayer->Skip(nDirection, float2{ m_fWindowWidth, m_fWindowHeight });
+				m_pCurrentSubdivision = m_pRegion->Slide(nDirection);
+
+				m_pCollided->clear();
+			}
+			else
+			{
+				int nDestination = static_cast<Portal *>(pCollidedEdge)->GetDestination();
+
+				m_pRegion = m_pWorld->Go(nDestination);
+
+				int entryX = 0;
+				int entryY = 0;
+
+				m_pRegion->GetEntry(&entryX, &entryY);
+
+				m_pCurrentSubdivision =
+					m_pRegion->LoadSubdivision(entryX, entryY);
+
+				m_nHeading = SOUTH;
+
+				m_pCollided->clear();
+			}
 
 			m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pPlayer);
 			m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pSword);
-
-			m_pCollided->clear();
 
 			return 0;
 		}
@@ -367,48 +388,6 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 #endif // _DEBUG
 
 		m_pCollided->clear();
-
-		m_broadCollisionDetectionStrategy.Detect(
-			LAYER_PORTALS,
-			m_pPlayer->GetLocationRatio() + fLookaheadOffset_screen_ratio,
-			m_nHeading,
-			m_pCurrentSubdivision->GetStack(),
-			m_pCollided,
-			0.0f,
-			&grid);
-
-		// First, look for any collided stairs.
-		Space * pCollidedStairs = m_portalCollisionDetectionStrategy.Detect(
-			m_pPlayer,
-			m_pCollided);
-
-		if (pCollidedStairs)
-		{
-			int nDestination = static_cast<Portal *>(pCollidedStairs)->GetDestination();
-
-			m_pRegion = m_pWorld->Go(nDestination);
-
-			int entryX = 0;
-			int entryY = 0;
-
-			m_pRegion->GetEntry(&entryX, &entryY);
-
-			m_pCurrentSubdivision =
-				m_pRegion->LoadSubdivision(entryX, entryY);
-
-			m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pPlayer);
-			m_pCurrentSubdivision->GetStack()->Add(LAYER_PLAYERS, m_pSword);
-
-			m_nHeading = SOUTH;
-
-			m_pCollided->clear();
-
-			return 0;
-		}
-
-		m_pCollided->clear();
-
-
 
 
 		m_broadCollisionDetectionStrategy.Detect(

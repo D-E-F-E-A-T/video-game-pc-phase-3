@@ -40,6 +40,9 @@ public:
 			&x,
 			&y);
 
+		// The Stairs will be the visible sprite.
+		//	Put an Edge(rename?) underneath it 
+		//	to do the actions.
 		(*pSubdivision)->Set(LAYER_PORTALS,
 			new Stairs(
 				float2(x, y),

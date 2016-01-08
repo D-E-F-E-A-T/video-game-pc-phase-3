@@ -484,6 +484,7 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(2, 1, 8));
 
             commands.AddLast(new AddStairsCommand(2, 4, 7, 2));
+            commands.AddLast(new AddEdgeCommand(4, 4, 7, 9, 2));
 
 
 
@@ -1091,6 +1092,7 @@ namespace ServiceProxy
             commands.AddLast(new AddEdgeCommand(4, 0, 8, 3, 1));
 
             commands.AddLast(new AddStairsCommand(2, 8, 7, 6));
+            commands.AddLast(new AddEdgeCommand(4, 8, 7, 9, 6));
         }
 
         private void BuildScreen3(LinkedList<BuildCommand> commands)
@@ -2194,6 +2196,7 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(2, 16, 6));
 
             commands.AddLast(new AddStairsCommand(2, 14, 2, 1));
+            commands.AddLast(new AddEdgeCommand(4, 14, 2, 9, 1));
 
 
             // Lower-left forest
@@ -2866,7 +2869,10 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(2, 1, 4));
             commands.AddLast(new AddTreeCommand(2, 2, 4));
             commands.AddLast(new AddTreeCommand(2, 3, 4));
+
+            // The Stairs are visible. The Edge is invisible.
             commands.AddLast(new AddStairsCommand(2, 4, 4, 8));
+            commands.AddLast(new AddEdgeCommand(4, 4, 4, 9, 8));
 
             commands.AddLast(new AddTreeCommand(2, 0, 5));
             commands.AddLast(new AddTreeCommand(2, 1, 5));
@@ -3262,8 +3268,10 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(2, 9, 6));
             commands.AddLast(new AddTreeCommand(2, 16, 6));
 
-//            commands.AddLast(new AddTreeCommand(2, 7, 7));
             commands.AddLast(new AddStairsCommand(2, 8, 7, 5));
+            commands.AddLast(new AddEdgeCommand(4, 8, 7, 9, 5));
+
+
             commands.AddLast(new AddTreeCommand(2, 9, 7));
             commands.AddLast(new AddTreeCommand(2, 16, 7));
 
@@ -4609,7 +4617,10 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(2, 1, 3));
             commands.AddLast(new AddTreeCommand(2, 2, 3));
             commands.AddLast(new AddTreeCommand(2, 3, 3));
+
             commands.AddLast(new AddStairsCommand(2, 4, 3, 3));
+            commands.AddLast(new AddEdgeCommand(4, 4, 3, 9, 3));
+
             commands.AddLast(new AddTreeCommand(2, 5, 3));
             commands.AddLast(new AddTreeCommand(2, 6, 3));
 
@@ -5001,7 +5012,9 @@ namespace ServiceProxy
             commands.AddLast(new AddTreeCommand(2, 2, 2));
             commands.AddLast(new AddTreeCommand(2, 3, 2));
             commands.AddLast(new AddTreeCommand(2, 4, 2));
+
             commands.AddLast(new AddStairsCommand(2, 5, 2, 4));
+            commands.AddLast(new AddEdgeCommand(4, 5, 2, 9, 4));
 
             commands.AddLast(new AddTreeCommand(2, 0, 3));
             commands.AddLast(new AddTreeCommand(2, 1, 3));
