@@ -188,9 +188,8 @@ bool GameRenderer::OnControllerInput(float * fForwardVelocity)
 			&m_nHeading,
 			fForwardVelocity);
 
-		// Temporary.
-//		if (m_xboxController.CheckAButton())
-//			ThrowSword(m_nHeading);
+		if (m_xboxController.CheckAButton())
+			ThrowSword(m_nHeading);
 	}
 	else // Use the Touch Screen controls
 	{
@@ -207,9 +206,8 @@ bool GameRenderer::OnControllerInput(float * fForwardVelocity)
 			}
 		}
 
-		// Temporary.
-		//if (m_bTouchScreenButtonPressed[A_BUTTON])
-		//	ThrowSword(m_nHeading);
+		if (m_bTouchScreenButtonPressed[A_BUTTON])
+			ThrowSword(m_nHeading);
 	}
 
 	return retVal;
@@ -317,8 +315,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 	// Note: The Player's location has already been moved at this point.
 
-	// Temporary.
-	// UpdateSword();
+	 UpdateSword();
 
 	// Only use collision detection if there 
 	//	 the User wants to move.
@@ -1226,11 +1223,10 @@ bool GameRenderer::HandleKeyboardQueue(float * fForwardVelocity)
 			*fForwardVelocity,
 			&m_nHeading);
 		
-		// Temporary
-		//if (strCommand->Equals("S"))
-		//{
-		//	ThrowSword(m_nHeading);
-		//}
+		if (strCommand->Equals("S"))
+		{
+			ThrowSword(m_nHeading);
+		}
 		 
 		return true;
 	}
