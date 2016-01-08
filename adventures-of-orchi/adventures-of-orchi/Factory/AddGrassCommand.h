@@ -44,7 +44,11 @@ public:
 			new Grass(
 				float2(x, y),
 				0.f,
-				float2(1.f, 1.f),
+				float2
+				{
+					Utils::CalculateSquareWidthRatio(fScreenDimensions.x),
+					Utils::CalculateSquareHeightRatio(fScreenDimensions.y)
+				},
 				true,
 				command,
 				deviceResources));

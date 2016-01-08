@@ -226,7 +226,7 @@ float2 GameRenderer::CalculateLookahead()
 		m_nHeading,
 		float2{ m_fWindowWidth, m_fWindowHeight },
 		WALKING_SECONDS_PER_GRID,
-		1, // timer.GetFramesPerSecond(),
+		m_nFramesPerSecond,
 		&grid,
 		m_rectLookaheadZonePixels,
 		&m_fLookaheadPt);
@@ -488,7 +488,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 						m_nHeading,
 						float2{ m_fWindowWidth, m_fWindowHeight },
 						fForwardVelocity,
-						1, // timer.GetFramesPerSecond(),
+						m_nFramesPerSecond,
 						&grid,
 						m_rectLookaheadZonePixels,
 						&m_fLookaheadPt);
