@@ -60,7 +60,7 @@ void Grid::Draw(
 
 		float fFramesPerGrid =
 			(float)nFramesPerSecond * 
-			WALKING_VELOCITY;
+			WALKING_SECONDS_PER_GRID;
 
 		DrawMinorHorizontalLines(
 			context, 

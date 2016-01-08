@@ -73,6 +73,8 @@ public:
 
 	void SetUserInteractionMode(UserInteractionMode uiMode);
 private:
+	float2 CalculateLookahead();
+
 	// TODO: Move these to Sword.
 	void ThrowSword(int nDirection);
 	void UpdateSword();

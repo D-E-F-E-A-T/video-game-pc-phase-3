@@ -27,7 +27,7 @@ public:
 
 	void Detect(
 		int nLayer, 
-		float2 fCenter_screen_ratio, // Movable * pMovable, 
+		float2 fCenter_screen_ratio, 
 		int nHeading,
 		Stack * stack, 
 		list<Space *> * space, 
@@ -37,7 +37,7 @@ public:
 protected:
 	int Calculate(
 		int nLayer, 
-		float2 fCenter_screen_ratio, // Movable * pMovable, 
+		float2 fCenter_screen_ratio,
 		int nHeading,
 		Stack * stack, 
 		list<Space *> * retVal,
@@ -45,7 +45,7 @@ protected:
 		Grid * pGrid);
 
 	bool IsClose(
-		float2 fCenter_screen_ratio, // Movable * pMovable, 
+		float2 fCenter_screen_ratio,
 		int nHeading,
 		Space * data,
 		float fBroadRadius_grid_ratio,

@@ -489,9 +489,9 @@
 
 // It takes 5.0 seconds to go from 
 //	end-to-end of the grid.
-#ifndef WALKING_VELOCITY
-#define WALKING_VELOCITY 5.0f
-#endif // WALKING_VELOCITY
+#ifndef WALKING_SECONDS_PER_GRID
+#define WALKING_SECONDS_PER_GRID 5.0f
+#endif // WALKING_SECONDS_PER_GRID
 
 #ifndef TEST_LOOKAHEAD
 #define TEST_LOOKAHEAD

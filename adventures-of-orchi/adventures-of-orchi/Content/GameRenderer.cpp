@@ -215,6 +215,75 @@ bool GameRenderer::OnControllerInput(float * fForwardVelocity)
 	return retVal;
 }
 
+float2 GameRenderer::CalculateLookahead()
+{
+	float2 fLookaheadOffset_screen_ratio{ 0.0f, 0.0f };
+	
+	// If FPS = 1, velocity = 5,
+	//	magnitude = 0.2f
+	m_fLookaheadDistance_grid_ratio = m_lookaheadCalculator.Calculate(
+		m_pPlayer,
+		m_nHeading,
+		float2{ m_fWindowWidth, m_fWindowHeight },
+		WALKING_SECONDS_PER_GRID,
+		1, // timer.GetFramesPerSecond(),
+		&grid,
+		m_rectLookaheadZonePixels,
+		&m_fLookaheadPt);
+
+	switch (m_nHeading)
+	{
+	case NORTH:
+		fLookaheadOffset_screen_ratio =
+		{
+			0.0f,
+			-1.0f * (m_fLookaheadDistance_grid_ratio * grid.GetGridHeight() / m_fWindowHeight),
+		};
+		break;
+
+	case EAST:
+		fLookaheadOffset_screen_ratio =
+		{
+			m_fLookaheadDistance_grid_ratio * grid.GetGridWidth() / m_fWindowWidth,
+			0.0f
+		};
+		break;
+
+	case SOUTH:
+		fLookaheadOffset_screen_ratio =
+		{
+			0.0f,
+			(m_fLookaheadDistance_grid_ratio * grid.GetGridHeight() / m_fWindowHeight)
+		};
+		break;
+
+	case WEST:
+		fLookaheadOffset_screen_ratio =
+		{
+			-1.0f * (m_fLookaheadDistance_grid_ratio * grid.GetGridWidth() / m_fWindowWidth),
+			0.0f
+		};
+		break;
+	}
+
+#ifdef _DEBUG
+	if (m_fLookaheadDistance_grid_ratio > 0.0f)
+	{
+		char buffer1[64];
+
+		sprintf_s(
+			buffer1,
+			"Lookahead: (Heading %d) (Magnitude %f)\n",
+			m_nHeading,
+			m_fLookaheadDistance_grid_ratio);
+
+		OutputDebugStringA(buffer1);
+	}
+#endif // _DEBUG
+
+	return fLookaheadOffset_screen_ratio;
+}
+
 // Called once per frame, rotates the cube and calculates the model and view matrices.
 int GameRenderer::Update(DX::StepTimer const& timer)
 {
@@ -246,27 +315,24 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 	bMoveInputReady = HandleKeyboardQueue(&fForwardVelocity);
 	bMoveInputReady |= OnControllerInput(&fForwardVelocity);
 
-
 	// Note: The Player's location has already been moved at this point.
 
 	// Temporary.
 	// UpdateSword();
 
-	// Need to do collision calculations by looking ahead.
-	//	Don't actually move the player until the 
-	//	safe distance has been pre-calculated.
-
 	// Only use collision detection if there 
 	//	 the User wants to move.
 	if (bMoveInputReady)
 	{
+		float2 fLookaheadOffset_screen_ratio = CalculateLookahead();
+
 		m_broadCollisionDetectionStrategy.Detect(
 			LAYER_2D,
-			m_pPlayer->GetLocationRatio(),
+			m_pPlayer->GetLocationRatio() + fLookaheadOffset_screen_ratio,
 			m_nHeading,
 			m_pCurrentSubdivision->GetStack(),
 			m_pCollided,
-			0.0f,
+			DEFAULT_LOOKAHEAD_DISTANCE__GRID_RATIO,
 			&grid);
 
 		// Idea: Precedence order of collided objects.
@@ -304,7 +370,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 		m_broadCollisionDetectionStrategy.Detect(
 			LAYER_PORTALS,
-			m_pPlayer->GetLocationRatio(),
+			m_pPlayer->GetLocationRatio() + fLookaheadOffset_screen_ratio,
 			m_nHeading,
 			m_pCurrentSubdivision->GetStack(),
 			m_pCollided,
@@ -342,74 +408,8 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 
 		m_pCollided->clear();
 
-		// If FPS = 1, velocity = 5,
-		//	magnitude = 0.2f
-		m_fLookaheadDistance_grid_ratio = m_lookaheadCalculator.Calculate(
-			m_pPlayer,
-			m_nHeading,
-			float2{ m_fWindowWidth, m_fWindowHeight },
-			WALKING_VELOCITY,
-			timer.GetFramesPerSecond(),
-			&grid,
-			m_rectLookaheadZonePixels,
-			&m_fLookaheadPt);
 
 
-//		m_vecLookahead = XMLoadFloat3(&vec3Lookahead);
-
-//		float fMagnitude = XMVectorGetX(XMVector3Length(m_vecLookahead));
-
-#ifdef _DEBUG
-		if (m_fLookaheadDistance_grid_ratio > 0.0f)
-		{
-			char buffer1[64];
-
-			sprintf_s(
-				buffer1,
-				"Lookahead: (Heading %d) (Magnitude %f)\n",
-				m_nHeading,
-				m_fLookaheadDistance_grid_ratio);
-
-			OutputDebugStringA(buffer1);
-		}
-#endif // _DEBUG
-
-		float2 fLookaheadOffset_screen_ratio;
-		
-		switch (m_nHeading)
-		{
-		case NORTH:
-			fLookaheadOffset_screen_ratio =
-			{
-				0.0f,
-				-1.0f * (m_fLookaheadDistance_grid_ratio * grid.GetGridHeight() / m_fWindowHeight),
-			};
-			break;
-
-		case EAST:
-			fLookaheadOffset_screen_ratio =
-			{
-				m_fLookaheadDistance_grid_ratio * grid.GetGridWidth() / m_fWindowWidth,
-				0.0f
-			};
-			break;
-
-		case SOUTH:
-			fLookaheadOffset_screen_ratio =
-			{
-				0.0f,
-				(m_fLookaheadDistance_grid_ratio * grid.GetGridHeight() / m_fWindowHeight)
-			};
-			break;
-
-		case WEST:
-			fLookaheadOffset_screen_ratio =
-			{
-				-1.0f * (m_fLookaheadDistance_grid_ratio * grid.GetGridWidth() / m_fWindowWidth),
-				0.0f
-			};
-			break;
-		}
 
 		m_broadCollisionDetectionStrategy.Detect(
 			LAYER_COLLIDABLES,

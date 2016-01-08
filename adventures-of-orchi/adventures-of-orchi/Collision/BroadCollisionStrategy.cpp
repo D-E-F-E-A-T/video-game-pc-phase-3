@@ -30,7 +30,7 @@ BroadCollisionStrategy::BroadCollisionStrategy()
 
 void BroadCollisionStrategy::Detect(
 	int nLayer,
-	float2 fCenter_screen_ratio, // Movable * pMovable,
+	float2 fCenter_screen_ratio,
 	int nHeading,
 	Stack * stack,
 	list<Space *> * retVal,
@@ -39,7 +39,7 @@ void BroadCollisionStrategy::Detect(
 {
 	Calculate(
 		nLayer,
-		fCenter_screen_ratio, // pMovable,
+		fCenter_screen_ratio,
 		nHeading,
 		stack, 
 		retVal,
@@ -49,7 +49,7 @@ void BroadCollisionStrategy::Detect(
 
 int BroadCollisionStrategy::Calculate(
 	int nLayer, 
-	float2 fCenter_screen_ratio, // Movable * pMovable,
+	float2 fCenter_screen_ratio,
 	int nHeading,
 	Stack * stack,
 	list<Space *> * retVal,
@@ -82,7 +82,7 @@ int BroadCollisionStrategy::Calculate(
  *	(With .2 left and right margins. 0 top and bottom margins.
  */
 bool BroadCollisionStrategy::IsClose(
-	float2 fCenter_screen_ratio, // Movable * pMovable,
+	float2 fCenter_screen_ratio,
 	int nHeading,
 	Space * pObstacle,
 	float fBroadRadius_grid_ratio,
