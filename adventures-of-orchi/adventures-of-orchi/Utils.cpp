@@ -121,18 +121,20 @@ void Utils::CalculateSquareOrigin(
 
 float Utils::CalculateSquareHeightRatio(float fScreenHeight)
 {
-	float fSquareRawHeight = fScreenHeight / (float)NUM_GRID_ROWS;
+	float fGridHeight =
+		fScreenHeight * (1.0f - TOP_MARGIN_RATIO - BOTTOM_MARGIN_RATIO);
+
+	float fSquareRawHeight = fGridHeight / (float)NUM_GRID_ROWS;
 
 	return fSquareRawHeight / fScreenHeight;
 }
 
 float Utils::CalculateSquareWidthRatio(float fScreenWidth)
 {
-	float gridWidth = fScreenWidth -
-		(fScreenWidth * LEFT_MARGIN_RATIO) -
-		(fScreenWidth * RIGHT_MARGIN_RATIO);
+	float fGridWidth = 
+		fScreenWidth * (1.0f - LEFT_MARGIN_RATIO - RIGHT_MARGIN_RATIO);
 
-	float fSquareRawWidth = gridWidth / (float)NUM_GRID_COLUMNS;
+	float fSquareRawWidth = fGridWidth / (float)NUM_GRID_COLUMNS;
 
 	return fSquareRawWidth / fScreenWidth;
 }

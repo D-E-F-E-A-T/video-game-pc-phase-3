@@ -336,7 +336,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		//	For example, if colliding with a tree
 		//	and a portal, then the Portal takes precedence.
 
-		// Edges need to be touched.
+		// This would contain Edges and Borders.
 		Space * pCollidedEdge = m_portalCollisionDetectionStrategy.Detect(
 			m_pPlayer,
 			m_pCollided);

@@ -35,5 +35,4 @@ public:
 protected:
 
 private:
-	NarrowCollisionStrategy m_narrowCollisionDetectionStrategy;
 };

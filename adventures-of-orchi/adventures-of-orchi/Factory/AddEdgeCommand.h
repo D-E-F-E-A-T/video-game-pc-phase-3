@@ -43,7 +43,7 @@ public:
 		float2 fOriginRatio;	// Top-Left, relative to ENTIRE screen.
 		float2 fDimensionRatio;	// Area to squeeze the wireframe into, relative to a single grid square.
 
-		float2 fSquareRatio =
+		float2 fSquareDimensions_screen_ratio =
 		{
 			Utils::CalculateSquareWidthRatio(fScreenDimensions.x),
 			Utils::CalculateSquareHeightRatio(fScreenDimensions.y)
@@ -55,8 +55,8 @@ public:
 			{
 				fDimensionRatio = float2
 				{
-					fSquareRatio.x,
-					fSquareRatio.y * EDGE_RATIO
+					fSquareDimensions_screen_ratio.x,
+					fSquareDimensions_screen_ratio.y * EDGE_RATIO
 				};
 
 				// The is the height ratio of the edge. It still needs to be
@@ -74,7 +74,7 @@ public:
 				fOriginRatio = float2
 				{
 					fX,
-					(fY - fSquareRatio.y / 2.0f) + fEdgeHeightMidpointOffsetRatio
+					(fY - fSquareDimensions_screen_ratio.y / 2.0f) + fEdgeHeightMidpointOffsetRatio
 				};
 			}
 			break;
@@ -83,8 +83,8 @@ public:
 			{
 				fDimensionRatio = float2
 				{
-					fSquareRatio.x * EDGE_RATIO,
-					fSquareRatio.y
+					fSquareDimensions_screen_ratio.x * EDGE_RATIO,
+					fSquareDimensions_screen_ratio.y
 				};
 
 				float fEdgeWidth =
@@ -99,7 +99,7 @@ public:
 
 				fOriginRatio = float2
 				{
-					(fX + fSquareRatio.x / 2.0f) - fEdgeWidthMidpointOffsetRatio,
+					(fX + fSquareDimensions_screen_ratio.x / 2.0f) - fEdgeWidthMidpointOffsetRatio,
 					fY
 				};
 			}
@@ -109,8 +109,8 @@ public:
 			{
 				fDimensionRatio = float2
 				{
-					fSquareRatio.x,
-					fSquareRatio.y * EDGE_RATIO
+					fSquareDimensions_screen_ratio.x,
+					fSquareDimensions_screen_ratio.y * EDGE_RATIO
 				};
 
 				float fEdgeHeight =
@@ -125,7 +125,7 @@ public:
 				fOriginRatio = float2
 				{
 					fX,
-					(fY + fSquareRatio.y / 2.0f) - fEdgeHeightMidpointOffsetRatio
+					(fY + fSquareDimensions_screen_ratio.y / 2.0f) - fEdgeHeightMidpointOffsetRatio
 				};
 			}
 			break;
@@ -134,8 +134,8 @@ public:
 			{
 				fDimensionRatio = float2
 				{
-					fSquareRatio.x * EDGE_RATIO,
-					fSquareRatio.y
+					fSquareDimensions_screen_ratio.x * EDGE_RATIO,
+					fSquareDimensions_screen_ratio.y
 				};
 
 				float fEdgeWidth =
@@ -150,7 +150,7 @@ public:
 
 				fOriginRatio = float2
 				{
-					(fX - fSquareRatio.x / 2.0f) + fEdgeWidthMidpointOffsetRatio,
+					(fX - fSquareDimensions_screen_ratio.x / 2.0f) + fEdgeWidthMidpointOffsetRatio,
 					fY
 				};
 			}
@@ -160,8 +160,8 @@ public:
 			{
 				fDimensionRatio = float2
 				{
-					fSquareRatio.x,
-					fSquareRatio.y
+					fSquareDimensions_screen_ratio.x,
+					fSquareDimensions_screen_ratio.y
 				};
 
 				fOriginRatio = float2

@@ -14,28 +14,24 @@
 	limitations under the License.
 */
 #pragma once
-#include "pch.h"
-#include "NarrowTextureCollisionStrategy.h"
+#include "NarrowCollisionStrategy.h"
+#include "..\Model\Movable.h"
+#include "..\Model\Space.h"
+#include "..\Grid.h"
 
-using namespace std;
-
-class LookaheadCollisionStrategy
+class NarrowVectorGraphicCollisionStrategy : public NarrowCollisionStrategy
 {
 public:
-	bool Detect(
-		Movable * pMovable,	// in, out
-		Space * collided,	// in
-		Grid * grid,		// in
+	int Detect(
+		Movable * pMovable,
+		Space * collided,
+		Grid * grid,
 		int * intersectRect,
 		float2 screenDimensions,
-		int nHeading,
-		float2 fLookaheadPt,
-		vector<D2D1_RECT_F> * pCollidedRects,
-		vector<int> * pCollidedRectStatuses);
+		XMFLOAT3 * vec3Differential);
 
 protected:
 
-
 private:
-	NarrowTextureCollisionStrategy m_narrowCollisionDetectionStrategy;
+
 };

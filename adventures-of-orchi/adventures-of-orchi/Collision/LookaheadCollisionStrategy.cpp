@@ -20,6 +20,7 @@
 #include "..\Grid.h"
 #include "..\Utils.h"
 
+// Narrow strategy differs between Textures and VectorGraphics.
 bool LookaheadCollisionStrategy::Detect(
 	Movable * pPlayer,
 	Space * pCollided,

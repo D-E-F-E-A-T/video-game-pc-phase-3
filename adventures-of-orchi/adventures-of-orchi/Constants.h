@@ -356,7 +356,7 @@
 #endif // DUNGEON_LINE_WIDTH
 
 #ifndef EDGE_RATIO
-#define EDGE_RATIO 0.1f
+#define EDGE_RATIO 0.025f
 #endif // EDGE_RATIO
 
 #ifndef UPPER_LEFT

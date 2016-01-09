@@ -215,6 +215,8 @@
     <ClInclude Include="Collision\LookaheadCollisionFilter.h" />
     <ClInclude Include="Collision\LookaheadCollisionStrategy.h" />
     <ClInclude Include="Collision\NarrowCollisionStrategy.h" />
+    <ClInclude Include="Collision\NarrowTextureCollisionStrategy.h" />
+    <ClInclude Include="Collision\NarrowVectorGraphicCollisionStrategy.h" />
     <ClInclude Include="Collision\PortalCollisionStrategy.h" />
     <ClInclude Include="Collision\LookaheadCalculator.h" />
     <ClInclude Include="Content\Landscape.h" />
@@ -352,7 +354,8 @@
     <ClCompile Include="Collision\BroadCollisionStrategy.cpp" />
     <ClCompile Include="Collision\LookaheadCollisionFilter.cpp" />
     <ClCompile Include="Collision\LookaheadCollisionStrategy.cpp" />
-    <ClCompile Include="Collision\NarrowCollisionStrategy.cpp" />
+    <ClCompile Include="Collision\NarrowTextureCollisionStrategy.cpp" />
+    <ClCompile Include="Collision\NarrowVectorGraphicCollisionStrategy.cpp" />
     <ClCompile Include="Collision\PortalCollisionStrategy.cpp" />
     <ClCompile Include="Collision\LookaheadCalculator.cpp" />
     <ClCompile Include="Common\DeviceResources.cpp" />

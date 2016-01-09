@@ -15,27 +15,39 @@
 */
 #pragma once
 #include "pch.h"
-#include "NarrowTextureCollisionStrategy.h"
 
-using namespace std;
+#include "Model\Movable.h"
+#include "..\Grid.h"
+#include <list>
+#include "NarrowCollisionStrategy.h"
 
-class LookaheadCollisionStrategy
+
+class NarrowTextureCollisionStrategy : public NarrowCollisionStrategy
 {
 public:
-	bool Detect(
-		Movable * pMovable,	// in, out
-		Space * collided,	// in
-		Grid * grid,		// in
+	NarrowTextureCollisionStrategy();
+	~NarrowTextureCollisionStrategy();
+
+	int Detect(
+		Movable * pMovable,
+		Space * collided,
+		Grid * grid,
 		int * intersectRect,
 		float2 screenDimensions,
-		int nHeading,
-		float2 fLookaheadPt,
-		vector<D2D1_RECT_F> * pCollidedRects,
-		vector<int> * pCollidedRectStatuses);
+		XMFLOAT3 * vec3Differential);
 
 protected:
 
-
 private:
-	NarrowTextureCollisionStrategy m_narrowCollisionDetectionStrategy;
+
+	bool IntersectRect(
+		int * playerTopLeft,
+		int * obstacleTopLeft,
+		int width,
+		int height,
+		int * retVal);
+
+#ifdef _DEBUG
+	void DumpPixels(int width, int height, uint8_t * data);
+#endif // _DEBUG
 };

@@ -14,7 +14,7 @@
 	limitations under the License.
 */
 #include "pch.h"
-#include "NarrowCollisionStrategy.h"
+#include "NarrowTextureCollisionStrategy.h"
 #include "Model\Player.h"
 #include "Utils.h"
 #include <iostream>
@@ -26,12 +26,12 @@
 // @see http://gamedev.stackexchange.com/questions/27690/reading-from-a-staging-2d-texture-array-in-directx10
 // @see http://www.directxtutorial.com/Lesson.aspx?lessonid=11-4-5
 // @see http://www.cleoag.ru/2013/05/12/directx-texture-hbitmap/
-NarrowCollisionStrategy::NarrowCollisionStrategy()
+NarrowTextureCollisionStrategy::NarrowTextureCollisionStrategy()
 {
 
 }
 
-NarrowCollisionStrategy::~NarrowCollisionStrategy()
+NarrowTextureCollisionStrategy::~NarrowTextureCollisionStrategy()
 {
 
 }
@@ -39,13 +39,13 @@ NarrowCollisionStrategy::~NarrowCollisionStrategy()
 
 // Differential has already been used in the 
 //	calculation of the collided.
-int NarrowCollisionStrategy::Detect(
+int NarrowTextureCollisionStrategy::Detect(
 	Movable * pMovable,
 	Space * collided,
 	Grid * grid, // Player location is the coordinates of the center of the sprite.
 	int * intersectRect,
 	float2 screenDimensions, // in, global screen dimensions.
-	XMFLOAT3 * vec3Differential)
+	XMFLOAT3 * vec3Lookahead)
 {
 	bool bIntersection = false;
 
@@ -62,14 +62,14 @@ int NarrowCollisionStrategy::Detect(
 
 	int playerTopLeft[2];
 
-	XMVECTOR vecDifferential = XMLoadFloat3(vec3Differential);
+	XMVECTOR vecLookahead = XMLoadFloat3(vec3Lookahead);
 
 	// Should really use the dimensions of the sprite.
 	//	For now, using the dimensions of the grid space.
 	float2 fCentroid
 	{
-		pMovable->GetLocationRatio().x + XMVectorGetX(vecDifferential),
-		pMovable->GetLocationRatio().y + XMVectorGetY(vecDifferential)
+		pMovable->GetLocationRatio().x + XMVectorGetX(vecLookahead),
+		pMovable->GetLocationRatio().y + XMVectorGetY(vecLookahead)
 	};
 
 	float2 fPlayerTopLeft =
@@ -202,7 +202,7 @@ int NarrowCollisionStrategy::Detect(
 // Project the coordinates of each rectangle to the
 //	x and y axes. The second and third values will be 
 //	the intersection.
-bool NarrowCollisionStrategy::IntersectRect(
+bool NarrowTextureCollisionStrategy::IntersectRect(
 	int * playerTopLeft,
 	int * obstacleTopLeft,
 	int width,
@@ -284,7 +284,7 @@ bool NarrowCollisionStrategy::IntersectRect(
 
 
 #ifdef _DEBUG
-void NarrowCollisionStrategy::DumpPixels(int width, int height, uint8_t * data)
+void NarrowTextureCollisionStrategy::DumpPixels(int width, int height, uint8_t * data)
 {
 	uint32_t * dPtr = reinterpret_cast<uint32_t*>(data);
 

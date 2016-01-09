@@ -15,38 +15,22 @@
 */
 #pragma once
 #include "pch.h"
-
-#include "Model\Movable.h"
+#include "..\Model\Movable.h"
 #include "..\Grid.h"
-#include <list>
-
 
 class NarrowCollisionStrategy
 {
 public:
-	NarrowCollisionStrategy();
-	~NarrowCollisionStrategy();
-
-	int Detect(
+	virtual int Detect(
 		Movable * pMovable,
 		Space * collided,
 		Grid * grid,
 		int * intersectRect,
 		float2 screenDimensions,
-		XMFLOAT3 * vec3Differential);
+		XMFLOAT3 * vec3Differential) = 0;
 
 protected:
 
 private:
-
-	bool IntersectRect(
-		int * playerTopLeft,
-		int * obstacleTopLeft,
-		int width,
-		int height,
-		int * retVal);
-
-#ifdef _DEBUG
-	void DumpPixels(int width, int height, uint8_t * data);
-#endif // _DEBUG
 };
+
