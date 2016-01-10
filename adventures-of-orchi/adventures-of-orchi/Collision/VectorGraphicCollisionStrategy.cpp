@@ -15,9 +15,9 @@ limitations under the License.
 */
 #pragma once
 #include "pch.h"
-#include "NarrowVectorGraphicCollisionStrategy.h"
+#include "VectorGraphicCollisionStrategy.h"
 
-int NarrowVectorGraphicCollisionStrategy::Detect(
+int VectorGraphicCollisionStrategy::Detect(
 	Movable * pMovable,
 	Space * collided,
 	Grid * grid,

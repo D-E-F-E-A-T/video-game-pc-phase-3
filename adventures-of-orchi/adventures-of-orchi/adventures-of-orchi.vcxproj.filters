@@ -224,10 +224,10 @@
     <ClCompile Include="Collision\LookaheadCollisionStrategy.cpp">
       <Filter>Collision</Filter>
     </ClCompile>
-    <ClCompile Include="Collision\NarrowTextureCollisionStrategy.cpp">
+    <ClCompile Include="Collision\TextureCollisionStrategy.cpp">
       <Filter>Collision</Filter>
     </ClCompile>
-    <ClCompile Include="Collision\NarrowVectorGraphicCollisionStrategy.cpp">
+    <ClCompile Include="Collision\VectorGraphicCollisionStrategy.cpp">
       <Filter>Collision</Filter>
     </ClCompile>
   </ItemGroup>
@@ -566,13 +566,13 @@
     <ClInclude Include="Collision\LookaheadCollisionStrategy.h">
       <Filter>Collision</Filter>
     </ClInclude>
-    <ClInclude Include="Collision\NarrowVectorGraphicCollisionStrategy.h">
-      <Filter>Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="Collision\NarrowTextureCollisionStrategy.h">
-      <Filter>Collision</Filter>
-    </ClInclude>
     <ClInclude Include="Collision\NarrowCollisionStrategy.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision\TextureCollisionStrategy.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision\VectorGraphicCollisionStrategy.h">
       <Filter>Collision</Filter>
     </ClInclude>
   </ItemGroup>

@@ -22,11 +22,11 @@
 #include "NarrowCollisionStrategy.h"
 
 
-class NarrowTextureCollisionStrategy : public NarrowCollisionStrategy
+class TextureCollisionStrategy : public NarrowCollisionStrategy
 {
 public:
-	NarrowTextureCollisionStrategy();
-	~NarrowTextureCollisionStrategy();
+	TextureCollisionStrategy();
+	~TextureCollisionStrategy();
 
 	int Detect(
 		Movable * pMovable,

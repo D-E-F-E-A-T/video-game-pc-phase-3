@@ -15,7 +15,7 @@
 */
 #pragma once
 #include "pch.h"
-#include "NarrowTextureCollisionStrategy.h"
+#include "TextureCollisionStrategy.h"
 
 using namespace std;
 
@@ -37,5 +37,5 @@ protected:
 
 
 private:
-	NarrowTextureCollisionStrategy m_narrowCollisionDetectionStrategy;
+	TextureCollisionStrategy m_narrowCollisionDetectionStrategy;
 };

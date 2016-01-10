@@ -130,8 +130,6 @@ bool LookaheadCollisionStrategy::Detect(
 				XMVECTOR pvecPreviousDisplacementRatio = XMLoadFloat3(&pvec3PreviousDisplacementRatio);
 				float2 fCurrentLocationRatio = pPlayer->GetLocationRatio();
 
-				// Push back till no longer colliding? 
-
 				float2 fNextLocationRatio
 				{
 					fCurrentLocationRatio.x + XMVectorGetX(pvecPreviousDisplacementRatio),

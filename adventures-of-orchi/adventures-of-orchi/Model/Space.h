@@ -101,6 +101,8 @@ public:
 		return m_pCommand;
 	}
 
+//	virtual Space * Select(uint64 bitMask) = 0;
+
 protected:
 	Renderable * m_pRenderable;
 	
@@ -143,5 +145,6 @@ protected:
 	ServiceProxy::BuildCommand ^ m_pCommand;
 
 private:
+	uint64 uId;
 
 };

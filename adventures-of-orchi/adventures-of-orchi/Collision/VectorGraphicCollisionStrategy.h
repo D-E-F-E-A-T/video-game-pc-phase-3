@@ -19,7 +19,7 @@
 #include "..\Model\Space.h"
 #include "..\Grid.h"
 
-class NarrowVectorGraphicCollisionStrategy : public NarrowCollisionStrategy
+class VectorGraphicCollisionStrategy : public NarrowCollisionStrategy
 {
 public:
 	int Detect(

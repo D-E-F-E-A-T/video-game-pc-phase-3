@@ -285,7 +285,7 @@ float2 GameRenderer::CalculateLookahead()
 // Called once per frame, rotates the cube and calculates the model and view matrices.
 int GameRenderer::Update(DX::StepTimer const& timer)
 {
-	m_nFramesPerSecond = timer.GetFramesPerSecond();
+	m_nFramesPerSecond = 1; //timer.GetFramesPerSecond();
 
 	// Not handling portrait mode for this release.
 	if (m_nOrientation == PORTRAIT)
@@ -323,6 +323,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 	{
 		float2 fLookaheadOffset_screen_ratio = CalculateLookahead();
 
+		// This would cover Edges and Borders.
 		m_broadCollisionDetectionStrategy.Detect(
 			LAYER_2D,
 			m_pPlayer->GetLocationRatio() + fLookaheadOffset_screen_ratio,
@@ -336,7 +337,6 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 		//	For example, if colliding with a tree
 		//	and a portal, then the Portal takes precedence.
 
-		// This would contain Edges and Borders.
 		Space * pCollidedEdge = m_portalCollisionDetectionStrategy.Detect(
 			m_pPlayer,
 			m_pCollided);
@@ -393,7 +393,7 @@ int GameRenderer::Update(DX::StepTimer const& timer)
 			m_nHeading,
 			m_pCurrentSubdivision->GetStack(),
 			m_pCollided,
-			DEFAULT_LOOKAHEAD_DISTANCE__GRID_RATIO, // m_fLookaheadDistance_grid_ratio,
+			DEFAULT_LOOKAHEAD_DISTANCE__GRID_RATIO,
 			&grid);
 
 		if (m_pCollided->size() > 0)
