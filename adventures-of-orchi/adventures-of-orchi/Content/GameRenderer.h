@@ -182,5 +182,9 @@ private:
 	list<String ^> * m_pKeyboardStack;
 	bool HandleKeyboardQueue(float * fForwardVelocity);
 	int m_nFramesPerSecond;
+
+	bool m_bLookaheadTestMode;
+
+	bool m_bPreviousYButtonState;
 };
 

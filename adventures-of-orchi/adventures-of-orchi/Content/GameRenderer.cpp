@@ -37,7 +37,10 @@ using namespace Windows::UI::ViewManagement;
 GameRenderer::GameRenderer(const shared_ptr<DeviceResources>& deviceResources, CoreWindow ^ window) :
 	m_degreesPerSecond(45),
 	m_indexCount(0),
-	m_deviceResources(deviceResources)
+	m_deviceResources(deviceResources),
+	m_nFramesPerSecond(RECALCULATE_FPS),
+	m_bLookaheadTestMode(false),
+	m_bPreviousYButtonState(HOLD_STEADY)
 {
 	m_window = window;
 
@@ -188,8 +191,42 @@ bool GameRenderer::OnControllerInput(float * fForwardVelocity)
 			&m_nHeading,
 			fForwardVelocity);
 
+		// Allow multiple buttons to be 
+		//	pressed simultaneously.
 		if (m_xboxController.CheckAButton())
+		{
 			ThrowSword(m_nHeading);
+		}
+
+		if (m_xboxController.CheckBButton())
+		{
+
+		}
+
+		if (m_xboxController.CheckXButton())
+		{
+
+		}
+
+		// Need to do actions only on the changes in state.
+		unsigned short nCurrentYButtonState = m_xboxController.CheckYButton();
+		unsigned short nYButtonStateChange = nCurrentYButtonState - m_bPreviousYButtonState;
+
+		if (nYButtonStateChange == TO_HIGH)
+		{			
+			if (m_bLookaheadTestMode)
+				m_bLookaheadTestMode = false;
+			else
+				m_bLookaheadTestMode = true;
+		}
+		else if (nYButtonStateChange == TO_LOW)
+		{
+		}
+		else if (nYButtonStateChange == HOLD_STEADY)
+		{
+		}
+
+		m_bPreviousYButtonState = nCurrentYButtonState;
 	}
 	else // Use the Touch Screen controls
 	{
@@ -208,6 +245,35 @@ bool GameRenderer::OnControllerInput(float * fForwardVelocity)
 
 		if (m_bTouchScreenButtonPressed[A_BUTTON])
 			ThrowSword(m_nHeading);
+		
+		if (m_bTouchScreenButtonPressed[B_BUTTON])
+		{
+
+		}
+
+		if (m_bTouchScreenButtonPressed[X_BUTTON])
+		{
+
+		}
+
+		unsigned short nCurrentYButtonState = (int)m_bTouchScreenButtonPressed[Y_BUTTON];
+		unsigned short nYButtonStateChange = nCurrentYButtonState - m_bPreviousYButtonState;
+
+		if (nYButtonStateChange == TO_HIGH)
+		{
+			if (m_bLookaheadTestMode)
+				m_bLookaheadTestMode = false;
+			else
+				m_bLookaheadTestMode = true;
+		}
+		else if (nYButtonStateChange == TO_LOW)
+		{
+		}
+		else if (nYButtonStateChange == HOLD_STEADY)
+		{
+		}
+
+		m_bPreviousYButtonState = nCurrentYButtonState;
 	}
 
 	return retVal;
@@ -285,7 +351,10 @@ float2 GameRenderer::CalculateLookahead()
 // Called once per frame, rotates the cube and calculates the model and view matrices.
 int GameRenderer::Update(DX::StepTimer const& timer)
 {
-	m_nFramesPerSecond = 1; //timer.GetFramesPerSecond();
+	if (m_bLookaheadTestMode == true)
+		m_nFramesPerSecond = 1;
+	else
+		m_nFramesPerSecond = timer.GetFramesPerSecond();
 
 	// Not handling portrait mode for this release.
 	if (m_nOrientation == PORTRAIT)
@@ -1207,13 +1276,20 @@ void GameRenderer::OnPointerPressed(ResolutionScale resolutionScale, float fX, f
 // Thread-safety issues?
 bool GameRenderer::HandleKeyboardQueue(float * fForwardVelocity)
 {
+/*
 	int nQueueSize = m_pKeyboardStack->size();
 
 	*fForwardVelocity = PLAYER_MOVE_VELOCITY;
 
+	String ^ strCommand;
+
 	if (nQueueSize > 0)
 	{
-		String ^ strCommand = m_pKeyboardStack->back();
+		if (nQueueSize > 1)
+			strCommand = m_pKeyboardStack->back();
+		else
+			strCommand = m_pKeyboardStack->front();
+
 		m_pKeyboardStack->pop_back();
 
 		m_keyboardController.HandleKeystroke(
@@ -1234,4 +1310,7 @@ bool GameRenderer::HandleKeyboardQueue(float * fForwardVelocity)
 	{
 		return false;
 	}
+*/
+
+	return false;
 }

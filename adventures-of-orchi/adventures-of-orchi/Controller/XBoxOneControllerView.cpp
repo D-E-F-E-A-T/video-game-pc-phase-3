@@ -112,8 +112,25 @@ bool XBoxOneControllerView::MovePlayer(
 
 unsigned short XBoxOneControllerView::CheckAButton()
 {
-	return m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_A;
+	return m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_A ? 1 : 0;
 }
+
+unsigned short XBoxOneControllerView::CheckBButton()
+{
+	return m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_B ? 1 : 0;
+}
+
+unsigned short XBoxOneControllerView::CheckXButton()
+{
+	return m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_X ? 1 : 0;
+}
+
+unsigned short XBoxOneControllerView::CheckYButton()
+{
+	return m_xinputState.Gamepad.wButtons & XINPUT_GAMEPAD_Y ? 1 : 0;
+}
+
+
 
 int XBoxOneControllerView::HandleLeftThumbStick(
 	Player * pPlayer, 

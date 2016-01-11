@@ -92,18 +92,18 @@ void StateMachine::Move(
 	Subdivision ** pCurrentSubdivision,
 	const shared_ptr<DeviceResources>& deviceResources)
 {
-#ifdef _DEBUG
+#ifdef _DEBUG_STATE_MACHINE
 	char buffer[64];
 	sprintf_s(buffer, "StateMachine: m_nCurrentStateId %d\n", m_nCurrentStateId);
 	OutputDebugStringA(buffer);
-#endif // _DEBUG
+#endif // _DEBUG_STATE_MACHINE
 
 	// TODO: Use function pointers.		
 	if (m_nCurrentStateId == 0)
 	{
-#ifdef _DEBUG
+#ifdef _DEBUG_STATE_MACHINE
 		OutputDebugStringA("DoState0\n");
-#endif // _DEBUG
+#endif // _DEBUG_STATE_MACHINE
 
 		m_nCurrentStateId = DoState0(
 			nCommandType,
@@ -115,9 +115,9 @@ void StateMachine::Move(
 	}
 	else if (m_nCurrentStateId == 1)
 	{
-#ifdef _DEBUG
+#ifdef _DEBUG_STATE_MACHINE
 		OutputDebugStringA("DoState1\n");
-#endif // _DEBUG
+#endif // _DEBUG_STATE_MACHINE
 
 		m_nCurrentStateId = DoState1(
 			nCommandType,

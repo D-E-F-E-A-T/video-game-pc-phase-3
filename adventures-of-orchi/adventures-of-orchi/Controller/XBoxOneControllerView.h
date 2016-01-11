@@ -33,7 +33,11 @@ public:
 		float * fForwardVelocity);
 
 	bool GetIsControllerConnected() { return m_isControllerConnected; }
+
 	unsigned short CheckAButton();
+	unsigned short CheckBButton();
+	unsigned short CheckXButton();
+	unsigned short CheckYButton();
 
 protected:
 
