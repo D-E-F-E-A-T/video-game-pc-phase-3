@@ -1,5 +1,5 @@
 # The Video Game project, Phase 3
-This is phase 3 of the Game project which implements a 2D/3D adventure game of the ilk of Nintendo's original "The Legend of Zelda." https://en.wikipedia.org/wiki/The_Legend_of_Zelda_(1986_video_game)
+This is phase 3 of the Game project which implements a 2D/3D adventure game of the ilk of Nintendo's original "The Legend of Zelda." https://en.wikipedia.org/wiki/The_Legend_of_Zelda_(video_game)
 
 This phase continues to build and define the data model and begins defining the dungeons of the world. The requirements of a scripting langauge begin to be identified. 
  
